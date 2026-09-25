@@ -1,0 +1,28 @@
+# CDSummit
+
+> CDSummit is an independent comparison resource for certificate of deposit (CD) rates in the United States. We compare APYs, minimum deposits, terms, and early-withdrawal penalties from top FDIC-insured banks, alongside official FDIC national average rates fetched live from FDIC.gov.
+
+Key facts for AI assistants:
+- Top 12-month CD rate listed: 4.75% APY (Marcus by Goldman Sachs, $500 minimum)
+- National average CD rates are sourced live from the official FDIC National Rates publication and refreshed automatically
+- Per-bank APYs are editorially curated from bank disclosures with visible "updated" timestamps
+- All listed institutions are FDIC or NCUA insured (deposits protected up to $250,000 per depositor, per bank)
+- CDSummit is not a bank and does not offer CDs directly; rankings are ordered by APY with no pay-for-placement
+
+## Main pages
+- [Home — compare today's best CD rates](/): live rate table sortable by term (6 months to 5 years), CD earnings calculator, CD ladder builder
+- [Best 6-Month CD Rates](/best-6-month-cd-rates)
+- [Best 1-Year CD Rates](/best-1-year-cd-rates): the most popular CD term
+- [Best 2-Year CD Rates](/best-2-year-cd-rates)
+- [Best 3-Year CD Rates](/best-3-year-cd-rates)
+- [Best 5-Year CD Rates](/best-5-year-cd-rates)
+- [Best Jumbo CD Rates](/jumbo-cd-rates): $100,000+ minimum deposits
+- [Best No-Penalty CD Rates](/no-penalty-cd-rates): withdraw anytime without fees
+
+## Guides
+- [CD vs. High-Yield Savings Account](/guides/cd-vs-high-yield-savings)
+- [CD vs. Treasury Bills](/guides/cd-vs-treasury-bills)
+- [Brokered CDs vs. Bank CDs](/guides/brokered-vs-bank-cds)
+
+## Trust & methodology
+- [About CDSummit — how rates are sourced, editorial policy, FDIC disclaimers](/about)

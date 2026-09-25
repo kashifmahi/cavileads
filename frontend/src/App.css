@@ -1,0 +1,58 @@
+/* CDSummit styles */
+
+.App {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.font-serif {
+    font-family: "Playfair Display", Georgia, serif;
+}
+
+/* Hero dark navy gradient */
+.hero-bg {
+    background: linear-gradient(160deg, #1b2b4d 0%, #16233d 55%, #131e35 100%);
+}
+
+/* Subtle dot pattern overlay for hero */
+.hero-dots {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+}
+
+/* Calculator result card */
+.calc-result-bg {
+    background: linear-gradient(160deg, #1b2b4d 0%, #16233d 100%);
+}
+
+/* Footer */
+.footer-bg {
+    background-color: #111a2e;
+}
+
+/* Entrance animation */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-up {
+    animation: fadeUp 0.7s ease-out both;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection state */
+::selection {
+    background-color: #10b981;
+    color: #ffffff;
+}
