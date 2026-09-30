@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, HTTPException, Query
+from fastapi import FastAPI, APIRouter, HTTPException, Query, Header, Depends
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -11,6 +11,10 @@ from pydantic import BaseModel, Field, EmailStr
 from typing import List, Optional
 import uuid
 from datetime import datetime, timezone, timedelta
+from email_service import send_email, lead_notification_html, subscriber_notification_html
+
+OWNER_EMAIL = os.environ.get("OWNER_EMAIL", "")
+ADMIN_KEY = os.environ.get("ADMIN_KEY", "")
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -286,6 +290,17 @@ async def create_lead(payload: LeadCreate):
         },
         {"_id": 0},
     ).sort("apy", -1).to_list(3)
+    # Notify site owner by email (never blocks/fails the lead submission)
+    if OWNER_EMAIL:
+        try:
+            await send_email(
+                to=OWNER_EMAIL,
+                subject=f"New CD lead: {payload.first_name} {payload.last_name} ({payload.investment_amount})",
+                html=lead_notification_html(lead.dict()),
+                reply_to=payload.email,
+            )
+        except Exception as exc:
+            logger.error("Lead notification email failed: %s", exc)
     return {"id": lead.id, "matches": matches}
 
 @api_router.post("/subscribers")
@@ -293,7 +308,7 @@ async def create_subscriber(payload: SubscriberCreate):
     if payload.frequency not in ("weekly", "instant"):
         raise HTTPException(status_code=400, detail="frequency must be 'weekly' or 'instant'")
     now = datetime.now(timezone.utc)
-    await db.subscribers.update_one(
+    result = await db.subscribers.update_one(
         {"email": payload.email},
         {
             "$set": {"frequency": payload.frequency, "updated_at": now},
@@ -301,7 +316,32 @@ async def create_subscriber(payload: SubscriberCreate):
         },
         upsert=True,
     )
+    # Notify owner about brand-new subscribers only (never blocks the response)
+    if OWNER_EMAIL and result.upserted_id is not None:
+        try:
+            await send_email(
+                to=OWNER_EMAIL,
+                subject="New rate alerts subscriber on Cavicord",
+                html=subscriber_notification_html(payload.email, payload.frequency),
+            )
+        except Exception as exc:
+            logger.error("Subscriber notification email failed: %s", exc)
     return {"status": "subscribed", "email": payload.email, "frequency": payload.frequency}
+
+def require_admin(x_admin_key: str = Header(default="")):
+    if not ADMIN_KEY or x_admin_key != ADMIN_KEY:
+        raise HTTPException(status_code=401, detail="Invalid admin key")
+    return True
+
+@api_router.get("/admin/leads")
+async def admin_leads(_: bool = Depends(require_admin)):
+    leads = await db.leads.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
+    return {"leads": leads, "total": len(leads)}
+
+@api_router.get("/admin/subscribers")
+async def admin_subscribers(_: bool = Depends(require_admin)):
+    subs = await db.subscribers.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
+    return {"subscribers": subs, "total": len(subs)}
 
 app.include_router(api_router)
 

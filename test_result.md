@@ -197,9 +197,37 @@ backend:
         - working: "NA"
           agent: "main"
           comment: "Lead model replaced: now requires first_name, last_name, email, phone, investment_amount (range label string e.g. '$50,000 - $99,999'), timeframe, term_months, agree(bool). agree=false returns 400. parse_amount extracts first dollar figure from range label for match filtering (standard rates only, min_deposit<=amount, top 3 by APY)."
+  - task: "Email notifications via Emergent managed Resend (email_service.py): lead + new-subscriber notifications to OWNER_EMAIL"
+    implemented: true
+    working: true
+    file: "backend/email_service.py, backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+          agent: "main"
+          comment: "POST /api/leads now sends owner notification email (wrapped in try/except, never fails the lead). POST /api/subscribers sends notification only for brand-new subscribers (upsert insert). Uses Emergent email proxy with EMERGENT_EMAIL_KEY, EMAIL_FROM_NAME=Cavicord, OWNER_EMAIL from env. Safety gate _assert_safe_email called on every send."
+        - working: true
+          agent: "testing"
+          comment: "✅ EMAIL NOTIFICATIONS WORKING. Verified: (1) POST /api/leads sends email notification to OWNER_EMAIL (Eshoppio99@gmail.com) via Emergent email proxy - backend logs show HTTP 202 Accepted ✓ (2) POST /api/subscribers sends email notification ONLY for brand-new subscribers (upserted_id check working) - first submission triggers email (202 Accepted), duplicate submission does NOT trigger second email ✓ (3) Email sending wrapped in try/except, never blocks lead/subscriber submission (all API calls returned 200 even during email send) ✓ (4) Emergent email proxy integration working correctly (https://integrations.emergentagent.com/api/v1/email/send) ✓ Backend logs confirmed 5 successful email sends during testing: 2 lead notifications + 3 subscriber notifications (no duplicate email for repeated subscriber submission). All email notifications working as expected."
+  - task: "Admin endpoints GET /api/admin/leads and GET /api/admin/subscribers protected by X-Admin-Key header (ADMIN_KEY env)"
+    implemented: true
+    working: true
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+          agent: "main"
+          comment: "Returns {leads/subscribers, total} sorted created_at desc. Wrong/missing key returns 401. ADMIN_KEY=CAV-7k2m9x4qL8 in backend/.env."
         - working: true
           agent: "testing"
           comment: "✅ ALL 10 TESTS PASSED. UPDATED POST /api/leads TESTS: (1) Valid payload with $50,000-$99,999 returns 3 matches (Marcus 4.75%, Ally 4.5%, Barclays 4.4%), all standard 12-month rates sorted APY desc, all min_deposit <= 50000 ✓ (2) Under $10,000 amount returns 3 matches with min_deposit <= 10000 (Marcus $500, Ally $0, Barclays $0). Note: Discover Bank (min_deposit=2500, APY 4.25%) correctly excluded from top 3 because Marcus/Ally/Barclays have higher APYs ✓ (3) agree=false correctly returns 400 with 'You must agree to the Privacy Policy and Terms of Service' ✓ (4) Missing first_name correctly returns 422 ✓ (5) Invalid email correctly returns 422 ✓ (6) Phone too short '123' correctly returns 422 (min_length 7 validation working) ✓ (7) Lead persisted in MongoDB with all fields: first_name, last_name, email, phone, investment_amount, timeframe, term_months, agree, created_at ✓ REGRESSION TESTS: (8) GET /api/rates?term=all&rate_type=all returns 34 rates ✓ (9) GET /api/national-rates returns 11 FDIC products ✓ (10) POST /api/subscribers still working ✓ All validation, matching logic, and MongoDB persistence working correctly. No issues found."
+        - working: true
+          agent: "testing"
+          comment: "✅ ALL 6 ADMIN ENDPOINT TESTS PASSED. ADMIN AUTHENTICATION: (1) GET /api/admin/leads with valid X-Admin-Key header (CAV-7k2m9x4qL8) returns 200 with {leads: [...], total: 10} ✓ (2) GET /api/admin/leads without header returns 401 ✓ (3) GET /api/admin/leads with wrong key 'bad-key' returns 401 ✓ (4) GET /api/admin/subscribers with valid key returns 200 with {subscribers: [...], total: 4} ✓ (5) GET /api/admin/subscribers without header returns 401 ✓ (6) GET /api/admin/subscribers with wrong key returns 401 ✓ DATA VERIFICATION: (7) New lead created via POST /api/leads appears in GET /api/admin/leads response ✓ (8) New subscriber created via POST /api/subscribers appears in GET /api/admin/subscribers response ✓ Both endpoints return correct structure with leads/subscribers array and total count. Authentication working correctly with X-Admin-Key header validation. All admin endpoints working as expected."
 
 frontend:
   - task: "Full CDSummit landing page (hero, rates table with tabs, FDIC average strip, calculator, why CDs, FAQ, footer, cookie banner, personalized rates modal) integrated with backend API"
@@ -234,7 +262,7 @@ frontend:
 metadata:
   created_by: "main_agent"
   version: "1.0"
-  test_sequence: 7
+  test_sequence: 8
   run_ui: false
 
 test_plan:
@@ -266,3 +294,7 @@ agent_communication:
       message: "✅ UPDATED POST /api/leads TESTING COMPLETE - ALL 10 TESTS PASSED. Comprehensive testing of updated endpoint: (1) Valid payload with $50,000-$99,999 returns 3 standard 12-month matches sorted by APY (Marcus 4.75%, Ally 4.5%, Barclays 4.4%), all min_deposit <= 50000 ✓ (2) Under $10,000 amount correctly filters matches with min_deposit <= 10000. Note: Discover Bank (min_deposit=2500, APY 4.25%) correctly excluded from top 3 because Marcus/Ally/Barclays have higher APYs - endpoint returns top 3 by APY, not all matches ✓ (3) agree=false validation working, returns 400 with 'You must agree to the Privacy Policy and Terms of Service' ✓ (4) Missing first_name returns 422 ✓ (5) Invalid email returns 422 ✓ (6) Phone too short '123' returns 422 (min_length 7 validation working) ✓ (7) Lead persisted in MongoDB with all required fields: first_name, last_name, email, phone, investment_amount, timeframe, term_months, agree, created_at ✓ REGRESSION TESTS: (8) GET /api/rates?term=all&rate_type=all returns 34 rates ✓ (9) GET /api/national-rates returns 11 FDIC products ✓ (10) POST /api/subscribers still working ✓ All validation rules, matching logic, and MongoDB persistence working correctly. No issues found. Backend is production-ready."
     - agent: "testing"
       message: "✅ LEAD FORM & SEO ARTIFACTS TESTING COMPLETE - ALL 10 TESTS PASSED. Comprehensive verification of new lead-capture form and SEO implementation: (1) HOME PAGE META: ✓ Title contains 'Best CD Rates', ✓ meta[name=description] exists, ✓ meta[name=keywords] exists, ✓ link[rel=canonical] exists, ✓ 4 JSON-LD scripts with FAQPage and Organization schemas. (2) RATES TABLE REGRESSION: ✓ Marcus by Goldman Sachs 4.75% visible, no console errors. (3) LEAD FORM MODAL: ✓ Modal title 'Get Personalized CD Rates', ✓ Subtitle about CD specialist, ✓ All fields present (First Name*, Last Name*, Email*, Phone* with +1 prefix box and placeholder (555) 123-4567), ✓ Three shadcn Select dropdowns (Ideal Investment Amount, Ideal Investment Timeframe, Ideal CD Term), ✓ Consent checkbox 'I agree to Privacy Policy and Terms of Service', ✓ Green button 'Get My Personalized Rates', ✓ Security note at bottom. (4) EMPTY FORM VALIDATION: ✓ Per-field validation errors appear (e.g., 'First name is required.'). (5) UNCHECKED CONSENT VALIDATION: ✓ Filled all fields (Jane, Doe, jane.doe@example.com, 5551234567, $50,000-$99,999, Immediately, 12 months), ✓ Submit without consent → validation error 'You must agree to continue.' shown. (6) SUCCESSFUL SUBMISSION: ✓ POST /api/leads → 200, ✓ Results view 'Thanks, Jane! Here Are Your Top Matches', ✓ 3 bank matches (Marcus 4.75% with 'Top Pick' badge first, Ally 4.50%, Barclays 4.40%), all sorted by APY desc. (7) ADJUST PREFERENCES: ✓ Button returns to form, ✓ Values retained (First Name: Jane). (8) SEO ARTIFACTS: ✓ /robots.txt → 200, contains 'Sitemap:' and 'GPTBot', ✓ /sitemap.xml → 200, contains '/best-1-year-cd-rates', ✓ /llms.txt → 200, contains 'CDSummit'. (9) TERM PAGE STRUCTURED DATA: ✓ /best-1-year-cd-rates has BreadcrumbList and ItemList JSON-LD scripts. (10) GUIDE PAGE STRUCTURED DATA: ✓ /guides/cd-vs-high-yield-savings has Article JSON-LD script. No console errors, no network failures. All requirements from review request verified and working correctly."
+    - agent: "main"
+      message: "NEW FEATURES IMPLEMENTED: (1) Admin endpoints GET /api/admin/leads and GET /api/admin/subscribers protected by X-Admin-Key header (ADMIN_KEY=CAV-7k2m9x4qL8), returns {leads/subscribers, total} sorted created_at desc, wrong/missing key returns 401. (2) Email notifications via Emergent email proxy: POST /api/leads sends owner notification (wrapped in try/except), POST /api/subscribers sends notification only for brand-new subscribers (upserted_id check). Uses EMERGENT_EMAIL_KEY, EMAIL_FROM_NAME=Cavicord, OWNER_EMAIL from env. Please test admin authentication, email notifications, and verify leads/subscribers appear in admin endpoints. Check backend logs for email send status."
+    - agent: "testing"
+      message: "✅ NEW FEATURES TESTING COMPLETE - ALL 13 TESTS PASSED. ADMIN ENDPOINTS: (1) GET /api/admin/leads with valid X-Admin-Key (CAV-7k2m9x4qL8) returns 200 with {leads: [...], total: 10} ✓ (2) Without header returns 401 ✓ (3) With wrong key 'bad-key' returns 401 ✓ (4) GET /api/admin/subscribers with valid key returns 200 with {subscribers: [...], total: 4} ✓ (5) Without header returns 401 ✓ (6) With wrong key returns 401 ✓ EMAIL NOTIFICATIONS: (7) POST /api/leads sends email to OWNER_EMAIL (Eshoppio99@gmail.com) - backend logs show HTTP 202 Accepted from Emergent email proxy ✓ (8) New lead appears in GET /api/admin/leads ✓ (9) POST /api/subscribers (new) sends email - logs show 202 Accepted ✓ (10) POST /api/subscribers (duplicate) does NOT send second email - only first submission triggers email ✓ (11) New subscriber appears in GET /api/admin/subscribers ✓ REGRESSION: (12) GET /api/rates?term=12 returns 5 standard rates ✓ (13) GET /api/national-rates returns 11 FDIC products ✓ Backend logs confirmed 5 successful email sends during testing (2 lead notifications + 3 subscriber notifications, no duplicate for repeated submission). Email sending wrapped in try/except, never blocks API responses. All admin authentication and email notification features working correctly. No issues found."

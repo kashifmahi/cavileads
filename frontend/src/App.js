@@ -19,6 +19,7 @@ import TermPage from "./pages/TermPage";
 import AboutPage from "./pages/AboutPage";
 import GuidesIndex from "./pages/GuidesIndex";
 import GuidePage from "./pages/GuidePage";
+import AdminPage from "./pages/AdminPage";
 import { termPages, monthYear } from "./data/terms";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -108,6 +109,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<AboutPage />} />
+              <Route path="/admin" element={<AdminPage />} />
               <Route path="/guides" element={<GuidesIndex />} />
               <Route path="/guides/:slug" element={<GuidePage />} />
               {termPages.map((p) => (
