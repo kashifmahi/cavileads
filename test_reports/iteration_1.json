@@ -1,0 +1,37 @@
+{
+  "summary": "Frontend testing of new Articles SEO content system on Cavicord. All 9 requested flows tested via Playwright against the public preview URL. Core functionality (listing page, article pages, breadcrumbs, quick answer, FAQs, CTA, related links, invalid slug redirect, header/footer nav, regression of home/guides/term pages, and mobile no-overflow) all PASS. One notable SEO bug found: duplicate meta[name='description'] tags on article pages (default site description from index.html is NOT replaced by react-helmet-async, so the article-specific description appears as a second tag). Search engines commonly read the first tag => articles will index with the generic site meta description instead of the article-specific one.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "SEO / react-helmet-async on ArticlePage & ArticlesIndex",
+        "issue": "Duplicate <meta name='description'> tags in <head>. The default meta description from /app/frontend/index.html (222 chars, generic 'Compare CD rates from top FDIC-insured banks...') is NOT replaced by Helmet. The article-specific description (correct, ~141 chars) is appended as a second tag. Verified via document.querySelectorAll('meta[name=description]').length === 2 on /articles/are-cds-worth-it. Google and other crawlers read the first tag, so per-article meta descriptions will effectively be ignored, defeating the SEO purpose of the feature. This likely affects all pages using SEO component (Guides, term pages, etc.) — not specific to Articles.",
+        "selector": "meta[name='description']",
+        "priority": "HIGH"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Fix duplicate meta description: either remove <meta name='description'> from /app/frontend/index.html (let Helmet own it on every route), or wrap the base tag with data-react-helmet='true' / use Helmet's defaultTitle+meta pattern so react-helmet-async replaces rather than appends. Verify after fix that document.querySelectorAll('meta[name=description]').length === 1 on / , /articles, /articles/:slug, /guides/*."
+  ],
+  "critical_code_review_comments": [
+    "SEO.jsx uses react-helmet-async correctly, but static index.html has a hardcoded meta description that Helmet can't dedupe, causing per-page descriptions to be ignored by crawlers.",
+    "ArticlePage.jsx and ArticlesIndex.jsx are clean, well-structured, use data-testid consistently, and correctly emit Article/FAQPage/BreadcrumbList JSON-LD (5 total <script type='application/ld+json'> blocks confirmed on article page).",
+    "Invalid slug handled via <Navigate to='/articles' replace/> — good.",
+    "Related-articles slice(0,4) works but is deterministic (always first 4 of the remaining list); acceptable but could be improved by category or shuffling."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (not tested per request)", "frontend": "~95% (10/11 checks pass; 1 SEO bug)"},
+  "test_credentials": "Not required for these flows.",
+  "seed_data_creation": "None.",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Verified against preview URL from /app/frontend/.env. Tests executed: (1) /articles renders 11 cards with correct data-testids and metadata; (2) clicking article-card-are-cds-worth-it navigates to /articles/are-cds-worth-it and renders H1, breadcrumb (Home > Articles > title), Strategy category badge, article-quick-answer, article-faqs, article-compare-cta (href='/'), and 4 related links under 'Keep reading'; (3) direct URL access confirmed for are-cds-worth-it (title 52 chars), cd-early-withdrawal-penalty (60 chars), cds-vs-bonds (52 chars), cd-vs-annuity (51 chars) — all metaTitles under 60 char cap; (4) /articles/does-not-exist correctly redirects to /articles; (5) 5 JSON-LD blocks with Article + FAQPage + BreadcrumbList types found on article page; canonical link correct; (6) header nav-articles-link -> /articles present on desktop; (7) footer 'All Articles' link -> /articles present; (8) home page loads with APY content (rates working); (9) /guides, /guides/cd-ladder-explained, /best-1-year-cd-rates all render with expected titles; (10) mobile 390px viewport shows 0px horizontal overflow on both /articles and /articles/are-cds-worth-it (initial 152px reading was a transient during Cloudflare challenge, re-verified clean). Mobile hamburger menu button and mobile-nav-articles-link were NOT directly verified because Cloudflare rate-limited rapid navigations — main agent can self-verify. Only real issue is the duplicate meta description tag described above. Cookie banner Accept button dismisses fine and does not block interactions.",
+  "rca of the issue": "Duplicate meta description RCA: react-helmet-async replaces <head> tags that were rendered by a prior Helmet, but ignores static tags placed in index.html that lack the data-react-helmet marker. Since /app/frontend/index.html contains a plain <meta name='description' content='Compare CD rates...'>, Helmet appends its own tag rather than replacing. Reproduction: open /articles/are-cds-worth-it, run document.querySelectorAll('meta[name=description]').length in devtools -> returns 2. Mitigation: remove the static meta description tag from index.html (Helmet will always set one via SEO component on every route), or set Helmet's defer=false and rely on the SEO component to render meta description universally."
+}
