@@ -20,7 +20,7 @@ const principles = [
   {
     icon: ShieldCheck,
     title: "FDIC / NCUA disclaimer",
-    body: "Deposits at FDIC-member banks are insured up to $250,000 per depositor, per bank, per ownership category. Credit union deposits carry equivalent NCUA insurance. CDSummit is not a bank, does not accept deposits, and does not offer CDs directly \u2014 we are an independent comparison resource.",
+    body: "Deposits at FDIC-member banks are insured up to $250,000 per depositor, per bank, per ownership category. Credit union deposits carry equivalent NCUA insurance. Cavicord is not a bank, does not accept deposits, and does not offer CDs directly \u2014 we are an independent comparison resource.",
   },
   {
     icon: Scale,
@@ -37,8 +37,8 @@ const AboutPage = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO
-        title="About CDSummit — How We Source & Rank CD Rates"
-        description="Who we are, how CDSummit sources CD rates from the FDIC and bank disclosures, our editorial policy, and federal deposit insurance disclaimers."
+        title="About Cavicord — How We Source & Rank CD Rates"
+        description="Who we are, how Cavicord sources CD rates from the FDIC and bank disclosures, our editorial policy, and federal deposit insurance disclaimers."
         path="/about"
       />
       <Header />
@@ -52,7 +52,7 @@ const AboutPage = () => {
               <span className="text-slate-300">About & Trust</span>
             </nav>
             <h1 className="mt-4 font-serif text-3xl sm:text-5xl font-bold text-white">
-              How CDSummit Works
+              How Cavicord Works
             </h1>
             <p className="mt-5 max-w-2xl text-slate-300 leading-relaxed">
               We're an independent comparison resource on a simple mission: help American
@@ -85,7 +85,7 @@ const AboutPage = () => {
           <div className="mt-10 rounded-2xl calc-result-bg p-7 text-white">
             <h2 className="font-serif text-xl font-bold">Advertiser disclosure</h2>
             <p className="mt-3 text-sm text-slate-300 leading-relaxed">
-              Some links on CDSummit may be affiliate links, meaning we may earn a commission
+              Some links on Cavicord may be affiliate links, meaning we may earn a commission
               if you open an account — at no additional cost to you. This supports our free
               tools and data. Product order is always determined by APY, never by compensation.
             </p>

@@ -6,7 +6,7 @@ const CookieBanner = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem("cdsummit_cookie_consent");
+    const consent = localStorage.getItem("cavicord_cookie_consent");
     if (!consent) {
       const t = setTimeout(() => setVisible(true), 1200);
       return () => clearTimeout(t);
@@ -14,7 +14,7 @@ const CookieBanner = () => {
   }, []);
 
   const handle = (choice) => {
-    localStorage.setItem("cdsummit_cookie_consent", choice);
+    localStorage.setItem("cavicord_cookie_consent", choice);
     setVisible(false);
   };
 

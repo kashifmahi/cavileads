@@ -15,7 +15,7 @@ const GuidesIndex = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO
-        title="CD Guides & Comparisons — CDSummit"
+        title="CD Guides & Comparisons — Cavicord"
         description="In-depth comparisons: CD vs high-yield savings, CD vs Treasury bills, brokered vs bank CDs. Make smarter decisions with your savings."
         path="/guides"
       />

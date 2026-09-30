@@ -60,7 +60,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO
-        title={`Best CD Rates ${monthYear()} \u2014 Compare 4.75% APY | CDSummit`}
+        title={`Best CD Rates ${monthYear()} \u2014 Compare 4.75% APY | Cavicord`}
         description="Compare the best CD rates from top FDIC-insured US banks. High-yield certificates of deposit up to 4.75% APY, official FDIC national averages, CD calculator and ladder builder."
         keywords="best CD rates, certificate of deposit, high yield CD, CD rates today, FDIC insured CD, 12 month CD rates, CD calculator, CD ladder"
         path="/"
@@ -68,7 +68,7 @@ const Home = () => {
           {
             "@context": "https://schema.org",
             "@type": "WebSite",
-            name: "CDSummit",
+            name: "Cavicord",
             url: typeof window !== "undefined" ? window.location.origin : "",
             description:
               "Independent comparison of certificate of deposit rates from top FDIC-insured US banks.",
@@ -76,11 +76,11 @@ const Home = () => {
           {
             "@context": "https://schema.org",
             "@type": "Organization",
-            name: "CDSummit",
+            name: "Cavicord",
             url: typeof window !== "undefined" ? window.location.origin : "",
             logo: typeof window !== "undefined" ? `${window.location.origin}/og-image.png` : "",
             description:
-              "CDSummit compares the best CD rates from FDIC-insured banks, with official FDIC national averages, a CD calculator, and a ladder builder.",
+              "Cavicord compares the best CD rates from FDIC-insured banks, with official FDIC national averages, a CD calculator, and a ladder builder.",
           },
         ]}
       />

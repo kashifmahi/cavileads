@@ -22,7 +22,7 @@ const GuidePage = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO
-        title={`${guide.title} | CDSummit`}
+        title={`${guide.title} | Cavicord`}
         description={guide.excerpt}
         keywords="CD comparison, certificate of deposit guide, savings strategy"
         path={`/guides/${guide.slug}`}
@@ -32,8 +32,8 @@ const GuidePage = () => {
             "@type": "Article",
             headline: guide.title,
             description: guide.excerpt,
-            author: { "@type": "Organization", name: "CDSummit Editorial Team" },
-            publisher: { "@type": "Organization", name: "CDSummit" },
+            author: { "@type": "Organization", name: "Cavicord Editorial Team" },
+            publisher: { "@type": "Organization", name: "Cavicord" },
             mainEntityOfPage:
               typeof window !== "undefined"
                 ? `${window.location.origin}/guides/${guide.slug}`

@@ -1,7 +1,7 @@
-// Mock data for CDSummit — will be replaced by backend API later
+// Mock data for Cavicord — will be replaced by backend API later
 
 export const BRAND = {
-  name: "CDSummit",
+  name: "Cavicord",
   tagline: "Find the Best CD Rates Across America",
 };
 
@@ -120,8 +120,8 @@ export const faqs = [
       "A CD ladder is a strategy where you split your money across multiple CDs with staggered maturity dates — for example 1, 2, 3, 4, and 5 years. As each CD matures, you reinvest it into a new long-term CD. This gives you regular access to a portion of your funds while capturing higher long-term rates.",
   },
   {
-    question: "Does CDSummit offer CDs directly?",
+    question: "Does Cavicord offer CDs directly?",
     answer:
-      "No. CDSummit is an independent comparison resource. We research and compare rates from top FDIC-insured banks so you can find the best CD for your goals. To open a CD, you'll apply directly with the bank of your choice.",
+      "No. Cavicord is an independent comparison resource. We research and compare rates from top FDIC-insured banks so you can find the best CD for your goals. To open a CD, you'll apply directly with the bank of your choice.",
   },
 ];

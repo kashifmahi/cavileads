@@ -20,11 +20,11 @@ mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
-app = FastAPI(title="CDSummit API")
+app = FastAPI(title="Cavicord API")
 api_router = APIRouter(prefix="/api")
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger("cdsummit")
+logger = logging.getLogger("cavicord")
 
 FDIC_URL = "https://www.fdic.gov/national-rates-and-rate-caps"
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
@@ -239,7 +239,7 @@ def mark_best(rates: List[dict]) -> List[dict]:
 
 @api_router.get("/")
 async def root():
-    return {"message": "CDSummit API", "status": "ok"}
+    return {"message": "Cavicord API", "status": "ok"}
 
 @api_router.get("/rates")
 async def get_rates(term: str = Query("all"), rate_type: str = Query("standard")):

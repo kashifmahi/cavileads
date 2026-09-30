@@ -53,7 +53,7 @@ const TermPage = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO
-        title={`${config.title} \u2014 ${monthYear()} | CDSummit`}
+        title={`${config.title} \u2014 ${monthYear()} | Cavicord`}
         description={`${config.description.slice(0, 150)}\u2026`}
         keywords={`${config.title.toLowerCase()}, CD rates, certificate of deposit, FDIC insured, high yield CD`}
         path={`/${config.slug}`}
