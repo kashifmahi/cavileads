@@ -13,8 +13,8 @@ import RateAlerts from "./components/RateAlerts";
 import FAQSection from "./components/FAQSection";
 import Footer from "./components/Footer";
 import CookieBanner from "./components/CookieBanner";
-import PersonalizedModal from "./components/PersonalizedModal";
 import SEO from "./components/SEO";
+import { RatesModalProvider } from "./context/RatesModalContext";
 import TermPage from "./pages/TermPage";
 import AboutPage from "./pages/AboutPage";
 import GuidesIndex from "./pages/GuidesIndex";
@@ -25,7 +25,6 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 export const API = `${BACKEND_URL}/api`;
 
 const Home = () => {
-  const [modalOpen, setModalOpen] = useState(false);
   const [rates, setRates] = useState([]);
   const [updatedAt, setUpdatedAt] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -86,7 +85,7 @@ const Home = () => {
       />
       <Header />
       <main>
-        <Hero onGetRates={() => setModalOpen(true)} rates={rates} updatedAt={updatedAt} />
+        <Hero rates={rates} updatedAt={updatedAt} />
         <RatesSection rates={rates} loading={loading} updatedAt={updatedAt} />
         <Calculator rates={rates} />
         <LadderBuilder rates={rates} />
@@ -96,7 +95,6 @@ const Home = () => {
       </main>
       <Footer />
       <CookieBanner />
-      <PersonalizedModal open={modalOpen} onOpenChange={setModalOpen} />
     </div>
   );
 };
@@ -106,16 +104,18 @@ function App() {
     <HelmetProvider>
       <div className="App">
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/guides" element={<GuidesIndex />} />
-            <Route path="/guides/:slug" element={<GuidePage />} />
-            {termPages.map((p) => (
-              <Route key={p.slug} path={`/${p.slug}`} element={<TermPage />} />
-            ))}
-            <Route path="*" element={<Home />} />
-          </Routes>
+          <RatesModalProvider>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/guides" element={<GuidesIndex />} />
+              <Route path="/guides/:slug" element={<GuidePage />} />
+              {termPages.map((p) => (
+                <Route key={p.slug} path={`/${p.slug}`} element={<TermPage />} />
+              ))}
+              <Route path="*" element={<Home />} />
+            </Routes>
+          </RatesModalProvider>
         </BrowserRouter>
       </div>
     </HelmetProvider>

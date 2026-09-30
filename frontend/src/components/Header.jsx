@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { TrendingUp, ShieldCheck, Menu, X, ChevronDown } from "lucide-react";
+import { TrendingUp, ShieldCheck, Menu, X, ChevronDown, ArrowRight } from "lucide-react";
+import { Button } from "./ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,6 +10,7 @@ import {
 } from "./ui/dropdown-menu";
 import { BRAND } from "../mock/mock";
 import { termPages } from "../data/terms";
+import { useRatesModal } from "../context/RatesModalContext";
 
 const anchorLinks = [
   { label: "Compare Rates", hash: "#rates" },
@@ -22,6 +24,7 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { openRatesModal } = useRatesModal();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -105,10 +108,19 @@ const Header = () => {
             </a>
           </nav>
 
-          {/* Right badge */}
-          <div className="hidden lg:flex items-center gap-2 text-slate-500">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" />
-            <span className="text-sm font-medium">FDIC Insured</span>
+          {/* Right: badge + CTA */}
+          <div className="hidden lg:flex items-center gap-4">
+            <div className="hidden xl:flex items-center gap-2 text-slate-500">
+              <ShieldCheck className="w-4 h-4 text-emerald-600" />
+              <span className="text-sm font-medium">FDIC Insured</span>
+            </div>
+            <Button
+              onClick={openRatesModal}
+              size="sm"
+              className="h-9 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold transition-colors duration-200"
+            >
+              Get Personalized Rates
+            </Button>
           </div>
 
           {/* Mobile toggle */}
@@ -126,6 +138,16 @@ const Header = () => {
       {mobileOpen && (
         <div className="lg:hidden bg-white border-t border-slate-100 shadow-lg max-h-[80vh] overflow-y-auto">
           <nav className="flex flex-col px-6 py-4 gap-1">
+            <Button
+              onClick={() => {
+                setMobileOpen(false);
+                openRatesModal();
+              }}
+              className="w-full h-11 mb-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold group"
+            >
+              Get Personalized Rates
+              <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-transform duration-200" />
+            </Button>
             {anchorLinks.map((link) => (
               <a
                 key={link.hash}

@@ -7,8 +7,10 @@ import CookieBanner from "../components/CookieBanner";
 import RateTable from "../components/RateTable";
 import SEO from "../components/SEO";
 import { Badge } from "../components/ui/badge";
-import { Landmark, CalendarCheck, ChevronRight } from "lucide-react";
+import { Button } from "../components/ui/button";
+import { Landmark, CalendarCheck, ChevronRight, ArrowRight } from "lucide-react";
 import { getTermPage, termPages, monthYear } from "../data/terms";
+import { useRatesModal } from "../context/RatesModalContext";
 import { API } from "../App";
 
 const TermPage = () => {
@@ -19,6 +21,7 @@ const TermPage = () => {
   const [updatedAt, setUpdatedAt] = useState(null);
   const [national, setNational] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { openRatesModal } = useRatesModal();
 
   useEffect(() => {
     if (!config) return;
@@ -138,6 +141,25 @@ const TermPage = () => {
             averages sourced live from FDIC.gov. Rates are subject to change — always confirm with the
             issuing bank. All listed institutions are federally insured (FDIC or NCUA).
           </p>
+
+          {/* CTA banner */}
+          <div className="mt-12 rounded-2xl calc-result-bg p-7 sm:p-8 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+            <div>
+              <h2 className="font-serif text-xl sm:text-2xl font-bold">
+                Want rates matched to your goals?
+              </h2>
+              <p className="mt-2 text-sm text-slate-300">
+                Tell us your deposit amount and timeframe — a CD specialist will find your best options.
+              </p>
+            </div>
+            <Button
+              onClick={openRatesModal}
+              className="h-12 px-6 shrink-0 text-base font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors duration-200 group"
+            >
+              Get Personalized Rates
+              <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-transform duration-200" />
+            </Button>
+          </div>
 
           {/* Other term pages */}
           <div className="mt-14">

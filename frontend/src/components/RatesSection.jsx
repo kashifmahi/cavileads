@@ -9,14 +9,17 @@ import {
   DialogTitle,
   DialogDescription,
 } from "./ui/dialog";
-import { ShieldCheck, AlertCircle, DollarSign, CalendarClock, Landmark, CalendarCheck } from "lucide-react";
+import { ShieldCheck, AlertCircle, DollarSign, CalendarClock, Landmark, CalendarCheck, ArrowRight } from "lucide-react";
+import { Button } from "./ui/button";
 import RateTable, { BankAvatar, fmtDeposit } from "./RateTable";
+import { useRatesModal } from "../context/RatesModalContext";
 import { API } from "../App";
 
 const RatesSection = ({ rates, loading, updatedAt }) => {
   const [activeTab, setActiveTab] = useState("12");
   const [selected, setSelected] = useState(null);
   const [national, setNational] = useState(null);
+  const { openRatesModal } = useRatesModal();
 
   useEffect(() => {
     axios
@@ -113,6 +116,20 @@ const RatesSection = ({ rates, loading, updatedAt }) => {
           averages sourced live from FDIC.gov. Rates are subject to change. All
           listed banks are FDIC-insured.
         </p>
+
+        {/* CTA */}
+        <div className="mt-10 flex flex-col items-center gap-3">
+          <p className="text-slate-600 font-medium">
+            Not sure which CD is right for you?
+          </p>
+          <Button
+            onClick={openRatesModal}
+            className="h-12 px-7 text-base font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg shadow-lg shadow-emerald-200 transition-colors duration-200 group"
+          >
+            Get Personalized Rates
+            <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-transform duration-200" />
+          </Button>
+        </div>
       </div>
 
       {/* Detail dialog */}

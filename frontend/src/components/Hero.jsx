@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { Skeleton } from "./ui/skeleton";
 import { BankAvatar } from "./RateTable";
+import { useRatesModal } from "../context/RatesModalContext";
 
 const trustItems = [
   { icon: ShieldCheck, title: "FDIC Insured", sub: "Up to $250,000" },
@@ -11,7 +12,8 @@ const trustItems = [
   { icon: Clock, title: "Flexible Terms", sub: "3 mo \u2013 5 yr" },
 ];
 
-const Hero = ({ onGetRates, rates = [], updatedAt }) => {
+const Hero = ({ rates = [], updatedAt }) => {
+  const { openRatesModal } = useRatesModal();
   const scrollToRates = () => {
     const el = document.querySelector("#rates");
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -51,7 +53,7 @@ const Hero = ({ onGetRates, rates = [], updatedAt }) => {
 
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-fade-up" style={{ animationDelay: "0.3s" }}>
               <Button
-                onClick={onGetRates}
+                onClick={openRatesModal}
                 className="h-12 px-7 text-base font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg shadow-lg shadow-emerald-900/30 transition-colors duration-200 group"
               >
                 Get Personalized Rates
