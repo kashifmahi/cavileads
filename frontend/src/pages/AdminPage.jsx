@@ -9,8 +9,44 @@ import { Label } from "../components/ui/label";
 import { Badge } from "../components/ui/badge";
 import { Skeleton } from "../components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
-import { Lock, Users, BellRing, LogOut, RefreshCw, Mail, Phone } from "lucide-react";
+import { Lock, Users, BellRing, LogOut, RefreshCw, Mail, Phone, Download } from "lucide-react";
 import { API } from "../App";
+
+const toCsv = (rows, columns) => {
+  const esc = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+  const header = columns.map((c) => esc(c.label)).join(",");
+  const lines = rows.map((r) => columns.map((c) => esc(c.get(r))).join(","));
+  return [header, ...lines].join("\n");
+};
+
+const downloadCsv = (filename, csv) => {
+  const blob = new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+};
+
+const LEAD_COLUMNS = [
+  { label: "First Name", get: (l) => l.first_name },
+  { label: "Last Name", get: (l) => l.last_name },
+  { label: "Email", get: (l) => l.email },
+  { label: "Phone", get: (l) => l.phone },
+  { label: "Investment Amount", get: (l) => l.investment_amount },
+  { label: "Timeframe", get: (l) => l.timeframe },
+  { label: "CD Term (months)", get: (l) => l.term_months },
+  { label: "Submitted At", get: (l) => (l.created_at ? new Date(l.created_at).toISOString() : "") },
+];
+
+const SUB_COLUMNS = [
+  { label: "Email", get: (s) => s.email },
+  { label: "Frequency", get: (s) => s.frequency },
+  { label: "Subscribed At", get: (s) => (s.created_at ? new Date(s.created_at).toISOString() : "") },
+];
 
 const AdminPage = () => {
   const [key, setKey] = useState(sessionStorage.getItem("cavicord_admin_key") || "");
@@ -153,6 +189,22 @@ const AdminPage = () => {
                 </TabsList>
 
                 <TabsContent value="leads" className="mt-6">
+                  {leads.length > 0 && !loading && (
+                    <div className="flex justify-end mb-4">
+                      <Button
+                        size="sm"
+                        onClick={() =>
+                          downloadCsv(
+                            `cavicord-leads-${new Date().toISOString().slice(0, 10)}.csv`,
+                            toCsv(leads, LEAD_COLUMNS)
+                          )
+                        }
+                        className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold"
+                      >
+                        <Download className="w-4 h-4 mr-1.5" /> Export CSV ({leads.length})
+                      </Button>
+                    </div>
+                  )}
                   {loading ? (
                     <div className="space-y-3">
                       {[...Array(4)].map((_, i) => (
@@ -204,6 +256,22 @@ const AdminPage = () => {
                 </TabsContent>
 
                 <TabsContent value="subscribers" className="mt-6">
+                  {subs.length > 0 && !loading && (
+                    <div className="flex justify-end mb-4">
+                      <Button
+                        size="sm"
+                        onClick={() =>
+                          downloadCsv(
+                            `cavicord-subscribers-${new Date().toISOString().slice(0, 10)}.csv`,
+                            toCsv(subs, SUB_COLUMNS)
+                          )
+                        }
+                        className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold"
+                      >
+                        <Download className="w-4 h-4 mr-1.5" /> Export CSV ({subs.length})
+                      </Button>
+                    </div>
+                  )}
                   {loading ? (
                     <div className="space-y-3">
                       {[...Array(4)].map((_, i) => (
