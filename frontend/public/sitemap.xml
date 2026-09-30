@@ -96,6 +96,66 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://cavicord.tech/articles</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cavicord.tech/articles/are-cds-worth-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cavicord.tech/articles/what-happens-when-a-cd-matures</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cavicord.tech/articles/cd-early-withdrawal-penalty</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cavicord.tech/articles/how-is-cd-interest-taxed</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cavicord.tech/articles/what-is-a-jumbo-cd</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cavicord.tech/articles/no-penalty-cd-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cavicord.tech/articles/how-much-money-in-cds</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cavicord.tech/articles/fed-rate-cuts-and-cd-rates</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cavicord.tech/articles/can-you-add-money-to-a-cd</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cavicord.tech/articles/cds-vs-bonds</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cavicord.tech/articles/cd-vs-annuity</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://cavicord.tech/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

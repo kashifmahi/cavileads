@@ -63,6 +63,11 @@ const Footer = () => {
                 </li>
               ))}
               <li>
+                <Link to="/articles" className="text-slate-400 hover:text-emerald-400 transition-colors duration-200">
+                  All Articles
+                </Link>
+              </li>
+              <li>
                 <a href="/#calculator" className="text-slate-400 hover:text-emerald-400 transition-colors duration-200">
                   CD Earnings Calculator
                 </a>

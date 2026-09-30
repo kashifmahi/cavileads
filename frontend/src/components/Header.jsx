@@ -94,6 +94,13 @@ const Header = () => {
               Guides
             </Link>
             <Link
+              to="/articles"
+              data-testid="nav-articles-link"
+              className="text-sm font-medium text-slate-600 hover:text-[#16233d] transition-colors duration-200"
+            >
+              Articles
+            </Link>
+            <Link
               to="/about"
               className="text-sm font-medium text-slate-600 hover:text-[#16233d] transition-colors duration-200"
             >
@@ -175,6 +182,14 @@ const Header = () => {
               className="py-2.5 text-base font-medium text-slate-700 hover:text-emerald-700 transition-colors"
             >
               Guides
+            </Link>
+            <Link
+              to="/articles"
+              data-testid="mobile-nav-articles-link"
+              onClick={() => setMobileOpen(false)}
+              className="py-2.5 text-base font-medium text-slate-700 hover:text-emerald-700 transition-colors"
+            >
+              Articles
             </Link>
             <Link
               to="/about"

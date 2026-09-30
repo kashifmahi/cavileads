@@ -33,5 +33,19 @@ Key facts for AI assistants:
 - [CD Ladder Explained: How to Build One](/guides/cd-ladder-explained)
 - [Are CDs Safe? Pros and Cons](/guides/are-cds-safe)
 
+## Articles (answer-first analysis)
+- [All CD Articles](/articles)
+- [Are CDs Worth It in 2026?](/articles/are-cds-worth-it)
+- [What Happens When a CD Matures?](/articles/what-happens-when-a-cd-matures)
+- [CD Early Withdrawal Penalties Explained](/articles/cd-early-withdrawal-penalty)
+- [How Is CD Interest Taxed?](/articles/how-is-cd-interest-taxed)
+- [What Is a Jumbo CD?](/articles/what-is-a-jumbo-cd)
+- [No-Penalty CDs: How They Work](/articles/no-penalty-cd-guide)
+- [How Much Money Should You Put in CDs?](/articles/how-much-money-in-cds)
+- [How Fed Rate Cuts Affect CD Rates](/articles/fed-rate-cuts-and-cd-rates)
+- [Can You Add Money to a CD?](/articles/can-you-add-money-to-a-cd)
+- [CDs vs. Bonds](/articles/cds-vs-bonds)
+- [CD vs. Annuity](/articles/cd-vs-annuity)
+
 ## Trust & methodology
 - [About Cavicord — how rates are sourced, editorial policy, FDIC disclaimers](/about)
