@@ -32,18 +32,31 @@ const Home = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const fetchRates = async () => {
+    let cancelled = false;
+    const fetchRates = async (attempt = 1) => {
       try {
-        const res = await axios.get(`${API}/rates`, { params: { term: "all", rate_type: "standard" } });
+        const res = await axios.get(`${API}/rates`, {
+          params: { term: "all", rate_type: "standard" },
+          timeout: 15000,
+        });
+        if (cancelled) return;
         setRates(res.data.rates || []);
         setUpdatedAt(res.data.updated_at);
-      } catch (e) {
-        console.error("Failed to load rates", e);
-      } finally {
         setLoading(false);
+      } catch (e) {
+        console.error(`Failed to load rates (attempt ${attempt})`, e);
+        if (cancelled) return;
+        if (attempt < 3) {
+          setTimeout(() => fetchRates(attempt + 1), 3000);
+        } else {
+          setLoading(false);
+        }
       }
     };
     fetchRates();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   // Scroll to hash target when arriving from another route
@@ -86,9 +99,9 @@ const Home = () => {
       />
       <Header />
       <main>
-        <Hero rates={rates} updatedAt={updatedAt} />
+        <Hero rates={rates} updatedAt={updatedAt} loading={loading} />
         <RatesSection rates={rates} loading={loading} updatedAt={updatedAt} />
-        <Calculator rates={rates} />
+        <Calculator rates={rates} loading={loading} />
         <LadderBuilder rates={rates} />
         <WhyCDs />
         <RateAlerts />

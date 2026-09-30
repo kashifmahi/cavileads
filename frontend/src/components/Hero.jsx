@@ -12,7 +12,7 @@ const trustItems = [
   { icon: Clock, title: "Flexible Terms", sub: "3 mo \u2013 5 yr" },
 ];
 
-const Hero = ({ rates = [], updatedAt }) => {
+const Hero = ({ rates = [], updatedAt, loading = false }) => {
   const { openRatesModal } = useRatesModal();
   const scrollToRates = () => {
     const el = document.querySelector("#rates");
@@ -98,13 +98,26 @@ const Hero = ({ rates = [], updatedAt }) => {
                 </Badge>
               </div>
               <div className="divide-y divide-slate-100">
-                {top3.length === 0
-                  ? [...Array(3)].map((_, i) => (
-                      <div key={i} className="px-6 py-4">
-                        <Skeleton className="h-12 w-full rounded-lg" />
-                      </div>
-                    ))
-                  : top3.map((rate, i) => (
+                {top3.length === 0 && loading &&
+                  [...Array(3)].map((_, i) => (
+                    <div key={i} className="px-6 py-4">
+                      <Skeleton className="h-12 w-full rounded-lg" />
+                    </div>
+                  ))}
+                {top3.length === 0 && !loading && (
+                  <div className="px-6 py-8 text-center">
+                    <p className="text-sm text-slate-500">
+                      Rates are temporarily unavailable.
+                    </p>
+                    <button
+                      onClick={() => window.location.reload()}
+                      className="mt-2 text-sm font-semibold text-emerald-700 hover:text-emerald-600 underline"
+                    >
+                      Tap to retry
+                    </button>
+                  </div>
+                )}
+                {top3.map((rate, i) => (
                       <div key={rate.id} className="px-6 py-4 flex items-center justify-between gap-3 hover:bg-emerald-50/40 transition-colors duration-150">
                         <div className="flex items-center gap-3 min-w-0">
                           <BankAvatar bank={rate.bank} color={rate.color} size="w-9 h-9" />

@@ -21,10 +21,10 @@ const CookieBanner = () => {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[60] w-[calc(100%-2rem)] max-w-xl animate-fade-up">
-      <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 p-6">
+    <div className="fixed bottom-4 inset-x-4 z-[60] mx-auto max-w-xl animate-fade-up">
+      <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 p-5 sm:p-6">
         <div className="flex items-start gap-3">
-          <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-emerald-50 shrink-0">
+          <span className="hidden sm:flex items-center justify-center w-9 h-9 rounded-lg bg-emerald-50 shrink-0">
             <Cookie className="w-5 h-5 text-emerald-600" />
           </span>
           <p className="text-sm text-slate-600 leading-relaxed">

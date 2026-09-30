@@ -103,12 +103,24 @@ const RatesSection = ({ rates, loading, updatedAt }) => {
         )}
 
         <div className="mt-10">
-          <RateTable
-            rates={filtered}
-            loading={loading}
-            showBest={activeTab !== "all"}
-            onView={setSelected}
-          />
+          {!loading && filtered.length === 0 ? (
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-10 text-center">
+              <p className="text-slate-600 font-medium">Rates are temporarily unavailable.</p>
+              <button
+                onClick={() => window.location.reload()}
+                className="mt-2 text-sm font-semibold text-emerald-700 hover:text-emerald-600 underline"
+              >
+                Tap to retry
+              </button>
+            </div>
+          ) : (
+            <RateTable
+              rates={filtered}
+              loading={loading}
+              showBest={activeTab !== "all"}
+              onView={setSelected}
+            />
+          )}
         </div>
 
         <p className="mt-6 text-center text-xs text-slate-400">

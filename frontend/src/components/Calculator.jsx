@@ -5,7 +5,7 @@ import { formatTerm } from "../mock/mock";
 
 const termOptions = [6, 12, 24, 36, 60];
 
-const Calculator = ({ rates = [] }) => {
+const Calculator = ({ rates = [], loading = false }) => {
   const [deposit, setDeposit] = useState(10000);
   const [term, setTerm] = useState(12);
 
@@ -100,7 +100,11 @@ const Calculator = ({ rates = [] }) => {
                 <span className="text-sm text-slate-400">APY</span>
               </div>
               <p className="text-sm text-slate-400 mt-1">
-                {bestRate ? `via ${bestRate.bank}` : "Loading rates\u2026"}
+                {bestRate
+                  ? `via ${bestRate.bank}`
+                  : loading
+                  ? "Loading rates\u2026"
+                  : "Rates temporarily unavailable \u2014 please refresh"}
               </p>
             </div>
 
