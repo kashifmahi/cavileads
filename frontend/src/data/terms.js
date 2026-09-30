@@ -5,6 +5,15 @@ export const monthYear = () =>
 
 export const termPages = [
   {
+    slug: "best-3-month-cd-rates",
+    term: "3",
+    rateType: "standard",
+    title: "Best 3-Month CD Rates",
+    heading: "Best 3-Month CD Rates",
+    description:
+      "Three-month CDs are the shortest mainstream term — a smart parking spot for cash you'll need soon but want working in the meantime. They typically out-earn savings accounts while keeping your money accessible within a single quarter.",
+  },
+  {
     slug: "best-6-month-cd-rates",
     term: "6",
     rateType: "standard",
@@ -21,6 +30,15 @@ export const termPages = [
     heading: "Best 1-Year CD Rates",
     description:
       "The 12-month CD is the most popular term in America \u2014 and usually where banks compete hardest. If you can set money aside for a full year, one-year CDs frequently offer the highest APYs on the market, combining a strong rate with a reasonable commitment.",
+  },
+  {
+    slug: "best-18-month-cd-rates",
+    term: "18",
+    rateType: "standard",
+    title: "Best 18-Month CD Rates",
+    heading: "Best 18-Month CD Rates",
+    description:
+      "Eighteen-month CDs sit in a sweet spot: meaningfully higher commitment than a 1-year CD without locking funds for two full years. They're popular with savers who expect rate cuts and want to extend today's yield a little further.",
   },
   {
     slug: "best-2-year-cd-rates",
@@ -48,6 +66,15 @@ export const termPages = [
     heading: "Best 5-Year CD Rates",
     description:
       "Five-year CDs maximize rate certainty. Lock in a strong APY now and it's guaranteed for half a decade regardless of what the Fed does \u2014 the anchor rung of any long-term CD ladder strategy.",
+  },
+  {
+    slug: "high-yield-cd-rates",
+    term: "all",
+    rateType: "standard",
+    title: "High-Yield CD Rates",
+    heading: "High-Yield CD Rates",
+    description:
+      "High-yield CDs are offered mostly by online banks with low overhead, letting them pay well above the national average. Every rate below is ranked by APY across all terms, so the strongest yields rise to the top — compare and verify directly with the bank before opening.",
   },
   {
     slug: "jumbo-cd-rates",

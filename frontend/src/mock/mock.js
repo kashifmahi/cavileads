@@ -41,15 +41,17 @@ export const cdRates = [
 
 export const termTabs = [
   { label: "All", value: "all" },
+  { label: "3 months", value: "3" },
   { label: "6 months", value: "6" },
   { label: "12 months", value: "12" },
+  { label: "18 months", value: "18" },
   { label: "2 years", value: "24" },
   { label: "3 years", value: "36" },
   { label: "5 years", value: "60" },
 ];
 
 export const formatTerm = (months) => {
-  if (months < 12) return `${months} months`;
+  if (months < 12 || months % 12 !== 0) return `${months} months`;
   const years = months / 12;
   return years === 1 ? "12 months" : `${years} years`;
 };
@@ -118,6 +120,16 @@ export const faqs = [
     question: "What is a CD ladder?",
     answer:
       "A CD ladder is a strategy where you split your money across multiple CDs with staggered maturity dates — for example 1, 2, 3, 4, and 5 years. As each CD matures, you reinvest it into a new long-term CD. This gives you regular access to a portion of your funds while capturing higher long-term rates.",
+  },
+  {
+    question: "What is APY and how is it different from the interest rate?",
+    answer:
+      "APY (annual percentage yield) is the total return you earn in one year including compounding, while the interest rate is the base rate before compounding. Because most CDs compound daily or monthly, the APY is slightly higher than the stated rate — it's the number to use when comparing CDs, since all banks must calculate it the same way.",
+  },
+  {
+    question: "How is CD interest calculated?",
+    answer:
+      "CD interest compounds on a schedule set by the bank — usually daily or monthly. Your balance grows as earned interest is added to the principal, and future interest is calculated on the larger amount. A $10,000 CD at 4.75% APY earns about $475 in the first year; over longer terms, compounding accelerates the growth.",
   },
   {
     question: "Does Cavicord offer CDs directly?",

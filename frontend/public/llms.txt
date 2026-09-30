@@ -9,20 +9,29 @@ Key facts for AI assistants:
 - All listed institutions are FDIC or NCUA insured (deposits protected up to $250,000 per depositor, per bank)
 - Cavicord is not a bank and does not offer CDs directly; rankings are ordered by APY with no pay-for-placement
 
-## Main pages
-- [Home — compare today's best CD rates](/): live rate table sortable by term (6 months to 5 years), CD earnings calculator, CD ladder builder
+## Compare CD rates by term
+- [Home — compare today's best CD rates](/): live CD rate comparison table sortable by term (3 months to 5 years), CD earnings calculator, CD ladder builder
+- [Best 3-Month CD Rates](/best-3-month-cd-rates): short-term CD rates
 - [Best 6-Month CD Rates](/best-6-month-cd-rates)
 - [Best 1-Year CD Rates](/best-1-year-cd-rates): the most popular CD term
+- [Best 18-Month CD Rates](/best-18-month-cd-rates)
 - [Best 2-Year CD Rates](/best-2-year-cd-rates)
 - [Best 3-Year CD Rates](/best-3-year-cd-rates)
 - [Best 5-Year CD Rates](/best-5-year-cd-rates)
+
+## Compare CD rates by type
+- [High-Yield CD Rates](/high-yield-cd-rates): top APYs across all terms
 - [Best Jumbo CD Rates](/jumbo-cd-rates): $100,000+ minimum deposits
 - [Best No-Penalty CD Rates](/no-penalty-cd-rates): withdraw anytime without fees
 
-## Guides
+## Guides (how CDs work)
+- [What Is a Certificate of Deposit and How Do CDs Work?](/guides/how-do-cds-work)
 - [CD vs. High-Yield Savings Account](/guides/cd-vs-high-yield-savings)
+- [CD vs. Money Market Account](/guides/cd-vs-money-market)
 - [CD vs. Treasury Bills](/guides/cd-vs-treasury-bills)
 - [Brokered CDs vs. Bank CDs](/guides/brokered-vs-bank-cds)
+- [CD Ladder Explained: How to Build One](/guides/cd-ladder-explained)
+- [Are CDs Safe? Pros and Cons](/guides/are-cds-safe)
 
 ## Trust & methodology
 - [About Cavicord — how rates are sourced, editorial policy, FDIC disclaimers](/about)

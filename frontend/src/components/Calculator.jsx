@@ -3,7 +3,7 @@ import { Slider } from "./ui/slider";
 import { Calculator as CalcIcon, Sparkles } from "lucide-react";
 import { formatTerm } from "../mock/mock";
 
-const termOptions = [6, 12, 24, 36, 60];
+const termOptions = [3, 6, 12, 18, 24, 36, 60];
 
 const Calculator = ({ rates = [], loading = false }) => {
   const [deposit, setDeposit] = useState(10000);

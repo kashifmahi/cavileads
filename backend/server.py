@@ -110,6 +110,11 @@ BANK_URLS = {
 }
 
 SEED_RATES = [
+    # 3 months
+    {"bank": "Bask Bank", "apy": 4.50, "min_deposit": 1000, "term_months": 3, "penalty": "90 days of interest", "color": "#2563eb"},
+    {"bank": "Ally Bank", "apy": 4.30, "min_deposit": 0, "term_months": 3, "penalty": "60 days of interest", "color": "#7c3aed"},
+    {"bank": "Synchrony Bank", "apy": 4.25, "min_deposit": 0, "term_months": 3, "penalty": "90 days of interest", "color": "#b45309"},
+    {"bank": "Discover Bank", "apy": 4.10, "min_deposit": 2500, "term_months": 3, "penalty": "3 months of interest", "color": "#ea580c"},
     # 6 months
     {"bank": "Bask Bank", "apy": 4.65, "min_deposit": 1000, "term_months": 6, "penalty": "90 days of interest", "color": "#2563eb"},
     {"bank": "Marcus by Goldman Sachs", "apy": 4.60, "min_deposit": 500, "term_months": 6, "penalty": "90 days of interest", "color": "#0f766e"},
@@ -122,6 +127,12 @@ SEED_RATES = [
     {"bank": "Barclays", "apy": 4.40, "min_deposit": 0, "term_months": 12, "penalty": "90 days of interest", "color": "#0284c7"},
     {"bank": "Capital One", "apy": 4.30, "min_deposit": 0, "term_months": 12, "penalty": "6 months of interest", "color": "#dc2626"},
     {"bank": "Discover Bank", "apy": 4.25, "min_deposit": 2500, "term_months": 12, "penalty": "6 months of interest", "color": "#ea580c"},
+    # 18 months
+    {"bank": "Marcus by Goldman Sachs", "apy": 4.50, "min_deposit": 500, "term_months": 18, "penalty": "270 days of interest", "color": "#0f766e"},
+    {"bank": "Ally Bank", "apy": 4.35, "min_deposit": 0, "term_months": 18, "penalty": "150 days of interest", "color": "#7c3aed"},
+    {"bank": "Barclays", "apy": 4.30, "min_deposit": 0, "term_months": 18, "penalty": "180 days of interest", "color": "#0284c7"},
+    {"bank": "Synchrony Bank", "apy": 4.25, "min_deposit": 0, "term_months": 18, "penalty": "180 days of interest", "color": "#b45309"},
+    {"bank": "Capital One", "apy": 4.20, "min_deposit": 0, "term_months": 18, "penalty": "6 months of interest", "color": "#dc2626"},
     # 24 months
     {"bank": "Bread Savings", "apy": 4.35, "min_deposit": 1500, "term_months": 24, "penalty": "180 days of interest", "color": "#9333ea"},
     {"bank": "Barclays", "apy": 4.20, "min_deposit": 0, "term_months": 24, "penalty": "180 days of interest", "color": "#0284c7"},
@@ -216,10 +227,11 @@ async def get_cached_national_rates(force: bool = False) -> dict:
 # ---------------------------- Seeding & helpers ----------------------------
 
 async def ensure_seeded():
-    # Reseed when empty or when schema is outdated (missing rate_type/url fields)
+    # Reseed when empty or when schema/data is outdated
     total = await db.bank_rates.count_documents({})
     with_type = await db.bank_rates.count_documents({"rate_type": {"$exists": True}})
-    if total == 0 or with_type < total or with_type == 0:
+    has_new_terms = await db.bank_rates.count_documents({"term_months": 3})
+    if total == 0 or with_type < total or with_type == 0 or has_new_terms == 0:
         await db.bank_rates.delete_many({})
         docs = []
         for r in SEED_RATES:

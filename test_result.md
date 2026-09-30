@@ -228,6 +228,20 @@ backend:
         - working: true
           agent: "testing"
           comment: "✅ ALL 6 ADMIN ENDPOINT TESTS PASSED. ADMIN AUTHENTICATION: (1) GET /api/admin/leads with valid X-Admin-Key header (CAV-7k2m9x4qL8) returns 200 with {leads: [...], total: 10} ✓ (2) GET /api/admin/leads without header returns 401 ✓ (3) GET /api/admin/leads with wrong key 'bad-key' returns 401 ✓ (4) GET /api/admin/subscribers with valid key returns 200 with {subscribers: [...], total: 4} ✓ (5) GET /api/admin/subscribers without header returns 401 ✓ (6) GET /api/admin/subscribers with wrong key returns 401 ✓ DATA VERIFICATION: (7) New lead created via POST /api/leads appears in GET /api/admin/leads response ✓ (8) New subscriber created via POST /api/subscribers appears in GET /api/admin/subscribers response ✓ Both endpoints return correct structure with leads/subscribers array and total count. Authentication working correctly with X-Admin-Key header validation. All admin endpoints working as expected."
+  - task: "SEED_RATES expansion with 3-month and 18-month standard CDs, ensure_seeded migration for existing DBs"
+    implemented: true
+    working: true
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+          agent: "main"
+          comment: "SEED_RATES expanded with 3-month (4 rates) and 18-month (5 rates) standard CDs. ensure_seeded now reseeds when no term_months=3 docs exist (migration for existing DBs). Total rates now 43 (34 standard + 5 jumbo + 4 no_penalty)."
+        - working: true
+          agent: "testing"
+          comment: "✅ ALL 8 TESTS PASSED. NEW SEED DATA: (1) GET /api/rates?term=3 returns 4 standard rates (Bask Bank 4.50% with best=true, Ally 4.30%, Synchrony 4.25%, Discover 4.10%), all have url and rate_type='standard' fields ✓ (2) GET /api/rates?term=18 returns 5 standard rates (Marcus by Goldman Sachs 4.50% with best=true, Ally 4.35%, Barclays 4.30%, Synchrony 4.25%, Capital One 4.20%), all have url and rate_type='standard' fields ✓ (3) GET /api/rates?term=all&rate_type=all returns 43 total rates (34 standard + 5 jumbo + 4 no_penalty), all have url and rate_type fields ✓ REGRESSION TESTS: (4) GET /api/rates?term=12 still returns 5 rates with Marcus 4.75% having best=true ✓ (5) GET /api/rates?rate_type=jumbo returns 5 jumbo rates with min_deposit=100000, rate_type=no_penalty returns 4 no_penalty rates ✓ (6) GET /api/national-rates returns 11 FDIC products including '3 month CD' product with term_months=3 and national_rate=1.13 ✓ (7) POST /api/leads with term_months=18 returns 3 matches (Marcus 4.50%, Ally 4.35%, Barclays 4.30%), all term_months=18, sorted APY desc, all min_deposit <= 25000 ✓ (8) GET /api/admin/leads with X-Admin-Key header returns 200 with 14 leads total ✓ Backend logs confirm reseed migration executed successfully with 43 bank rates seeded. All new seed data and regression tests working correctly. No issues found."
 
 frontend:
   - task: "Full CDSummit landing page (hero, rates table with tabs, FDIC average strip, calculator, why CDs, FAQ, footer, cookie banner, personalized rates modal) integrated with backend API"
@@ -279,19 +293,18 @@ frontend:
 metadata:
   created_by: "main_agent"
   version: "1.0"
-  test_sequence: 8
+  test_sequence: 9
   run_ui: false
 
 test_plan:
-  current_focus:
-    - "Mobile responsiveness fixes for hero section and top rates card"
+  current_focus: []
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
 
 agent_communication:
     - agent: "main"
-      message: "Backend just implemented. Please test all 4 API endpoints. FDIC scrape hits external gov site - allow for latency. Validation cases: invalid term (400), invalid email on leads (422), amount<=0 (422)."
+      message: "SEO expansion + Vite migration: backend seeds now include 3-month (4 rates) and 18-month (5 rates) standard CDs; reseed triggers when term_months=3 docs are absent. Frontend migrated from CRA/craco to Vite 8 (entry src/main.jsx, App.jsx, env via import.meta.env.REACT_APP_BACKEND_URL, build outDir=build). New term pages: /best-3-month-cd-rates, /best-18-month-cd-rates, /high-yield-cd-rates. 4 new guides. Please retest rates endpoints for new terms."
     - agent: "testing"
       message: "✅ BACKEND TESTING COMPLETE - ALL 11 TESTS PASSED. All 4 API endpoints working correctly: (1) GET /api/rates with all term filters (all/6/12/24/36/60) + validation, (2) GET /api/national-rates with FDIC scraping and caching, (3) POST /api/leads with matching logic and validation, (4) POST /api/refresh. Lead persistence in MongoDB verified. No critical issues found. Ready for frontend testing or summary."
     - agent: "main"
@@ -322,3 +335,7 @@ agent_communication:
       message: "Applied min-w-0 fix to Hero.jsx grid columns to resolve mobile responsiveness overflow issues. Please re-verify at viewports 390x844, 360x800, and 320x680 with localStorage cavicord_cookie_consent='accepted' set before loading."
     - agent: "testing"
       message: "✅ MOBILE RESPONSIVENESS RE-VERIFICATION COMPLETE - ALL TESTS PASSED. Comprehensive testing at ALL requested viewports (390x844, 360x800, 320x680, 1920x800). VIEWPORT 390x844: (1) document.scrollingElement.scrollWidth = 390px ✓ (2) NO elements exceed viewport width ✓ (3) HERO: H1 x=16px, width=358px, right=374px (fully inside) ✓, Badge fully inside ✓, Both CTA buttons fully inside ✓, Trust cards x=16px, width=358px, right=374px ✓ (4) TOP RATES CARD: Card x=16px, width=358px, right=374px ✓, All 3 Open buttons right=357px (fully inside) ✓, Real data loaded (Marcus 4.75%) ✓, 'See all 25+ rates' button visible and functional ✓. VIEWPORT 360x800: (1) scrollWidth = 360px ✓ (2) NO overflow ✓ (3) H1 right=344px ✓ (4) Card right=344px ✓. VIEWPORT 320x680 (CRITICAL): (1) scrollWidth = 320px ✓ (2) NO overflow ✓ (3) H1: x=16px, width=288px, right=304px ✓ (4) Badge fully inside ✓ (5) Trust cards: x=16px, width=288px, right=304px ✓ (6) Top rates card: x=16px, width=288px, right=304px ✓ (7) All 3 Open buttons: x=209px, width=78px, right=287px ✓ (8) 'See all 25+ rates' button: x=17px, width=286px, right=303px, functional ✓. DESKTOP REGRESSION 1920x800: (1) Two-column layout INTACT (left ends at 936px, right starts at 984px) ✓ (2) Card positioned on right side (x=984px) ✓ (3) H1 'Find the Best CD Rates Across America' fully visible ✓ (4) Full bank name 'Marcus by Goldman Sachs' visible (NOT truncated at desktop) ✓ (5) All 3 Open buttons visible with valid external URLs ✓. BANK NAME TRUNCATION: Desktop - 'Marcus by Goldman Sachs' fully visible ✓, Mobile 390px - truncated (scrollWidth=185px, clientWidth=138px) which is EXPECTED and acceptable on mobile. No console errors. The min-w-0 fix successfully resolved ALL previous overflow issues (H1 was at 421px, now 374px at 390px viewport; card was at 421px, now 374px; Open buttons were at 404px, now 357px). All elements now respect viewport boundaries perfectly."
+    - agent: "main"
+      message: "SEED_RATES expansion: added 3-month (4 rates) and 18-month (5 rates) standard CDs. ensure_seeded migration now reseeds when no term_months=3 docs exist. Total rates now 43 (34 standard + 5 jumbo + 4 no_penalty). Please test new 3-month and 18-month rates endpoints + regression tests for existing functionality."
+    - agent: "testing"
+      message: "✅ SEED DATA EXPANSION TESTING COMPLETE - ALL 8 TESTS PASSED. NEW SEED DATA: (1) GET /api/rates?term=3 returns 4 standard rates (Bask Bank 4.50% with best=true, Ally 4.30%, Synchrony 4.25%, Discover 4.10%), all have url and rate_type='standard' fields ✓ (2) GET /api/rates?term=18 returns 5 standard rates (Marcus by Goldman Sachs 4.50% with best=true, Ally 4.35%, Barclays 4.30%, Synchrony 4.25%, Capital One 4.20%), all have url and rate_type='standard' fields ✓ (3) GET /api/rates?term=all&rate_type=all returns 43 total rates (34 standard + 5 jumbo + 4 no_penalty), all have url and rate_type fields ✓ REGRESSION TESTS: (4) GET /api/rates?term=12 still returns 5 rates with Marcus 4.75% having best=true ✓ (5) GET /api/rates?rate_type=jumbo returns 5 jumbo rates with min_deposit=100000, rate_type=no_penalty returns 4 no_penalty rates ✓ (6) GET /api/national-rates returns 11 FDIC products including '3 month CD' product with term_months=3 and national_rate=1.13 ✓ (7) POST /api/leads with term_months=18 returns 3 matches (Marcus 4.50%, Ally 4.35%, Barclays 4.30%), all term_months=18, sorted APY desc, all min_deposit <= 25000 ✓ (8) GET /api/admin/leads with X-Admin-Key header returns 200 with 14 leads total ✓ Backend logs confirm reseed migration executed successfully with 43 bank rates seeded. All new seed data and regression tests working correctly. No issues found."

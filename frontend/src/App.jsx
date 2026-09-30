@@ -22,7 +22,7 @@ import GuidePage from "./pages/GuidePage";
 import AdminPage from "./pages/AdminPage";
 import { termPages, monthYear } from "./data/terms";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const BACKEND_URL = import.meta.env.REACT_APP_BACKEND_URL;
 export const API = `${BACKEND_URL}/api`;
 
 const Home = () => {
@@ -73,9 +73,9 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO
-        title={`Best CD Rates ${monthYear()} \u2014 Compare 4.75% APY | Cavicord`}
-        description="Compare the best CD rates from top FDIC-insured US banks. High-yield certificates of deposit up to 4.75% APY, official FDIC national averages, CD calculator and ladder builder."
-        keywords="best CD rates, certificate of deposit, high yield CD, CD rates today, FDIC insured CD, 12 month CD rates, CD calculator, CD ladder"
+        title={`Compare CD Rates ${monthYear()} \u2014 Today's Best CD Rates | Cavicord`}
+        description="Compare CD rates from top FDIC-insured banks side by side — by term, minimum deposit, and early-withdrawal terms. Current CD rates updated daily, plus a free CD calculator and ladder builder."
+        keywords="compare CD rates, best CD rates, best CD rates today, top CD rates, current CD rates, CD rate comparison, compare bank CD rates, high yield CD rates, FDIC insured CD rates"
         path="/"
         schemas={[
           {
