@@ -19,6 +19,65 @@ const GuidePage = () => {
 
   const others = guides.filter((g) => g.slug !== slug);
 
+  const schemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: guide.title,
+      description: guide.excerpt,
+      author: { "@type": "Organization", name: "Cavicord Editorial Team" },
+      publisher: { "@type": "Organization", name: "Cavicord" },
+      mainEntityOfPage:
+        typeof window !== "undefined"
+          ? `${window.location.origin}/guides/${guide.slug}`
+          : "",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: typeof window !== "undefined" ? window.location.origin : "",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Guides",
+          item: typeof window !== "undefined" ? `${window.location.origin}/guides` : "",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: guide.title,
+          item:
+            typeof window !== "undefined"
+              ? `${window.location.origin}/guides/${guide.slug}`
+              : "",
+        },
+      ],
+    },
+  ];
+
+  // HowTo schema for step-by-step guides (stronger AI/rich-result visibility)
+  if (guide.slug === "cd-ladder-explained") {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      name: "How to Build a CD Ladder",
+      description:
+        "Split your savings across CDs with staggered maturities to get regular access to your money while earning long-term rates.",
+      step: guide.sections.map((s, i) => ({
+        "@type": "HowToStep",
+        position: i + 1,
+        name: s.heading,
+        text: s.body,
+      })),
+    });
+  }
+
   return (
     <div className="min-h-screen bg-white">
       <SEO
@@ -26,47 +85,7 @@ const GuidePage = () => {
         description={guide.excerpt}
         keywords="CD comparison, certificate of deposit guide, savings strategy"
         path={`/guides/${guide.slug}`}
-        schemas={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Article",
-            headline: guide.title,
-            description: guide.excerpt,
-            author: { "@type": "Organization", name: "Cavicord Editorial Team" },
-            publisher: { "@type": "Organization", name: "Cavicord" },
-            mainEntityOfPage:
-              typeof window !== "undefined"
-                ? `${window.location.origin}/guides/${guide.slug}`
-                : "",
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: typeof window !== "undefined" ? window.location.origin : "",
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "Guides",
-                item: typeof window !== "undefined" ? `${window.location.origin}/guides` : "",
-              },
-              {
-                "@type": "ListItem",
-                position: 3,
-                name: guide.title,
-                item:
-                  typeof window !== "undefined"
-                    ? `${window.location.origin}/guides/${guide.slug}`
-                    : "",
-              },
-            ],
-          },
-        ]}
+        schemas={schemas}
       />
       <Header />
       <main className="pt-16">

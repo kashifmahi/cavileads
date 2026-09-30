@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
@@ -15,12 +15,21 @@ import Footer from "./components/Footer";
 import CookieBanner from "./components/CookieBanner";
 import SEO from "./components/SEO";
 import { RatesModalProvider } from "./context/RatesModalContext";
-import TermPage from "./pages/TermPage";
-import AboutPage from "./pages/AboutPage";
-import GuidesIndex from "./pages/GuidesIndex";
-import GuidePage from "./pages/GuidePage";
-import AdminPage from "./pages/AdminPage";
 import { termPages, monthYear } from "./data/terms";
+
+// Route-level code splitting: secondary pages load their JS on demand,
+// keeping the home page bundle small for faster LCP/INP.
+const TermPage = lazy(() => import("./pages/TermPage"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const GuidesIndex = lazy(() => import("./pages/GuidesIndex"));
+const GuidePage = lazy(() => import("./pages/GuidePage"));
+const AdminPage = lazy(() => import("./pages/AdminPage"));
+
+const PageFallback = () => (
+  <div className="min-h-screen bg-white pt-16">
+    <div className="hero-bg h-56" />
+  </div>
+);
 
 const BACKEND_URL = import.meta.env.REACT_APP_BACKEND_URL;
 export const API = `${BACKEND_URL}/api`;
@@ -119,17 +128,19 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <RatesModalProvider>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/admin" element={<AdminPage />} />
-              <Route path="/guides" element={<GuidesIndex />} />
-              <Route path="/guides/:slug" element={<GuidePage />} />
-              {termPages.map((p) => (
-                <Route key={p.slug} path={`/${p.slug}`} element={<TermPage />} />
-              ))}
-              <Route path="*" element={<Home />} />
-            </Routes>
+            <Suspense fallback={<PageFallback />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/admin" element={<AdminPage />} />
+                <Route path="/guides" element={<GuidesIndex />} />
+                <Route path="/guides/:slug" element={<GuidePage />} />
+                {termPages.map((p) => (
+                  <Route key={p.slug} path={`/${p.slug}`} element={<TermPage />} />
+                ))}
+                <Route path="*" element={<Home />} />
+              </Routes>
+            </Suspense>
           </RatesModalProvider>
         </BrowserRouter>
       </div>

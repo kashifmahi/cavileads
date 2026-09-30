@@ -100,8 +100,8 @@ const Hero = ({ rates = [], updatedAt, loading = false }) => {
               <div className="divide-y divide-slate-100">
                 {top3.length === 0 && loading &&
                   [...Array(3)].map((_, i) => (
-                    <div key={i} className="px-6 py-4">
-                      <Skeleton className="h-12 w-full rounded-lg" />
+                    <div key={i} className="px-4 sm:px-6 py-4">
+                      <Skeleton className="h-10 w-full rounded-lg" />
                     </div>
                   ))}
                 {top3.length === 0 && !loading && (
