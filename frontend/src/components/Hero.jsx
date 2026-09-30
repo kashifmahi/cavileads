@@ -31,10 +31,10 @@ const Hero = ({ rates = [], updatedAt, loading = false }) => {
     <section id="top" className="relative overflow-hidden hero-bg pt-16">
       <div className="absolute inset-0 hero-dots" aria-hidden="true" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 sm:pt-16 sm:pb-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-14 sm:pt-16 sm:pb-20">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           {/* Left: copy */}
-          <div className="text-center lg:text-left">
+          <div className="text-center lg:text-left min-w-0">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/40 bg-emerald-500/10 animate-fade-up">
               <TrendingUp className="w-4 h-4 text-emerald-400" />
               <span className="text-sm font-medium text-emerald-300">
@@ -42,7 +42,7 @@ const Hero = ({ rates = [], updatedAt, loading = false }) => {
               </span>
             </div>
 
-            <h1 className="mt-6 font-serif text-4xl sm:text-5xl lg:text-[3.4rem] font-bold text-white leading-tight animate-fade-up" style={{ animationDelay: "0.1s" }}>
+            <h1 className="mt-6 font-serif text-3xl sm:text-5xl lg:text-[3.4rem] font-bold text-white leading-tight animate-fade-up" style={{ animationDelay: "0.1s" }}>
               Find the Best CD Rates Across America
             </h1>
 
@@ -68,11 +68,11 @@ const Hero = ({ rates = [], updatedAt, loading = false }) => {
               </Button>
             </div>
 
-            <div className="mt-10 grid grid-cols-3 gap-3 max-w-md mx-auto lg:mx-0 animate-fade-up" style={{ animationDelay: "0.4s" }}>
+            <div className="mt-10 grid grid-cols-3 gap-2 sm:gap-3 max-w-md mx-auto lg:mx-0 animate-fade-up" style={{ animationDelay: "0.4s" }}>
               {trustItems.map((card) => (
                 <div
                   key={card.title}
-                  className="flex flex-col items-center lg:items-start gap-1.5 px-3 py-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300"
+                  className="flex flex-col items-center lg:items-start gap-1.5 px-2 sm:px-3 py-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300 text-center lg:text-left"
                 >
                   <card.icon className="w-5 h-5 text-emerald-400" />
                   <p className="text-xs font-semibold text-white">{card.title}</p>
@@ -83,17 +83,17 @@ const Hero = ({ rates = [], updatedAt, loading = false }) => {
           </div>
 
           {/* Right: above-the-fold top rates card */}
-          <div className="animate-fade-up" style={{ animationDelay: "0.25s" }}>
+          <div className="min-w-0 animate-fade-up" style={{ animationDelay: "0.25s" }}>
             <div className="rounded-2xl bg-white shadow-2xl border border-white/20 overflow-hidden">
-              <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
-                <div>
+              <div className="px-4 sm:px-6 py-4 border-b border-slate-100 flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
+                <div className="min-w-0">
                   <p className="font-serif font-bold text-[#16233d]">Today's Top 1-Year CDs</p>
                   <p className="mt-0.5 inline-flex items-center gap-1.5 text-xs text-slate-500">
-                    <CalendarCheck className="w-3.5 h-3.5 text-emerald-600" />
+                    <CalendarCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                     Rates updated {fmtDate(updatedAt) || "daily"}
                   </p>
                 </div>
-                <Badge className="bg-emerald-100 text-emerald-700 hover:bg-emerald-100 border-0">
+                <Badge className="bg-emerald-100 text-emerald-700 hover:bg-emerald-100 border-0 shrink-0">
                   Sorted by APY
                 </Badge>
               </div>
@@ -118,26 +118,26 @@ const Hero = ({ rates = [], updatedAt, loading = false }) => {
                   </div>
                 )}
                 {top3.map((rate, i) => (
-                      <div key={rate.id} className="px-6 py-4 flex items-center justify-between gap-3 hover:bg-emerald-50/40 transition-colors duration-150">
-                        <div className="flex items-center gap-3 min-w-0">
-                          <BankAvatar bank={rate.bank} color={rate.color} size="w-9 h-9" />
+                      <div key={rate.id} className="px-4 sm:px-6 py-4 flex items-center justify-between gap-2 sm:gap-3 hover:bg-emerald-50/40 transition-colors duration-150">
+                        <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
+                          <BankAvatar bank={rate.bank} color={rate.color} size="w-8 h-8 sm:w-9 sm:h-9" />
                           <div className="min-w-0">
                             <p className="font-semibold text-[#16233d] text-sm truncate">{rate.bank}</p>
-                            <p className="text-xs text-slate-400">
+                            <p className="text-xs text-slate-400 truncate">
                               Min: {rate.min_deposit === 0 ? "None" : `$${rate.min_deposit.toLocaleString()}`}
-                              {i === 0 && <span className="ml-2 text-emerald-600 font-semibold">Best Rate</span>}
+                              {i === 0 && <span className="ml-1.5 text-emerald-600 font-semibold">Best Rate</span>}
                             </p>
                           </div>
                         </div>
-                        <div className="flex items-center gap-3 shrink-0">
+                        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
                           <div className="text-right">
-                            <p className="text-lg font-bold text-emerald-600">{rate.apy.toFixed(2)}%</p>
+                            <p className="text-base sm:text-lg font-bold text-emerald-600">{rate.apy.toFixed(2)}%</p>
                             <p className="text-[10px] text-slate-400 uppercase">APY</p>
                           </div>
                           <Button
                             asChild
                             size="sm"
-                            className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold transition-colors duration-200"
+                            className="px-2.5 sm:px-3 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold transition-colors duration-200"
                           >
                             <a href={rate.url || "#"} target="_blank" rel="noopener noreferrer sponsored">
                               Open
