@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, HTTPException, Query, Header, Depends
+from fastapi import FastAPI, APIRouter, HTTPException, Query, Header, Depends, Request
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -78,6 +78,7 @@ class Lead(BaseModel):
     timeframe: str
     term_months: int
     agree: bool
+    ip_address: str = ""
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 def parse_amount(label: str) -> float:
@@ -286,12 +287,18 @@ async def refresh():
     doc = await get_cached_national_rates(force=True)
     return {"status": "refreshed", "fetched_at": doc["fetched_at"], "products": len(doc["rates"])}
 
+def client_ip(request: Request) -> str:
+    forwarded = request.headers.get("x-forwarded-for", "")
+    if forwarded:
+        return forwarded.split(",")[0].strip()
+    return request.client.host if request.client else ""
+
 @api_router.post("/leads")
-async def create_lead(payload: LeadCreate):
+async def create_lead(payload: LeadCreate, request: Request):
     if not payload.agree:
         raise HTTPException(status_code=400, detail="You must agree to the Privacy Policy and Terms of Service")
     await ensure_seeded()
-    lead = Lead(**payload.dict())
+    lead = Lead(**payload.dict(), ip_address=client_ip(request))
     await db.leads.insert_one(lead.dict())
     amount = parse_amount(payload.investment_amount)
     matches = await db.bank_rates.find(

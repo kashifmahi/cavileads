@@ -34,10 +34,8 @@ const amountOptions = [
 
 const timeframeOptions = [
   "Immediately",
+  "Within 1 week",
   "Within 1 month",
-  "1 - 3 months",
-  "3 - 6 months",
-  "Just researching",
 ];
 
 const termOptions = [

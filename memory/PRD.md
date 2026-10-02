@@ -11,6 +11,7 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 ## Implemented (chronological highlights)
 - Full UI: hero, rate tables, term filters, calculator, ladder builder, FAQ, cookie banner, footer; mobile fixes verified.
 - Lead form (PersonalizedModal) + shared RatesModalContext, 5 CTA placements; /admin dashboard w/ CSV exports.
+- **2026-06: Lead IP capture + timeframe options** — backend `/api/leads` stores `ip_address` (X-Forwarded-For aware); IP shown as badge in admin lead cards and included as "IP Address" column in lead CSV export. Timeframe dropdown changed to: Immediately / Within 1 week / Within 1 month. Verified via curl (real IP stored) + UI screenshot.
 - 10 term SEO pages (`src/data/terms.js`), 7 guides (`src/data/guides.js`), About page.
 - SEO: per-route Helmet metadata, canonical, JSON-LD (Organization, WebSite, FAQPage, Article, BreadcrumbList, ItemList, HowTo), robots.txt, sitemap.xml, llms.txt (all pointing to https://cavicord.tech).
 - Vite migration complete (no CRACO).

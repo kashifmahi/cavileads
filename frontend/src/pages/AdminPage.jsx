@@ -39,6 +39,7 @@ const LEAD_COLUMNS = [
   { label: "Investment Amount", get: (l) => l.investment_amount },
   { label: "Timeframe", get: (l) => l.timeframe },
   { label: "CD Term (months)", get: (l) => l.term_months },
+  { label: "IP Address", get: (l) => l.ip_address },
   { label: "Submitted At", get: (l) => (l.created_at ? new Date(l.created_at).toISOString() : "") },
 ];
 
@@ -248,6 +249,11 @@ const AdminPage = () => {
                             <Badge className="bg-slate-100 text-slate-600 hover:bg-slate-100 border-0">
                               {lead.timeframe}
                             </Badge>
+                            {lead.ip_address && (
+                              <Badge data-testid="lead-ip-badge" className="bg-slate-100 text-slate-600 hover:bg-slate-100 border-0 font-mono">
+                                IP: {lead.ip_address}
+                              </Badge>
+                            )}
                           </div>
                         </div>
                       ))}
