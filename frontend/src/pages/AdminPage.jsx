@@ -9,7 +9,14 @@ import { Label } from "../components/ui/label";
 import { Badge } from "../components/ui/badge";
 import { Skeleton } from "../components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
-import { Lock, Users, BellRing, LogOut, RefreshCw, Mail, Phone, Download } from "lucide-react";
+import { Lock, Users, BellRing, LogOut, RefreshCw, Mail, Phone, Download, MapPin } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../components/ui/select";
 import { API } from "../App";
 
 const toCsv = (rows, columns) => {
@@ -39,9 +46,26 @@ const LEAD_COLUMNS = [
   { label: "Investment Amount", get: (l) => l.investment_amount },
   { label: "Timeframe", get: (l) => l.timeframe },
   { label: "CD Term (months)", get: (l) => l.term_months },
+  { label: "Status", get: (l) => l.status || "new" },
   { label: "IP Address", get: (l) => l.ip_address },
+  { label: "City", get: (l) => l.city },
+  { label: "Country", get: (l) => l.country },
   { label: "Submitted At", get: (l) => (l.created_at ? new Date(l.created_at).toISOString() : "") },
 ];
+
+const STATUS_OPTIONS = [
+  { value: "new", label: "New" },
+  { value: "contacted", label: "Contacted" },
+  { value: "in_progress", label: "In Progress" },
+  { value: "closed", label: "Closed" },
+];
+
+const STATUS_STYLES = {
+  new: "bg-blue-50 text-blue-700 border-blue-200",
+  contacted: "bg-amber-50 text-amber-700 border-amber-200",
+  in_progress: "bg-violet-50 text-violet-700 border-violet-200",
+  closed: "bg-slate-100 text-slate-600 border-slate-200",
+};
 
 const SUB_COLUMNS = [
   { label: "Email", get: (s) => s.email },
@@ -93,6 +117,21 @@ const AdminPage = () => {
     setKey("");
     setLeads([]);
     setSubs([]);
+  };
+
+  const updateStatus = async (leadId, status) => {
+    const prev = leads;
+    setLeads((ls) => ls.map((l) => (l.id === leadId ? { ...l, status } : l)));
+    try {
+      await axios.patch(
+        `${API}/admin/leads/${leadId}/status`,
+        { status },
+        { headers: { "X-Admin-Key": key } }
+      );
+    } catch (e) {
+      setLeads(prev);
+      setError("Failed to update lead status. Please try again.");
+    }
   };
 
   const fmtDate = (d) =>
@@ -237,7 +276,27 @@ const AdminPage = () => {
                                 </span>
                               </div>
                             </div>
-                            <span className="text-xs text-slate-400 shrink-0">{fmtDate(lead.created_at)}</span>
+                            <div className="flex flex-col items-start sm:items-end gap-2 shrink-0">
+                              <span className="text-xs text-slate-400">{fmtDate(lead.created_at)}</span>
+                              <Select
+                                value={lead.status || "new"}
+                                onValueChange={(v) => updateStatus(lead.id, v)}
+                              >
+                                <SelectTrigger
+                                  data-testid={`lead-status-select-${lead.id}`}
+                                  className={`h-8 w-[140px] text-xs font-semibold border ${STATUS_STYLES[lead.status || "new"]}`}
+                                >
+                                  <SelectValue />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  {STATUS_OPTIONS.map((s) => (
+                                    <SelectItem key={s.value} value={s.value}>
+                                      {s.label}
+                                    </SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
+                            </div>
                           </div>
                           <div className="mt-3 flex flex-wrap gap-2">
                             <Badge className="bg-emerald-100 text-emerald-700 hover:bg-emerald-100 border-0">
@@ -252,6 +311,12 @@ const AdminPage = () => {
                             {lead.ip_address && (
                               <Badge data-testid="lead-ip-badge" className="bg-slate-100 text-slate-600 hover:bg-slate-100 border-0 font-mono">
                                 IP: {lead.ip_address}
+                              </Badge>
+                            )}
+                            {(lead.city || lead.country) && (
+                              <Badge data-testid="lead-geo-badge" className="bg-sky-50 text-sky-700 hover:bg-sky-50 border-0">
+                                <MapPin className="w-3 h-3 mr-1" />
+                                {[lead.city, lead.country].filter(Boolean).join(", ")}
                               </Badge>
                             )}
                           </div>

@@ -79,7 +79,15 @@ class Lead(BaseModel):
     term_months: int
     agree: bool
     ip_address: str = ""
+    city: str = ""
+    country: str = ""
+    status: str = "new"  # new | contacted | in_progress | closed
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+LEAD_STATUSES = ("new", "contacted", "in_progress", "closed")
+
+class LeadStatusUpdate(BaseModel):
+    status: str
 
 def parse_amount(label: str) -> float:
     """Extract the first dollar figure from an amount-range label, e.g. '$50,000 - $99,999' -> 50000."""
@@ -293,12 +301,34 @@ def client_ip(request: Request) -> str:
         return forwarded.split(",")[0].strip()
     return request.client.host if request.client else ""
 
+async def geo_lookup(ip: str) -> dict:
+    """Best-effort IP geolocation; never raises, returns {} on any failure."""
+    if not ip or ip.startswith(("10.", "172.", "192.168.", "127.", "::1")):
+        return {}
+    try:
+        async with httpx.AsyncClient(timeout=4) as c:
+            r = await c.get(f"https://ipwho.is/{ip}")
+            if r.status_code == 200:
+                d = r.json()
+                if d.get("success"):
+                    return {"city": d.get("city") or "", "country": d.get("country") or ""}
+            r = await c.get(f"http://ip-api.com/json/{ip}?fields=status,city,country")
+            if r.status_code == 200:
+                d = r.json()
+                if d.get("status") == "success":
+                    return {"city": d.get("city") or "", "country": d.get("country") or ""}
+    except Exception as exc:
+        logger.warning("Geo lookup failed for %s: %s", ip, exc)
+    return {}
+
 @api_router.post("/leads")
 async def create_lead(payload: LeadCreate, request: Request):
     if not payload.agree:
         raise HTTPException(status_code=400, detail="You must agree to the Privacy Policy and Terms of Service")
     await ensure_seeded()
-    lead = Lead(**payload.dict(), ip_address=client_ip(request))
+    ip = client_ip(request)
+    geo = await geo_lookup(ip)
+    lead = Lead(**payload.dict(), ip_address=ip, city=geo.get("city", ""), country=geo.get("country", ""))
     await db.leads.insert_one(lead.dict())
     amount = parse_amount(payload.investment_amount)
     matches = await db.bank_rates.find(
@@ -356,6 +386,15 @@ def require_admin(x_admin_key: str = Header(default="")):
 async def admin_leads(_: bool = Depends(require_admin)):
     leads = await db.leads.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
     return {"leads": leads, "total": len(leads)}
+
+@api_router.patch("/admin/leads/{lead_id}/status")
+async def update_lead_status(lead_id: str, payload: LeadStatusUpdate, _: bool = Depends(require_admin)):
+    if payload.status not in LEAD_STATUSES:
+        raise HTTPException(status_code=400, detail=f"status must be one of: {', '.join(LEAD_STATUSES)}")
+    result = await db.leads.update_one({"id": lead_id}, {"$set": {"status": payload.status}})
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Lead not found")
+    return {"id": lead_id, "status": payload.status}
 
 @api_router.get("/admin/subscribers")
 async def admin_subscribers(_: bool = Depends(require_admin)):
