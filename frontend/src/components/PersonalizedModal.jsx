@@ -21,6 +21,7 @@ import { Label } from "./ui/label";
 import { Badge } from "./ui/badge";
 import { ArrowRight, CheckCircle2, Loader2, ShieldCheck } from "lucide-react";
 import { formatTerm } from "../mock/mock";
+import { getAttribution } from "../lib/attribution";
 import { API } from "../App";
 
 const amountOptions = [
@@ -95,6 +96,7 @@ const PersonalizedModal = ({ open, onOpenChange }) => {
     setServerError("");
     setSubmitting(true);
     try {
+      const attr = getAttribution();
       const res = await axios.post(`${API}/leads`, {
         first_name: form.firstName.trim(),
         last_name: form.lastName.trim(),
@@ -104,7 +106,24 @@ const PersonalizedModal = ({ open, onOpenChange }) => {
         timeframe: form.timeframe,
         term_months: Number(form.term),
         agree: form.agree,
+        source_page: attr.source_page || window.location.pathname,
+        utm_source: attr.utm_source || "",
+        utm_medium: attr.utm_medium || "",
+        utm_campaign: attr.utm_campaign || "",
+        utm_term: attr.utm_term || "",
+        gclid: attr.gclid || "",
       });
+      // Google Ads / GA4 conversion event (fires only if a Google tag is installed)
+      try {
+        if (window.gtag) {
+          window.gtag("event", "generate_lead", {
+            source_page: attr.source_page || window.location.pathname,
+            utm_campaign: attr.utm_campaign || "",
+          });
+        }
+      } catch (gtagErr) {
+        // tag not installed — ignore
+      }
       setMatches(res.data.matches || []);
       setStep("results");
     } catch (err) {

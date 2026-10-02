@@ -47,6 +47,12 @@ const LEAD_COLUMNS = [
   { label: "Timeframe", get: (l) => l.timeframe },
   { label: "CD Term (months)", get: (l) => l.term_months },
   { label: "Status", get: (l) => l.status || "new" },
+  { label: "Source Page", get: (l) => l.source_page },
+  { label: "UTM Source", get: (l) => l.utm_source },
+  { label: "UTM Medium", get: (l) => l.utm_medium },
+  { label: "UTM Campaign", get: (l) => l.utm_campaign },
+  { label: "UTM Term", get: (l) => l.utm_term },
+  { label: "GCLID", get: (l) => l.gclid },
   { label: "IP Address", get: (l) => l.ip_address },
   { label: "City", get: (l) => l.city },
   { label: "Country", get: (l) => l.country },
@@ -317,6 +323,16 @@ const AdminPage = () => {
                               <Badge data-testid="lead-geo-badge" className="bg-sky-50 text-sky-700 hover:bg-sky-50 border-0">
                                 <MapPin className="w-3 h-3 mr-1" />
                                 {[lead.city, lead.country].filter(Boolean).join(", ")}
+                              </Badge>
+                            )}
+                            {lead.source_page && (
+                              <Badge data-testid="lead-source-badge" className="bg-indigo-50 text-indigo-700 hover:bg-indigo-50 border-0 font-mono">
+                                From: {lead.source_page}
+                              </Badge>
+                            )}
+                            {lead.utm_campaign && (
+                              <Badge data-testid="lead-campaign-badge" className="bg-fuchsia-50 text-fuchsia-700 hover:bg-fuchsia-50 border-0">
+                                {lead.utm_campaign}
                               </Badge>
                             )}
                           </div>

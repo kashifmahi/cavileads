@@ -156,6 +156,46 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://cavicord.tech/best-cd-rates</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cavicord.tech/cd-rates</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cavicord.tech/12-month-cd</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cavicord.tech/6-month-cd</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cavicord.tech/high-yield-cd</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cavicord.tech/jumbo-cd</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cavicord.tech/cd-calculator</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cavicord.tech/cd-for-retirement</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://cavicord.tech/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

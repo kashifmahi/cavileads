@@ -17,6 +17,8 @@ import ChatWidget from "./components/ChatWidget";
 import SEO from "./components/SEO";
 import { RatesModalProvider } from "./context/RatesModalContext";
 import { termPages, monthYear } from "./data/terms";
+import { landingPages } from "./data/landings";
+import { captureAttribution } from "./lib/attribution";
 
 // Route-level code splitting: secondary pages load their JS on demand,
 // keeping the home page bundle small for faster LCP/INP.
@@ -26,6 +28,7 @@ const GuidesIndex = lazy(() => import("./pages/GuidesIndex"));
 const GuidePage = lazy(() => import("./pages/GuidePage"));
 const ArticlesIndex = lazy(() => import("./pages/ArticlesIndex"));
 const ArticlePage = lazy(() => import("./pages/ArticlePage"));
+const LandingPage = lazy(() => import("./pages/LandingPage"));
 const AdminPage = lazy(() => import("./pages/AdminPage"));
 
 const PageFallback = () => (
@@ -126,6 +129,9 @@ const Home = () => {
 };
 
 function App() {
+  useEffect(() => {
+    captureAttribution();
+  }, []);
   return (
     <HelmetProvider>
       <div className="App">
@@ -142,6 +148,9 @@ function App() {
                 <Route path="/articles/:slug" element={<ArticlePage />} />
                 {termPages.map((p) => (
                   <Route key={p.slug} path={`/${p.slug}`} element={<TermPage />} />
+                ))}
+                {landingPages.map((p) => (
+                  <Route key={p.slug} path={`/${p.slug}`} element={<LandingPage />} />
                 ))}
                 <Route path="*" element={<Home />} />
               </Routes>

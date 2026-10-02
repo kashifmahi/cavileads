@@ -70,6 +70,12 @@ class LeadCreate(BaseModel):
     timeframe: str = Field(min_length=1)
     term_months: int
     agree: bool
+    source_page: str = Field(default="", max_length=200)
+    utm_source: str = Field(default="", max_length=200)
+    utm_medium: str = Field(default="", max_length=200)
+    utm_campaign: str = Field(default="", max_length=200)
+    utm_term: str = Field(default="", max_length=200)
+    gclid: str = Field(default="", max_length=300)
 
 class Lead(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
@@ -81,6 +87,12 @@ class Lead(BaseModel):
     timeframe: str
     term_months: int
     agree: bool
+    source_page: str = ""
+    utm_source: str = ""
+    utm_medium: str = ""
+    utm_campaign: str = ""
+    utm_term: str = ""
+    gclid: str = ""
     ip_address: str = ""
     city: str = ""
     country: str = ""
