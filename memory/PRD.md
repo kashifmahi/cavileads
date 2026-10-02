@@ -6,7 +6,7 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 ## Stack
 - Frontend: React 19 + Vite 8 (`vite.config.mjs`), Tailwind, shadcn, react-helmet-async v3, lazy routes. Build output: `frontend/build/` (Nginx root).
 - Backend: FastAPI on 8001 (`/api` prefix), MongoDB. Seeded 43 rates + FDIC national averages, leads, subscribers, admin-key-gated endpoints.
-- Email: `backend/email_service.py` uses Emergent-managed integration — NOT installable on public VPS (emergentintegrations removed from requirements.txt). Email on VPS unverified/likely broken; needs public provider (e.g. Resend w/ user key) if wanted.
+- Email: `backend/email_service.py` calls Emergent managed email proxy via plain httpx (NO internal package needed — VPS-compatible). 2026-06 hardening: EMERGENT_EMAIL_KEY/EMAIL_FROM_NAME now optional (fail-soft skip + warning log, no crash). litellm internal-wheel line removed from requirements.txt — installs cleanly from public PyPI.
 
 ## Implemented (chronological highlights)
 - Full UI: hero, rate tables, term filters, calculator, ladder builder, FAQ, cookie banner, footer; mobile fixes verified.
