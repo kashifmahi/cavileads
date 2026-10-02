@@ -13,6 +13,7 @@ import RateAlerts from "./components/RateAlerts";
 import FAQSection from "./components/FAQSection";
 import Footer from "./components/Footer";
 import CookieBanner from "./components/CookieBanner";
+import ChatWidget from "./components/ChatWidget";
 import SEO from "./components/SEO";
 import { RatesModalProvider } from "./context/RatesModalContext";
 import { termPages, monthYear } from "./data/terms";
@@ -145,6 +146,7 @@ function App() {
                 <Route path="*" element={<Home />} />
               </Routes>
             </Suspense>
+            <ChatWidget />
           </RatesModalProvider>
         </BrowserRouter>
       </div>

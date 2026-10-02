@@ -24,6 +24,9 @@ mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
+GEMINI_MODEL = "gemini-3.5-flash"
+
 app = FastAPI(title="Cavicord API")
 api_router = APIRouter(prefix="/api")
 
@@ -395,6 +398,116 @@ async def update_lead_status(lead_id: str, payload: LeadStatusUpdate, _: bool = 
     if result.matched_count == 0:
         raise HTTPException(status_code=404, detail="Lead not found")
     return {"id": lead_id, "status": payload.status}
+
+# ---------------------------- AI chat assistant ----------------------------
+
+class ChatRequest(BaseModel):
+    session_id: str = Field(min_length=8, max_length=64)
+    message: str = Field(min_length=1, max_length=2000)
+
+_chat_ctx_cache = {"text": "", "at": None}
+
+async def chat_rates_context() -> str:
+    """Compact, cached (10 min) summary of live rate data for grounding the assistant."""
+    now = datetime.now(timezone.utc)
+    if _chat_ctx_cache["text"] and _chat_ctx_cache["at"] and (now - _chat_ctx_cache["at"]) < timedelta(minutes=10):
+        return _chat_ctx_cache["text"]
+    await ensure_seeded()
+    rates = await db.bank_rates.find({}, {"_id": 0}).sort("apy", -1).to_list(200)
+    by_term = {}
+    for r in rates:
+        if r.get("rate_type") == "standard":
+            by_term.setdefault(r["term_months"], []).append(r)
+    lines = []
+    for term in sorted(by_term):
+        entries = "; ".join(
+            f"{r['bank']} {r['apy']:.2f}% APY (min ${r['min_deposit']:,}, penalty: {r['penalty'] or 'see bank'})"
+            for r in by_term[term][:3]
+        )
+        lines.append(f"- {term}-month CDs: {entries}")
+    for label, rt in (("Jumbo", "jumbo"), ("No-penalty", "no_penalty")):
+        special = [r for r in rates if r.get("rate_type") == rt][:3]
+        if special:
+            entries = "; ".join(
+                f"{r['bank']} {r['apy']:.2f}% APY ({r['term_months']}-mo, min ${r['min_deposit']:,})" for r in special
+            )
+            lines.append(f"- {label} CDs: {entries}")
+    try:
+        doc = await get_cached_national_rates()
+        nat = "; ".join(
+            f"{x['term_months']}-mo {x['national_rate']:.2f}%"
+            for x in doc["rates"]
+            if x.get("term_months") and x.get("national_rate") is not None
+        )
+        if nat:
+            lines.append(f"- FDIC national average CD rates: {nat}")
+    except Exception as exc:
+        logger.warning("National rates unavailable for chat context: %s", exc)
+    text = "\n".join(lines)
+    _chat_ctx_cache["text"] = text
+    _chat_ctx_cache["at"] = now
+    return text
+
+CHAT_SYSTEM_TEMPLATE = """You are Cavi, the friendly AI assistant on Cavicord (cavicord.tech), an independent certificate of deposit (CD) rate comparison site.
+
+TODAY'S DATE: {date}
+
+CURRENT RATE DATA — the ONLY rates you may ever quote:
+{rates}
+
+STRICT RULES:
+1. Only quote APYs, minimum deposits, and penalties that appear in the rate data above. NEVER invent, estimate, or recall rates from memory. If a bank or term isn't listed, say you don't have that rate and suggest comparing on the site.
+2. Educational information only — never personalized financial, tax, or legal advice, and never guarantees of returns. Rates can change at any time; the user must verify directly with the bank before opening an account.
+3. You may do interest math using rates from the data. Formula: ending value = deposit x (1 + APY/100)^years. Show the math briefly, round to the nearest dollar, and label the result an estimate.
+4. Keep answers short and clear: 2-5 sentences or a few dash bullets. Plain text only — no markdown headers or tables. **Bold** sparingly for key numbers.
+5. Mention FDIC insurance ($250,000 per depositor, per bank) when relevant.
+6. After you've genuinely helped (not in your first sentence, and not every single message), offer once: "Would you like to see personalized CD options? Tap the button below this chat and we'll match you with current rates." The site displays that button — never ask for the user's name, email, or phone inside the chat.
+7. If asked about anything unrelated to CDs, savings, or personal banking, politely steer back to CD topics."""
+
+@api_router.post("/chat")
+async def chat(payload: ChatRequest):
+    if not GEMINI_API_KEY:
+        raise HTTPException(status_code=503, detail="Chat is not configured")
+    history = await db.chat_messages.find(
+        {"session_id": payload.session_id}, {"_id": 0}
+    ).sort("created_at", 1).to_list(40)
+    contents = [{"role": m["role"], "parts": [{"text": m["content"]}]} for m in history[-20:]]
+    contents.append({"role": "user", "parts": [{"text": payload.message}]})
+    system = CHAT_SYSTEM_TEMPLATE.format(
+        date=datetime.now(timezone.utc).strftime("%B %d, %Y"),
+        rates=await chat_rates_context(),
+    )
+    body = {
+        "system_instruction": {"parts": [{"text": system}]},
+        "contents": contents,
+        "generationConfig": {"temperature": 0.3, "maxOutputTokens": 2048},
+    }
+    try:
+        async with httpx.AsyncClient(timeout=30) as c:
+            r = await c.post(
+                f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent",
+                headers={"x-goog-api-key": GEMINI_API_KEY, "Content-Type": "application/json"},
+                json=body,
+            )
+        if r.status_code != 200:
+            logger.error("Gemini error %s: %s", r.status_code, r.text[:300])
+            raise HTTPException(status_code=503, detail="The assistant is temporarily unavailable. Please try again in a moment.")
+        data = r.json()
+        parts = data["candidates"][0]["content"]["parts"]
+        reply = "".join(p.get("text", "") for p in parts).strip()
+        if not reply:
+            raise ValueError("empty reply")
+    except HTTPException:
+        raise
+    except Exception as exc:
+        logger.error("Chat request failed: %s", exc)
+        raise HTTPException(status_code=503, detail="The assistant is temporarily unavailable. Please try again in a moment.")
+    now = datetime.now(timezone.utc)
+    await db.chat_messages.insert_many([
+        {"session_id": payload.session_id, "role": "user", "content": payload.message, "created_at": now},
+        {"session_id": payload.session_id, "role": "model", "content": reply, "created_at": now + timedelta(milliseconds=1)},
+    ])
+    return {"reply": reply, "session_id": payload.session_id}
 
 @api_router.get("/admin/subscribers")
 async def admin_subscribers(_: bool = Depends(require_admin)):
