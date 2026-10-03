@@ -26,8 +26,8 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
   - Testing: agent iteration_1.json — 10/11 pass, the 1 issue (duplicate meta) fixed and self-verified. Production build passes.
 
 ## Known caveats / risks
-- VPS API state unresolved: user never confirmed `curl -i http://127.0.0.1:8001/api/rates`; suspected stale uvicorn on 8001. HTTPS/Certbot completion unconfirmed.
-- Exposed admin key + email key in earlier chat — recommend rotation.
+- **2026-06 PRODUCTION CONFIRMED by user**: cavicord.tech live — rates table populates, HTTPS valid, chatbot works (GEMINI_API_KEY set on VPS), test lead w/ IP/geo/source shown in /admin, email notification received, sitemap submitted to Google Search Console + Bing (msvalidate.01 Bing meta tag added to index.html). All previous VPS blockers resolved.
+- Exposed admin key + email key in earlier chat — user advised to rotate ADMIN_KEY on VPS.
 - Rates are seeded/curated + FDIC national data; NOT live per-bank scraping (providers block bots).
 - SPA client rendering: no SSR/prerender; JSON-LD + meta injected via JS (Google OK, weak for non-JS crawlers).
 
