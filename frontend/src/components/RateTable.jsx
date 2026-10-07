@@ -2,8 +2,9 @@ import React from "react";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Skeleton } from "./ui/skeleton";
-import { ExternalLink } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { formatTerm } from "../mock/mock";
+import { useRatesModal } from "../context/RatesModalContext";
 
 export const BankAvatar = ({ bank, color, size = "w-10 h-10" }) => (
   <span
@@ -16,18 +17,20 @@ export const BankAvatar = ({ bank, color, size = "w-10 h-10" }) => (
 
 export const fmtDeposit = (v) => (v === 0 ? "None" : `$${v.toLocaleString()}`);
 
-const OpenAccountButton = ({ rate, size = "sm" }) => (
-  <Button
-    asChild
-    size={size}
-    className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold transition-colors duration-200"
-  >
-    <a href={rate.url || "#"} target="_blank" rel="noopener noreferrer sponsored">
+const OpenAccountButton = ({ rate, size = "sm" }) => {
+  const { openRatesModal } = useRatesModal();
+  return (
+    <Button
+      size={size}
+      data-testid={`open-account-${rate.id}`}
+      onClick={() => openRatesModal({ term: rate.term_months })}
+      className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold transition-colors duration-200"
+    >
       Open Account
-      <ExternalLink className="w-3.5 h-3.5 ml-1" />
-    </a>
-  </Button>
-);
+      <ArrowRight className="w-3.5 h-3.5 ml-1" />
+    </Button>
+  );
+};
 
 const RateTable = ({ rates = [], loading = false, showBest = true, onView }) => {
   if (loading) {

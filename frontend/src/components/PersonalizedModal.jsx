@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
   Dialog,
@@ -58,13 +58,19 @@ const initialForm = {
   agree: false,
 };
 
-const PersonalizedModal = ({ open, onOpenChange }) => {
+const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
   const [step, setStep] = useState("form"); // form | results
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [matches, setMatches] = useState([]);
   const [submitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState("");
+
+  useEffect(() => {
+    if (open && defaultTerm) {
+      setForm((f) => ({ ...f, term: String(defaultTerm) }));
+    }
+  }, [open, defaultTerm]);
 
   const set = (field) => (value) => {
     setForm((f) => ({ ...f, [field]: value }));
