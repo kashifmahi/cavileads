@@ -1,5 +1,5 @@
 import React from "react";
-import { TrendingUp, ShieldCheck, Clock, ArrowRight, ExternalLink, CalendarCheck } from "lucide-react";
+import { TrendingUp, ShieldCheck, Clock, ArrowRight, CalendarCheck } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { Skeleton } from "./ui/skeleton";
@@ -135,14 +135,13 @@ const Hero = ({ rates = [], updatedAt, loading = false }) => {
                             <p className="text-[10px] text-slate-400 uppercase">APY</p>
                           </div>
                           <Button
-                            asChild
                             size="sm"
+                            data-testid={`hero-open-${rate.id}`}
+                            onClick={() => openRatesModal({ term: rate.term_months })}
                             className="px-2.5 sm:px-3 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold transition-colors duration-200"
                           >
-                            <a href={rate.url || "#"} target="_blank" rel="noopener noreferrer sponsored">
-                              Open
-                              <ExternalLink className="w-3 h-3 ml-1" />
-                            </a>
+                            Open
+                            <ArrowRight className="w-3 h-3 ml-1" />
                           </Button>
                         </div>
                       </div>
