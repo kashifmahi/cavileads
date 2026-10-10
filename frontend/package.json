@@ -62,6 +62,8 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
+    "prerender": "node prerender.mjs",
+    "build:ssg": "vite build && node prerender.mjs",
     "preview": "vite preview --host 0.0.0.0 --port 3000"
   },
   "browserslist": {
@@ -92,6 +94,7 @@
     "eslint-plugin-react-hooks": "5.2.0",
     "globals": "15.15.0",
     "postcss": "8.5.10",
+    "puppeteer": "24",
     "tailwindcss": "3.4.17",
     "vite": "^8.3.1"
   },

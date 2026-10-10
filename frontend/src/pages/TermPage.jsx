@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import RateTable from "../components/RateTable";
 import SEO from "../components/SEO";
+import { SITE_URL } from "../config";
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
 import { Landmark, CalendarCheck, ChevronRight, ArrowRight } from "lucide-react";
@@ -69,13 +70,13 @@ const TermPage = () => {
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: typeof window !== "undefined" ? window.location.origin : "",
+                item: typeof window !== "undefined" ? SITE_URL : "",
               },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: config.title,
-                item: typeof window !== "undefined" ? `${window.location.origin}/${config.slug}` : "",
+                item: typeof window !== "undefined" ? `${SITE_URL}/${config.slug}` : "",
               },
             ],
           },

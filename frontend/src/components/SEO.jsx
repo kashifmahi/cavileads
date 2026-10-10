@@ -1,16 +1,17 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import { SITE_URL } from "../config";
 
-const SEO = ({ title, description, path = "", keywords, schemas = [] }) => {
-  const origin = typeof window !== "undefined" ? window.location.origin : "";
-  const url = `${origin}${path}`;
-  const image = `${origin}/og-image.png`;
+const SEO = ({ title, description, path = "", keywords, schemas = [], noindex = false }) => {
+  const url = `${SITE_URL}${path}`;
+  const image = `${SITE_URL}/og-image.png`;
 
   return (
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
+      {noindex && <meta name="robots" content="noindex,nofollow" />}
       <link rel="canonical" href={url} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />

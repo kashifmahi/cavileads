@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import SEO from "../components/SEO";
+import { SITE_URL } from "../config";
 import { Clock, ChevronRight, ArrowRight } from "lucide-react";
 import { getGuide, guides } from "../data/guides";
 
@@ -29,7 +30,7 @@ const GuidePage = () => {
       publisher: { "@type": "Organization", name: "Cavicord" },
       mainEntityOfPage:
         typeof window !== "undefined"
-          ? `${window.location.origin}/guides/${guide.slug}`
+          ? `${SITE_URL}/guides/${guide.slug}`
           : "",
     },
     {
@@ -40,13 +41,13 @@ const GuidePage = () => {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: typeof window !== "undefined" ? window.location.origin : "",
+          item: typeof window !== "undefined" ? SITE_URL : "",
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Guides",
-          item: typeof window !== "undefined" ? `${window.location.origin}/guides` : "",
+          item: typeof window !== "undefined" ? `${SITE_URL}/guides` : "",
         },
         {
           "@type": "ListItem",
@@ -54,7 +55,7 @@ const GuidePage = () => {
           name: guide.title,
           item:
             typeof window !== "undefined"
-              ? `${window.location.origin}/guides/${guide.slug}`
+              ? `${SITE_URL}/guides/${guide.slug}`
               : "",
         },
       ],

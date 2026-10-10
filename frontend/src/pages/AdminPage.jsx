@@ -153,7 +153,7 @@ const AdminPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <SEO title="Admin Dashboard | Cavicord" description="Private admin dashboard." path="/admin" />
+      <SEO title="Admin Dashboard | Cavicord" description="Private admin dashboard." path="/admin" noindex />
       <Header />
       <main className="pt-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">

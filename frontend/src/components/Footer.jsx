@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { TrendingUp, ShieldCheck } from "lucide-react";
 import { BRAND } from "../mock/mock";
-import { termPages } from "../data/terms";
+import { rateNavLinks } from "../data/terms";
 import { guides } from "../data/guides";
 
 const Footer = () => {
@@ -35,7 +35,7 @@ const Footer = () => {
           <div>
             <h4 className="text-sm font-semibold text-white uppercase tracking-wider">Best CD Rates</h4>
             <ul className="mt-4 space-y-3 text-sm">
-              {termPages.map((p) => (
+              {rateNavLinks.map((p) => (
                 <li key={p.slug}>
                   <Link
                     to={`/${p.slug}`}

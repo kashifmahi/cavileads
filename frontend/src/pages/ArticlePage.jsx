@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import SEO from "../components/SEO";
+import { SITE_URL } from "../config";
 import { Clock, ChevronRight, ArrowRight, CheckCircle2, Lightbulb } from "lucide-react";
 import { getArticle, articles } from "../data/articles";
 
@@ -24,7 +25,7 @@ const ArticlePage = () => {
 
   if (!article) return <Navigate to="/articles" replace />;
 
-  const origin = typeof window !== "undefined" ? window.location.origin : "";
+  const origin = typeof window !== "undefined" ? SITE_URL : "";
   const url = `${origin}/articles/${article.slug}`;
   const related = articles.filter((a) => a.slug !== slug).slice(0, 4);
 

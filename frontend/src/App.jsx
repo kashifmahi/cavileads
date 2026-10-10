@@ -1,6 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import axios from "axios";
 import Header from "./components/Header";
@@ -18,7 +18,9 @@ import SEO from "./components/SEO";
 import { RatesModalProvider } from "./context/RatesModalContext";
 import { termPages, monthYear } from "./data/terms";
 import { landingPages } from "./data/landings";
+import { REDIRECTS } from "./data/redirects";
 import { captureAttribution } from "./lib/attribution";
+import { SITE_URL } from "./config";
 
 // Route-level code splitting: secondary pages load their JS on demand,
 // keeping the home page bundle small for faster LCP/INP.
@@ -29,6 +31,7 @@ const GuidePage = lazy(() => import("./pages/GuidePage"));
 const ArticlesIndex = lazy(() => import("./pages/ArticlesIndex"));
 const ArticlePage = lazy(() => import("./pages/ArticlePage"));
 const LandingPage = lazy(() => import("./pages/LandingPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 const AdminPage = lazy(() => import("./pages/AdminPage"));
 
 const PageFallback = () => (
@@ -97,7 +100,7 @@ const Home = () => {
             "@context": "https://schema.org",
             "@type": "WebSite",
             name: "Cavicord",
-            url: typeof window !== "undefined" ? window.location.origin : "",
+            url: typeof window !== "undefined" ? SITE_URL : "",
             description:
               "Independent comparison of certificate of deposit rates from top FDIC-insured US banks.",
           },
@@ -105,8 +108,8 @@ const Home = () => {
             "@context": "https://schema.org",
             "@type": "Organization",
             name: "Cavicord",
-            url: typeof window !== "undefined" ? window.location.origin : "",
-            logo: typeof window !== "undefined" ? `${window.location.origin}/og-image.png` : "",
+            url: typeof window !== "undefined" ? SITE_URL : "",
+            logo: typeof window !== "undefined" ? `${SITE_URL}/og-image.png` : "",
             description:
               "Cavicord compares the best CD rates from FDIC-insured banks, with official FDIC national averages, a CD calculator, and a ladder builder.",
           },
@@ -152,7 +155,10 @@ function App() {
                 {landingPages.map((p) => (
                   <Route key={p.slug} path={`/${p.slug}`} element={<LandingPage />} />
                 ))}
-                <Route path="*" element={<Home />} />
+                {Object.entries(REDIRECTS).map(([from, to]) => (
+                  <Route key={from} path={from} element={<Navigate to={to} replace />} />
+                ))}
+                <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </Suspense>
             <ChatWidget />

@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { BRAND } from "../mock/mock";
-import { termPages } from "../data/terms";
+import { rateNavLinks } from "../data/terms";
 import { useRatesModal } from "../context/RatesModalContext";
 
 const anchorLinks = [
@@ -78,7 +78,7 @@ const Header = () => {
                 Best Rates <ChevronDown className="w-3.5 h-3.5" />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-56">
-                {termPages.map((p) => (
+                {rateNavLinks.map((p) => (
                   <DropdownMenuItem key={p.slug} asChild>
                     <Link to={`/${p.slug}`} className="cursor-pointer">
                       {p.title}
@@ -166,7 +166,7 @@ const Header = () => {
               </a>
             ))}
             <p className="pt-3 pb-1 text-xs font-semibold uppercase tracking-wider text-slate-400">Best Rates</p>
-            {termPages.map((p) => (
+            {rateNavLinks.map((p) => (
               <Link
                 key={p.slug}
                 to={`/${p.slug}`}

@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import SEO from "../components/SEO";
+import { SITE_URL } from "../config";
 import { Newspaper, ArrowRight, Clock, ChevronRight } from "lucide-react";
 import { articles } from "../data/articles";
 
@@ -19,7 +20,7 @@ const ArticlesIndex = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const origin = typeof window !== "undefined" ? window.location.origin : "";
+  const origin = typeof window !== "undefined" ? SITE_URL : "";
 
   return (
     <div className="min-h-screen bg-white">

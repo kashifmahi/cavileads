@@ -7,6 +7,7 @@ import CookieBanner from "../components/CookieBanner";
 import RateTable from "../components/RateTable";
 import Calculator from "../components/Calculator";
 import SEO from "../components/SEO";
+import { SITE_URL } from "../config";
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
 import { CheckCircle2, CalendarCheck, ChevronRight, ArrowRight, Landmark } from "lucide-react";
@@ -45,7 +46,7 @@ const LandingPage = () => {
 
   if (!config) return <Navigate to="/" replace />;
 
-  const origin = typeof window !== "undefined" ? window.location.origin : "";
+  const origin = typeof window !== "undefined" ? SITE_URL : "";
   const topApy = rates.length ? Math.max(...rates.map((r) => r.apy)) : null;
   const nationalAvg =
     config.term !== "all" && national

@@ -14,24 +14,6 @@ export const termPages = [
       "Three-month CDs are the shortest mainstream term — a smart parking spot for cash you'll need soon but want working in the meantime. They typically out-earn savings accounts while keeping your money accessible within a single quarter.",
   },
   {
-    slug: "best-6-month-cd-rates",
-    term: "6",
-    rateType: "standard",
-    title: "Best 6-Month CD Rates",
-    heading: "Best 6-Month CD Rates",
-    description:
-      "Six-month CDs are ideal when you want a guaranteed return without locking your money away for long. They typically beat savings account yields while keeping your cash accessible within half a year \u2014 a smart parking spot for an emergency fund overflow or money earmarked for a near-term goal.",
-  },
-  {
-    slug: "best-1-year-cd-rates",
-    term: "12",
-    rateType: "standard",
-    title: "Best 1-Year CD Rates",
-    heading: "Best 1-Year CD Rates",
-    description:
-      "The 12-month CD is the most popular term in America \u2014 and usually where banks compete hardest. If you can set money aside for a full year, one-year CDs frequently offer the highest APYs on the market, combining a strong rate with a reasonable commitment.",
-  },
-  {
     slug: "best-18-month-cd-rates",
     term: "18",
     rateType: "standard",
@@ -68,24 +50,6 @@ export const termPages = [
       "Five-year CDs maximize rate certainty. Lock in a strong APY now and it's guaranteed for half a decade regardless of what the Fed does \u2014 the anchor rung of any long-term CD ladder strategy.",
   },
   {
-    slug: "high-yield-cd-rates",
-    term: "all",
-    rateType: "standard",
-    title: "High-Yield CD Rates",
-    heading: "High-Yield CD Rates",
-    description:
-      "High-yield CDs are offered mostly by online banks with low overhead, letting them pay well above the national average. Every rate below is ranked by APY across all terms, so the strongest yields rise to the top — compare and verify directly with the bank before opening.",
-  },
-  {
-    slug: "jumbo-cd-rates",
-    term: "all",
-    rateType: "jumbo",
-    title: "Best Jumbo CD Rates",
-    heading: "Best Jumbo CD Rates",
-    description:
-      "Jumbo CDs require larger minimum deposits \u2014 typically $100,000 \u2014 and sometimes pay a premium over standard CDs. Remember that FDIC/NCUA insurance caps at $250,000 per depositor, per institution, so spread very large balances across multiple banks.",
-  },
-  {
     slug: "no-penalty-cd-rates",
     term: "all",
     rateType: "no_penalty",
@@ -94,6 +58,20 @@ export const termPages = [
     description:
       "No-penalty CDs let you withdraw your full balance \u2014 principal and earned interest \u2014 anytime after the first week, with zero fee. You trade a slightly lower APY for full flexibility: the best of a CD and a savings account combined.",
   },
+];
+
+// Nav links for "Best Rates" menus — mixes term pages and canonical landing pages
+export const rateNavLinks = [
+  { slug: "best-3-month-cd-rates", title: "Best 3-Month CD Rates" },
+  { slug: "6-month-cd", title: "Best 6-Month CD Rates" },
+  { slug: "12-month-cd", title: "Best 1-Year CD Rates" },
+  { slug: "best-18-month-cd-rates", title: "Best 18-Month CD Rates" },
+  { slug: "best-2-year-cd-rates", title: "Best 2-Year CD Rates" },
+  { slug: "best-3-year-cd-rates", title: "Best 3-Year CD Rates" },
+  { slug: "best-5-year-cd-rates", title: "Best 5-Year CD Rates" },
+  { slug: "high-yield-cd", title: "High-Yield CD Rates" },
+  { slug: "jumbo-cd", title: "Jumbo CD Rates" },
+  { slug: "no-penalty-cd-rates", title: "Best No-Penalty CD Rates" },
 ];
 
 export const getTermPage = (slug) => termPages.find((p) => p.slug === slug);
