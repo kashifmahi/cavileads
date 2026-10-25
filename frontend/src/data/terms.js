@@ -63,14 +63,14 @@ export const termPages = [
 // Nav links for "Best Rates" menus — mixes term pages and canonical landing pages
 export const rateNavLinks = [
   { slug: "best-3-month-cd-rates", title: "Best 3-Month CD Rates" },
-  { slug: "6-month-cd", title: "Best 6-Month CD Rates" },
-  { slug: "12-month-cd", title: "Best 1-Year CD Rates" },
+  { slug: "best-6-month-cd-rates", title: "Best 6-Month CD Rates" },
+  { slug: "best-1-year-cd-rates", title: "Best 1-Year CD Rates" },
   { slug: "best-18-month-cd-rates", title: "Best 18-Month CD Rates" },
   { slug: "best-2-year-cd-rates", title: "Best 2-Year CD Rates" },
   { slug: "best-3-year-cd-rates", title: "Best 3-Year CD Rates" },
   { slug: "best-5-year-cd-rates", title: "Best 5-Year CD Rates" },
-  { slug: "high-yield-cd", title: "High-Yield CD Rates" },
-  { slug: "jumbo-cd", title: "Jumbo CD Rates" },
+  { slug: "high-yield-cd-rates", title: "High-Yield CD Rates" },
+  { slug: "jumbo-cd-rates", title: "Jumbo CD Rates" },
   { slug: "no-penalty-cd-rates", title: "Best No-Penalty CD Rates" },
 ];
 

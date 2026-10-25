@@ -9,7 +9,8 @@ import { Label } from "../components/ui/label";
 import { Badge } from "../components/ui/badge";
 import { Skeleton } from "../components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
-import { Lock, Users, BellRing, LogOut, RefreshCw, Mail, Phone, Download, MapPin } from "lucide-react";
+import { Lock, Users, BellRing, LogOut, RefreshCw, Mail, Phone, Download, MapPin, Percent } from "lucide-react";
+import AdminRates from "../components/AdminRates";
 import {
   Select,
   SelectContent,
@@ -224,8 +225,11 @@ const AdminPage = () => {
                 </div>
               </div>
 
-              <Tabs defaultValue="leads" className="mt-8">
+              <Tabs defaultValue="rates" className="mt-8">
                 <TabsList className="bg-slate-100">
+                  <TabsTrigger value="rates" className="data-[state=active]:bg-white">
+                    <Percent className="w-4 h-4 mr-1.5" /> CD Rates
+                  </TabsTrigger>
                   <TabsTrigger value="leads" className="data-[state=active]:bg-white">
                     <Users className="w-4 h-4 mr-1.5" /> Leads ({leads.length})
                   </TabsTrigger>
@@ -233,6 +237,10 @@ const AdminPage = () => {
                     <BellRing className="w-4 h-4 mr-1.5" /> Subscribers ({subs.length})
                   </TabsTrigger>
                 </TabsList>
+
+                <TabsContent value="rates" className="mt-6">
+                  <AdminRates adminKey={key} />
+                </TabsContent>
 
                 <TabsContent value="leads" className="mt-6">
                   {leads.length > 0 && !loading && (
