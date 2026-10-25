@@ -22,8 +22,20 @@ if [[ -z "$ADMIN_KEY" ]]; then
 fi
 
 echo "[$(date -Is)] verifying bank rates…"
-curl -sS -X POST "$API/admin/rates/verify-run" -H "X-Admin-Key: $ADMIN_KEY" \
-  | python3 -c 'import sys,json; d=json.load(sys.stdin); print(f"confirmed={len(d[\"confirmed\"])} unconfirmed={len(d[\"unconfirmed\"])} errored={len(d[\"errored\"])} fdic={d[\"fdic_refreshed\"]}"); [print("  ?", x) for x in d["unconfirmed"]+d["errored"]]'
+if ! curl -sf "$API/" >/dev/null; then
+  echo "[$(date -Is)] backend not reachable at $API — is cavicord-api running? (systemctl status cavicord-api)" >&2
+  exit 1
+fi
+curl -sS -m 300 -X POST "$API/admin/rates/verify-run" -H "X-Admin-Key: $ADMIN_KEY" \
+  | python3 -c '
+import sys, json
+d = json.load(sys.stdin)
+if "confirmed" not in d:
+    print("verify failed:", d); sys.exit(1)
+print("confirmed=%d unconfirmed=%d errored=%d fdic=%s" % (len(d["confirmed"]), len(d["unconfirmed"]), len(d["errored"]), d["fdic_refreshed"]))
+for x in d["unconfirmed"] + d["errored"]:
+    print("  ?", x)
+'
 
 echo "[$(date -Is)] rebuilding frontend…"
 cd "$APP_DIR/frontend"
