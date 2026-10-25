@@ -38,7 +38,7 @@ const RatesSection = ({ rates, loading, updatedAt }) => {
 
   const nationalAvg = useMemo(() => {
     if (!national || activeTab === "all") return null;
-    const row = national.rates.find((r) => String(r.term_months) === activeTab);
+    const row = (national.rates || []).find((r) => String(r.term_months) === activeTab);
     return row ? row.national_rate : null;
   }, [national, activeTab]);
 

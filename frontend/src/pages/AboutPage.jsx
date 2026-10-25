@@ -4,7 +4,9 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import SEO from "../components/SEO";
-import { ShieldCheck, Landmark, SearchCheck, Scale, ChevronRight } from "lucide-react";
+import { ShieldCheck, Landmark, SearchCheck, Scale, ChevronRight, UserRound } from "lucide-react";
+import { SITE_URL } from "../config";
+import { AUTHOR, authorSchema } from "../data/author";
 
 const principles = [
   {
@@ -14,6 +16,7 @@ const principles = [
   },
   {
     icon: SearchCheck,
+    id: "editorial-policy",
     title: "Editorial policy",
     body: "Rankings are ordered by APY \u2014 highest first \u2014 with no pay-for-placement. If we ever earn a referral fee when you open an account through a link, it never changes the order in which products appear, and it costs you nothing. We only list federally insured institutions.",
   },
@@ -40,6 +43,7 @@ const AboutPage = () => {
         title="About Cavicord — How We Source & Rank CD Rates"
         description="Who we are, how Cavicord sources CD rates from the FDIC and bank disclosures, our editorial policy, and federal deposit insurance disclaimers."
         path="/about"
+        schemas={[{ "@context": "https://schema.org", ...authorSchema(SITE_URL) }]}
       />
       <Header />
       <main className="pt-16">
@@ -67,7 +71,8 @@ const AboutPage = () => {
             {principles.map((p) => (
               <div
                 key={p.title}
-                className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm hover:border-emerald-200 transition-colors duration-300"
+                id={p.id}
+                className="scroll-mt-24 rounded-2xl border border-slate-200 bg-white p-7 shadow-sm hover:border-emerald-200 transition-colors duration-300"
               >
                 <div className="flex items-start gap-4">
                   <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-emerald-50 shrink-0">
@@ -82,7 +87,22 @@ const AboutPage = () => {
             ))}
           </div>
 
-          <div className="mt-10 rounded-2xl calc-result-bg p-7 text-white">
+          <div id="author" className="scroll-mt-24 mt-10 rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
+            <div className="flex items-start gap-4">
+              <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#16233d] shrink-0">
+                <UserRound className="w-5 h-5 text-white" />
+              </span>
+              <div>
+                <h2 className="text-lg font-semibold text-[#16233d]">About the author</h2>
+                <p className="mt-1 text-sm font-medium text-emerald-700">
+                  {AUTHOR.name} · {AUTHOR.jobTitle}
+                </p>
+                <p className="mt-2 text-sm text-slate-500 leading-relaxed">{AUTHOR.bio}</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="advertiser-disclosure" className="scroll-mt-24 mt-10 rounded-2xl calc-result-bg p-7 text-white">
             <h2 className="font-serif text-xl font-bold">Advertiser disclosure</h2>
             <p className="mt-3 text-sm text-slate-300 leading-relaxed">
               Some links on Cavicord may be affiliate links, meaning we may earn a commission

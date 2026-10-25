@@ -50,7 +50,7 @@ const LandingPage = () => {
   const topApy = rates.length ? Math.max(...rates.map((r) => r.apy)) : null;
   const nationalAvg =
     config.term !== "all" && national
-      ? national.rates.find((r) => String(r.term_months) === config.term)?.national_rate
+      ? (national.rates || []).find((r) => String(r.term_months) === config.term)?.national_rate
       : null;
   const fmtDate = (d) =>
     d ? new Date(d).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";

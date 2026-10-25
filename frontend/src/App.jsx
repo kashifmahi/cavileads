@@ -15,6 +15,7 @@ import Footer from "./components/Footer";
 import CookieBanner from "./components/CookieBanner";
 import ChatWidget from "./components/ChatWidget";
 import SEO from "./components/SEO";
+import { faqs } from "./mock/mock";
 import { RatesModalProvider } from "./context/RatesModalContext";
 import { termPages, monthYear } from "./data/terms";
 import { landingPages } from "./data/landings";
@@ -109,9 +110,19 @@ const Home = () => {
             "@type": "Organization",
             name: "Cavicord",
             url: typeof window !== "undefined" ? SITE_URL : "",
-            logo: typeof window !== "undefined" ? `${SITE_URL}/og-image.png` : "",
+            logo: typeof window !== "undefined" ? `${SITE_URL}/logo192.png` : "",
             description:
               "Cavicord compares the best CD rates from FDIC-insured banks, with official FDIC national averages, a CD calculator, and a ladder builder.",
+            knowsAbout: ["certificates of deposit", "CD rates", "APY", "FDIC insurance", "CD ladders"],
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((f) => ({
+              "@type": "Question",
+              name: f.question || f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.answer || f.a },
+            })),
           },
         ]}
       />

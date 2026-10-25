@@ -13,7 +13,6 @@ import { rateNavLinks } from "../data/terms";
 import { useRatesModal } from "../context/RatesModalContext";
 
 const anchorLinks = [
-  { label: "Compare Rates", hash: "#rates" },
   { label: "Calculator", hash: "#calculator" },
   { label: "Ladder", hash: "#ladder" },
   { label: "FAQ", hash: "#faq" },
@@ -63,7 +62,13 @@ const Header = () => {
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-7">
-            {anchorLinks.slice(0, 3).map((link) => (
+            <Link
+              to="/best-cd-rates"
+              className="text-sm font-medium text-slate-600 hover:text-[#16233d] transition-colors duration-200"
+            >
+              Compare Rates
+            </Link>
+            {anchorLinks.slice(0, 2).map((link) => (
               <a
                 key={link.hash}
                 href={`/${link.hash}`}

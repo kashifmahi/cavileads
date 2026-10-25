@@ -4,9 +4,11 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import SEO from "../components/SEO";
+import AuthorByline from "../components/AuthorByline";
 import { SITE_URL } from "../config";
 import { Clock, ChevronRight, ArrowRight, CheckCircle2, Lightbulb } from "lucide-react";
 import { getArticle, articles } from "../data/articles";
+import { authorSchema, publisherSchema } from "../data/author";
 
 const formatDate = (iso) =>
   new Date(`${iso}T00:00:00`).toLocaleDateString("en-US", {
@@ -37,9 +39,10 @@ const ArticlePage = () => {
       description: article.metaDescription,
       datePublished: article.datePublished,
       dateModified: article.dateModified,
-      author: { "@type": "Organization", name: "Cavicord Editorial Team" },
-      publisher: { "@type": "Organization", name: "Cavicord" },
+      author: authorSchema(SITE_URL),
+      publisher: publisherSchema(SITE_URL),
       mainEntityOfPage: url,
+      image: `${SITE_URL}/og-image.png`,
     },
     {
       "@context": "https://schema.org",
@@ -97,10 +100,12 @@ const ArticlePage = () => {
         </div>
 
         <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
+          <AuthorByline datePublished={article.datePublished} dateModified={article.dateModified} />
+
           {/* Quick answer — featured-snippet style */}
           <div
             data-testid="article-quick-answer"
-            className="rounded-2xl border border-emerald-200 bg-emerald-50/60 p-6 sm:p-7"
+            className="mt-8 rounded-2xl border border-emerald-200 bg-emerald-50/60 p-6 sm:p-7"
           >
             <div className="flex items-center gap-2 text-emerald-700">
               <Lightbulb className="w-5 h-5" />

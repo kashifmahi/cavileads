@@ -65,7 +65,7 @@ export const articles = [
   {
     slug: "what-happens-when-a-cd-matures",
     title: "What Happens When a CD Matures? Your 4 Options Explained",
-    metaTitle: "What Happens When a CD Matures? 4 Options | Cavicord",
+    metaTitle: "What Happens When a CD Matures? Grace Period, Auto-Renewal & Your 4 Options | Cavicord",
     metaDescription:
       "When a CD matures you get a short grace period to withdraw, renew, or move your money. Miss it and the bank auto-renews — often at a worse rate.",
     category: "Basics",
@@ -130,7 +130,7 @@ export const articles = [
   {
     slug: "cd-early-withdrawal-penalty",
     title: "CD Early Withdrawal Penalties: What They Cost and How to Avoid Them",
-    metaTitle: "CD Early Withdrawal Penalty: Costs & How to Avoid | Cavicord",
+    metaTitle: "CD Early Withdrawal Penalty: What It Costs ($10K Example) & How to Avoid It | Cavicord",
     metaDescription:
       "CD early withdrawal penalties typically cost 3–12 months of interest. See how they're calculated, when they can touch principal, and how to avoid them.",
     category: "Basics",
@@ -262,14 +262,14 @@ export const articles = [
   },
   {
     slug: "what-is-a-jumbo-cd",
-    title: "What Is a Jumbo CD? Minimums, Rates, and Whether It's Worth $100K",
-    metaTitle: "What Is a Jumbo CD? Minimums & Rates Explained | Cavicord",
+    title: "Jumbo CD Rates: What a Jumbo CD Is and Whether $100K Really Earns More",
+    metaTitle: "Jumbo CD Rates Today: What a Jumbo CD Is & Whether $100K Earns More | Cavicord",
     metaDescription:
-      "A jumbo CD requires a large deposit — typically $100,000 — and may pay a premium APY. See how jumbo CDs work and when a standard CD beats them.",
+      "Jumbo CDs need $100,000+ and sometimes pay a premium APY — but today's best standard CDs often match them. See current jumbo rates, 1- to 5-year comparisons, and how to stay fully FDIC-insured.",
     category: "CD Types",
-    readTime: "5 min read",
+    readTime: "8 min read",
     datePublished: "2026-06-01",
-    dateModified: "2026-06-10",
+    dateModified: "2026-10-26",
     excerpt:
       "A jumbo CD is a certificate of deposit with a high minimum — usually $100,000 — that historically paid a premium rate. Today, top standard CDs often match or beat jumbo APYs.",
     answer:
@@ -293,8 +293,39 @@ export const articles = [
         ],
       },
       {
+        heading: "Jumbo CD rates by term: what to expect",
+        body: "Jumbo pricing follows the same curve as standard CDs — the 12-month term is usually the most competitive, and 5-year rates sit a little lower while the Fed is in a cutting cycle. Use our live table on the jumbo CD rates page for today's exact numbers; the ranges below show where jumbo APYs have clustered recently.",
+        bullets: [
+          "1-year jumbo CD: typically within 0.05–0.15 points of the best standard 1-year CD.",
+          "2-year jumbo CD: a small premium at some regional banks and credit unions; none at most online banks.",
+          "3-year jumbo CD: premiums are rare — compare against a 3-year standard CD and a 3-year brokered CD.",
+          "5-year jumbo CD: the term where traditional banks are most likely to pay a jumbo premium, because they want the long, stable funding.",
+          "Credit unions: often the best jumbo rates, but you'll need to qualify for membership.",
+        ],
+      },
+      {
+        heading: "What $100,000 earns: jumbo vs. standard",
+        body: "Run the numbers before assuming 'jumbo' wins. On a 1-year term, a 0.10-point premium is worth $100 — meaningful, but easily outweighed by a rival bank's standard CD paying 0.25 points more.",
+        bullets: [
+          "$100,000 in a 1-year jumbo CD at 4.60% APY: $4,600 interest.",
+          "$100,000 in a 1-year standard CD at 4.75% APY at a top online bank: $4,750 interest — $150 more with a $500 minimum.",
+          "$100,000 in a 5-year jumbo CD at 4.30% APY: about $23,430 over the term.",
+          "$100,000 in a 5-year standard CD at 4.20% APY: about $22,840 — here the jumbo premium is worth roughly $590.",
+        ],
+      },
+      {
+        heading: "How to shop for a jumbo CD",
+        body: "Jumbo shopping is three comparisons, not one.",
+        bullets: [
+          "Compare the jumbo APY with the same bank's standard CD at your term — if they're equal, the jumbo label is meaningless.",
+          "Compare with the top standard CD across all banks for that term; that's usually the real benchmark.",
+          "Compare with a new-issue brokered CD of the same term at your brokerage; brokered CDs are built for large balances and make it easy to split across issuers for FDIC coverage.",
+          "Check the early-withdrawal penalty — on a $100,000 CD, a 12-month penalty is a $4,000+ mistake.",
+        ],
+      },
+      {
         heading: "Who should actually use a jumbo CD",
-        body: "A jumbo CD makes sense when you have a genuinely large cash position with a fixed timeline — proceeds from a home sale, a business exit, an inheritance — and the jumbo APY at your chosen bank really does beat the standard alternative. Otherwise, several standard CDs across top-paying banks usually earn more and insure better.",
+        body: "A jumbo CD makes sense when you have a genuinely large cash position with a fixed timeline — proceeds from a home sale, a business exit, an inheritance — and the jumbo APY at your chosen bank really does beat the standard alternative. Otherwise, several standard CDs across top-paying banks usually earn more and insure better. A jumbo CD ladder — five $100,000 CDs at five banks across 1- to 5-year terms — gets you long-term rates, annual liquidity, and full FDIC coverage on $500,000.",
       },
     ],
     faqs: [
@@ -310,12 +341,24 @@ export const articles = [
         q: "Is a jumbo CD safe over $250,000?",
         a: "Only the first $250,000 per depositor, per bank is FDIC-insured. Amounts above that are uninsured — split large deposits across banks or ownership categories to stay fully covered.",
       },
+      {
+        q: "What is the best jumbo CD rate today?",
+        a: "It changes often — our jumbo CD rates page lists the current leaders by term, ranked by APY. Recently the best 1-year jumbo APYs have sat within a tenth of a point of the best standard 1-year CDs.",
+      },
+      {
+        q: "Are jumbo CD rates higher at credit unions?",
+        a: "Often, yes. Credit unions and smaller regional banks are the most likely to pay a real jumbo premium, especially on 2- to 5-year terms. You'll need to meet the credit union's membership requirements, which are frequently just a small donation or geographic eligibility.",
+      },
+      {
+        q: "Can I build a CD ladder with jumbo CDs?",
+        a: "Yes, and it's one of the better uses of large cash. Spread $100,000 rungs across five banks at 1- to 5-year terms: every rung is fully FDIC-insured, one matures every year, and the long rungs earn 5-year rates.",
+      },
     ],
   },
   {
     slug: "no-penalty-cd-guide",
     title: "No-Penalty CDs: How They Work and When to Choose One",
-    metaTitle: "No-Penalty CDs Explained: How They Work | Cavicord",
+    metaTitle: "No-Penalty CD: What It Is, Today's Top Rates & When to Use One | Cavicord",
     metaDescription:
       "A no-penalty CD lets you withdraw your full balance anytime after the first week with zero fee. See how they work and when they beat savings accounts.",
     category: "CD Types",
@@ -532,7 +575,7 @@ export const articles = [
   {
     slug: "cds-vs-bonds",
     title: "CDs vs. Bonds: Which Is Better for Safe Money?",
-    metaTitle: "CDs vs Bonds: Which Is Better for Savers? | Cavicord",
+    metaTitle: "CDs vs. Bonds in 2026: Which Is Safer and Which Pays More? | Cavicord",
     metaDescription:
       "CDs offer insured, fixed returns; bonds offer liquidity and potentially higher yields with price risk. See which fits your timeline and tax situation.",
     category: "Strategy",

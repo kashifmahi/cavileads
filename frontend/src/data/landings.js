@@ -42,10 +42,10 @@ export const landingPages = [
     ],
   },
   {
-    slug: "12-month-cd",
+    slug: "best-1-year-cd-rates",
     term: "12",
     rateType: "standard",
-    metaTitle: "12-Month CD Rates — Top 1-Year APYs | Cavicord",
+    metaTitle: "Best 1-Year CD Rates Today — Top 12-Month APYs | Cavicord",
     metaDescription:
       "Compare 12-month CD rates from FDIC-insured banks. The 1-year CD is America's most competitive term — see today's top APYs and what you'd earn.",
     h1: "12-Month CD Rates",
@@ -62,10 +62,10 @@ export const landingPages = [
     ],
   },
   {
-    slug: "6-month-cd",
+    slug: "best-6-month-cd-rates",
     term: "6",
     rateType: "standard",
-    metaTitle: "6-Month CD Rates — Short-Term Top APYs | Cavicord",
+    metaTitle: "Best 6-Month CD Rates Today — Top Short-Term APYs | Cavicord",
     metaDescription:
       "Compare 6-month CD rates from FDIC-insured banks. Earn well above savings-account yields while keeping your cash accessible within half a year.",
     h1: "6-Month CD Rates",
@@ -82,10 +82,10 @@ export const landingPages = [
     ],
   },
   {
-    slug: "high-yield-cd",
+    slug: "high-yield-cd-rates",
     term: "all",
     rateType: "standard",
-    metaTitle: "High-Yield CDs — Top APYs From Online Banks | Cavicord",
+    metaTitle: "High-Yield CD Rates Today — Top Online Bank APYs | Cavicord",
     metaDescription:
       "High-yield CDs pay well above the national average, mostly from low-overhead online banks. Compare today's highest APYs — all FDIC insured.",
     h1: "High-Yield CDs",
@@ -102,10 +102,10 @@ export const landingPages = [
     ],
   },
   {
-    slug: "jumbo-cd",
+    slug: "jumbo-cd-rates",
     term: "all",
     rateType: "jumbo",
-    metaTitle: "Jumbo CD Rates — $100K+ Deposits Compared | Cavicord",
+    metaTitle: "Best Jumbo CD Rates Today — $100K+ APYs Compared | Cavicord",
     metaDescription:
       "Compare jumbo CD rates for deposits of $100,000 or more. See when jumbo APYs beat standard CDs — and how to stay fully FDIC-insured over $250K.",
     h1: "Jumbo CD Rates",
