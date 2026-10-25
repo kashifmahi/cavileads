@@ -50,6 +50,14 @@ class BankRate(BaseModel):
     rate_type: str = "standard"  # standard | jumbo | no_penalty
     url: str = ""
     updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    verified_at: Optional[datetime] = None   # last time the APY was confirmed on the bank's page
+    verify_status: str = ""                   # confirmed | unconfirmed | error
+
+class BankRateUpdate(BaseModel):
+    apy: Optional[float] = Field(default=None, ge=0, le=20)
+    min_deposit: Optional[int] = Field(default=None, ge=0)
+    penalty: Optional[str] = Field(default=None, max_length=100)
+    url: Optional[str] = Field(default=None, max_length=300)
 
 class SubscriberCreate(BaseModel):
     email: EmailStr
@@ -298,7 +306,8 @@ async def get_rates(term: str = Query("all"), rate_type: str = Query("standard")
     docs = mark_best(docs)
     docs.sort(key=lambda r: r["apy"], reverse=True)
     updated = max((d.get("updated_at") for d in docs), default=None)
-    return {"rates": docs, "updated_at": updated}
+    oldest = min((d.get("updated_at") for d in docs), default=None)
+    return {"rates": docs, "updated_at": updated, "oldest_updated_at": oldest}
 
 @api_router.get("/national-rates")
 async def national_rates():
@@ -396,6 +405,103 @@ def require_admin(x_admin_key: str = Header(default="")):
     if not ADMIN_KEY or x_admin_key != ADMIN_KEY:
         raise HTTPException(status_code=401, detail="Invalid admin key")
     return True
+
+# ---------------------------- Rate management ----------------------------
+
+@api_router.get("/admin/rates")
+async def admin_rates(_: bool = Depends(require_admin)):
+    await ensure_seeded()
+    docs = await db.bank_rates.find({}, {"_id": 0}).to_list(500)
+    docs.sort(key=lambda r: (r.get("rate_type", "standard"), r["term_months"], -r["apy"]))
+    return {"rates": docs}
+
+@api_router.patch("/admin/rates/{rate_id}")
+async def admin_update_rate(rate_id: str, payload: BankRateUpdate, _: bool = Depends(require_admin)):
+    changes = {k: v for k, v in payload.dict().items() if v is not None}
+    if not changes:
+        raise HTTPException(status_code=400, detail="Nothing to update")
+    now = datetime.now(timezone.utc)
+    changes["updated_at"] = now
+    changes["verified_at"] = now
+    changes["verify_status"] = "confirmed"
+    res = await db.bank_rates.update_one({"id": rate_id}, {"$set": changes})
+    if res.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Rate not found")
+    doc = await db.bank_rates.find_one({"id": rate_id}, {"_id": 0})
+    return doc
+
+@api_router.post("/admin/rates/verify-all")
+async def admin_verify_all(_: bool = Depends(require_admin)):
+    """Manual 'I checked every bank today' button."""
+    now = datetime.now(timezone.utc)
+    res = await db.bank_rates.update_many(
+        {}, {"$set": {"updated_at": now, "verified_at": now, "verify_status": "confirmed"}}
+    )
+    return {"verified": res.modified_count, "at": now}
+
+def _apy_patterns(apy: float) -> List[str]:
+    s = f"{apy:.2f}"
+    return [s + "%", s + " %", s + "% APY", s]
+
+async def verify_bank_rates() -> dict:
+    """Daily job: fetch each bank's CD page and confirm the APY we list still appears there.
+    Confirmed rows get today's date. Unconfirmed rows keep their old date and are reported."""
+    await ensure_seeded()
+    docs = await db.bank_rates.find({}, {"_id": 0}).to_list(500)
+    pages: dict = {}
+    async with httpx.AsyncClient(timeout=25, headers={"User-Agent": UA}, follow_redirects=True) as http:
+        for url in {d.get("url") or BANK_URLS.get(d["bank"], "") for d in docs}:
+            if not url:
+                continue
+            try:
+                r = await http.get(url)
+                pages[url] = re.sub(r"\s+", " ", r.text) if r.status_code == 200 else None
+            except Exception as exc:
+                logger.warning("verify: fetch failed for %s: %s", url, exc)
+                pages[url] = None
+    now = datetime.now(timezone.utc)
+    confirmed, unconfirmed, errored = [], [], []
+    for d in docs:
+        url = d.get("url") or BANK_URLS.get(d["bank"], "")
+        page = pages.get(url)
+        label = f'{d["bank"]} {d["term_months"]}mo {d.get("rate_type","standard")} {d["apy"]:.2f}%'
+        if page is None:
+            status = "error"; errored.append(label)
+        elif any(p in page for p in _apy_patterns(d["apy"])):
+            status = "confirmed"; confirmed.append(label)
+        else:
+            status = "unconfirmed"; unconfirmed.append(label)
+        changes = {"verify_status": status, "verified_at": now}
+        if status == "confirmed":
+            changes["updated_at"] = now
+        await db.bank_rates.update_one({"id": d["id"]}, {"$set": changes})
+    # FDIC national averages: force a fresh pull
+    fdic_ok = True
+    try:
+        await get_cached_national_rates(force=True)
+    except Exception:
+        fdic_ok = False
+    report = {
+        "at": now, "confirmed": confirmed, "unconfirmed": unconfirmed, "errored": errored, "fdic_refreshed": fdic_ok,
+    }
+    logger.info("verify: %d confirmed, %d unconfirmed, %d errored", len(confirmed), len(unconfirmed), len(errored))
+    if OWNER_EMAIL and (unconfirmed or errored):
+        try:
+            rows = "".join(f"<li>{x}</li>" for x in unconfirmed + errored)
+            await send_email(
+                to=OWNER_EMAIL,
+                subject=f"Cavicord: {len(unconfirmed) + len(errored)} CD rates need a manual check",
+                html=f"<p>The daily check could not confirm these rates on the bank's page. "
+                     f"Open <a href='{os.environ.get('SITE_URL', 'https://cavicord.tech')}/admin'>the admin page</a>, "
+                     f"check each bank, and update or mark verified.</p><ul>{rows}</ul>",
+            )
+        except Exception as exc:
+            logger.error("verify: report email failed: %s", exc)
+    return report
+
+@api_router.post("/admin/rates/verify-run")
+async def admin_verify_run(_: bool = Depends(require_admin)):
+    return await verify_bank_rates()
 
 @api_router.get("/admin/leads")
 async def admin_leads(_: bool = Depends(require_admin)):
