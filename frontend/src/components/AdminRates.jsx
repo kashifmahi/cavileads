@@ -52,6 +52,10 @@ const AdminRates = ({ adminKey }) => {
     if (d.apy !== undefined && d.apy !== "") payload.apy = parseFloat(d.apy);
     if (d.min_deposit !== undefined && d.min_deposit !== "") payload.min_deposit = parseInt(d.min_deposit, 10);
     if (d.penalty !== undefined) payload.penalty = d.penalty;
+    if (Object.keys(payload).length === 0) {
+      setMsg("Nothing to save — enter a value first.");
+      return;
+    }
     setBusy(true);
     try {
       const res = await axios.patch(`${API}/admin/rates/${rate.id}`, payload, { headers });
@@ -62,8 +66,8 @@ const AdminRates = ({ adminKey }) => {
         return n;
       });
       setMsg(`Saved ${rate.bank} ${formatTerm(rate.term_months)}. Rebuild runs at 6:15 AM, or run the daily refresh now.`);
-    } catch {
-      setMsg("Save failed.");
+    } catch (e) {
+      setMsg(e.response?.data?.detail || "Save failed.");
     } finally {
       setBusy(false);
     }
@@ -76,6 +80,8 @@ const AdminRates = ({ adminKey }) => {
       await axios.post(`${API}/admin/rates/verify-all`, {}, { headers });
       await load();
       setMsg("All rates marked verified today.");
+    } catch {
+      setMsg("Verify failed. Please try again.");
     } finally {
       setBusy(false);
     }
@@ -108,13 +114,13 @@ const AdminRates = ({ adminKey }) => {
           <p className="text-sm text-slate-600">
             {rates.length} listed rates · {stale > 0 ? <span className="text-amber-700 font-medium">{stale} older than 7 days</span> : "all fresh"}
           </p>
-          {msg && <p className="mt-1 text-sm text-[#16233d]">{msg}</p>}
+          {msg && <p className="mt-1 text-sm text-[#16233d]" data-testid="admin-rates-message">{msg}</p>}
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" size="sm" onClick={runCheck} disabled={busy}>
+          <Button variant="outline" size="sm" onClick={runCheck} disabled={busy} data-testid="admin-rates-check-now">
             <RefreshCw className={`w-4 h-4 mr-1.5 ${busy ? "animate-spin" : ""}`} /> Check bank pages now
           </Button>
-          <Button size="sm" onClick={verifyAll} disabled={busy} className="bg-emerald-600 hover:bg-emerald-500 text-white">
+          <Button size="sm" onClick={verifyAll} disabled={busy} data-testid="admin-rates-verify-all" className="bg-emerald-600 hover:bg-emerald-500 text-white">
             <CheckCircle2 className="w-4 h-4 mr-1.5" /> Mark all verified today
           </Button>
         </div>
@@ -159,6 +165,7 @@ const AdminRates = ({ adminKey }) => {
                     <Input
                       type="number"
                       step="0.01"
+                      data-testid={`rate-apy-input-${r.id}`}
                       className="h-8 w-20"
                       value={d.apy ?? r.apy}
                       onChange={(e) => setDraft(r.id, "apy", e.target.value)}
@@ -168,6 +175,7 @@ const AdminRates = ({ adminKey }) => {
                     <Input
                       type="number"
                       step="100"
+                      data-testid={`rate-min-input-${r.id}`}
                       className="h-8 w-24"
                       value={d.min_deposit ?? r.min_deposit}
                       onChange={(e) => setDraft(r.id, "min_deposit", e.target.value)}
@@ -175,6 +183,7 @@ const AdminRates = ({ adminKey }) => {
                   </td>
                   <td className="px-4 py-2.5">
                     <Input
+                      data-testid={`rate-penalty-input-${r.id}`}
                       className="h-8 w-44"
                       value={d.penalty ?? r.penalty}
                       onChange={(e) => setDraft(r.id, "penalty", e.target.value)}
@@ -185,7 +194,7 @@ const AdminRates = ({ adminKey }) => {
                     <div className="text-[11px] text-slate-400 mt-0.5">upd. {fmt(r.updated_at)}</div>
                   </td>
                   <td className="px-4 py-2.5">
-                    <Button size="sm" variant={dirty ? "default" : "outline"} disabled={!dirty || busy} onClick={() => save(r)}>
+                    <Button size="sm" variant={dirty ? "default" : "outline"} disabled={!dirty || busy} onClick={() => save(r)} data-testid={`rate-save-${r.id}`}>
                       <Save className="w-3.5 h-3.5 mr-1" /> Save
                     </Button>
                   </td>

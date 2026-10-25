@@ -176,6 +176,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
                   </Label>
                   <Input
                     id="firstName"
+                    data-testid="lead-first-name"
                     value={form.firstName}
                     onChange={(e) => set("firstName")(e.target.value)}
                     className="h-11"
@@ -188,6 +189,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
                   </Label>
                   <Input
                     id="lastName"
+                    data-testid="lead-last-name"
                     value={form.lastName}
                     onChange={(e) => set("lastName")(e.target.value)}
                     className="h-11"
@@ -202,6 +204,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
                 </Label>
                 <Input
                   id="email"
+                  data-testid="lead-email"
                   type="email"
                   placeholder="you@example.com"
                   value={form.email}
@@ -221,6 +224,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
                   </span>
                   <Input
                     id="phone"
+                    data-testid="lead-phone"
                     type="tel"
                     placeholder="(555) 123-4567"
                     value={form.phone}
@@ -307,6 +311,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
 
               <Button
                 type="submit"
+                data-testid="lead-submit-button"
                 disabled={submitting}
                 className="w-full h-11 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold group"
               >
@@ -332,7 +337,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
             <DialogHeader>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-6 h-6 text-emerald-600" />
-                <DialogTitle className="font-serif text-[#16233d] text-xl">
+                <DialogTitle className="font-serif text-[#16233d] text-xl" data-testid="lead-success-title">
                   Thanks, {form.firstName}! Here Are Your Top Matches
                 </DialogTitle>
               </div>

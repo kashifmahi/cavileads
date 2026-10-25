@@ -101,7 +101,7 @@ const LandingPage = () => {
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <Button
                 data-testid="landing-hero-cta"
-                onClick={openRatesModal}
+                onClick={() => openRatesModal(config.term !== "all" ? { term: Number(config.term) } : undefined)}
                 className="h-12 px-6 text-base font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors duration-200 group"
               >
                 Get Personalized Rates
@@ -199,7 +199,7 @@ const LandingPage = () => {
             </div>
             <Button
               data-testid="landing-banner-cta"
-              onClick={openRatesModal}
+              onClick={() => openRatesModal(config.term !== "all" ? { term: Number(config.term) } : undefined)}
               className="h-12 px-6 shrink-0 text-base font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors duration-200 group"
             >
               Get Personalized Rates

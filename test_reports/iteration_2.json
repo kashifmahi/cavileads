@@ -1,0 +1,36 @@
+{
+  "summary": "Ran a regression test of Cavicord after the repo sync. Backend: 12 of 12 pytest tests pass (public rates incl. oldest_updated_at, admin rates GET/PATCH/verify-all, 401/404/400/422 checks, admin leads, Gemini chat). Frontend: the home table and the Open Account modal, all 8 long-slug landing pages, the 4 short-URL redirects, the 404 page, the article byline/quick-answer/FAQs/Person JSON-LD, the lead submit from /best-1-year-cd-rates (visible in admin with IP, geo and source_page), and the admin CD Rates tab (inline APY edit, save and restore) all work. verify-run was NOT called, as instructed. No functional bugs found, only minor UX and code-quality items.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "POST /api/admin/rates/verify-all", "issue": "Stamps updated_at on every rate whether or not it was checked. The public 'updated' date becomes whatever the admin sets. This is by design, but it weakens the freshness signal."}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "/admin CD Rates tab", "issues": ["The rates table overflows its container at 1920px (max-w ~900px). The Save column is clipped and needs a horizontal scroll. Widen the container for this tab or narrow the inputs."]},
+      {"screen": "Landing /best-1-year-cd-rates lead modal", "issues": ["The 'Ideal CD Term' select is not pre-filled with the page's term (12 months). Pre-selecting it would improve lead relevance."]}
+    ]
+  },
+  "test_report_links": ["/app/backend/tests/test_cavicord_admin_rates.py", "/app/test_reports/pytest/pytest_results.xml"],
+  "action_items": [
+    "Add data-testid attributes to AdminRates.jsx (apy/min/penalty inputs, save buttons, verify-all, check-now, message) and PersonalizedModal.jsx (form fields, submit, success state). Neither has any yet.",
+    "AdminRates.verifyAll has no catch: a failed request leaves no user message (an unhandled promise rejection). Add a catch with setMsg('Verify failed.').",
+    "Fix the horizontal overflow of the admin rates table (Save column clipped).",
+    "Optional: pre-select the term in the lead modal when it is opened from a term landing page."
+  ],
+  "critical_code_review_comments": [
+    "AdminRates.jsx: the headers object is rebuilt on every render and used inside a useCallback with an eslint-disable. This works, but useMemo would be cleaner.",
+    "AdminRates.jsx save(): the payload can be empty if the user clears the APY field and leaves the others untouched. The backend then returns 400 and the UI shows a generic 'Save failed.' Surface the detail message instead.",
+    "verify_bank_rates matches APYs by plain substring (e.g. '4.50'), so it can false-positive on unrelated numbers on the page. Acceptable as a heuristic."
+  ],
+  "updated_files": ["/app/backend/tests/test_cavicord_admin_rates.py"],
+  "success_rate": {"backend": "100% (12/12)", "frontend": "100% of requested flows"},
+  "test_credentials": "ADMIN_KEY read from /app/backend/.env. /app/memory/test_credentials.md has a header only, no entries.",
+  "seed_data_creation": "1 test lead created (TEST_Lead Tester, test_lead_t1@example.com, source /best-1-year-cd-rates). verify-all was run, so all 43 rates have verify_status=confirmed with today's date. The PATCHed APYs were restored (Credit One Bank 12mo jumbo is back at 4.55, checked via the API).",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "The preview URL triggers a Cloudflare bot challenge after ~15 rapid full page loads in one browser session. Use client-side navigation (history.pushState + a popstate event) for multi-route checks. The cookie banner has an 'Accept' button. The lead modal uses ids #firstName #lastName #email #phone #agree plus 3 Radix combobox selects. The admin page is unlocked via the input with placeholder 'Enter admin key' and has tabs CD Rates / Leads / Subscribers. Do not run verify-run."
+}

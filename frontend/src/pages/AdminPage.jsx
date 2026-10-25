@@ -157,7 +157,7 @@ const AdminPage = () => {
       <SEO title="Admin Dashboard | Cavicord" description="Private admin dashboard." path="/admin" noindex />
       <Header />
       <main className="pt-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           {!key ? (
             <div className="max-w-sm mx-auto mt-10">
               <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 text-center">
