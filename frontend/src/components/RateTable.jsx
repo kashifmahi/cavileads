@@ -6,14 +6,53 @@ import { ArrowRight } from "lucide-react";
 import { formatTerm } from "../mock/mock";
 import { useRatesModal } from "../context/RatesModalContext";
 
-export const BankAvatar = ({ bank, color, size = "w-10 h-10" }) => (
-  <span
-    className={`flex items-center justify-center ${size} rounded-full text-white font-bold text-sm shrink-0`}
-    style={{ backgroundColor: color }}
-  >
-    {bank.charAt(0)}
-  </span>
-);
+// Official bank logos: pulled from each bank's own site via Google's favicon service
+// (no API key, cached by Google). Falls back to the coloured initial if the logo
+// can't be loaded, so the table never shows a broken image.
+const logoDomain = (url) => {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return "";
+  }
+};
+
+export const bankLogoUrl = (url, px = 64) => {
+  const d = logoDomain(url || "");
+  return d ? `https://www.google.com/s2/favicons?domain=${d}&sz=${px}` : "";
+};
+
+export const BankAvatar = ({ bank, color, url, size = "w-10 h-10" }) => {
+  const [failed, setFailed] = React.useState(false);
+  const src = bankLogoUrl(url);
+  if (src && !failed) {
+    return (
+      <span
+        className={`flex items-center justify-center ${size} rounded-full bg-white border border-slate-200 shrink-0 overflow-hidden`}
+        title={bank}
+      >
+        <img
+          src={src}
+          alt={`${bank} logo`}
+          width={32}
+          height={32}
+          loading="lazy"
+          className="w-[60%] h-[60%] object-contain"
+          onError={() => setFailed(true)}
+        />
+      </span>
+    );
+  }
+  return (
+    <span
+      className={`flex items-center justify-center ${size} rounded-full text-white font-bold text-sm shrink-0`}
+      style={{ backgroundColor: color }}
+      title={bank}
+    >
+      {bank.charAt(0)}
+    </span>
+  );
+};
 
 export const fmtDeposit = (v) => (v === 0 ? "None" : `$${v.toLocaleString()}`);
 
@@ -67,7 +106,7 @@ const RateTable = ({ rates = [], loading = false, showBest = true, onView }) => 
               >
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
-                    <BankAvatar bank={rate.bank} color={rate.color} />
+                    <BankAvatar bank={rate.bank} color={rate.color} url={rate.url} />
                     <div className="flex items-center gap-2">
                       <span className="font-semibold text-[#16233d]">{rate.bank}</span>
                       {showBest && rate.best && (
@@ -111,7 +150,7 @@ const RateTable = ({ rates = [], loading = false, showBest = true, onView }) => 
           <div key={rate.id} className="rounded-xl border border-slate-200 p-5 shadow-sm bg-white">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <BankAvatar bank={rate.bank} color={rate.color} />
+                <BankAvatar bank={rate.bank} color={rate.color} url={rate.url} />
                 <div>
                   <p className="font-semibold text-[#16233d] text-sm">{rate.bank}</p>
                   {showBest && rate.best && (

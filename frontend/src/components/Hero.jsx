@@ -90,7 +90,7 @@ const Hero = ({ rates = [], updatedAt, loading = false }) => {
                   <p className="font-serif font-bold text-[#16233d]">Today's Top 1-Year CDs</p>
                   <p className="mt-0.5 inline-flex items-center gap-1.5 text-xs text-slate-500">
                     <CalendarCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                    Rates updated {fmtDate(updatedAt) || "daily"}
+                    Rates verified {fmtDate(updatedAt) || "daily"}
                   </p>
                 </div>
                 <Badge className="bg-emerald-100 text-emerald-700 hover:bg-emerald-100 border-0 shrink-0">
@@ -120,7 +120,7 @@ const Hero = ({ rates = [], updatedAt, loading = false }) => {
                 {top3.map((rate, i) => (
                       <div key={rate.id} className="px-4 sm:px-6 py-4 flex items-center justify-between gap-2 sm:gap-3 hover:bg-emerald-50/40 transition-colors duration-150">
                         <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
-                          <BankAvatar bank={rate.bank} color={rate.color} size="w-8 h-8 sm:w-9 sm:h-9" />
+                          <BankAvatar bank={rate.bank} color={rate.color} url={rate.url} size="w-8 h-8 sm:w-9 sm:h-9" />
                           <div className="min-w-0">
                             <p className="font-semibold text-[#16233d] text-sm truncate">{rate.bank}</p>
                             <p className="text-xs text-slate-400 truncate">
