@@ -52,3 +52,10 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - P0: Verify VPS backend (/api/rates) + HTTPS; make email VPS-deployable or fail-soft.
 - P1: Submit sitemap to Google Search Console + Bing (user-side); metadata audit of remaining pages; expand guides w/ query fan-out Q&As (user skipped this round).
 - P2: SSR/prerender for static HTML per route; more articles (publish cadence); real CWV measurement (LCP <2.5s, INP <200ms, CLS <0.1).
+
+## 2026-10-27: SEO hardening (post Emergent-hosting)
+- Found production /sitemap.xml serving SPA HTML: sitemap file was lost from public/ during code sync.
+- Added frontend/generate-sitemap.mjs (36 URLs, lastmod); wired into `yarn build` so every deploy ships fresh sitemap.
+- Added default meta description, canonical, og:title/description/url/image, twitter tags to index.html (marked data-default).
+- SEO.jsx removes data-default tags on mount -> no duplicates; verified 1 of each tag at runtime.
+- NEEDS REDEPLOY for sitemap + default tags to reach production.

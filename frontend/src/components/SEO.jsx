@@ -6,6 +6,10 @@ const SEO = ({ title, description, path = "", keywords, schemas = [], noindex = 
   const url = `${SITE_URL}${path}`;
   const image = `${SITE_URL}/og-image.png`;
 
+  React.useEffect(() => {
+    document.querySelectorAll('[data-default="true"]').forEach((el) => el.remove());
+  }, []);
+
   return (
     <Helmet>
       <title>{title}</title>
