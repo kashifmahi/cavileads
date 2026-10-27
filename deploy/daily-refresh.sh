@@ -3,13 +3,15 @@
 #   1. Re-verify every listed bank APY against the bank's page (stamps confirmed rows with today's date,
 #      emails OWNER_EMAIL a list of rows it could not confirm).
 #   2. Refresh FDIC national averages.
-#   3. Rebuild + prerender the frontend so the new "Rates updated" date is baked into the static HTML.
+#   3. Build + prerender into a STAGING dir, then atomically swap it live only on success.
+#      The live site keeps serving the previous good build if anything fails.
 #   4. Reload nginx.
 #
 # Install:
 #   chmod +x /opt/app/deploy/daily-refresh.sh
 #   sudo crontab -e   →   15 6 * * * /opt/app/deploy/daily-refresh.sh >> /var/log/cavicord-refresh.log 2>&1
 set -euo pipefail
+export PATH="/usr/local/bin:/usr/bin:/bin:$PATH"
 
 APP_DIR="${APP_DIR:-/opt/app}"
 API="${API:-http://127.0.0.1:8001/api}"
@@ -37,10 +39,24 @@ for x in d["unconfirmed"] + d["errored"]:
     print("  ?", x)
 '
 
-echo "[$(date -Is)] rebuilding frontend…"
+echo "[$(date -Is)] building into staging…"
 cd "$APP_DIR/frontend"
-yarn build >/dev/null
-node prerender.mjs 2>/dev/null | tail -2
+rm -rf build-staging
+yarn build --outDir build-staging
+
+echo "[$(date -Is)] prerendering staging…"
+PRERENDER_DIR=build-staging node prerender.mjs | tail -3
+
+# sanity: prerendered home must contain actual rate content
+if ! grep -q "APY" build-staging/index.html; then
+  echo "[$(date -Is)] ABORT: staged home has no rate content — keeping current live build" >&2
+  exit 1
+fi
+
+echo "[$(date -Is)] swapping staging live…"
+rm -rf build.bak
+[[ -d build ]] && mv build build.bak
+mv build-staging build
 
 echo "[$(date -Is)] reloading nginx…"
 nginx -t >/dev/null && systemctl reload nginx
