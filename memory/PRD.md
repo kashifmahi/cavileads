@@ -37,6 +37,11 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
   - **Bug fixed**: duplicate meta description/og/twitter tags — React 19 + helmet v3 uses native head hoisting and cannot dedupe static index.html tags; removed Helmet-owned tags (description, keywords, og:title/description/image, twitter:title/description/image) from index.html. Verified: exactly 1 per-route tag on /, guides, articles.
   - Testing: agent iteration_1.json — 10/11 pass, the 1 issue (duplicate meta) fixed and self-verified. Production build passes.
 
+## Hosting (CHANGED Oct 27): Emergent hosting, not VPS
+- User now hosts cavicord.tech on EMERGENT (deployed via platform; VPS retired). VPS-only artifacts (deploy/nginx-cavicord.conf, deploy/daily-refresh.sh, prerender pipeline) are not used on Emergent — the SPA serves live API data so rates/date are always current without rebuilds.
+- Daily verification on Emergent: `.emergent/crons.yml` → daily-rate-verify (06:15 UTC) → POST /api/cron/verify-rates (Bearer WEBHOOK_CRON_SECRET in backend/.env, constant-time check, run_id dedupe in db.cron_runs, verify_bank_rates() in background task). Verified in preview: 401s, accepted/duplicate dedupe, job ran (2 confirmed/24 unconfirmed/17 errored — banks block scraping as known).
+- NOTE: crons.yml + cron endpoint were added AFTER the user's deploy was initiated — a REDEPLOY is required to get them live. nginx-level real 404/301s don't apply on Emergent (client-side redirects + NotFoundPage render with 200).
+
 ## Known caveats / risks
 - **2026-06 PRODUCTION CONFIRMED by user**: cavicord.tech live — rates table populates, HTTPS valid, chatbot works (GEMINI_API_KEY set on VPS), test lead w/ IP/geo/source shown in /admin, email notification received, sitemap submitted to Google Search Console + Bing (msvalidate.01 Bing meta tag added to index.html). All previous VPS blockers resolved.
 - Exposed admin key + email key in earlier chat — user advised to rotate ADMIN_KEY on VPS.

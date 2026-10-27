@@ -503,6 +503,34 @@ async def verify_bank_rates() -> dict:
 async def admin_verify_run(_: bool = Depends(require_admin)):
     return await verify_bank_rates()
 
+# ---------------------------- platform cron webhook ----------------------------
+import hmac
+import asyncio
+
+CRON_SECRET = os.environ.get("WEBHOOK_CRON_SECRET", "")
+
+@api_router.post("/cron/verify-rates")
+async def cron_verify_rates(request: Request):
+    # Cron endpoints must ack 2xx immediately; enqueue/background the actual work.
+    auth = request.headers.get("authorization", "")
+    token = auth[7:] if auth.startswith("Bearer ") else ""
+    if not CRON_SECRET or not token or not hmac.compare_digest(token, CRON_SECRET):
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    run_id = request.headers.get("x-webhook-id", "") or str(uuid.uuid4())
+    dup = await db.cron_runs.find_one({"run_id": run_id})
+    if dup:
+        return {"status": "duplicate", "run_id": run_id}
+    await db.cron_runs.insert_one({"run_id": run_id, "job": "verify-rates", "at": datetime.now(timezone.utc)})
+
+    async def _job():
+        try:
+            await verify_bank_rates()
+        except Exception as exc:
+            logger.error("cron verify-rates failed: %s", exc)
+
+    asyncio.create_task(_job())
+    return {"status": "accepted", "run_id": run_id}
+
 @api_router.get("/admin/leads")
 async def admin_leads(_: bool = Depends(require_admin)):
     leads = await db.leads.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
