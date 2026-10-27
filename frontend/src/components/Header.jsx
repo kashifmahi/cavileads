@@ -51,13 +51,12 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-2.5 group">
-            <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#16233d] group-hover:bg-[#1e2f52] transition-colors duration-200">
-              <TrendingUp className="w-5 h-5 text-emerald-400" strokeWidth={2.5} />
-            </span>
-            <span className="font-serif text-xl font-bold text-[#16233d] tracking-tight">
-              {BRAND.name}
-            </span>
+          <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center group" data-testid="header-logo-link">
+            <img
+              src="/logo-cavicord.png"
+              alt="Cavicord — Compare CD Rates"
+              className="h-10 w-auto shrink-0 group-hover:opacity-90 transition-opacity duration-200"
+            />
           </Link>
 
           {/* Desktop nav */}

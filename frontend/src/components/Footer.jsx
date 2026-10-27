@@ -14,11 +14,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2.5">
-              <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-white/10">
-                <TrendingUp className="w-5 h-5 text-emerald-400" strokeWidth={2.5} />
-              </span>
-              <span className="font-serif text-xl font-bold text-white">{BRAND.name}</span>
+            <div className="flex items-center">
+              <img src="/logo-cavicord.png" alt="Cavicord" className="h-14 w-auto" />
             </div>
             <p className="mt-4 text-sm text-slate-400 leading-relaxed max-w-sm">
               An independent resource helping savers compare the best certificate
