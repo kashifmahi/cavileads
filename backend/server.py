@@ -1,4 +1,5 @@
 from fastapi import FastAPI, APIRouter, HTTPException, Query, Header, Depends, Request
+from fastapi.responses import HTMLResponse
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -11,7 +12,13 @@ from pydantic import BaseModel, Field, EmailStr
 from typing import List, Optional
 import uuid
 from datetime import datetime, timezone, timedelta
-from email_service import send_email, lead_notification_html, subscriber_notification_html
+from email_service import (
+    send_email,
+    lead_notification_html,
+    subscriber_notification_html,
+    rate_change_alert_html,
+    weekly_top10_html,
+)
 
 OWNER_EMAIL = os.environ.get("OWNER_EMAIL", "")
 ADMIN_KEY = os.environ.get("ADMIN_KEY", "")
@@ -384,7 +391,7 @@ async def create_subscriber(payload: SubscriberCreate):
     result = await db.subscribers.update_one(
         {"email": payload.email},
         {
-            "$set": {"frequency": payload.frequency, "updated_at": now},
+            "$set": {"frequency": payload.frequency, "updated_at": now, "active": True},
             "$setOnInsert": {"id": str(uuid.uuid4()), "email": payload.email, "created_at": now},
         },
         upsert=True,
@@ -428,7 +435,15 @@ async def admin_update_rate(rate_id: str, payload: BankRateUpdate, _: bool = Dep
     if res.matched_count == 0:
         raise HTTPException(status_code=404, detail="Rate not found")
     doc = await db.bank_rates.find_one({"id": rate_id}, {"_id": 0})
+    if "apy" in changes:
+        asyncio.create_task(_alerts_safe())
     return doc
+
+async def _alerts_safe():
+    try:
+        await process_rate_alerts()
+    except Exception as exc:
+        logger.error("rate alerts after admin update failed: %s", exc)
 
 @api_router.post("/admin/rates/verify-all")
 async def admin_verify_all(_: bool = Depends(require_admin)):
@@ -527,9 +542,131 @@ async def cron_verify_rates(request: Request):
             await verify_bank_rates()
         except Exception as exc:
             logger.error("cron verify-rates failed: %s", exc)
+        try:
+            await process_rate_alerts()
+        except Exception as exc:
+            logger.error("cron rate alerts failed: %s", exc)
 
     asyncio.create_task(_job())
     return {"status": "accepted", "run_id": run_id}
+
+# ---------------------------- subscriber rate alerts ----------------------------
+import hashlib
+
+SITE_URL = os.environ.get("SITE_URL", "https://cavicord.tech")
+
+def _unsub_token(email: str) -> str:
+    secret = (CRON_SECRET or ADMIN_KEY or "cavicord").encode()
+    return hmac.new(secret, email.lower().encode(), hashlib.sha256).hexdigest()[:32]
+
+def _unsub_url(email: str) -> str:
+    from urllib.parse import quote
+    return f"{SITE_URL}/api/unsubscribe?email={quote(email)}&token={_unsub_token(email)}"
+
+@api_router.get("/unsubscribe")
+async def unsubscribe(email: str, token: str):
+    if not hmac.compare_digest(token, _unsub_token(email)):
+        raise HTTPException(status_code=401, detail="Invalid unsubscribe link")
+    await db.subscribers.update_one(
+        {"email": email}, {"$set": {"active": False, "updated_at": datetime.now(timezone.utc)}}
+    )
+    return HTMLResponse(
+        "<html><body style='font-family:Arial,sans-serif;max-width:480px;margin:80px auto;text-align:center'>"
+        "<h2 style='color:#16233d'>You're unsubscribed</h2>"
+        "<p style='color:#64748b'>You won't receive any more CD rate alerts from Cavicord.</p>"
+        f"<p><a href='{SITE_URL}' style='color:#047857'>Back to Cavicord</a></p></body></html>"
+    )
+
+async def _active_subscribers(frequency: str) -> list:
+    return await db.subscribers.find(
+        {"frequency": frequency, "active": {"$ne": False}}, {"_id": 0, "email": 1}
+    ).to_list(2000)
+
+async def _send_to_subscribers(subs: list, subject: str, html_fn) -> int:
+    sent = 0
+    for s in subs:
+        try:
+            await send_email(to=s["email"], subject=subject, html=html_fn(s["email"]))
+            sent += 1
+        except Exception as exc:
+            logger.error("alert email to %s failed: %s", s["email"], exc)
+    return sent
+
+async def process_rate_alerts() -> dict:
+    """Compare current APYs against the last snapshot; email instant subscribers on
+    any change. On Mondays also send the weekly top-10 digest."""
+    docs = await db.bank_rates.find({}, {"_id": 0}).to_list(500)
+    standard = [d for d in docs if d.get("rate_type", "standard") == "standard"]
+    current = {d["id"]: d for d in standard}
+    snap = await db.rate_snapshots.find_one({"_id": "latest"}) or {}
+    prev = snap.get("apys", {})
+    changes = [
+        {"bank": d["bank"], "term_months": d["term_months"], "old": prev[rid], "new": d["apy"]}
+        for rid, d in current.items()
+        if rid in prev and abs(prev[rid] - d["apy"]) >= 0.005
+    ]
+    await db.rate_snapshots.replace_one(
+        {"_id": "latest"},
+        {"_id": "latest", "apys": {rid: d["apy"] for rid, d in current.items()},
+         "at": datetime.now(timezone.utc)},
+        upsert=True,
+    )
+    instant_sent = weekly_sent = 0
+    if changes:
+        changes.sort(key=lambda c: c["new"] - c["old"], reverse=True)
+        subs = await _active_subscribers("instant")
+        if subs:
+            n_up = sum(1 for c in changes if c["new"] > c["old"])
+            n_down = len(changes) - n_up
+            parts = ([f"{n_up} CD rate{'s' if n_up != 1 else ''} up"] if n_up else []) + \
+                    ([f"{n_down} down"] if n_down else [])
+            subject = f"Rate alert: {' and '.join(parts)}"
+            instant_sent = await _send_to_subscribers(
+                subs, subject, lambda em: rate_change_alert_html(changes, SITE_URL, _unsub_url(em))
+            )
+        logger.info("rate alerts: %d changes, %d instant emails sent", len(changes), instant_sent)
+    today = datetime.now(timezone.utc).date()
+    if today.weekday() == 0:  # Monday digest
+        meta = await db.meta.find_one({"_id": "weekly_digest"}) or {}
+        if meta.get("last_sent") != today.isoformat():
+            top = sorted(standard, key=lambda d: -d["apy"])[:10]
+            subs = await _active_subscribers("weekly")
+            if subs and top:
+                weekly_sent = await _send_to_subscribers(
+                    subs, "This week's top 10 CD rates",
+                    lambda em: weekly_top10_html(top, SITE_URL, _unsub_url(em)),
+                )
+            await db.meta.replace_one(
+                {"_id": "weekly_digest"},
+                {"_id": "weekly_digest", "last_sent": today.isoformat(), "sent_count": weekly_sent},
+                upsert=True,
+            )
+            logger.info("weekly digest: %d emails sent", weekly_sent)
+    return {"changes": len(changes), "instant_sent": instant_sent, "weekly_sent": weekly_sent}
+
+@api_router.post("/admin/alerts/run")
+async def admin_alerts_run(_: bool = Depends(require_admin)):
+    """Manually trigger change detection + alert emails (also used for testing)."""
+    return await process_rate_alerts()
+
+@api_router.post("/admin/alerts/preview")
+async def admin_alerts_preview(request: Request, _: bool = Depends(require_admin)):
+    """Send sample alert + digest emails to a given address for review."""
+    body = await request.json()
+    to = body.get("email") or OWNER_EMAIL
+    if not to:
+        raise HTTPException(status_code=400, detail="No email provided")
+    docs = await db.bank_rates.find({"rate_type": "standard"}, {"_id": 0}).to_list(500)
+    top = sorted(docs, key=lambda d: -d["apy"])[:10]
+    sample = [
+        {"bank": top[0]["bank"], "term_months": top[0]["term_months"], "old": top[0]["apy"] - 0.15, "new": top[0]["apy"]},
+        {"bank": top[1]["bank"], "term_months": top[1]["term_months"], "old": top[1]["apy"] + 0.10, "new": top[1]["apy"]},
+    ]
+    await send_email(to=to, subject="[Sample] Rate alert: 1 CD rate up and 1 down",
+                     html=rate_change_alert_html(sample, SITE_URL, _unsub_url(to)))
+    await send_email(to=to, subject="[Sample] This week's top 10 CD rates",
+                     html=weekly_top10_html(top, SITE_URL, _unsub_url(to)))
+    return {"status": "sent", "to": to}
 
 @api_router.get("/admin/leads")
 async def admin_leads(_: bool = Depends(require_admin)):

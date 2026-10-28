@@ -86,3 +86,11 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - Logo recompressed q75: 23KB -> 17KB.
 - Source maps enabled (vite build.sourcemap: true).
 - Cache TTL 5m on /assets/ confirmed PLATFORM BUG (docs say 1yr immutable for hashed assets): user should email support@emergent.sh with job ID.
+
+## 2026-10-28: Rate Change Alerts (subscriber emails)
+- process_rate_alerts(): compares APYs vs db.rate_snapshots {_id:latest}; emails "instant" subscribers on any change (rise/fall arrows, old->new); Monday top-10 digest to "weekly" subscribers (deduped via db.meta weekly_digest).
+- Triggers: daily cron (after verify_bank_rates) + instantly after admin PATCH that changes an APY.
+- Unsubscribe: HMAC-signed GET /api/unsubscribe?email&token (secret: WEBHOOK_CRON_SECRET), sets active:false; re-subscribing reactivates.
+- Templates in email_service.py: rate_change_alert_html, weekly_top10_html (pass safety gate; absolute https links + unsubscribe footer).
+- Admin: POST /api/admin/alerts/run (manual trigger), POST /api/admin/alerts/preview {email} (sends both sample emails).
+- TESTED in preview: change detection, alert dispatch, 401 bad token, unsubscribe deactivation, APY restored, test subscribers cleaned. Prod builds its first snapshot on next 6:15 UTC cron; alerts flow from the following run.
