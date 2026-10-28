@@ -65,6 +65,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/cd-rate-trends" className="text-slate-400 hover:text-emerald-400 transition-colors duration-200">
+                  CD Rate Trends
+                </Link>
+              </li>
+              <li>
                 <a href="/#calculator" className="text-slate-400 hover:text-emerald-400 transition-colors duration-200">
                   CD Earnings Calculator
                 </a>

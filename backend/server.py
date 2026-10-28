@@ -546,6 +546,10 @@ async def cron_verify_rates(request: Request):
             await process_rate_alerts()
         except Exception as exc:
             logger.error("cron rate alerts failed: %s", exc)
+        try:
+            await record_rate_history()
+        except Exception as exc:
+            logger.error("cron rate history failed: %s", exc)
 
     asyncio.create_task(_job())
     return {"status": "accepted", "run_id": run_id}
@@ -648,6 +652,48 @@ async def process_rate_alerts() -> dict:
 async def admin_alerts_run(_: bool = Depends(require_admin)):
     """Manually trigger change detection + alert emails (also used for testing)."""
     return await process_rate_alerts()
+
+# ---------------------------- rate history / trends ----------------------------
+
+TREND_TERMS = (3, 6, 12, 18, 24, 36, 60)
+
+async def record_rate_history() -> dict:
+    """Store one per-day summary of best/avg APY per term (idempotent per UTC date)."""
+    today = datetime.now(timezone.utc).date().isoformat()
+    docs = await db.bank_rates.find({"rate_type": "standard"}, {"_id": 0}).to_list(500)
+    terms = {}
+    for t in TREND_TERMS:
+        rows = [d for d in docs if d["term_months"] == t]
+        if not rows:
+            continue
+        best = max(rows, key=lambda d: d["apy"])
+        terms[str(t)] = {
+            "best": round(best["apy"], 2),
+            "best_bank": best["bank"],
+            "avg": round(sum(d["apy"] for d in rows) / len(rows), 2),
+            "count": len(rows),
+        }
+    fdic_12 = None
+    try:
+        nat = await get_cached_national_rates()
+        for r in nat.get("rates", []):
+            if r.get("term_months") == 12 and r.get("national_rate") is not None:
+                fdic_12 = r["national_rate"]
+    except Exception:
+        pass
+    doc = {"date": today, "terms": terms, "fdic_12mo": fdic_12,
+           "recorded_at": datetime.now(timezone.utc)}
+    await db.rate_history.replace_one({"date": today}, doc, upsert=True)
+    return doc
+
+@api_router.get("/rate-trends")
+async def rate_trends():
+    await ensure_seeded()
+    today = datetime.now(timezone.utc).date().isoformat()
+    if not await db.rate_history.find_one({"date": today}):
+        await record_rate_history()
+    history = await db.rate_history.find({}, {"_id": 0, "recorded_at": 0}).sort("date", 1).to_list(365)
+    return {"history": history, "tracking_since": history[0]["date"] if history else today}
 
 @api_router.post("/admin/alerts/preview")
 async def admin_alerts_preview(request: Request, _: bool = Depends(require_admin)):

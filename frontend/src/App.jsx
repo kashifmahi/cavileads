@@ -33,6 +33,7 @@ const ArticlesIndex = lazy(() => import("./pages/ArticlesIndex"));
 const ArticlePage = lazy(() => import("./pages/ArticlePage"));
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
+const TrendsPage = lazy(() => import("./pages/TrendsPage"));
 const AdminPage = lazy(() => import("./pages/AdminPage"));
 
 const PageFallback = () => (
@@ -170,6 +171,7 @@ function App() {
                 <Route path="/guides/:slug" element={<GuidePage />} />
                 <Route path="/articles" element={<ArticlesIndex />} />
                 <Route path="/articles/:slug" element={<ArticlePage />} />
+                <Route path="/cd-rate-trends" element={<TrendsPage />} />
                 {termPages.map((p) => (
                   <Route key={p.slug} path={`/${p.slug}`} element={<TermPage />} />
                 ))}

@@ -16,6 +16,7 @@ const pages = [
   ...termPages.map((p) => ({ route: `/${p.slug}`, freq: "daily", pri: "0.8" })),
   ...landingPages.map((p) => ({ route: `/${p.slug}`, freq: "daily", pri: "0.8" })),
   { route: "/articles", freq: "weekly", pri: "0.8" },
+  { route: "/cd-rate-trends", freq: "daily", pri: "0.8" },
   ...articles.map((a) => ({ route: `/articles/${a.slug}`, freq: "monthly", pri: "0.7", lastmod: a.dateModified })),
   { route: "/guides", freq: "weekly", pri: "0.7" },
   ...guides.map((g) => ({ route: `/guides/${g.slug}`, freq: "monthly", pri: "0.6" })),
