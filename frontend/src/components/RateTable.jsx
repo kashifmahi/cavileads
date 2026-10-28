@@ -11,7 +11,9 @@ import { useRatesModal } from "../context/RatesModalContext";
 // can't be loaded, so the table never shows a broken image.
 const logoDomain = (url) => {
   try {
-    return new URL(url).hostname.replace(/^www\./, "");
+    const host = new URL(url).hostname.replace(/^www\./, "");
+    const parts = host.split(".");
+    return parts.length > 2 ? parts.slice(-2).join(".") : host;
   } catch {
     return "";
   }

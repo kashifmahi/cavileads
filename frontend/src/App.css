@@ -46,6 +46,19 @@
     animation: fadeUp 0.45s ease-out both;
 }
 
+@keyframes slideUpOnly {
+    from {
+        transform: translateY(24px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-up {
+    animation: slideUpOnly 0.4s ease-out both;
+}
+
 /* Smooth scrolling */
 html {
     scroll-behavior: smooth;

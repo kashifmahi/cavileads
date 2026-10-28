@@ -137,7 +137,7 @@ const TermPage = () => {
             </div>
           )}
           <RateTable rates={rates} loading={loading} showBest={config.term !== "all"} />
-          <p className="mt-6 text-xs text-slate-400">
+          <p className="mt-6 text-xs text-slate-500">
             *APYs are curated by our editorial team and verified against bank disclosures. National
             averages sourced live from FDIC.gov. Rates are subject to change — always confirm with the
             issuing bank. All listed institutions are federally insured (FDIC or NCUA).

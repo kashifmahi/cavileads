@@ -107,3 +107,9 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - fetchpriority -> fetchPriority (React console warning).
 - FAVICONS RESTORED: favicon.ico/png + apple-touch-icon.png were missing from public/ (lost in code sync) -> regenerated from logo icon. Was causing 404 console error + no favicon in Google results.
 - Verified via axe-core: /best-cd-rates, /articles, /guides, /cd-rate-trends all clean; favicon 200.
+
+## 2026-10-28: Full-site audit sweep (all 37 routes)
+- TermPage disclaimer slate-400 -> 500 (contrast on all 13 term pages).
+- Bank favicon 404 (gstatic for savings.breadfinancial.com): logoDomain now strips to registrable domain -> console errors gone.
+- CookieBanner used fadeUp (starts opacity .6) -> scanners flagged its contents mid-animation. New transform-only animate-slide-up class for the banner.
+- Verified clean via axe-core (contrast, heading-order, link-name, image-alt, button-name) on: home, all term/landing types, articles (index+2), guides (index+2), trends, about, calculator. Zero console errors.
