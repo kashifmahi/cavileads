@@ -8,6 +8,10 @@
         <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="preload" as="image" href="/assets/logo-cavicord-v2.webp" fetchpriority="high" />
+        <link rel="preconnect" href="https://t0.gstatic.com" />
+        <link rel="preconnect" href="https://t1.gstatic.com" />
+        <link rel="preconnect" href="https://t2.gstatic.com" />
+        <link rel="preconnect" href="https://t3.gstatic.com" />
         <script>
             window.__pre = {
                 rates: fetch("/api/rates?term=all&rate_type=standard").then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),

@@ -94,3 +94,4 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - Templates in email_service.py: rate_change_alert_html, weekly_top10_html (pass safety gate; absolute https links + unsubscribe footer).
 - Admin: POST /api/admin/alerts/run (manual trigger), POST /api/admin/alerts/preview {email} (sends both sample emails).
 - TESTED in preview: change detection, alert dispatch, 401 bad token, unsubscribe deactivation, APY restored, test subscribers cleaned. Prod builds its first snapshot on next 6:15 UTC cron; alerts flow from the following run.
+- PageSpeed after deploy: Perf 89 / A11y 100 / BP 100 / SEO 100 / Agentic 4/4 (mobile). Final tweaks: fadeUp animation starts at opacity .6 + 0.45s (hero text LCP no longer delayed by fade), preconnects for t0-t3.gstatic.com (bank favicons, ~300ms LCP). Remaining non-code items: 5-min asset cache (platform bug, email support), CSP/HSTS headers (platform edge, cannot set via app).
