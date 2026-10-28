@@ -111,7 +111,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/10">
-          <p className="text-xs text-slate-500 leading-relaxed">
+          <p className="text-xs text-slate-400 leading-relaxed">
             {BRAND.name} is not a bank and does not offer certificates of deposit
             directly. Rates shown are for informational purposes only and are
             subject to change without notice. National average rates are sourced
@@ -119,7 +119,7 @@ const Footer = () => {
             issuing bank before opening an account. Some links may be affiliate
             links; see our Advertiser Disclosure.
           </p>
-          <p className="mt-4 text-xs text-slate-500">
+          <p className="mt-4 text-xs text-slate-400">
             © {year} {BRAND.name}. All rights reserved.
           </p>
         </div>

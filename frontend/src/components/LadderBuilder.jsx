@@ -117,7 +117,7 @@ const LadderBuilder = ({ rates = [] }) => {
                   </div>
                   <div>
                     <p className="text-xs text-slate-500">Best APY</p>
-                    <p className="font-semibold text-emerald-600">{rung.apy.toFixed(2)}%</p>
+                    <p className="font-semibold text-emerald-700">{rung.apy.toFixed(2)}%</p>
                   </div>
                   <div className="col-span-2 sm:col-span-1">
                     <p className="text-xs text-slate-500">Via</p>

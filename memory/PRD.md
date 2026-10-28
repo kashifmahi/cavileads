@@ -77,3 +77,4 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - All green CTA buttons: bg-emerald-600 -> bg-emerald-700 (white text now 5.5:1) across 14 files.
 - Hero card + RateTable + Calculator/Ladder/Modal/Admin: text-slate-400 -> text-slate-500 on white backgrounds; APY values text-emerald-600 -> 700.
 - Kept slate-400 on dark backgrounds (footer, hero dark side, page breadcrumb heroes) where contrast is fine.
+- Follow-up contrast pass: LadderBuilder APY -> emerald-700, RateAlerts active toggle -> emerald-700, RateAlerts footnote + Footer disclaimer/copyright slate-500 -> slate-400 (dark bg). Verified 0 slate-400 left in white sections; footer grey now rgb(148,163,184).

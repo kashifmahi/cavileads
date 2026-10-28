@@ -65,7 +65,7 @@ const RateAlerts = () => {
                     onClick={() => setFrequency(f.value)}
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
                       frequency === f.value
-                        ? "bg-emerald-600 text-white"
+                        ? "bg-emerald-700 text-white"
                         : "bg-white/10 text-slate-300 hover:bg-white/20"
                     }`}
                   >
@@ -94,7 +94,7 @@ const RateAlerts = () => {
                 </Button>
               </div>
               {error && <p className="mt-3 text-sm text-red-400">{error}</p>}
-              <p className="mt-4 text-xs text-slate-500">
+              <p className="mt-4 text-xs text-slate-400">
                 Free forever. Unsubscribe anytime. We never share your email.
               </p>
             </form>
