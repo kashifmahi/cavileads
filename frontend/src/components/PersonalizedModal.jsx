@@ -163,7 +163,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
               </DialogTitle>
               <DialogDescription>
                 Fill out the form below and a CD specialist will help you find the
-                best rates for your investment goals.
+                best rates for deposits of $50,000 or more.
               </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4 mt-1" noValidate>

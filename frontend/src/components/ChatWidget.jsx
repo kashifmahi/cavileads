@@ -5,10 +5,10 @@ import { useRatesModal } from "../context/RatesModalContext";
 import { API } from "../App";
 
 const SUGGESTIONS = [
-  "If I deposit $50,000 for 12 months, how much could I earn?",
-  "6-month vs 12-month CD — what's the difference?",
+  "If I deposit $100,000 for 12 months, how much could I earn?",
+  "What is a jumbo CD and do I qualify?",
+  "How do I insure more than $250,000 across banks?",
   "What happens when my CD matures?",
-  "Can I withdraw my money early?",
 ];
 
 const getSessionId = () => {
@@ -122,8 +122,8 @@ const ChatWidget = () => {
             {messages.length === 0 && (
               <div>
                 <div className="rounded-2xl rounded-tl-sm bg-white border border-slate-200 p-3 text-sm text-slate-700 leading-relaxed">
-                  Hi! I'm Cavi. Ask me anything about CDs — rates on this site, how much
-                  you could earn, maturity, penalties, and more.
+                  Hi! I'm Cavi. Ask me anything about CDs — today's rates, how much a
+                  $50,000+ deposit could earn, jumbo CDs, maturity, penalties, and more.
                 </div>
                 <div className="mt-3 flex flex-col gap-2">
                   {SUGGESTIONS.map((s) => (

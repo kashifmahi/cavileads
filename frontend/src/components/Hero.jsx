@@ -48,7 +48,7 @@ const Hero = ({ rates = [], updatedAt, loading = false }) => {
 
             <p className="mt-5 text-lg text-slate-300 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-up" style={{ animationDelay: "0.2s" }}>
               Compare certificate of deposit rates from the nation's top banks.
-              Lock in high yields with FDIC-insured security.
+              Built for serious savers putting $50,000+ to work with FDIC-insured security.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-fade-up" style={{ animationDelay: "0.3s" }}>
