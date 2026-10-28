@@ -11,6 +11,7 @@ import {
 import { BRAND } from "../mock/mock";
 import { rateNavLinks } from "../data/terms";
 import { useRatesModal } from "../context/RatesModalContext";
+import logoCavicord from "../assets/logo-cavicord.webp";
 
 const anchorLinks = [
   { label: "Calculator", hash: "#calculator" },
@@ -26,8 +27,19 @@ const Header = () => {
   const { openRatesModal } = useRatesModal();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    window.addEventListener("scroll", onScroll);
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setScrolled((prev) => {
+          const next = window.scrollY > 8;
+          return prev === next ? prev : next;
+        });
+        ticking = false;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -53,8 +65,10 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center group" data-testid="header-logo-link">
             <img
-              src="/logo-cavicord.png"
+              src={logoCavicord}
               alt="Cavicord — Compare CD Rates"
+              width="645"
+              height="112"
               className="h-10 w-auto shrink-0 group-hover:opacity-90 transition-opacity duration-200"
             />
           </Link>

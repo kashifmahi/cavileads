@@ -59,3 +59,9 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - Added default meta description, canonical, og:title/description/url/image, twitter tags to index.html (marked data-default).
 - SEO.jsx removes data-default tags on mount -> no duplicates; verified 1 of each tag at runtime.
 - NEEDS REDEPLOY for sitemap + default tags to reach production.
+
+## 2026-10-28: Performance fixes (PageSpeed reports)
+- Google Fonts now async (preload + media=print swap) — removes 200ms render block.
+- Logo: 120KB PNG in public/ -> 23KB webp imported via src/assets (hashed under /assets/ => 1yr immutable cache on Emergent edge). width/height attrs added (no CLS).
+- Header scroll listener: passive + rAF-throttled, setState only on change (forced reflow mitigation).
+- Note: Emergent edge serves /assets/* (hashed) with 1yr immutable cache automatically; other static files fixed at 5min TTL (platform-side, not configurable).
