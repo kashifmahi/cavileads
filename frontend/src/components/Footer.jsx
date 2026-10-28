@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { TrendingUp, ShieldCheck } from "lucide-react";
 import { BRAND } from "../mock/mock";
 import { rateNavLinks } from "../data/terms";
-import logoCavicord from "../assets/logo-cavicord.webp";
 import { guides } from "../data/guides";
 
 const Footer = () => {
@@ -16,7 +15,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center">
-              <img src={logoCavicord} alt="Cavicord" width="645" height="112" className="h-14 w-auto" />
+              <img src="/assets/logo-cavicord-v2.webp" alt="Cavicord" width="645" height="112" loading="lazy" className="h-14 w-auto" />
             </div>
             <p className="mt-4 text-sm text-slate-400 leading-relaxed max-w-sm">
               An independent resource helping savers compare the best certificate

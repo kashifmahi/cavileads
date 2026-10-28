@@ -11,7 +11,6 @@ import {
 import { BRAND } from "../mock/mock";
 import { rateNavLinks } from "../data/terms";
 import { useRatesModal } from "../context/RatesModalContext";
-import logoCavicord from "../assets/logo-cavicord.webp";
 
 const anchorLinks = [
   { label: "Calculator", hash: "#calculator" },
@@ -65,10 +64,11 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center group" data-testid="header-logo-link">
             <img
-              src={logoCavicord}
+              src="/assets/logo-cavicord-v2.webp"
               alt="Cavicord — Compare CD Rates"
               width="645"
               height="112"
+              fetchpriority="high"
               className="h-10 w-auto shrink-0 group-hover:opacity-90 transition-opacity duration-200"
             />
           </Link>

@@ -64,6 +64,7 @@ const LadderBuilder = ({ rates = [] }) => {
                 <span className="text-lg font-bold text-[#16233d]">{fmt(total)}</span>
               </div>
               <Slider
+                aria-label="Total investment amount"
                 value={[total]}
                 min={1000}
                 max={250000}

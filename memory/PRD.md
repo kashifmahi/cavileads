@@ -65,3 +65,10 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - Logo: 120KB PNG in public/ -> 23KB webp imported via src/assets (hashed under /assets/ => 1yr immutable cache on Emergent edge). width/height attrs added (no CLS).
 - Header scroll listener: passive + rAF-throttled, setState only on change (forced reflow mitigation).
 - Note: Emergent edge serves /assets/* (hashed) with 1yr immutable cache automatically; other static files fixed at 5min TTL (platform-side, not configurable).
+
+## 2026-10-28 (cont): Full PageSpeed optimization pass
+- Fonts fully SELF-HOSTED: 7 latin woff2 (Inter 400-700, Playfair 600-800) in src/fonts via src/fonts.css; Google Fonts links removed from index.html. Kills fonts.googleapis->gstatic critical chain.
+- Logo: public/assets/logo-cavicord-v2.webp (stable URL under /assets/ => 1yr edge cache) + <link rel=preload fetchpriority=high> in index.html + fetchpriority=high on header img. Fixes LCP discovery delay (was 1590ms).
+- ChatWidget + CookieBanner lazy-loaded (out of main bundle).
+- A11y: Slider thumbs get aria-label passthrough; Calculator="Deposit amount", LadderBuilder="Total investment amount".
+- All verified in preview. NOTE: every PageSpeed report user pasted was measured against the OLD deploy; needs one redeploy.

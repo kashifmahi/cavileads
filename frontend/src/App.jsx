@@ -12,8 +12,8 @@ import WhyCDs from "./components/WhyCDs";
 import RateAlerts from "./components/RateAlerts";
 import FAQSection from "./components/FAQSection";
 import Footer from "./components/Footer";
-import CookieBanner from "./components/CookieBanner";
-import ChatWidget from "./components/ChatWidget";
+const CookieBanner = lazy(() => import("./components/CookieBanner"));
+const ChatWidget = lazy(() => import("./components/ChatWidget"));
 import SEO from "./components/SEO";
 import { faqs } from "./mock/mock";
 import { RatesModalProvider } from "./context/RatesModalContext";
@@ -137,7 +137,9 @@ const Home = () => {
         <FAQSection />
       </main>
       <Footer />
-      <CookieBanner />
+      <Suspense fallback={null}>
+        <CookieBanner />
+      </Suspense>
     </div>
   );
 };
@@ -172,7 +174,9 @@ function App() {
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </Suspense>
-            <ChatWidget />
+            <Suspense fallback={null}>
+              <ChatWidget />
+            </Suspense>
           </RatesModalProvider>
         </BrowserRouter>
       </div>

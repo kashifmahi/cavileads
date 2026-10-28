@@ -54,6 +54,7 @@ const Calculator = ({ rates = [], loading = false }) => {
                 <span className="text-lg font-bold text-[#16233d]">{fmt(deposit)}</span>
               </div>
               <Slider
+                aria-label="Deposit amount"
                 value={[deposit]}
                 min={500}
                 max={250000}
