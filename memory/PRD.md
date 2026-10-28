@@ -78,3 +78,4 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - Hero card + RateTable + Calculator/Ladder/Modal/Admin: text-slate-400 -> text-slate-500 on white backgrounds; APY values text-emerald-600 -> 700.
 - Kept slate-400 on dark backgrounds (footer, hero dark side, page breadcrumb heroes) where contrast is fine.
 - Follow-up contrast pass: LadderBuilder APY -> emerald-700, RateAlerts active toggle -> emerald-700, RateAlerts footnote + Footer disclaimer/copyright slate-500 -> slate-400 (dark bg). Verified 0 slate-400 left in white sections; footer grey now rgb(148,163,184).
+- Agent discoverability: added public/ai-catalog.json + public/.well-known/ai-catalog.json (AI-Catalog spec 1.0; entries: rates API, national-rates API, site). Verified valid JSON served in preview.
