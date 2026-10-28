@@ -81,7 +81,7 @@ const ArticlesIndex = () => {
                       <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 font-semibold text-emerald-700">
                         {a.category}
                       </span>
-                      <span className="text-slate-400">{formatDate(a.dateModified)}</span>
+                      <span className="text-slate-500">{formatDate(a.dateModified)}</span>
                     </div>
                     <h2 className="mt-2 text-lg font-semibold text-[#16233d] group-hover:text-emerald-700 transition-colors duration-200">
                       {a.title}

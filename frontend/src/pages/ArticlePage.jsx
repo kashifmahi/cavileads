@@ -153,7 +153,7 @@ const ArticlePage = () => {
             <Link
               to="/"
               data-testid="article-compare-cta"
-              className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200"
+              className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200"
             >
               Compare CD Rates <ArrowRight className="w-4 h-4" />
             </Link>

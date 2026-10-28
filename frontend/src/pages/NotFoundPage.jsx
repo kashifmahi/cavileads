@@ -31,7 +31,7 @@ const NotFoundPage = () => (
             <Button
               asChild
               data-testid="not-found-home-link"
-              className="h-12 px-6 text-base font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors duration-200"
+              className="h-12 px-6 text-base font-semibold bg-emerald-700 hover:bg-emerald-600 text-white rounded-lg transition-colors duration-200"
             >
               <Link to="/">
                 Compare CD Rates <ArrowRight className="w-4 h-4 ml-1" />

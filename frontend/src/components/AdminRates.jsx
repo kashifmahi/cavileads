@@ -120,7 +120,7 @@ const AdminRates = ({ adminKey }) => {
           <Button variant="outline" size="sm" onClick={runCheck} disabled={busy} data-testid="admin-rates-check-now">
             <RefreshCw className={`w-4 h-4 mr-1.5 ${busy ? "animate-spin" : ""}`} /> Check bank pages now
           </Button>
-          <Button size="sm" onClick={verifyAll} disabled={busy} data-testid="admin-rates-verify-all" className="bg-emerald-600 hover:bg-emerald-500 text-white">
+          <Button size="sm" onClick={verifyAll} disabled={busy} data-testid="admin-rates-verify-all" className="bg-emerald-700 hover:bg-emerald-600 text-white">
             <CheckCircle2 className="w-4 h-4 mr-1.5" /> Mark all verified today
           </Button>
         </div>
@@ -153,7 +153,7 @@ const AdminRates = ({ adminKey }) => {
                       )}
                       {r.bank}
                       {r.url && (
-                        <a href={r.url} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-emerald-600" title="Open bank page">
+                        <a href={r.url} target="_blank" rel="noreferrer" className="text-slate-500 hover:text-emerald-600" title="Open bank page">
                           <ExternalLink className="w-3.5 h-3.5" />
                         </a>
                       )}
@@ -191,7 +191,7 @@ const AdminRates = ({ adminKey }) => {
                   </td>
                   <td className="px-4 py-2.5 whitespace-nowrap">
                     <StatusBadge rate={r} />
-                    <div className="text-[11px] text-slate-400 mt-0.5">upd. {fmt(r.updated_at)}</div>
+                    <div className="text-[11px] text-slate-500 mt-0.5">upd. {fmt(r.updated_at)}</div>
                   </td>
                   <td className="px-4 py-2.5">
                     <Button size="sm" variant={dirty ? "default" : "outline"} disabled={!dirty || busy} onClick={() => save(r)} data-testid={`rate-save-${r.id}`}>

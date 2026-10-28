@@ -63,7 +63,7 @@ const OpenAccountButton = ({ rate, size = "sm" }) => {
       size={size}
       data-testid={`open-account-${rate.id}`}
       onClick={() => openRatesModal({ term: rate.term_months })}
-      className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold transition-colors duration-200"
+      className="bg-emerald-700 hover:bg-emerald-600 text-white font-semibold transition-colors duration-200"
     >
       Open Account
       <ArrowRight className="w-3.5 h-3.5 ml-1" />
@@ -118,8 +118,8 @@ const RateTable = ({ rates = [], loading = false, showBest = true, onView }) => 
                   </div>
                 </td>
                 <td className="px-6 py-4">
-                  <span className="text-lg font-bold text-emerald-600">{rate.apy.toFixed(2)}%</span>
-                  <span className="text-xs text-slate-400 ml-1">APY</span>
+                  <span className="text-lg font-bold text-emerald-700">{rate.apy.toFixed(2)}%</span>
+                  <span className="text-xs text-slate-500 ml-1">APY</span>
                 </td>
                 <td className="px-6 py-4 text-slate-600">{formatTerm(rate.term_months)}</td>
                 <td className="px-6 py-4 text-slate-600">{fmtDeposit(rate.min_deposit)}</td>
@@ -161,17 +161,17 @@ const RateTable = ({ rates = [], loading = false, showBest = true, onView }) => 
                 </div>
               </div>
               <div className="text-right">
-                <p className="text-xl font-bold text-emerald-600">{rate.apy.toFixed(2)}%</p>
-                <p className="text-[10px] text-slate-400 uppercase">APY</p>
+                <p className="text-xl font-bold text-emerald-700">{rate.apy.toFixed(2)}%</p>
+                <p className="text-[10px] text-slate-500 uppercase">APY</p>
               </div>
             </div>
             <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
               <div>
-                <p className="text-xs text-slate-400">Term</p>
+                <p className="text-xs text-slate-500">Term</p>
                 <p className="text-slate-700 font-medium">{formatTerm(rate.term_months)}</p>
               </div>
               <div>
-                <p className="text-xs text-slate-400">Min. Deposit</p>
+                <p className="text-xs text-slate-500">Min. Deposit</p>
                 <p className="text-slate-700 font-medium">{fmtDeposit(rate.min_deposit)}</p>
               </div>
             </div>

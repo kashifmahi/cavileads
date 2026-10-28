@@ -313,7 +313,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
                 type="submit"
                 data-testid="lead-submit-button"
                 disabled={submitting}
-                className="w-full h-11 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold group"
+                className="w-full h-11 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold group"
               >
                 {submitting ? (
                   <>
@@ -326,7 +326,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
                   </>
                 )}
               </Button>
-              <p className="text-[11px] text-slate-400 text-center flex items-center justify-center gap-1">
+              <p className="text-[11px] text-slate-500 text-center flex items-center justify-center gap-1">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                 Your information is secure and will never be shared without your consent.
               </p>
@@ -376,7 +376,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
                   </div>
                   <div className="text-right">
                     <p className="text-lg font-bold text-emerald-600">{rate.apy.toFixed(2)}%</p>
-                    <p className="text-[10px] text-slate-400 uppercase">APY</p>
+                    <p className="text-[10px] text-slate-500 uppercase">APY</p>
                   </div>
                 </div>
               ))}

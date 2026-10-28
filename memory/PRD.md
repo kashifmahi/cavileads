@@ -72,3 +72,8 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - ChatWidget + CookieBanner lazy-loaded (out of main bundle).
 - A11y: Slider thumbs get aria-label passthrough; Calculator="Deposit amount", LadderBuilder="Total investment amount".
 - All verified in preview. NOTE: every PageSpeed report user pasted was measured against the OLD deploy; needs one redeploy.
+
+## 2026-10-28 (cont): WCAG contrast fixes
+- All green CTA buttons: bg-emerald-600 -> bg-emerald-700 (white text now 5.5:1) across 14 files.
+- Hero card + RateTable + Calculator/Ladder/Modal/Admin: text-slate-400 -> text-slate-500 on white backgrounds; APY values text-emerald-600 -> 700.
+- Kept slate-400 on dark backgrounds (footer, hero dark side, page breadcrumb heroes) where contrast is fine.

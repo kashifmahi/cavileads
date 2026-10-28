@@ -62,7 +62,7 @@ const Calculator = ({ rates = [], loading = false }) => {
                 onValueChange={(v) => setDeposit(v[0])}
                 className="[&_[role=slider]]:bg-emerald-600 [&_[role=slider]]:border-emerald-600"
               />
-              <div className="flex justify-between text-xs text-slate-400 mt-2">
+              <div className="flex justify-between text-xs text-slate-500 mt-2">
                 <span>$500</span>
                 <span>$250,000</span>
               </div>
@@ -98,9 +98,9 @@ const Calculator = ({ rates = [], loading = false }) => {
                 <span className="text-4xl font-bold text-emerald-400">
                   {bestRate ? bestRate.apy.toFixed(2) : "\u2014"}%
                 </span>
-                <span className="text-sm text-slate-400">APY</span>
+                <span className="text-sm text-slate-500">APY</span>
               </div>
-              <p className="text-sm text-slate-400 mt-1">
+              <p className="text-sm text-slate-500 mt-1">
                 {bestRate
                   ? `via ${bestRate.bank}`
                   : loading

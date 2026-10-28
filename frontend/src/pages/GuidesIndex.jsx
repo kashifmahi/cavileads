@@ -56,7 +56,7 @@ const GuidesIndex = () => {
                       {g.title}
                     </h2>
                     <p className="mt-2 text-sm text-slate-500 leading-relaxed">{g.excerpt}</p>
-                    <div className="mt-3 flex items-center gap-4 text-xs text-slate-400">
+                    <div className="mt-3 flex items-center gap-4 text-xs text-slate-500">
                       <span className="inline-flex items-center gap-1">
                         <Clock className="w-3.5 h-3.5" /> {g.readTime}
                       </span>

@@ -84,7 +84,7 @@ const RateAlerts = () => {
                 <Button
                   type="submit"
                   disabled={state === "loading"}
-                  className="h-12 px-6 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold shrink-0"
+                  className="h-12 px-6 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold shrink-0"
                 >
                   {state === "loading" ? (
                     <Loader2 className="w-4 h-4 animate-spin" />
