@@ -79,3 +79,10 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - Kept slate-400 on dark backgrounds (footer, hero dark side, page breadcrumb heroes) where contrast is fine.
 - Follow-up contrast pass: LadderBuilder APY -> emerald-700, RateAlerts active toggle -> emerald-700, RateAlerts footnote + Footer disclaimer/copyright slate-500 -> slate-400 (dark bg). Verified 0 slate-400 left in white sections; footer grey now rgb(148,163,184).
 - Agent discoverability: added public/ai-catalog.json + public/.well-known/ai-catalog.json (AI-Catalog spec 1.0; entries: rates API, national-rates API, site). Verified valid JSON served in preview.
+
+## 2026-10-28 (cont): Critical chain + image delivery
+- Entry CSS now INLINED into index.html post-build (inline-css.mjs in build script) -> zero render-blocking requests.
+- API warm-up: inline script in index.html starts fetch of /api/rates + /api/national-rates at HTML parse (window.__pre); App.jsx + RatesSection consume primed promise, axios fallback. Verified exactly 1 request per endpoint, cuts ~1.4s off data display.
+- Logo recompressed q75: 23KB -> 17KB.
+- Source maps enabled (vite build.sourcemap: true).
+- Cache TTL 5m on /assets/ confirmed PLATFORM BUG (docs say 1yr immutable for hashed assets): user should email support@emergent.sh with job ID.

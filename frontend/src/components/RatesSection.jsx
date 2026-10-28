@@ -22,10 +22,23 @@ const RatesSection = ({ rates, loading, updatedAt }) => {
   const { openRatesModal } = useRatesModal();
 
   useEffect(() => {
-    axios
-      .get(`${API}/national-rates`)
-      .then((res) => setNational(res.data))
-      .catch((e) => console.error("national rates failed", e));
+    const load = async () => {
+      try {
+        let data = null;
+        if (window.__pre?.national) {
+          data = await window.__pre.national;
+          window.__pre.national = null;
+        }
+        if (!data) {
+          const res = await axios.get(`${API}/national-rates`);
+          data = res.data;
+        }
+        setNational(data);
+      } catch (e) {
+        console.error("national rates failed", e);
+      }
+    };
+    load();
   }, []);
 
   const filtered = useMemo(() => {

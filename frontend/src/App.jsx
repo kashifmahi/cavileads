@@ -54,13 +54,21 @@ const Home = () => {
     let cancelled = false;
     const fetchRates = async (attempt = 1) => {
       try {
-        const res = await axios.get(`${API}/rates`, {
-          params: { term: "all", rate_type: "standard" },
-          timeout: 15000,
-        });
+        let data = null;
+        if (attempt === 1 && window.__pre?.rates) {
+          data = await window.__pre.rates;
+          window.__pre.rates = null;
+        }
+        if (!data) {
+          const res = await axios.get(`${API}/rates`, {
+            params: { term: "all", rate_type: "standard" },
+            timeout: 15000,
+          });
+          data = res.data;
+        }
         if (cancelled) return;
-        setRates(res.data.rates || []);
-        setUpdatedAt(res.data.updated_at);
+        setRates(data.rates || []);
+        setUpdatedAt(data.updated_at);
         setLoading(false);
       } catch (e) {
         console.error(`Failed to load rates (attempt ${attempt})`, e);

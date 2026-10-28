@@ -8,6 +8,12 @@
         <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="preload" as="image" href="/assets/logo-cavicord-v2.webp" fetchpriority="high" />
+        <script>
+            window.__pre = {
+                rates: fetch("/api/rates?term=all&rate_type=standard").then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
+                national: fetch("/api/national-rates").then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
+            };
+        </script>
         <meta name="msvalidate.01" content="AFFB57C95CBAD9A55B3455F5ECC67687" />
         <meta
             name="description"
