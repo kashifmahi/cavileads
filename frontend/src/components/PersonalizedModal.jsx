@@ -25,12 +25,10 @@ import { getAttribution } from "../lib/attribution";
 import { API } from "../App";
 
 const amountOptions = [
-  "Under $10,000",
-  "$10,000 - $24,999",
-  "$25,000 - $49,999",
   "$50,000 - $99,999",
   "$100,000 - $249,999",
-  "$250,000+",
+  "$250,000 - $499,999",
+  "$500,000+",
 ];
 
 const timeframeOptions = [
