@@ -87,11 +87,11 @@ const ArticlesIndex = () => {
                       {a.title}
                     </h2>
                     <p className="mt-2 text-sm text-slate-500 leading-relaxed">{a.excerpt}</p>
-                    <div className="mt-3 flex items-center gap-4 text-xs text-slate-400">
+                    <div className="mt-3 flex items-center gap-4 text-xs text-slate-500">
                       <span className="inline-flex items-center gap-1">
                         <Clock className="w-3.5 h-3.5" /> {a.readTime}
                       </span>
-                      <span className="inline-flex items-center gap-1 text-emerald-600 font-medium">
+                      <span className="inline-flex items-center gap-1 text-emerald-700 font-medium">
                         Read article <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
                       </span>
                     </div>

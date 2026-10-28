@@ -30,7 +30,7 @@ const Footer = () => {
 
           {/* Best rates */}
           <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider">Best CD Rates</h4>
+            <h2 className="text-sm font-semibold text-white uppercase tracking-wider">Best CD Rates</h2>
             <ul className="mt-4 space-y-3 text-sm">
               {rateNavLinks.map((p) => (
                 <li key={p.slug}>
@@ -47,7 +47,7 @@ const Footer = () => {
 
           {/* Guides & tools */}
           <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider">Guides & Tools</h4>
+            <h2 className="text-sm font-semibold text-white uppercase tracking-wider">Guides & Tools</h2>
             <ul className="mt-4 space-y-3 text-sm">
               {guides.map((g) => (
                 <li key={g.slug}>
@@ -84,7 +84,7 @@ const Footer = () => {
 
           {/* Company */}
           <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider">Company</h4>
+            <h2 className="text-sm font-semibold text-white uppercase tracking-wider">Company</h2>
             <ul className="mt-4 space-y-3 text-sm">
               <li>
                 <Link to="/about" className="text-slate-400 hover:text-emerald-400 transition-colors duration-200">

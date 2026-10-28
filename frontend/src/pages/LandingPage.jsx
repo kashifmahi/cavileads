@@ -158,7 +158,7 @@ const LandingPage = () => {
             <div className="mt-5">
               <RateTable rates={rates} loading={loading} showBest={config.term !== "all"} />
             </div>
-            <p className="mt-6 text-xs text-slate-400">
+            <p className="mt-6 text-xs text-slate-500">
               *APYs are curated by our editorial team and verified against bank disclosures. Rates are
               subject to change — always confirm with the issuing bank. All listed institutions are
               federally insured (FDIC or NCUA).

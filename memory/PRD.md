@@ -100,3 +100,10 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - Backend: db.rate_history (one doc/UTC date: best+avg+bank per term 3/6/12/18/24/36/60 + fdic_12mo). record_rate_history() runs in daily cron and lazily on GET /api/rate-trends if today missing. No fabricated backfill (YMUL honesty) — history grows daily from 2026-10-28.
 - Frontend: pages/TrendsPage.jsx — stat cards (best/avg/spread vs FDIC), recharts line chart with 6mo/12mo/2yr/5yr toggle, 30-day table, Dataset JSON-LD, cite-with-link note, lead CTA. Footer link, sitemap (37 URLs), llms.txt entry.
 - Tested: API returns history, term switching works, chart renders, SEO title correct.
+
+## 2026-10-28: Inner-page audit fixes (landing/articles/guides)
+- Footer headings h4 -> h2 (heading-order violation on every page).
+- Contrast: ArticlesIndex meta row slate-400->500 + emerald-600->700 links; GuidesIndex read-guide links ->700; LandingPage disclaimer slate-400->500.
+- fetchpriority -> fetchPriority (React console warning).
+- FAVICONS RESTORED: favicon.ico/png + apple-touch-icon.png were missing from public/ (lost in code sync) -> regenerated from logo icon. Was causing 404 console error + no favicon in Google results.
+- Verified via axe-core: /best-cd-rates, /articles, /guides, /cd-rate-trends all clean; favicon 200.

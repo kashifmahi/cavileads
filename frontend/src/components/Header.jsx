@@ -68,7 +68,7 @@ const Header = () => {
               alt="Cavicord — Compare CD Rates"
               width="645"
               height="112"
-              fetchpriority="high"
+              fetchPriority="high"
               className="h-10 w-auto shrink-0 group-hover:opacity-90 transition-opacity duration-200"
             />
           </Link>
