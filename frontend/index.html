@@ -15,10 +15,27 @@
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- Google Fonts, loaded off the critical path: the stylesheet is fetched with
+             media="print" (non-blocking) and switched to "all" once it arrives.
+             display=swap means text renders immediately in the fallback font. -->
         <link
+            rel="preload"
+            as="style"
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap"
-            rel="stylesheet"
         />
+        <link
+            id="gfonts"
+            rel="stylesheet"
+            media="print"
+            onload="this.media='all'"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap"
+        />
+        <noscript>
+            <link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap"
+            />
+        </noscript>
         <title>Compare CD Rates — Today's Best CD Rates From Top Banks | Cavicord</title>
     </head>
     <body>
