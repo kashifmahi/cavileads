@@ -9,6 +9,7 @@ import { SITE_URL } from "../config";
 import { Clock, ChevronRight, ArrowRight, CheckCircle2, Lightbulb } from "lucide-react";
 import { getGuide, guides } from "../data/guides";
 import { authorSchema, publisherSchema } from "../data/author";
+import { ratesLinkFor } from "../data/ratesLinks";
 
 const formatDate = (iso) =>
   new Date(`${iso}T00:00:00`).toLocaleDateString("en-US", {
@@ -28,6 +29,7 @@ const GuidePage = () => {
   if (!guide) return <Navigate to="/guides" replace />;
 
   const others = guides.filter((g) => g.slug !== slug);
+  const ratesLink = ratesLinkFor(guide.slug);
   const url = `${SITE_URL}/guides/${guide.slug}`;
 
   const schemas = [
@@ -128,6 +130,13 @@ const GuidePage = () => {
               <span className="text-sm font-semibold uppercase tracking-wider">Quick answer</span>
             </div>
             <p className="mt-3 text-[#16233d] leading-relaxed font-medium">{guide.answer}</p>
+            <Link
+              to={ratesLink.to}
+              data-testid="guide-rates-link-top"
+              className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-800 underline underline-offset-4 decoration-emerald-300 hover:decoration-emerald-700"
+            >
+              {ratesLink.label} <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
 
           {guide.sections.map((s) => (
@@ -168,10 +177,10 @@ const GuidePage = () => {
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
               <Link
-                to="/best-1-year-cd-rates"
+                to={ratesLink.to}
                 className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200"
               >
-                Best 1-Year CD Rates <ArrowRight className="w-4 h-4" />
+                {ratesLink.label} <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/no-penalty-cd-rates"

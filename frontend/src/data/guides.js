@@ -92,7 +92,7 @@ export const guides = [
   {
     slug: "cd-vs-treasury-bills",
     title: "CD vs. Treasury Bills: Where Should Your Cash Sit?",
-    metaTitle: "CDs vs. Treasury Bills: After-Tax Yield, Liquidity & Safety | Cavicord",
+    metaTitle: "CD vs Treasury Bills: Which Pays More After Tax? | Cavicord",
     metaDescription:
       "CDs and T-bills often pay similar yields, but state taxes, liquidity and how you buy them change the answer. See which wins for your state and timeline.",
     category: "Comparison",
@@ -235,7 +235,7 @@ export const guides = [
   {
     slug: "how-do-cds-work",
     title: "What Is a Certificate of Deposit and How Do CDs Work?",
-    metaTitle: "How Do CDs Work? Terms, APY, Penalties & Maturity Explained | Cavicord",
+    metaTitle: "How Does a Certificate of Deposit (CD) Work? | Cavicord",
     metaDescription:
       "A certificate of deposit locks your money for a set term at a fixed APY. Learn how CD interest compounds, what the early-withdrawal penalty costs, and what happens at maturity.",
     category: "Basics",
@@ -321,7 +321,7 @@ export const guides = [
   {
     slug: "cd-vs-money-market",
     title: "CD vs. Money Market Account: Which Pays Off?",
-    metaTitle: "CD vs. Money Market Account: Rates, Access & Which to Pick | Cavicord",
+    metaTitle: "CD vs Money Market Account: Which Pays More? | Cavicord",
     metaDescription:
       "Money market accounts give you checks and a floating rate; CDs give you a locked rate and a penalty. See which earns more and the split most savers use.",
     category: "Comparison",
@@ -389,7 +389,7 @@ export const guides = [
   {
     slug: "cd-ladder-explained",
     title: "CD Ladder Explained: How to Build One Step by Step",
-    metaTitle: "CD Ladder Explained: How to Build One (With a $25,000 Example) | Cavicord",
+    metaTitle: "CD Ladder Explained: How to Build One ($25K Example) | Cavicord",
     metaDescription:
       "A CD ladder gives you regular access to your money while earning long-term rates. See exactly how to build one, a worked $25,000 example, and three variations.",
     category: "Strategy",
@@ -476,7 +476,7 @@ export const guides = [
   {
     slug: "are-cds-safe",
     title: "Are CDs Safe? Pros and Cons of Certificates of Deposit",
-    metaTitle: "Are CDs Safe? FDIC Limits, Real Risks & Pros vs. Cons | Cavicord",
+    metaTitle: "Are CDs Safe? FDIC Insurance Limits & Real Risks | Cavicord",
     metaDescription:
       "CDs are among the safest places to keep cash — up to the FDIC limit. See exactly what's protected, what isn't, and the three risks that actually cost savers money.",
     category: "Basics",

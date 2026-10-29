@@ -65,7 +65,7 @@ export const articles = [
   {
     slug: "what-happens-when-a-cd-matures",
     title: "What Happens When a CD Matures? Your 4 Options Explained",
-    metaTitle: "What Happens When a CD Matures? Grace Period, Auto-Renewal & Your 4 Options | Cavicord",
+    metaTitle: "What Happens When a CD Matures? Your 4 Options | Cavicord",
     metaDescription:
       "When a CD matures you get a short grace period to withdraw, renew, or move your money. Miss it and the bank auto-renews — often at a worse rate.",
     category: "Basics",
@@ -130,7 +130,7 @@ export const articles = [
   {
     slug: "cd-early-withdrawal-penalty",
     title: "CD Early Withdrawal Penalties: What They Cost and How to Avoid Them",
-    metaTitle: "CD Early Withdrawal Penalty: What It Costs ($10K Example) & How to Avoid It | Cavicord",
+    metaTitle: "CD Early Withdrawal Penalty: How Much It Costs | Cavicord",
     metaDescription:
       "CD early withdrawal penalties typically cost 3–12 months of interest. See how they're calculated, when they can touch principal, and how to avoid them.",
     category: "Basics",
@@ -262,10 +262,10 @@ export const articles = [
   },
   {
     slug: "what-is-a-jumbo-cd",
-    title: "Jumbo CD Rates: What a Jumbo CD Is and Whether $100K Really Earns More",
-    metaTitle: "Jumbo CD Rates Today: What a Jumbo CD Is & Whether $100K Earns More | Cavicord",
+    title: "What Is a Jumbo CD? Minimums, the Rate Premium & FDIC Limits",
+    metaTitle: "What Is a Jumbo CD? Minimums & Rates vs Regular CDs | Cavicord",
     metaDescription:
-      "Jumbo CDs need $100,000+ and sometimes pay a premium APY — but today's best standard CDs often match them. See current jumbo rates, 1- to 5-year comparisons, and how to stay fully FDIC-insured.",
+      "A jumbo CD needs $100,000+ and may pay a small premium — but top standard CDs often match it. How jumbo CDs work, when they're worth it, and FDIC limits over $250K.",
     category: "CD Types",
     readTime: "8 min read",
     datePublished: "2026-06-01",
@@ -293,7 +293,7 @@ export const articles = [
         ],
       },
       {
-        heading: "Jumbo CD rates by term: what to expect",
+        heading: "How the jumbo premium changes by term",
         body: "Jumbo pricing follows the same curve as standard CDs — the 12-month term is usually the most competitive, and 5-year rates sit a little lower while the Fed is in a cutting cycle. Use our live table on the jumbo CD rates page for today's exact numbers; the ranges below show where jumbo APYs have clustered recently.",
         bullets: [
           "1-year jumbo CD: typically within 0.05–0.15 points of the best standard 1-year CD.",
@@ -358,7 +358,7 @@ export const articles = [
   {
     slug: "no-penalty-cd-guide",
     title: "No-Penalty CDs: How They Work and When to Choose One",
-    metaTitle: "No-Penalty CD: What It Is, Today's Top Rates & When to Use One | Cavicord",
+    metaTitle: "What Is a No-Penalty CD? How It Works & When to Use | Cavicord",
     metaDescription:
       "A no-penalty CD lets you withdraw your full balance anytime after the first week with zero fee. See how they work and when they beat savings accounts.",
     category: "CD Types",
@@ -575,7 +575,7 @@ export const articles = [
   {
     slug: "cds-vs-bonds",
     title: "CDs vs. Bonds: Which Is Better for Safe Money?",
-    metaTitle: "CDs vs. Bonds in 2026: Which Is Safer and Which Pays More? | Cavicord",
+    metaTitle: "CDs vs Bonds: Which Is Safer & Pays More? | Cavicord",
     metaDescription:
       "CDs offer insured, fixed returns; bonds offer liquidity and potentially higher yields with price risk. See which fits your timeline and tax situation.",
     category: "Strategy",
