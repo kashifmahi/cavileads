@@ -121,3 +121,8 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
   3. CORS: allow_credentials=False (invalid combo with origins=*).
 - FALSE POSITIVE in audit: "gemini-3.5-flash invalid model" — model is valid (reviewer knowledge cutoff); chat tested working live same day.
 - Known accepted: unsubscribe returns success for unknown email (no enumeration), admin verify button 180s timeout, snapshot keyed by UUID id (reseed only fires on empty collection).
+
+## 2026-10-29: GitHub repo sync (kashifmahi/cavileads, merge PR #6)
+- Backend identical; synced frontend: index.html (responsive logo preload w/ imagesrcset, dns-prefetch instead of 4 gstatic preconnects, removed default canonical/og:url — SPA duplicate-signal fix), Header/Footer (srcSet logos 230w/460w/645w), prerender.mjs (gfonts unblock + css inline for SSG builds), new public/assets/logo-cavicord-v2-{230,460}.webp.
+- KEPT our package.json (repo was missing @emergentbase overlay/visual-edits platform deps).
+- Verified: build clean, header serves 230w variant, footer 460w, rates render, canonical set per-route by Helmet.
