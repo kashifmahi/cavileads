@@ -440,8 +440,18 @@ async def admin_update_rate(rate_id: str, payload: BankRateUpdate, _: bool = Dep
     return doc
 
 async def _alerts_safe():
+    """Debounced + serialized alert processing: rapid admin edits batch into one email."""
+    global _alerts_scheduled
+    if _alerts_scheduled:
+        return
+    _alerts_scheduled = True
     try:
-        await process_rate_alerts()
+        await asyncio.sleep(10)
+    finally:
+        _alerts_scheduled = False
+    try:
+        async with _alerts_lock:
+            await process_rate_alerts()
     except Exception as exc:
         logger.error("rate alerts after admin update failed: %s", exc)
 
@@ -456,7 +466,7 @@ async def admin_verify_all(_: bool = Depends(require_admin)):
 
 def _apy_patterns(apy: float) -> List[str]:
     s = f"{apy:.2f}"
-    return [s + "%", s + " %", s + "% APY", s]
+    return [s + "%", s + " %", s + "&#37;", s + " APY", s + "% APY"]
 
 async def verify_bank_rates() -> dict:
     """Daily job: fetch each bank's CD page and confirm the APY we list still appears there.
@@ -522,6 +532,9 @@ async def admin_verify_run(_: bool = Depends(require_admin)):
 import hmac
 import asyncio
 
+_alerts_lock = asyncio.Lock()
+_alerts_scheduled = False
+
 CRON_SECRET = os.environ.get("WEBHOOK_CRON_SECRET", "")
 
 @api_router.post("/cron/verify-rates")
@@ -543,7 +556,8 @@ async def cron_verify_rates(request: Request):
         except Exception as exc:
             logger.error("cron verify-rates failed: %s", exc)
         try:
-            await process_rate_alerts()
+            async with _alerts_lock:
+                await process_rate_alerts()
         except Exception as exc:
             logger.error("cron rate alerts failed: %s", exc)
         try:
@@ -847,7 +861,7 @@ app.include_router(api_router)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_credentials=True,
+    allow_credentials=False,
     allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
