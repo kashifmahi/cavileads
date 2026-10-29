@@ -134,3 +134,8 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 ## 2026-10-29: GitHub sync round 3 (PR #8 seo/penalty-calculator)
 - Synced: NEW components/PenaltyCalculator.jsx, landings.js (+ /cd-early-withdrawal-penalty-calculator landing with showPenaltyCalculator flag), ratesLinks.js, LandingPage.jsx. Kept our package.json.
 - Sitemap now 38 URLs; llms.txt entry added. Screenshot-verified: page renders with live penalty math (payout, net gain/loss, break-even warning).
+
+## 2026-10-29: GitHub sync round 4 (PR #9 seo/hard-js-redirects)
+- Synced index.html (pre-app location.replace script for legacy slugs + www->non-www, map injected at build) + vite.config.mjs (legacyRedirects plugin reading src/data/redirects.js). Kept our llms.txt (repo missing penalty-calc line), package.json.
+- Verified: /jumbo-cd -> /jumbo-cd-rates via location.replace in preview.
+- Support confirmed: Emergent supports www<->root redirect (Domain tab) but NO custom path-based server-side 301s; backend only gets /api paths. User advised to email support.

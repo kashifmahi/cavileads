@@ -4,6 +4,22 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#16233d" />
+        <script>
+            /* Real redirects for SPA hosting without server-side 301s (see vite.config.mjs).
+               1) www.cavicord.tech -> cavicord.tech  2) retired slugs -> their canonical page. */
+            (function () {
+                try {
+                    var map = __CAVICORD_REDIRECTS__;
+                    var host = location.hostname, path = location.pathname.replace(/\/+$/, "") || "/";
+                    var to = map[path] || null;
+                    var wwwHost = host === "www.cavicord.tech";
+                    if (to || wwwHost) {
+                        var origin = wwwHost ? "https://cavicord.tech" : location.origin;
+                        location.replace(origin + (to || location.pathname) + location.search + location.hash);
+                    }
+                } catch (e) {}
+            })();
+        </script>
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
