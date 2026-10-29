@@ -113,3 +113,11 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - Bank favicon 404 (gstatic for savings.breadfinancial.com): logoDomain now strips to registrable domain -> console errors gone.
 - CookieBanner used fadeUp (starts opacity .6) -> scanners flagged its contents mid-animation. New transform-only animate-slide-up class for the banner.
 - Verified clean via axe-core (contrast, heading-order, link-name, image-alt, button-name) on: home, all term/landing types, articles (index+2), guides (index+2), trends, about, calculator. Zero console errors.
+
+## 2026-10-29: Code audit (code_review_agent) + fixes
+- Audit verdict issues addressed:
+  1. verify patterns: removed bare-number match (false "confirmed") -> now requires %/APY adjacency. Tested.
+  2. Alert dedupe: _alerts_safe now debounces 10s + asyncio.Lock serializes process_rate_alerts (cron path too). Tested: 3 rapid admin edits -> 1 alert run.
+  3. CORS: allow_credentials=False (invalid combo with origins=*).
+- FALSE POSITIVE in audit: "gemini-3.5-flash invalid model" — model is valid (reviewer knowledge cutoff); chat tested working live same day.
+- Known accepted: unsubscribe returns success for unknown email (no enumeration), admin verify button 180s timeout, snapshot keyed by UUID id (reseed only fires on empty collection).
