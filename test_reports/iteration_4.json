@@ -1,0 +1,21 @@
+{
+  "summary": "Frontend-only regression after SEO merge (PR #7). Static check: all 18 keys in ratesLinks.js (11 articles, 7 guides) match slugs in articles.js/guides.js; all target routes exist (landings.js or terms.js). UI: /articles index lists 11 articles and clicking opens the article; jumbo-cd, cds-vs-bonds, no-penalty, cd-vs-annuity, fed-rate-cuts articles render full content with matching top link + bottom CTA (article-rates-link-top / article-compare-cta). Clicking 'See today's jumbo CD rates' goes to /jumbo-cd-rates with rate table (5 rows). Guides how-do-cds-work (/best-cd-rates), cd-ladder-explained (/cd-rates), cd-vs-treasury-bills (/best-6-month-cd-rates) render with guide-rates-link-top and navigation works. 11 landing/term pages render rate tables + FAQ. 14 routes checked have unique titles, meta descriptions and canonicals. Homepage rates table renders. 0 JS console errors.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Article bottom CTA", "issues": ["CTA heading/copy says 'See today's best CD rates...' generic while button is topic-specific (e.g. 'CDs for retirement savings') - optional copy tweak"]},
+      {"screen": "/best-1-year-cd-rates", "issues": ["H1 '12-Month CD Rates' vs title 'Best 1-Year CD Rates' - minor keyword inconsistency (likely intentional)"]}
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": ["ratesLinkFor falls back to DEFAULT for unknown slugs - safe. No issues found in ArticlePage/GuidePage changes."],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped)", "frontend": "100%"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Preview ingress returns HTTP 429 when doing many rapid full page reloads (Vite dev serves many modules) - use client-side navigation (history.pushState + popstate) or pacing. Cookie accept button dismissed via button:has-text('Accept')."
+}
