@@ -9,6 +9,7 @@ import { SITE_URL } from "../config";
 import { Clock, ChevronRight, ArrowRight, CheckCircle2, Lightbulb } from "lucide-react";
 import { getArticle, articles } from "../data/articles";
 import { authorSchema, publisherSchema } from "../data/author";
+import { ratesLinkFor } from "../data/ratesLinks";
 
 const formatDate = (iso) =>
   new Date(`${iso}T00:00:00`).toLocaleDateString("en-US", {
@@ -30,6 +31,7 @@ const ArticlePage = () => {
   const origin = typeof window !== "undefined" ? SITE_URL : "";
   const url = `${origin}/articles/${article.slug}`;
   const related = articles.filter((a) => a.slug !== slug).slice(0, 4);
+  const ratesLink = ratesLinkFor(article.slug);
 
   const schemas = [
     {
@@ -112,6 +114,13 @@ const ArticlePage = () => {
               <span className="text-sm font-semibold uppercase tracking-wider">Quick answer</span>
             </div>
             <p className="mt-3 text-[#16233d] leading-relaxed font-medium">{article.answer}</p>
+            <Link
+              to={ratesLink.to}
+              data-testid="article-rates-link-top"
+              className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-800 underline underline-offset-4 decoration-emerald-300 hover:decoration-emerald-700"
+            >
+              {ratesLink.label} <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
 
           {article.sections.map((s) => (
@@ -151,11 +160,11 @@ const ArticlePage = () => {
               See today's best CD rates from top FDIC-insured banks, ranked by APY.
             </p>
             <Link
-              to="/"
+              to={ratesLink.to}
               data-testid="article-compare-cta"
               className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200"
             >
-              Compare CD Rates <ArrowRight className="w-4 h-4" />
+              {ratesLink.label} <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
