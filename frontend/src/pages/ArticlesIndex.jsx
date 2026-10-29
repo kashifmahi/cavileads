@@ -81,17 +81,17 @@ const ArticlesIndex = () => {
                       <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 font-semibold text-emerald-700">
                         {a.category}
                       </span>
-                      <span className="text-slate-400">{formatDate(a.dateModified)}</span>
+                      <span className="text-slate-500">{formatDate(a.dateModified)}</span>
                     </div>
                     <h2 className="mt-2 text-lg font-semibold text-[#16233d] group-hover:text-emerald-700 transition-colors duration-200">
                       {a.title}
                     </h2>
                     <p className="mt-2 text-sm text-slate-500 leading-relaxed">{a.excerpt}</p>
-                    <div className="mt-3 flex items-center gap-4 text-xs text-slate-400">
+                    <div className="mt-3 flex items-center gap-4 text-xs text-slate-500">
                       <span className="inline-flex items-center gap-1">
                         <Clock className="w-3.5 h-3.5" /> {a.readTime}
                       </span>
-                      <span className="inline-flex items-center gap-1 text-emerald-600 font-medium">
+                      <span className="inline-flex items-center gap-1 text-emerald-700 font-medium">
                         Read article <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
                       </span>
                     </div>

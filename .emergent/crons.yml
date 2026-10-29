@@ -1,0 +1,8 @@
+crons:
+  - name: daily-rate-verify
+    description: "Verifies every listed bank APY against the bank's page daily and refreshes FDIC averages"
+    cron: "15 6 * * *"
+    endpoint: "{{BASE_URL}}/api/cron/verify-rates"
+    method: POST
+    # Cron endpoints must ack 2xx immediately; enqueue/background the actual work.
+    enabled: true

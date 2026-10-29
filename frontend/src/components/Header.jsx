@@ -26,8 +26,19 @@ const Header = () => {
   const { openRatesModal } = useRatesModal();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    window.addEventListener("scroll", onScroll);
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setScrolled((prev) => {
+          const next = window.scrollY > 8;
+          return prev === next ? prev : next;
+        });
+        ticking = false;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -51,13 +62,15 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-2.5 group">
-            <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#16233d] group-hover:bg-[#1e2f52] transition-colors duration-200">
-              <TrendingUp className="w-5 h-5 text-emerald-400" strokeWidth={2.5} />
-            </span>
-            <span className="font-serif text-xl font-bold text-[#16233d] tracking-tight">
-              {BRAND.name}
-            </span>
+          <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center group" data-testid="header-logo-link">
+            <img
+              src="/assets/logo-cavicord-v2.webp"
+              alt="Cavicord — Compare CD Rates"
+              width="645"
+              height="112"
+              fetchPriority="high"
+              className="h-10 w-auto shrink-0 group-hover:opacity-90 transition-opacity duration-200"
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -129,7 +142,7 @@ const Header = () => {
             <Button
               onClick={openRatesModal}
               size="sm"
-              className="h-9 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold transition-colors duration-200"
+              className="h-9 px-4 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold transition-colors duration-200"
             >
               Get Personalized Rates
             </Button>
@@ -155,7 +168,7 @@ const Header = () => {
                 setMobileOpen(false);
                 openRatesModal();
               }}
-              className="w-full h-11 mb-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold group"
+              className="w-full h-11 mb-2 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold group"
             >
               Get Personalized Rates
               <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-transform duration-200" />

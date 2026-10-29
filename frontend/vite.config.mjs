@@ -28,6 +28,7 @@ export default defineConfig(({ mode }) => {
       // Keep the same output folder as CRA so VPS nginx config keeps working
       outDir: "build",
       emptyOutDir: true,
+      sourcemap: true,
     },
   };
 });

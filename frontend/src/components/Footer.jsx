@@ -14,11 +14,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2.5">
-              <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-white/10">
-                <TrendingUp className="w-5 h-5 text-emerald-400" strokeWidth={2.5} />
-              </span>
-              <span className="font-serif text-xl font-bold text-white">{BRAND.name}</span>
+            <div className="flex items-center">
+              <img src="/assets/logo-cavicord-v2.webp" alt="Cavicord" width="645" height="112" loading="lazy" className="h-14 w-auto" />
             </div>
             <p className="mt-4 text-sm text-slate-400 leading-relaxed max-w-sm">
               An independent resource helping savers compare the best certificate
@@ -33,7 +30,7 @@ const Footer = () => {
 
           {/* Best rates */}
           <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider">Best CD Rates</h4>
+            <h2 className="text-sm font-semibold text-white uppercase tracking-wider">Best CD Rates</h2>
             <ul className="mt-4 space-y-3 text-sm">
               {rateNavLinks.map((p) => (
                 <li key={p.slug}>
@@ -50,7 +47,7 @@ const Footer = () => {
 
           {/* Guides & tools */}
           <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider">Guides & Tools</h4>
+            <h2 className="text-sm font-semibold text-white uppercase tracking-wider">Guides & Tools</h2>
             <ul className="mt-4 space-y-3 text-sm">
               {guides.map((g) => (
                 <li key={g.slug}>
@@ -68,6 +65,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/cd-rate-trends" className="text-slate-400 hover:text-emerald-400 transition-colors duration-200">
+                  CD Rate Trends
+                </Link>
+              </li>
+              <li>
                 <a href="/#calculator" className="text-slate-400 hover:text-emerald-400 transition-colors duration-200">
                   CD Earnings Calculator
                 </a>
@@ -82,7 +84,7 @@ const Footer = () => {
 
           {/* Company */}
           <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider">Company</h4>
+            <h2 className="text-sm font-semibold text-white uppercase tracking-wider">Company</h2>
             <ul className="mt-4 space-y-3 text-sm">
               <li>
                 <Link to="/about" className="text-slate-400 hover:text-emerald-400 transition-colors duration-200">
@@ -114,7 +116,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/10">
-          <p className="text-xs text-slate-500 leading-relaxed">
+          <p className="text-xs text-slate-400 leading-relaxed">
             {BRAND.name} is not a bank and does not offer certificates of deposit
             directly. Rates shown are for informational purposes only and are
             subject to change without notice. National average rates are sourced
@@ -122,7 +124,7 @@ const Footer = () => {
             issuing bank before opening an account. Some links may be affiliate
             links; see our Advertiser Disclosure.
           </p>
-          <p className="mt-4 text-xs text-slate-500">
+          <p className="mt-4 text-xs text-slate-400">
             © {year} {BRAND.name}. All rights reserved.
           </p>
         </div>

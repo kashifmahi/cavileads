@@ -12,8 +12,8 @@ import WhyCDs from "./components/WhyCDs";
 import RateAlerts from "./components/RateAlerts";
 import FAQSection from "./components/FAQSection";
 import Footer from "./components/Footer";
-import CookieBanner from "./components/CookieBanner";
-import ChatWidget from "./components/ChatWidget";
+const CookieBanner = lazy(() => import("./components/CookieBanner"));
+const ChatWidget = lazy(() => import("./components/ChatWidget"));
 import SEO from "./components/SEO";
 import { faqs } from "./mock/mock";
 import { RatesModalProvider } from "./context/RatesModalContext";
@@ -33,6 +33,7 @@ const ArticlesIndex = lazy(() => import("./pages/ArticlesIndex"));
 const ArticlePage = lazy(() => import("./pages/ArticlePage"));
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
+const TrendsPage = lazy(() => import("./pages/TrendsPage"));
 const AdminPage = lazy(() => import("./pages/AdminPage"));
 
 const PageFallback = () => (
@@ -54,13 +55,21 @@ const Home = () => {
     let cancelled = false;
     const fetchRates = async (attempt = 1) => {
       try {
-        const res = await axios.get(`${API}/rates`, {
-          params: { term: "all", rate_type: "standard" },
-          timeout: 15000,
-        });
+        let data = null;
+        if (attempt === 1 && window.__pre?.rates) {
+          data = await window.__pre.rates;
+          window.__pre.rates = null;
+        }
+        if (!data) {
+          const res = await axios.get(`${API}/rates`, {
+            params: { term: "all", rate_type: "standard" },
+            timeout: 15000,
+          });
+          data = res.data;
+        }
         if (cancelled) return;
-        setRates(res.data.rates || []);
-        setUpdatedAt(res.data.updated_at);
+        setRates(data.rates || []);
+        setUpdatedAt(data.updated_at);
         setLoading(false);
       } catch (e) {
         console.error(`Failed to load rates (attempt ${attempt})`, e);
@@ -137,7 +146,9 @@ const Home = () => {
         <FAQSection />
       </main>
       <Footer />
-      <CookieBanner />
+      <Suspense fallback={null}>
+        <CookieBanner />
+      </Suspense>
     </div>
   );
 };
@@ -160,6 +171,7 @@ function App() {
                 <Route path="/guides/:slug" element={<GuidePage />} />
                 <Route path="/articles" element={<ArticlesIndex />} />
                 <Route path="/articles/:slug" element={<ArticlePage />} />
+                <Route path="/cd-rate-trends" element={<TrendsPage />} />
                 {termPages.map((p) => (
                   <Route key={p.slug} path={`/${p.slug}`} element={<TermPage />} />
                 ))}
@@ -172,7 +184,9 @@ function App() {
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </Suspense>
-            <ChatWidget />
+            <Suspense fallback={null}>
+              <ChatWidget />
+            </Suspense>
           </RatesModalProvider>
         </BrowserRouter>
       </div>

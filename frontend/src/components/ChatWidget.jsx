@@ -5,10 +5,10 @@ import { useRatesModal } from "../context/RatesModalContext";
 import { API } from "../App";
 
 const SUGGESTIONS = [
-  "If I deposit $50,000 for 12 months, how much could I earn?",
-  "6-month vs 12-month CD — what's the difference?",
+  "If I deposit $100,000 for 12 months, how much could I earn?",
+  "What is a jumbo CD and do I qualify?",
+  "How do I insure more than $250,000 across banks?",
   "What happens when my CD matures?",
-  "Can I withdraw my money early?",
 ];
 
 const getSessionId = () => {
@@ -84,7 +84,7 @@ const ChatWidget = () => {
           data-testid="chat-widget-button"
           onClick={() => setOpen(true)}
           aria-label="Open CD assistant chat"
-          className="fixed bottom-5 right-5 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/30 hover:scale-105 transition-all duration-200"
+          className="fixed bottom-5 right-5 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-emerald-700 hover:bg-emerald-600 text-white shadow-lg shadow-emerald-600/30 hover:scale-105 transition-all duration-200"
         >
           <MessageCircle className="w-6 h-6" />
         </button>
@@ -104,7 +104,7 @@ const ChatWidget = () => {
               </span>
               <div>
                 <p className="text-sm font-semibold text-white leading-tight">Cavicord Assistant</p>
-                <p className="text-[10px] text-slate-400">AI · educational info, not financial advice</p>
+                <p className="text-[10px] text-slate-500">AI · educational info, not financial advice</p>
               </div>
             </div>
             <button
@@ -122,8 +122,8 @@ const ChatWidget = () => {
             {messages.length === 0 && (
               <div>
                 <div className="rounded-2xl rounded-tl-sm bg-white border border-slate-200 p-3 text-sm text-slate-700 leading-relaxed">
-                  Hi! I'm Cavi. Ask me anything about CDs — rates on this site, how much
-                  you could earn, maturity, penalties, and more.
+                  Hi! I'm Cavi. Ask me anything about CDs — today's rates, how much a
+                  $50,000+ deposit could earn, jumbo CDs, maturity, penalties, and more.
                 </div>
                 <div className="mt-3 flex flex-col gap-2">
                   {SUGGESTIONS.map((s) => (
@@ -206,7 +206,7 @@ const ChatWidget = () => {
               data-testid="chat-send-button"
               disabled={sending || !input.trim()}
               aria-label="Send message"
-              className="flex items-center justify-center w-10 h-10 rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:opacity-40 text-white transition-colors"
+              className="flex items-center justify-center w-10 h-10 rounded-xl bg-emerald-700 hover:bg-emerald-600 disabled:opacity-40 text-white transition-colors"
             >
               <Send className="w-4 h-4" />
             </button>

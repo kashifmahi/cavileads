@@ -1,0 +1,49 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Cavicord",
+    "identifier": "cavicord.tech",
+    "documentationUrl": "https://cavicord.tech/llms.txt",
+    "logoUrl": "https://cavicord.tech/assets/logo-cavicord-v2.webp"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:cavicord.tech:api:cd-rates",
+      "displayName": "Cavicord CD Rates API",
+      "type": "application/json",
+      "url": "https://cavicord.tech/api/rates",
+      "description": "Current certificate of deposit (CD) rates from top FDIC-insured US banks, verified daily. Returns bank name, APY, term length, minimum deposit and early-withdrawal penalty.",
+      "tags": ["cd-rates", "banking", "savings", "apy", "finance"],
+      "representativeQueries": [
+        "what are the best CD rates today",
+        "which bank has the highest 12 month CD rate",
+        "compare CD rates from FDIC insured banks"
+      ]
+    },
+    {
+      "identifier": "urn:air:cavicord.tech:api:national-rates",
+      "displayName": "FDIC National Average Rates",
+      "type": "application/json",
+      "url": "https://cavicord.tech/api/national-rates",
+      "description": "FDIC national average deposit rates and rate caps for savings, checking, money market and CD products.",
+      "tags": ["fdic", "national-average", "deposit-rates"],
+      "representativeQueries": [
+        "what is the national average CD rate",
+        "FDIC average savings rate"
+      ]
+    },
+    {
+      "identifier": "urn:air:cavicord.tech:site:cd-comparison",
+      "displayName": "Cavicord CD Rate Comparison",
+      "type": "text/html",
+      "url": "https://cavicord.tech/",
+      "description": "Independent comparison of the best CD rates across America with calculators, CD ladder builder, guides and answer-first articles on certificates of deposit.",
+      "tags": ["cd-comparison", "calculator", "cd-ladder", "guides"],
+      "representativeQueries": [
+        "compare CD rates and calculate interest earnings",
+        "build a CD ladder with current rates",
+        "how do certificates of deposit work"
+      ]
+    }
+  ]
+}

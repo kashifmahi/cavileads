@@ -137,7 +137,7 @@ const TermPage = () => {
             </div>
           )}
           <RateTable rates={rates} loading={loading} showBest={config.term !== "all"} />
-          <p className="mt-6 text-xs text-slate-400">
+          <p className="mt-6 text-xs text-slate-500">
             *APYs are curated by our editorial team and verified against bank disclosures. National
             averages sourced live from FDIC.gov. Rates are subject to change — always confirm with the
             issuing bank. All listed institutions are federally insured (FDIC or NCUA).
@@ -155,7 +155,7 @@ const TermPage = () => {
             </div>
             <Button
               onClick={openRatesModal}
-              className="h-12 px-6 shrink-0 text-base font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors duration-200 group"
+              className="h-12 px-6 shrink-0 text-base font-semibold bg-emerald-700 hover:bg-emerald-600 text-white rounded-lg transition-colors duration-200 group"
             >
               Get Personalized Rates
               <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-transform duration-200" />

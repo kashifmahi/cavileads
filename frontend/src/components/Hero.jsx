@@ -48,13 +48,13 @@ const Hero = ({ rates = [], updatedAt, loading = false }) => {
 
             <p className="mt-5 text-lg text-slate-300 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-up" style={{ animationDelay: "0.2s" }}>
               Compare certificate of deposit rates from the nation's top banks.
-              Lock in high yields with FDIC-insured security.
+              Built for serious savers putting $50,000+ to work with FDIC-insured security.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-fade-up" style={{ animationDelay: "0.3s" }}>
               <Button
                 onClick={openRatesModal}
-                className="h-12 px-7 text-base font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg shadow-lg shadow-emerald-900/30 transition-colors duration-200 group"
+                className="h-12 px-7 text-base font-semibold bg-emerald-700 hover:bg-emerald-600 text-white rounded-lg shadow-lg shadow-emerald-900/30 transition-colors duration-200 group"
               >
                 Get Personalized Rates
                 <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-transform duration-200" />
@@ -123,22 +123,22 @@ const Hero = ({ rates = [], updatedAt, loading = false }) => {
                           <BankAvatar bank={rate.bank} color={rate.color} url={rate.url} size="w-8 h-8 sm:w-9 sm:h-9" />
                           <div className="min-w-0">
                             <p className="font-semibold text-[#16233d] text-sm truncate">{rate.bank}</p>
-                            <p className="text-xs text-slate-400 truncate">
+                            <p className="text-xs text-slate-500 truncate">
                               Min: {rate.min_deposit === 0 ? "None" : `$${rate.min_deposit.toLocaleString()}`}
-                              {i === 0 && <span className="ml-1.5 text-emerald-600 font-semibold">Best Rate</span>}
+                              {i === 0 && <span className="ml-1.5 text-emerald-700 font-semibold">Best Rate</span>}
                             </p>
                           </div>
                         </div>
                         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
                           <div className="text-right">
-                            <p className="text-base sm:text-lg font-bold text-emerald-600">{rate.apy.toFixed(2)}%</p>
-                            <p className="text-[10px] text-slate-400 uppercase">APY</p>
+                            <p className="text-base sm:text-lg font-bold text-emerald-700">{rate.apy.toFixed(2)}%</p>
+                            <p className="text-[10px] text-slate-500 uppercase">APY</p>
                           </div>
                           <Button
                             size="sm"
                             data-testid={`hero-open-${rate.id}`}
                             onClick={() => openRatesModal({ term: rate.term_months })}
-                            className="px-2.5 sm:px-3 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold transition-colors duration-200"
+                            className="px-2.5 sm:px-3 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold transition-colors duration-200"
                           >
                             Open
                             <ArrowRight className="w-3 h-3 ml-1" />

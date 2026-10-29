@@ -25,12 +25,10 @@ import { getAttribution } from "../lib/attribution";
 import { API } from "../App";
 
 const amountOptions = [
-  "Under $10,000",
-  "$10,000 - $24,999",
-  "$25,000 - $49,999",
   "$50,000 - $99,999",
   "$100,000 - $249,999",
-  "$250,000+",
+  "$250,000 - $499,999",
+  "$500,000+",
 ];
 
 const timeframeOptions = [
@@ -165,7 +163,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
               </DialogTitle>
               <DialogDescription>
                 Fill out the form below and a CD specialist will help you find the
-                best rates for your investment goals.
+                best rates for deposits of $50,000 or more.
               </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4 mt-1" noValidate>
@@ -176,6 +174,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
                   </Label>
                   <Input
                     id="firstName"
+                    data-testid="lead-first-name"
                     value={form.firstName}
                     onChange={(e) => set("firstName")(e.target.value)}
                     className="h-11"
@@ -188,6 +187,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
                   </Label>
                   <Input
                     id="lastName"
+                    data-testid="lead-last-name"
                     value={form.lastName}
                     onChange={(e) => set("lastName")(e.target.value)}
                     className="h-11"
@@ -202,6 +202,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
                 </Label>
                 <Input
                   id="email"
+                  data-testid="lead-email"
                   type="email"
                   placeholder="you@example.com"
                   value={form.email}
@@ -221,6 +222,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
                   </span>
                   <Input
                     id="phone"
+                    data-testid="lead-phone"
                     type="tel"
                     placeholder="(555) 123-4567"
                     value={form.phone}
@@ -307,8 +309,9 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
 
               <Button
                 type="submit"
+                data-testid="lead-submit-button"
                 disabled={submitting}
-                className="w-full h-11 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold group"
+                className="w-full h-11 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold group"
               >
                 {submitting ? (
                   <>
@@ -321,7 +324,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
                   </>
                 )}
               </Button>
-              <p className="text-[11px] text-slate-400 text-center flex items-center justify-center gap-1">
+              <p className="text-[11px] text-slate-500 text-center flex items-center justify-center gap-1">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                 Your information is secure and will never be shared without your consent.
               </p>
@@ -332,7 +335,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
             <DialogHeader>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-6 h-6 text-emerald-600" />
-                <DialogTitle className="font-serif text-[#16233d] text-xl">
+                <DialogTitle className="font-serif text-[#16233d] text-xl" data-testid="lead-success-title">
                   Thanks, {form.firstName}! Here Are Your Top Matches
                 </DialogTitle>
               </div>
@@ -371,7 +374,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
                   </div>
                   <div className="text-right">
                     <p className="text-lg font-bold text-emerald-600">{rate.apy.toFixed(2)}%</p>
-                    <p className="text-[10px] text-slate-400 uppercase">APY</p>
+                    <p className="text-[10px] text-slate-500 uppercase">APY</p>
                   </div>
                 </div>
               ))}

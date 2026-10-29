@@ -159,3 +159,65 @@ def subscriber_notification_html(email: str, frequency: str) -> str:
         "This is an automated notification.</p>"
         "</td></tr></table>"
     )
+
+
+def _email_footer(site_url: str, unsubscribe_url: str) -> str:
+    return (
+        f'<p style="font-size:12px;color:#94a3b8;margin-top:24px;border-top:1px solid #e5e7eb;padding-top:12px">'
+        f'You receive this because you subscribed to CD rate alerts on Cavicord. '
+        f'<a href="{escape(unsubscribe_url, quote=True)}" style="color:#64748b">Unsubscribe</a></p>'
+    )
+
+
+def rate_change_alert_html(changes: list, site_url: str, unsubscribe_url: str) -> str:
+    """Alert email listing CD rates that rose or fell (all values escaped)."""
+    rows = []
+    for c in changes:
+        up = c["new"] > c["old"]
+        arrow, color = ("&#9650;", "#047857") if up else ("&#9660;", "#b91c1c")
+        rows.append(
+            f'<tr><td style="padding:10px 12px;border-bottom:1px solid #e5e7eb;font-size:14px;color:#16233d">'
+            f'<strong>{escape(c["bank"])}</strong> &middot; {int(c["term_months"])}-month CD</td>'
+            f'<td style="padding:10px 12px;border-bottom:1px solid #e5e7eb;font-size:14px;color:#64748b;white-space:nowrap">'
+            f'{c["old"]:.2f}% &rarr; <strong style="color:{color}">{c["new"]:.2f}% {arrow}</strong></td></tr>'
+        )
+    return (
+        '<table role="presentation" width="100%" style="max-width:560px;font-family:Arial,sans-serif">'
+        '<tr><td style="padding:24px">'
+        '<h2 style="color:#16233d;margin:0 0 4px">CD Rates Just Moved</h2>'
+        '<p style="color:#64748b;font-size:14px;margin:0 0 16px">'
+        f'{len(changes)} rate{"s" if len(changes) != 1 else ""} changed since our last check.</p>'
+        f'<table role="presentation" width="100%" style="border:1px solid #e5e7eb;border-radius:8px">{"".join(rows)}</table>'
+        f'<p style="margin-top:20px"><a href="{escape(site_url, quote=True)}" '
+        f'style="background:#047857;color:#ffffff;text-decoration:none;padding:12px 24px;border-radius:8px;'
+        f'font-size:14px;font-weight:bold;display:inline-block">Compare all current rates</a></p>'
+        f"{_email_footer(site_url, unsubscribe_url)}"
+        "</td></tr></table>"
+    )
+
+
+def weekly_top10_html(rates: list, site_url: str, unsubscribe_url: str) -> str:
+    """Weekly digest of the top-10 CD rates (all values escaped)."""
+    rows = []
+    for i, r in enumerate(rates[:10], 1):
+        min_dep = f"${r['min_deposit']:,}" if r.get("min_deposit") else "None"
+        rows.append(
+            f'<tr><td style="padding:10px 12px;border-bottom:1px solid #e5e7eb;font-size:13px;color:#94a3b8">{i}</td>'
+            f'<td style="padding:10px 12px;border-bottom:1px solid #e5e7eb;font-size:14px;color:#16233d">'
+            f'<strong>{escape(r["bank"])}</strong><br>'
+            f'<span style="font-size:12px;color:#64748b">{int(r["term_months"])}-month &middot; Min: {escape(min_dep)}</span></td>'
+            f'<td style="padding:10px 12px;border-bottom:1px solid #e5e7eb;font-size:16px;font-weight:bold;'
+            f'color:#047857;white-space:nowrap">{r["apy"]:.2f}%</td></tr>'
+        )
+    return (
+        '<table role="presentation" width="100%" style="max-width:560px;font-family:Arial,sans-serif">'
+        '<tr><td style="padding:24px">'
+        '<h2 style="color:#16233d;margin:0 0 4px">This Week&#39;s Top 10 CD Rates</h2>'
+        '<p style="color:#64748b;font-size:14px;margin:0 0 16px">The highest APYs from FDIC-insured banks, verified by Cavicord.</p>'
+        f'<table role="presentation" width="100%" style="border:1px solid #e5e7eb;border-radius:8px">{"".join(rows)}</table>'
+        f'<p style="margin-top:20px"><a href="{escape(site_url, quote=True)}" '
+        f'style="background:#047857;color:#ffffff;text-decoration:none;padding:12px 24px;border-radius:8px;'
+        f'font-size:14px;font-weight:bold;display:inline-block">See full comparison</a></p>'
+        f"{_email_footer(site_url, unsubscribe_url)}"
+        "</td></tr></table>"
+    )

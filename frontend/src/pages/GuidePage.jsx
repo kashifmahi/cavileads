@@ -169,7 +169,7 @@ const GuidePage = () => {
             <div className="mt-4 flex flex-wrap gap-3">
               <Link
                 to="/best-1-year-cd-rates"
-                className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200"
               >
                 Best 1-Year CD Rates <ArrowRight className="w-4 h-4" />
               </Link>

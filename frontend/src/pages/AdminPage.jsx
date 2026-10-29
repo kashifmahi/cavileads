@@ -157,7 +157,7 @@ const AdminPage = () => {
       <SEO title="Admin Dashboard | Cavicord" description="Private admin dashboard." path="/admin" noindex />
       <Header />
       <main className="pt-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           {!key ? (
             <div className="max-w-sm mx-auto mt-10">
               <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 text-center">
@@ -253,7 +253,7 @@ const AdminPage = () => {
                             toCsv(leads, LEAD_COLUMNS)
                           )
                         }
-                        className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold"
+                        className="bg-emerald-700 hover:bg-emerald-600 text-white font-semibold"
                       >
                         <Download className="w-4 h-4 mr-1.5" /> Export CSV ({leads.length})
                       </Button>
@@ -291,7 +291,7 @@ const AdminPage = () => {
                               </div>
                             </div>
                             <div className="flex flex-col items-start sm:items-end gap-2 shrink-0">
-                              <span className="text-xs text-slate-400">{fmtDate(lead.created_at)}</span>
+                              <span className="text-xs text-slate-500">{fmtDate(lead.created_at)}</span>
                               <Select
                                 value={lead.status || "new"}
                                 onValueChange={(v) => updateStatus(lead.id, v)}
@@ -361,7 +361,7 @@ const AdminPage = () => {
                             toCsv(subs, SUB_COLUMNS)
                           )
                         }
-                        className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold"
+                        className="bg-emerald-700 hover:bg-emerald-600 text-white font-semibold"
                       >
                         <Download className="w-4 h-4 mr-1.5" /> Export CSV ({subs.length})
                       </Button>
@@ -397,7 +397,7 @@ const AdminPage = () => {
                             >
                               {s.frequency === "instant" ? "Instant Alerts" : "Weekly Top-10"}
                             </Badge>
-                            <span className="text-xs text-slate-400">{fmtDate(s.created_at)}</span>
+                            <span className="text-xs text-slate-500">{fmtDate(s.created_at)}</span>
                           </div>
                         </div>
                       ))}

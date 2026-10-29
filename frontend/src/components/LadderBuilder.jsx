@@ -64,6 +64,7 @@ const LadderBuilder = ({ rates = [] }) => {
                 <span className="text-lg font-bold text-[#16233d]">{fmt(total)}</span>
               </div>
               <Slider
+                aria-label="Total investment amount"
                 value={[total]}
                 min={1000}
                 max={250000}
@@ -106,24 +107,24 @@ const LadderBuilder = ({ rates = [] }) => {
                   </span>
                   <div>
                     <p className="font-semibold text-[#16233d] text-sm">{formatTerm(rung.term)}</p>
-                    <p className="text-xs text-slate-400">matures year {Math.ceil(rung.term / 12)}</p>
+                    <p className="text-xs text-slate-500">matures year {Math.ceil(rung.term / 12)}</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 flex-1 text-sm">
                   <div>
-                    <p className="text-xs text-slate-400">Deposit</p>
+                    <p className="text-xs text-slate-500">Deposit</p>
                     <p className="font-semibold text-[#16233d]">{fmt(rung.amount)}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-slate-400">Best APY</p>
-                    <p className="font-semibold text-emerald-600">{rung.apy.toFixed(2)}%</p>
+                    <p className="text-xs text-slate-500">Best APY</p>
+                    <p className="font-semibold text-emerald-700">{rung.apy.toFixed(2)}%</p>
                   </div>
                   <div className="col-span-2 sm:col-span-1">
-                    <p className="text-xs text-slate-400">Via</p>
+                    <p className="text-xs text-slate-500">Via</p>
                     <p className="font-medium text-slate-600 truncate">{rung.bank}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-slate-400">At Maturity</p>
+                    <p className="text-xs text-slate-500">At Maturity</p>
                     <p className="font-bold text-[#16233d]">{fmt(rung.value)}</p>
                   </div>
                 </div>
@@ -140,7 +141,7 @@ const LadderBuilder = ({ rates = [] }) => {
               </p>
             </div>
             <div className="text-right shrink-0">
-              <p className="text-xs text-slate-400 uppercase tracking-wide">Total projected interest</p>
+              <p className="text-xs text-slate-500 uppercase tracking-wide">Total projected interest</p>
               <p className="text-2xl font-bold text-emerald-400">+{fmt(totals.interest)}</p>
             </div>
           </div>

@@ -12,7 +12,7 @@ import { guides } from "./src/data/guides.js";
 import { articles } from "./src/data/articles.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const BUILD = path.join(__dirname, "build");
+const BUILD = path.join(__dirname, process.env.PRERENDER_DIR || "build");
 const PORT = 5050;
 const SITE_URL = "https://cavicord.tech";
 
@@ -73,6 +73,7 @@ const pages = [
   ...articles.map((a) => ({ route: `/articles/${a.slug}`, freq: "monthly", pri: "0.7", lastmod: a.dateModified })),
   { route: "/guides", freq: "weekly", pri: "0.7" },
   ...guides.map((g) => ({ route: `/guides/${g.slug}`, freq: "monthly", pri: "0.6" })),
+  { route: "/cd-rate-trends", freq: "daily", pri: "0.8" },
   { route: "/about", freq: "monthly", pri: "0.5" },
 ];
 
@@ -108,10 +109,19 @@ async function main() {
 
   let ok = 0;
   const all = [...pages, ...extraRoutes];
+  const rateRoutes = new Set([
+    "/",
+    ...termPages.map((p) => `/${p.slug}`),
+    ...landingPages.map((p) => `/${p.slug}`),
+  ]);
   for (const { route, visit } of all) {
     const target = `http://127.0.0.1:${PORT}${visit || route}`;
     try {
       await page.goto(target, { waitUntil: "networkidle0", timeout: 60000 });
+      if (rateRoutes.has(route)) {
+        // rates must be baked in — fail the route rather than shipping skeletons
+        await page.waitForSelector('[data-testid^="open-account-"]', { timeout: 20000 });
+      }
       await new Promise((r) => setTimeout(r, 400));
       let html = `<!doctype html>\n${await page.evaluate(() => document.documentElement.outerHTML)}`;
       let seenTitle = false;
