@@ -68,7 +68,7 @@ export const landingPages = [
     metaTitle: "Best 6-Month CD Rates Today — Top Short-Term APYs | Cavicord",
     metaDescription:
       "Compare 6-month CD rates from FDIC-insured banks. Earn well above savings-account yields while keeping your cash accessible within half a year.",
-    h1: "6-Month CD Rates",
+    h1: "Best 6-Month CD Rates Today",
     sub: "A six-month CD beats most savings accounts without a long lock-up — ideal for cash you'll want back within the year. Today's top short-term rates:",
     benefits: [
       { title: "Short Commitment", text: "Your money is back, with interest, in just six months." },
@@ -88,7 +88,7 @@ export const landingPages = [
     metaTitle: "High-Yield CD Rates Today — Top Online Bank APYs | Cavicord",
     metaDescription:
       "High-yield CDs pay well above the national average, mostly from low-overhead online banks. Compare today's highest APYs — all FDIC insured.",
-    h1: "High-Yield CDs",
+    h1: "High-Yield CD Rates Today",
     sub: "High-yield CDs come mostly from online banks with low overhead — same FDIC insurance, meaningfully higher APY. Ranked highest-first across all terms:",
     benefits: [
       { title: "Above Average", text: "Every listed rate is compared against the official FDIC national average." },
@@ -105,10 +105,10 @@ export const landingPages = [
     slug: "jumbo-cd-rates",
     term: "all",
     rateType: "jumbo",
-    metaTitle: "Best Jumbo CD Rates Today — $100K+ APYs Compared | Cavicord",
+    metaTitle: "Jumbo CD Rates Today — Best $100K+ APYs Compared | Cavicord",
     metaDescription:
       "Compare jumbo CD rates for deposits of $100,000 or more. See when jumbo APYs beat standard CDs — and how to stay fully FDIC-insured over $250K.",
-    h1: "Jumbo CD Rates",
+    h1: "Jumbo CD Rates Today",
     sub: "Jumbo CDs take $100,000+ deposits and sometimes pay a premium. Compare today's jumbo APYs — and remember FDIC insurance caps at $250,000 per bank.",
     benefits: [
       { title: "Large Deposits", text: "Built for $100,000+ positions — home-sale proceeds, exits, inheritances." },
@@ -119,6 +119,23 @@ export const landingPages = [
       { q: "Do jumbo CDs pay more than regular CDs?", a: "Sometimes, but the premium is small and often absent — many online banks pay the same APY at $1,000 as at $100,000. Always compare the actual numbers." },
       { q: "Is a $300,000 jumbo CD fully insured?", a: "Not at one bank — FDIC coverage caps at $250,000 per depositor, per bank. Split large balances across institutions or ownership categories to stay fully covered." },
       { q: "What's the minimum for a jumbo CD?", a: "Typically $100,000, though some banks set it at $50,000. Each listed rate shows its exact minimum." },
+      { q: "What is a super jumbo CD?", a: "A super jumbo CD has an even higher minimum — usually $250,000 or more. Because that's above the $250,000 FDIC limit at a single bank, any amount over the limit is uninsured unless you use joint, trust or retirement ownership categories, or a deposit-placement network that spreads it across banks." },
+      { q: "Which term pays the best jumbo CD rate?", a: "It changes with the rate cycle. When the Fed is expected to cut, banks often pay the most on 6- to 18-month jumbo CDs and less on 5-year terms; when rates are expected to rise, longer terms can pay more. Filter the table above by term to see today's leaders." },
+      { q: "Are jumbo CD rates negotiable?", a: "Sometimes, at smaller banks and credit unions — especially for relationship customers or deposits well above the minimum. Online banks usually publish one fixed rate. It costs nothing to ask a local bank to match the top APY in the table." },
+    ],
+    sections: [
+      {
+        heading: "Jumbo CD rates by term: 1-year, 2-year, 3-year and 5-year",
+        body: "Most people searching for jumbo CD rates are choosing between a 1-year and a 5-year commitment. A 1-year jumbo CD keeps $100,000+ working at a guaranteed rate while leaving you free to reinvest within twelve months. 2- and 3-year jumbo CDs lock today's APY through a likely change in Fed policy. A 5-year jumbo CD guarantees the rate longest but carries the largest early-withdrawal penalty — often 12 months of interest or more, which on $100,000 can be several thousand dollars. Use the term filter in the table to compare each length side by side.",
+      },
+      {
+        heading: "Jumbo CD vs. standard CD: is the premium real?",
+        body: "Historically, jumbo CDs paid a few basis points more than standard CDs from the same bank. Today, many of the highest-paying online banks pay the same APY whether you deposit $1,000 or $100,000 — so a standard CD from a top-ranked bank can beat a jumbo CD from a lower-paying one. Compare the APY in the table rather than the label: the right choice is simply the highest FDIC-insured rate for your term.",
+      },
+      {
+        heading: "Keeping $250,000+ fully FDIC-insured",
+        body: "FDIC insurance covers $250,000 per depositor, per insured bank, per ownership category. A $500,000 jumbo position at one bank in one name is half uninsured. To stay fully covered you can split the money across two or more banks, use separate ownership categories (individual, joint, revocable trust, IRA), or use a deposit-placement network that spreads one deposit across many FDIC-insured banks. Credit-union share certificates carry the same $250,000 protection through the NCUA.",
+      },
     ],
   },
   {
