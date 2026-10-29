@@ -40,6 +40,31 @@ const server = createServer((req, res) => {
 
 const today = new Date().toISOString().slice(0, 10);
 
+/* Remove render-blocking requests from the prerendered HTML:
+   1. The Google Fonts <link> is written with media="print" + onload="this.media='all'"
+      in index.html, but the headless browser has already run onload by the time we
+      snapshot the DOM, so the captured tag says media="all" (blocking again). Reset it.
+   2. Inline the hashed app stylesheet (~12 KB) into a <style> tag so first paint
+      doesn't wait on a second request. The file stays in build/ for the SPA fallback. */
+const cssCache = new Map();
+const unblockRender = (html) => {
+  html = html.replace(
+    /(<link[^>]*id="gfonts"[^>]*)media="all"/,
+    '$1media="print"'
+  );
+  html = html.replace(
+    /<link([^>]*)rel="stylesheet"([^>]*)href="(\/assets\/[^"]+\.css)"([^>]*)>/g,
+    (tag, a, b, href, c) => {
+      if (/id="gfonts"/.test(tag)) return tag;
+      const file = path.join(BUILD, href);
+      if (!fs.existsSync(file)) return tag;
+      if (!cssCache.has(href)) cssCache.set(href, fs.readFileSync(file, "utf8"));
+      return `<style data-inlined="${href}">${cssCache.get(href)}</style>`;
+    }
+  );
+  return html;
+};
+
 const pages = [
   { route: "/", freq: "daily", pri: "1.0" },
   ...termPages.map((p) => ({ route: `/${p.slug}`, freq: "daily", pri: "0.8" })),
@@ -48,6 +73,7 @@ const pages = [
   ...articles.map((a) => ({ route: `/articles/${a.slug}`, freq: "monthly", pri: "0.7", lastmod: a.dateModified })),
   { route: "/guides", freq: "weekly", pri: "0.7" },
   ...guides.map((g) => ({ route: `/guides/${g.slug}`, freq: "monthly", pri: "0.6" })),
+  { route: "/cd-rate-trends", freq: "daily", pri: "0.8" },
   { route: "/about", freq: "monthly", pri: "0.5" },
 ];
 
@@ -100,6 +126,7 @@ async function main() {
       let html = `<!doctype html>\n${await page.evaluate(() => document.documentElement.outerHTML)}`;
       let seenTitle = false;
       html = html.replace(/<title>[\s\S]*?<\/title>/g, (m) => (seenTitle ? "" : ((seenTitle = true), m)));
+      html = unblockRender(html);
       let outFile;
       if (route === "/") outFile = path.join(BUILD, "index.html");
       else if (route === "/404") outFile = path.join(BUILD, "404.html");
