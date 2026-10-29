@@ -7,11 +7,20 @@
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="preload" as="image" href="/assets/logo-cavicord-v2.webp" fetchpriority="high" />
-        <link rel="preconnect" href="https://t0.gstatic.com" />
-        <link rel="preconnect" href="https://t1.gstatic.com" />
-        <link rel="preconnect" href="https://t2.gstatic.com" />
-        <link rel="preconnect" href="https://t3.gstatic.com" />
+        <link
+            rel="preload"
+            as="image"
+            href="/assets/logo-cavicord-v2-230.webp"
+            imagesrcset="/assets/logo-cavicord-v2-230.webp 230w, /assets/logo-cavicord-v2-460.webp 460w, /assets/logo-cavicord-v2.webp 645w"
+            imagesizes="230px"
+            fetchpriority="high"
+        />
+        <!-- Bank logos come from Google's favicon service (www.google.com/s2 -> t0..t3.gstatic.com,
+             sharded at random) and only appear in the rate table below the fold. Four full
+             preconnects competed with the critical path and Lighthouse flagged them as unused;
+             a DNS lookup hint is all that's worth doing this early. -->
+        <link rel="dns-prefetch" href="https://www.google.com" />
+        <link rel="dns-prefetch" href="https://t0.gstatic.com" />
         <script>
             window.__pre = {
                 rates: fetch("/api/rates?term=all&rate_type=standard").then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
