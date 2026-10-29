@@ -10,7 +10,7 @@ export const RATES_LINKS = {
   // articles
   "what-is-a-jumbo-cd": { to: "/jumbo-cd-rates", label: "See today's jumbo CD rates" },
   "no-penalty-cd-guide": { to: "/no-penalty-cd-rates", label: "Compare no-penalty CD rates" },
-  "cd-early-withdrawal-penalty": { to: "/no-penalty-cd-rates", label: "Skip the penalty: no-penalty CD rates" },
+  "cd-early-withdrawal-penalty": { to: "/cd-early-withdrawal-penalty-calculator", label: "Calculate your exact penalty" },
   "what-happens-when-a-cd-matures": { to: "/best-cd-rates", label: "Renewing? Compare today's best CD rates" },
   "are-cds-worth-it": DEFAULT,
   "how-is-cd-interest-taxed": DEFAULT,

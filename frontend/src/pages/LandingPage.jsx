@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import RateTable from "../components/RateTable";
 import Calculator from "../components/Calculator";
+import PenaltyCalculator from "../components/PenaltyCalculator";
 import SEO from "../components/SEO";
 import { SITE_URL } from "../config";
 import { Badge } from "../components/ui/badge";
@@ -135,6 +136,11 @@ const LandingPage = () => {
           </div>
 
           {/* Calculator-first pages */}
+          {config.showPenaltyCalculator && (
+            <div className="mt-10 -mx-4 sm:-mx-6 lg:-mx-8" data-testid="landing-penalty-calculator">
+              <PenaltyCalculator />
+            </div>
+          )}
           {config.showCalculator && (
             <div className="mt-10 -mx-4 sm:-mx-6 lg:-mx-8" data-testid="landing-calculator">
               <Calculator rates={rates} loading={loading} />
