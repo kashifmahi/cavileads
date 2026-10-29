@@ -64,7 +64,9 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center group" data-testid="header-logo-link">
             <img
-              src="/assets/logo-cavicord-v2.webp"
+              src="/assets/logo-cavicord-v2-230.webp"
+              srcSet="/assets/logo-cavicord-v2-230.webp 230w, /assets/logo-cavicord-v2-460.webp 460w, /assets/logo-cavicord-v2.webp 645w"
+              sizes="230px"
               alt="Cavicord — Compare CD Rates"
               width="645"
               height="112"

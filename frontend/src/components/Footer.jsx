@@ -15,7 +15,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center">
-              <img src="/assets/logo-cavicord-v2.webp" alt="Cavicord" width="645" height="112" loading="lazy" className="h-14 w-auto" />
+              <img src="/assets/logo-cavicord-v2-460.webp" srcSet="/assets/logo-cavicord-v2-460.webp 460w, /assets/logo-cavicord-v2.webp 645w" sizes="323px" alt="Cavicord" width="645" height="112" loading="lazy" decoding="async" className="h-14 w-auto" />
             </div>
             <p className="mt-4 text-sm text-slate-400 leading-relaxed max-w-sm">
               An independent resource helping savers compare the best certificate
