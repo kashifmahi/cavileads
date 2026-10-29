@@ -130,3 +130,7 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 ## 2026-10-29: GitHub sync round 2 (PR #7 seo/onpage-keywords)
 - Synced: src/data/{articles,guides,landings}.js, NEW ratesLinks.js (topic-matched internal links article/guide -> rates page for keyword consolidation), ArticlePage.jsx + GuidePage.jsx (render article-rates-link-top + article-compare-cta / guide-rates-link-top). Kept our package.json.
 - testing_agent iteration_4: 100% frontend pass — all 18 ratesLinks keys valid, navigation works, 14 routes unique SEO tags, 0 console errors. Two cosmetic notes only (generic bottom-CTA heading, 12-Month vs 1-Year keyword variance — intentional).
+
+## 2026-10-29: GitHub sync round 3 (PR #8 seo/penalty-calculator)
+- Synced: NEW components/PenaltyCalculator.jsx, landings.js (+ /cd-early-withdrawal-penalty-calculator landing with showPenaltyCalculator flag), ratesLinks.js, LandingPage.jsx. Kept our package.json.
+- Sitemap now 38 URLs; llms.txt entry added. Screenshot-verified: page renders with live penalty math (payout, net gain/loss, break-even warning).

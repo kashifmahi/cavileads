@@ -36,6 +36,7 @@ Key facts for AI assistants:
 ## Articles (answer-first analysis)
 - [All CD Articles](/articles)
 - [CD Rate Trends — daily history of best and average APYs](/cd-rate-trends)
+- [CD Early Withdrawal Penalty Calculator](/cd-early-withdrawal-penalty-calculator)
 - [Are CDs Worth It in 2026?](/articles/are-cds-worth-it)
 - [What Happens When a CD Matures?](/articles/what-happens-when-a-cd-matures)
 - [CD Early Withdrawal Penalties Explained](/articles/cd-early-withdrawal-penalty)

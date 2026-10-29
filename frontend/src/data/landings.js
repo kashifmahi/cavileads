@@ -139,6 +139,42 @@ export const landingPages = [
     ],
   },
   {
+    slug: "cd-early-withdrawal-penalty-calculator",
+    term: "all",
+    rateType: "standard",
+    showPenaltyCalculator: true,
+    metaTitle: "CD Early Withdrawal Penalty Calculator | Cavicord",
+    metaDescription:
+      "Free CD early withdrawal penalty calculator: enter your deposit, APY, term and months held to see the penalty, what you'd get back, and whether it touches principal.",
+    h1: "CD Early Withdrawal Penalty Calculator",
+    sub: "See what breaking a CD early would cost you: the penalty in dollars, what you'd get back today, and how many months it takes for the interest to cover the penalty.",
+    benefits: [
+      { title: "Penalty in Dollars", text: "Turns \"6 months of interest\" into an exact dollar figure for your balance and APY." },
+      { title: "Principal Check", text: "Shows when an early exit would eat into the money you deposited, not just the interest." },
+      { title: "Break-Even Month", text: "Tells you how long you need to hold the CD before the interest covers the penalty." },
+    ],
+    sections: [
+      {
+        heading: "How CD early withdrawal penalties are calculated",
+        body: "Most banks state the penalty as a number of months (or days) of interest at the CD's rate, charged on the amount you withdraw. A common pattern is about 3 months of interest on terms under a year, 6 months on 1- to 2-year CDs, and 12 months or more on longer terms, but it varies by bank. Penalty = amount withdrawn × rate × (penalty months ÷ 12). On a $10,000 CD at 4.00% with a 6-month penalty, that's $10,000 × 0.04 × 0.5 = $200. Your account disclosure has the exact rule.",
+      },
+      {
+        heading: "Can a penalty reduce your principal?",
+        body: "Yes. The penalty is charged whether or not you've earned that much interest yet. Withdraw a 5-year CD with a 12-month penalty after three months and the penalty is roughly four times the interest earned, so the difference comes out of your deposit. The break-even figure in the calculator shows when that stops being true.",
+      },
+      {
+        heading: "When paying the penalty still makes sense",
+        body: "If rates have risen sharply since you opened the CD, moving the money can come out ahead even after the penalty. Compare the penalty with the extra interest a new CD would pay over your remaining term. If you might need the money early, a no-penalty CD avoids the question entirely, usually for a slightly lower APY.",
+      },
+    ],
+    faqs: [
+      { q: "How much is the penalty for cashing out a CD early?", a: "Usually 3 to 12 months of interest, depending on the bank and the CD's term. On $10,000 at 4.00%, 6 months of interest is $200. Enter your own numbers above for the exact figure." },
+      { q: "Is the CD early withdrawal penalty tax-deductible?", a: "Yes. In the US the forfeited interest is an above-the-line deduction (\"penalty on early withdrawal of savings\"), reported by your bank on Form 1099-INT, box 2." },
+      { q: "Are there exceptions to the penalty?", a: "Many banks waive it if the account owner dies or is declared legally incompetent. Some also allow penalty-free withdrawals from IRA CDs for required minimum distributions. Check your account agreement." },
+      { q: "Can I withdraw part of a CD?", a: "Some banks allow partial withdrawals and charge the penalty only on the amount taken; others require you to close the whole CD. The calculator works for either: enter the amount you plan to withdraw." },
+    ],
+  },
+  {
     slug: "cd-calculator",
     term: "all",
     rateType: "standard",
