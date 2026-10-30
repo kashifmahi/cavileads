@@ -139,3 +139,8 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - Synced index.html (pre-app location.replace script for legacy slugs + www->non-www, map injected at build) + vite.config.mjs (legacyRedirects plugin reading src/data/redirects.js). Kept our llms.txt (repo missing penalty-calc line), package.json.
 - Verified: /jumbo-cd -> /jumbo-cd-rates via location.replace in preview.
 - Support confirmed: Emergent supports www<->root redirect (Domain tab) but NO custom path-based server-side 301s; backend only gets /api paths. User advised to email support.
+
+## 2026-10-30: Hotfix sync (PR #10 369a23f — www/apex redirect loop)
+- index.html inline script no longer does www->apex in JS (host-level redirect lives ONLY in Domain tab, cavicord.tech = Primary). Slug redirects unchanged.
+- testing_agent iteration_5: 100% pass — zero www references in served+built HTML, 4 legacy slugs redirect one-hop w/ query+hash preserved, canonicals + homepage load with no loop, 0 console errors.
+- Note: SITE_URL=apex matches Domain-tab primary=apex. If primary ever flips to www, SITE_URL/canonicals must flip too.

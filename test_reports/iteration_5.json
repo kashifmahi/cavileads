@@ -1,0 +1,21 @@
+{
+  "summary": "Frontend-only verification of the redirect-loop hotfix (PR #10). The HTML served from the preview contains no 'www.cavicord.tech' and no hostname logic. The __CAVICORD_REDIRECTS__ placeholder is replaced with the JSON map of 4 entries, and build/index.html is clean too. All 4 legacy slugs redirect to their canonical pages, and so do the trailing-slash and query+hash variants (query and hash are kept). Each redirect is one hop, and the target page renders its rate table. Canonical URLs and the homepage load with no redirect and no reload loop (homepage watched for 6s). No console errors.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Optional SEO note, not a bug: src/config.js SITE_URL='https://cavicord.tech' (apex). The hosting layer redirects apex -> www, so canonical, OG and sitemap URLs point to an address that gets redirected. Check that the canonical host matches the hosting-layer redirect direction.",
+    "The in-app <Navigate> fallback routes in App.jsx for the REDIRECTS map are a good second layer for client-side navigation; the inline script handles hard loads."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped)", "frontend": "100%"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Verified with curl of the served HTML and a Playwright framenavigated trace on: /jumbo-cd, /12-month-cd, /6-month-cd, /high-yield-cd, /jumbo-cd/, /jumbo-cd?x=1#t, /jumbo-cd-rates, /best-1-year-cd-rates, /. The production www/apex loop cannot be reproduced on the preview host."
+}
