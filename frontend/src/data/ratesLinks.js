@@ -23,7 +23,7 @@ export const RATES_LINKS = {
   "cd-vs-high-yield-savings": { to: "/high-yield-cd-rates", label: "Compare high-yield CD rates" },
   "cd-vs-treasury-bills": { to: "/best-6-month-cd-rates", label: "Compare 6-month CD rates" },
   "brokered-vs-bank-cds": DEFAULT,
-  "how-do-cds-work": DEFAULT,
+  "how-do-cds-work": { to: "/cd-rates", label: "See current CD rates for every term" },
   "cd-vs-money-market": { to: "/best-1-year-cd-rates", label: "Compare 1-year CD rates" },
   "cd-ladder-explained": { to: "/cd-rates", label: "Compare CD rates for every rung" },
   "are-cds-safe": DEFAULT,

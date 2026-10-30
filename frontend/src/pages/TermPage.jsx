@@ -46,7 +46,7 @@ const TermPage = () => {
 
   const nationalAvg =
     config.term !== "all" && national
-      ? national.rates.find((r) => String(r.term_months) === config.term)?.national_rate
+      ? national?.rates?.find?.((r) => String(r.term_months) === config.term)?.national_rate
       : null;
 
   const fmtDate = (d) =>
@@ -80,6 +80,19 @@ const TermPage = () => {
               },
             ],
           },
+          ...(config.faqs?.length
+            ? [
+                {
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  mainEntity: config.faqs.map((f) => ({
+                    "@type": "Question",
+                    name: f.q,
+                    acceptedAnswer: { "@type": "Answer", text: f.a },
+                  })),
+                },
+              ]
+            : []),
           {
             "@context": "https://schema.org",
             "@type": "ItemList",
@@ -142,6 +155,50 @@ const TermPage = () => {
             averages sourced live from FDIC.gov. Rates are subject to change — always confirm with the
             issuing bank. All listed institutions are federally insured (FDIC or NCUA).
           </p>
+
+          {/* Explainer content */}
+          {config.sections?.length > 0 && (
+            <div className="mt-14 max-w-3xl" data-testid="term-sections">
+              {config.sections.map((sec) => (
+                <section key={sec.heading} className="mt-10 first:mt-0">
+                  <h2 className="font-serif text-2xl font-bold text-[#16233d]">{sec.heading}</h2>
+                  <p className="mt-3 text-slate-600 leading-relaxed">{sec.body}</p>
+                </section>
+              ))}
+            </div>
+          )}
+
+          {config.faqs?.length > 0 && (
+            <section className="mt-12 max-w-3xl" data-testid="term-faqs">
+              <h2 className="font-serif text-2xl font-bold text-[#16233d]">Frequently asked questions</h2>
+              <div className="mt-5 space-y-4">
+                {config.faqs.map((f) => (
+                  <div key={f.q} className="rounded-xl border border-slate-200 p-5">
+                    <h3 className="font-semibold text-[#16233d]">{f.q}</h3>
+                    <p className="mt-2 text-sm text-slate-600 leading-relaxed">{f.a}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {config.related?.length > 0 && (
+            <section className="mt-12" data-testid="term-related">
+              <h2 className="font-serif text-2xl font-bold text-[#16233d]">Related guides & tools</h2>
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                {config.related.map((r) => (
+                  <Link
+                    key={r.to}
+                    to={r.to}
+                    className="group flex items-center justify-between rounded-xl border border-slate-200 p-4 hover:border-emerald-200 transition-colors duration-200"
+                  >
+                    <span className="text-sm font-medium text-[#16233d] group-hover:text-emerald-700 transition-colors">{r.label}</span>
+                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-emerald-600 shrink-0" />
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* CTA banner */}
           <div className="mt-12 rounded-2xl calc-result-bg p-7 sm:p-8 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
