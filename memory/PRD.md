@@ -149,3 +149,8 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - App.jsx: on any *.cavicord.tech host, BACKEND_URL = "" (relative /api, same origin) instead of baked REACT_APP_BACKEND_URL (was https://www.cavicord.tech -> CORS-blocked all API calls from apex). Preview/dev keep env URL.
 - prerender.mjs: rewrites http://127.0.0.1:5050/ modulepreload links to root-relative in saved SSG HTML.
 - Both files byte-identical to main; build clean; preview smoke-tested (rates render, API same-origin).
+
+## 2026-10-30: Sync PR #12 (983687e seo/thin-pages-internal-links)
+- 6 files byte-identical from main: Footer.jsx, ratesLinks.js, terms.js, GuidesIndex.jsx, TermPage.jsx, TrendsPage.jsx (SEO content, FAQs, internal links, JSON-LD).
+- testing_agent iteration_6: 100% pass — term pages (3 JSON-LD blocks valid each), all new internal links resolve (no 404s), trends toggles/chart/table work, guides index + footer fine, homepage regression OK, 0 console errors.
+- Noted (pre-existing, low priority): trends "Edge vs FDIC" card always compares against 12-mo FDIC average regardless of selected term (subtitle discloses it).
