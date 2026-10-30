@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import SEO from "../components/SEO";
+import { SITE_URL } from "../config";
 import { BookOpen, ArrowRight, Clock, ChevronRight } from "lucide-react";
 import { guides } from "../data/guides";
 
@@ -18,6 +19,28 @@ const GuidesIndex = () => {
         title="CD Guides & Comparisons — Cavicord"
         description="In-depth comparisons: CD vs high-yield savings, CD vs Treasury bills, brokered vs bank CDs. Make smarter decisions with your savings."
         path="/guides"
+        schemas={[
+          {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: "Cavicord CD Guides & Comparisons",
+            url: `${SITE_URL}/guides`,
+            hasPart: guides.map((g) => ({
+              "@type": "Article",
+              headline: g.title,
+              url: `${SITE_URL}/guides/${g.slug}`,
+              datePublished: g.datePublished,
+            })),
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+              { "@type": "ListItem", position: 2, name: "Guides", item: `${SITE_URL}/guides` },
+            ],
+          },
+        ]}
       />
       <Header />
       <main className="pt-16">

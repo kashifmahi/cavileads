@@ -190,6 +190,39 @@ export default function TrendsPage() {
             </div>
           )}
 
+          <div className="mt-14 max-w-3xl" data-testid="trends-explainer">
+            <h2 className="font-serif text-2xl font-bold text-[#16233d]">How we collect this data</h2>
+            <p className="mt-3 text-slate-600 leading-relaxed">
+              Every morning we check the APYs on new CDs at the FDIC- and NCUA-insured banks in our
+              rate tables and record the highest and the average APY for each term. The dashed line is
+              the FDIC's national average rate for 12-month CDs, which includes thousands of banks and
+              credit unions, most of which pay far less than the leading online banks. The gap between
+              the two lines shows how much you gain by shopping around instead of accepting your local
+              bank's rate.
+            </p>
+            <h2 className="mt-10 font-serif text-2xl font-bold text-[#16233d]">What moves CD rates</h2>
+            <p className="mt-3 text-slate-600 leading-relaxed">
+              CD rates follow the Federal Reserve's policy rate and Treasury yields. When the Fed cuts
+              rates, or the market expects it to, banks lower the APYs on new CDs, often before the cut
+              happens. Rates on longer terms move with longer Treasury yields, so short and long CDs
+              don't always move together. Competition matters too: banks that need deposits raise rates
+              on specific terms, which is why promotional rates appear on odd terms like 7 or 18 months.
+              A CD you've already opened keeps its rate until maturity, whatever happens next.
+            </p>
+            <h2 className="mt-10 font-serif text-2xl font-bold text-[#16233d]">Using the trend</h2>
+            <p className="mt-3 text-slate-600 leading-relaxed">
+              If the best rates are drifting down, locking a longer term keeps today's yield; see{" "}
+              <Link to="/best-5-year-cd-rates" className="text-emerald-700 underline underline-offset-2">5-year CD rates</Link>{" "}
+              and our explainer on{" "}
+              <Link to="/articles/fed-rate-cuts-and-cd-rates" className="text-emerald-700 underline underline-offset-2">how Fed cuts affect CD rates</Link>.
+              If you're unsure which way rates will go, a{" "}
+              <Link to="/guides/cd-ladder-explained" className="text-emerald-700 underline underline-offset-2">CD ladder</Link>{" "}
+              or a{" "}
+              <Link to="/no-penalty-cd-rates" className="text-emerald-700 underline underline-offset-2">no-penalty CD</Link>{" "}
+              keeps your options open.
+            </p>
+          </div>
+
           <div className="mt-12 rounded-2xl bg-slate-50 border border-slate-200 p-8 text-center">
             <h3 className="font-serif text-xl font-bold text-[#16233d]">Lock in today's best rate</h3>
             <p className="mt-2 text-sm text-slate-600 max-w-md mx-auto">
