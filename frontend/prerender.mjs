@@ -48,6 +48,10 @@ const today = new Date().toISOString().slice(0, 10);
       doesn't wait on a second request. The file stays in build/ for the SPA fallback. */
 const cssCache = new Map();
 const unblockRender = (html) => {
+  // Vite's modulepreload links are written as absolute URLs to the temporary
+  // prerender server (http://127.0.0.1:5050/assets/...). Make them root-relative
+  // so the saved HTML doesn't point visitors (and Googlebot) at their own localhost.
+  html = html.split(`http://127.0.0.1:${PORT}/`).join("/");
   html = html.replace(
     /(<link[^>]*id="gfonts"[^>]*)media="all"/,
     '$1media="print"'

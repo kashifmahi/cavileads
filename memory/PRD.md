@@ -144,3 +144,8 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - index.html inline script no longer does www->apex in JS (host-level redirect lives ONLY in Domain tab, cavicord.tech = Primary). Slug redirects unchanged.
 - testing_agent iteration_5: 100% pass — zero www references in served+built HTML, 4 legacy slugs redirect one-hop w/ query+hash preserved, canonicals + homepage load with no loop, 0 console errors.
 - Note: SITE_URL=apex matches Domain-tab primary=apex. If primary ever flips to www, SITE_URL/canonicals must flip too.
+
+## 2026-10-30: Critical sync (PR #11 b22a969 — same-origin API)
+- App.jsx: on any *.cavicord.tech host, BACKEND_URL = "" (relative /api, same origin) instead of baked REACT_APP_BACKEND_URL (was https://www.cavicord.tech -> CORS-blocked all API calls from apex). Preview/dev keep env URL.
+- prerender.mjs: rewrites http://127.0.0.1:5050/ modulepreload links to root-relative in saved SSG HTML.
+- Both files byte-identical to main; build clean; preview smoke-tested (rates render, API same-origin).
