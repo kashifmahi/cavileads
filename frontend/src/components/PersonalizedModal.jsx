@@ -120,6 +120,12 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
       // Google Ads / GA4 conversion event (fires only if a Google tag is installed)
       try {
         if (window.gtag) {
+          // Google Ads conversion: "Cavicord lead form" (account 193-165-7031)
+          window.gtag("event", "conversion", {
+            send_to: "AW-18545024484/wZYWCIu7ga8dEOS7-opF",
+            value: 1.0,
+            currency: "PKR",
+          });
           window.gtag("event", "generate_lead", {
             source_page: attr.source_page || window.location.pathname,
             utm_campaign: attr.utm_campaign || "",
