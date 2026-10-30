@@ -42,7 +42,16 @@ const PageFallback = () => (
   </div>
 );
 
-const BACKEND_URL = import.meta.env.REACT_APP_BACKEND_URL;
+// On the live site, always call the API on the same origin the page was served from.
+// REACT_APP_BACKEND_URL was baked in as https://www.cavicord.tech, so visitors on
+// https://cavicord.tech hit a cross-origin URL: the browser blocked every request
+// (CORS) and, once www started redirecting to the apex, rates, national averages,
+// lead capture, rate alerts and chat all failed. A relative "/api" can't drift from
+// the domain setting. Preview/dev hosts keep using the env URL.
+const ENV_BACKEND_URL = import.meta.env.REACT_APP_BACKEND_URL || "";
+const ON_LIVE_DOMAIN =
+  typeof window !== "undefined" && /(^|\.)cavicord\.tech$/.test(window.location.hostname);
+const BACKEND_URL = ON_LIVE_DOMAIN ? "" : ENV_BACKEND_URL;
 export const API = `${BACKEND_URL}/api`;
 
 const Home = () => {
