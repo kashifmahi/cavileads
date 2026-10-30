@@ -154,3 +154,8 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - 6 files byte-identical from main: Footer.jsx, ratesLinks.js, terms.js, GuidesIndex.jsx, TermPage.jsx, TrendsPage.jsx (SEO content, FAQs, internal links, JSON-LD).
 - testing_agent iteration_6: 100% pass — term pages (3 JSON-LD blocks valid each), all new internal links resolve (no 404s), trends toggles/chart/table work, guides index + footer fine, homepage regression OK, 0 console errors.
 - Noted (pre-existing, low priority): trends "Edge vs FDIC" card always compares against 12-mo FDIC average regardless of selected term (subtitle discloses it).
+
+## 2026-10-30: Sync PR #13 (3e55486 — Google Ads tag + lead conversion)
+- index.html: gtag bootstrap + AW-18545024484 (external gtag.js loads ONLY on *.cavicord.tech hostname gate). PersonalizedModal fires conversion (send_to AW-18545024484/wZYWCIu7ga8dEOS7-opF, value 1, currency PKR) + generate_lead after successful POST /api/leads.
+- testing_agent iteration_7: ALL PASS — gtag fn + dataLayer config, empty-submit validation (8 errors, 0 API calls), full submit 200 + success matches, conversion + generate_lead pushed to dataLayer, lead in admin then cleaned, homepage regression + backend suite 12/12.
+- Notes for user: currency is PKR (confirm matches Ads account), cookie banner can overlap modal bottom at 1080p (clicks still work), Consent Mode not wired to cookie banner, verify real beacon with Tag Assistant on production.
