@@ -5,17 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#16233d" />
         <script>
-            /* Real redirects for SPA hosting without server-side 301s (see vite.config.mjs).
-               1) www.cavicord.tech -> cavicord.tech  2) retired slugs -> their canonical page. */
+            /* Real redirects for SPA hosting without server-side 301s (see vite.config.mjs):
+               retired slugs -> their canonical page, on the same host.
+               Host-level redirects (www <-> apex) are deliberately NOT done here: they belong
+               to the hosting layer (Emergent Domain tab). Doing them in JS as well caused a
+               redirect loop on Oct 30 when the host was set to apex -> www. */
             (function () {
                 try {
                     var map = __CAVICORD_REDIRECTS__;
-                    var host = location.hostname, path = location.pathname.replace(/\/+$/, "") || "/";
-                    var to = map[path] || null;
-                    var wwwHost = host === "www.cavicord.tech";
-                    if (to || wwwHost) {
-                        var origin = wwwHost ? "https://cavicord.tech" : location.origin;
-                        location.replace(origin + (to || location.pathname) + location.search + location.hash);
+                    var path = location.pathname.replace(/\/+$/, "") || "/";
+                    var to = map[path];
+                    if (to && to !== path) {
+                        location.replace(location.origin + to + location.search + location.hash);
                     }
                 } catch (e) {}
             })();
