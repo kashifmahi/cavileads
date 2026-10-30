@@ -32,6 +32,11 @@ const Footer = () => {
           <div>
             <h2 className="text-sm font-semibold text-white uppercase tracking-wider">Best CD Rates</h2>
             <ul className="mt-4 space-y-3 text-sm">
+              <li>
+                <Link to="/cd-rates" className="text-slate-400 hover:text-emerald-400 transition-colors duration-200">
+                  Current CD Rates (All Terms)
+                </Link>
+              </li>
               {rateNavLinks.map((p) => (
                 <li key={p.slug}>
                   <Link
@@ -70,9 +75,14 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="/#calculator" className="text-slate-400 hover:text-emerald-400 transition-colors duration-200">
+                <Link to="/cd-calculator" className="text-slate-400 hover:text-emerald-400 transition-colors duration-200">
                   CD Earnings Calculator
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link to="/cd-early-withdrawal-penalty-calculator" className="text-slate-400 hover:text-emerald-400 transition-colors duration-200">
+                  CD Penalty Calculator
+                </Link>
               </li>
               <li>
                 <a href="/#ladder" className="text-slate-400 hover:text-emerald-400 transition-colors duration-200">
