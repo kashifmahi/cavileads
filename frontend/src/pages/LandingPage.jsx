@@ -16,6 +16,7 @@ import { getLanding } from "../data/landings";
 import { monthYear } from "../data/terms";
 import { useRatesModal } from "../context/RatesModalContext";
 import { API } from "../App";
+import { SectionTable } from "../components/ContentExtras";
 
 const LandingPage = () => {
   const location = useLocation();
@@ -158,6 +159,35 @@ const LandingPage = () => {
             </div>
           )}
 
+          {/* Live "CD rates today" summary: best APY per term from the same live data as the table */}
+          {config.showTodaySummary && rates.length > 0 && (() => {
+            const byTerm = {};
+            rates.forEach((r) => {
+              if (!byTerm[r.term_months] || r.apy > byTerm[r.term_months].apy) byTerm[r.term_months] = r;
+            });
+            const label = (m) => (m < 12 ? `${m}-month` : m % 12 === 0 ? `${m / 12}-year` : `${m}-month`);
+            const rows = Object.values(byTerm).sort((a, b) => a.term_months - b.term_months);
+            return (
+              <section className="mt-10" data-testid="cd-rates-today">
+                <h2 className="font-serif text-2xl font-bold text-[#16233d]">
+                  CD rates today{updatedAt ? ` — ${fmtDate(updatedAt)}` : ""}
+                </h2>
+                <p className="mt-2 text-sm text-slate-600">The highest APY we track for each term right now, from FDIC- and NCUA-insured institutions.</p>
+                <SectionTable
+                  table={{
+                    columns: ["Term", "Top APY", "Bank", "Minimum deposit"],
+                    rows: rows.map((r) => [
+                      label(r.term_months),
+                      `${r.apy.toFixed(2)}%`,
+                      r.bank,
+                      r.min_deposit ? `$${Number(r.min_deposit).toLocaleString("en-US")}` : "$0",
+                    ]),
+                  }}
+                />
+              </section>
+            );
+          })()}
+
           {/* Rates table */}
           <div className="mt-10">
             <h2 className="font-serif text-2xl font-bold text-[#16233d]">Compare Rates</h2>
@@ -177,6 +207,17 @@ const LandingPage = () => {
               <section key={s.heading} className="mt-12 max-w-3xl">
                 <h2 className="font-serif text-2xl font-bold text-[#16233d]">{s.heading}</h2>
                 <p className="mt-3 text-slate-600 leading-relaxed">{s.body}</p>
+                {s.bullets && (
+                  <ul className="mt-4 space-y-2.5">
+                    {s.bullets.map((b) => (
+                      <li key={b} className="flex items-start gap-2.5 text-slate-600 leading-relaxed">
+                        <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <SectionTable table={s.table} />
               </section>
             ))}
 

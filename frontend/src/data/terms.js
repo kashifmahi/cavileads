@@ -171,6 +171,7 @@ export const rateNavLinks = [
   { slug: "high-yield-cd-rates", title: "High-Yield CD Rates" },
   { slug: "jumbo-cd-rates", title: "Jumbo CD Rates" },
   { slug: "no-penalty-cd-rates", title: "Best No-Penalty CD Rates" },
+  { slug: "cd-rates-for-seniors", title: "CD Rates for Seniors" },
 ];
 
 export const getTermPage = (slug) => termPages.find((p) => p.slug === slug);
