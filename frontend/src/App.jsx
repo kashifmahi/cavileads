@@ -18,6 +18,7 @@ import SEO from "./components/SEO";
 import { faqs } from "./mock/mock";
 import { RatesModalProvider } from "./context/RatesModalContext";
 import { termPages, monthYear } from "./data/terms";
+import { privacyPolicy, termsOfService } from "./data/legal";
 import { landingPages } from "./data/landings";
 import { REDIRECTS } from "./data/redirects";
 import { captureAttribution } from "./lib/attribution";
@@ -35,6 +36,7 @@ const LandingPage = lazy(() => import("./pages/LandingPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 const TrendsPage = lazy(() => import("./pages/TrendsPage"));
 const AdminPage = lazy(() => import("./pages/AdminPage"));
+const LegalPage = lazy(() => import("./pages/LegalPage"));
 
 const PageFallback = () => (
   <div className="min-h-screen bg-white pt-16">
@@ -175,6 +177,8 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<AboutPage />} />
+                <Route path="/privacy" element={<LegalPage doc={privacyPolicy} />} />
+                <Route path="/terms" element={<LegalPage doc={termsOfService} />} />
                 <Route path="/admin" element={<AdminPage />} />
                 <Route path="/guides" element={<GuidesIndex />} />
                 <Route path="/guides/:slug" element={<GuidePage />} />

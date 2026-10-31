@@ -79,6 +79,8 @@ const pages = [
   ...guides.map((g) => ({ route: `/guides/${g.slug}`, freq: "monthly", pri: "0.6", lastmod: g.dateModified })),
   { route: "/cd-rate-trends", freq: "daily", pri: "0.8" },
   { route: "/about", freq: "monthly", pri: "0.5" },
+  { route: "/privacy", freq: "yearly", pri: "0.2" },
+  { route: "/terms", freq: "yearly", pri: "0.2" },
 ];
 
 // Non-sitemap routes that still need static files
