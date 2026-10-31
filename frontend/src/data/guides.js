@@ -1,3 +1,6 @@
+import { newGuides } from "./newGuides.js";
+import { applyExpansion } from "./expansions.js";
+
 // Comparison guides — same answer-first format as articles.js
 // (quick answer, dated, sectioned with bullets, FAQ). Search Console showed
 // the article format ranking and the old 250-word guide format not ranking.
@@ -556,5 +559,8 @@ export const guides = [
     ],
   },
 ];
+
+guides.push(...newGuides);
+guides.forEach(applyExpansion);
 
 export const getGuide = (slug) => guides.find((g) => g.slug === slug);

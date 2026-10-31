@@ -27,6 +27,9 @@ export const RATES_LINKS = {
   "cd-vs-money-market": { to: "/best-1-year-cd-rates", label: "Compare 1-year CD rates" },
   "cd-ladder-explained": { to: "/cd-rates", label: "Compare CD rates for every rung" },
   "are-cds-safe": DEFAULT,
+  "i-bonds-vs-cds": { to: "/best-1-year-cd-rates", label: "Compare 1-year CD rates" },
+  "cds-vs-bond-funds": { to: "/best-3-year-cd-rates", label: "Compare 3-year CD rates" },
+  "cd-vs-treasury-bonds": { to: "/best-5-year-cd-rates", label: "Compare 5-year CD rates" },
 };
 
 export const ratesLinkFor = (slug) => RATES_LINKS[slug] || DEFAULT;
