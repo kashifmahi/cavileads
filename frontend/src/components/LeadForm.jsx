@@ -311,7 +311,7 @@ export const LeadFields = ({ lf, compact = false, idPrefix = "" }) => {
       </Button>
       <p className="text-[11px] text-slate-500 text-center flex items-center justify-center gap-1">
         <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-        Sent securely and shared only with our partner banks and advisors to answer your request.
+        Sent securely to Cavicord. We never sell or share your contact details.
       </p>
     </form>
   );
