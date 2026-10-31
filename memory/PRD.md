@@ -185,3 +185,9 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - NEW landing /cd-rates-for-seniors (header+footer nav, 32 internal links all resolve). /best-cd-rates has "CD rates today" summary table. Penalty/jumbo/high-yield/no-penalty/maturity content expanded. CD vs annuity calculator interactive + math hand-verified, no NaN.
 - testing_agent iteration_10: 100% pass. LOW note (upstream code): annuity years input silently caps at 30 and strips minus sign — cosmetic.
 - NOT deployed per user instruction.
+
+## 2026-10-31: PR #18 logos fix (28ad0ab) — partial pull + manual edit
+- RatesSection.jsx pulled byte-identical (Details dialog BankAvatar gets url={selected.url}).
+- PersonalizedModal NOT pulled (kept simplified consent form); manually added `import { BankAvatar } from "./RateTable"` + replaced coloured-initial span with <BankAvatar ... size="w-9 h-9"/> in matches list.
+- Verified via mocked POST /api/leads (page.route — NO real lead): Details dialog shows loaded logo img (s2 favicon), results view shows 2 matches with loaded avatar imgs. Marcus renders letter fallback site-wide (favicon quality) — consistent, pre-existing.
+- NOT deployed. User to push via Save to GitHub so main gets the form changes.
