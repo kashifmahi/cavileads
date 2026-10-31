@@ -1,12 +1,6 @@
 // Non-callable brokered CD options displayed before a visitor submits an inquiry.
 // Issuer details are shared by a Cavicord specialist after the form is completed.
 export const BROKERED_OPTIONS = [
-  { id: "b60a", apy: 5.6, termMonths: 60, min: 100000, schedule: "Semi-annually", availability: "Limited" },
-  { id: "b60b", apy: 5.45, termMonths: 60, min: 50000, schedule: "Semi-annually", availability: "Available" },
-  { id: "b48a", apy: 5.38, termMonths: 48, min: 100000, schedule: "Semi-annually", availability: "Limited" },
-  { id: "b48b", apy: 5.2, termMonths: 48, min: 50000, schedule: "Semi-annually", availability: "Available" },
-  { id: "b36a", apy: 5.1, termMonths: 36, min: 100000, schedule: "Semi-annually", availability: "Limited" },
-  { id: "b36b", apy: 4.92, termMonths: 36, min: 50000, schedule: "Semi-annually", availability: "Available" },
   { id: "b24a", apy: 4.78, termMonths: 24, min: 100000, schedule: "Semi-annually", availability: "Available" },
   { id: "b24b", apy: 4.6, termMonths: 24, min: 50000, schedule: "Semi-annually", availability: "Available" },
   { id: "b18a", apy: 4.52, termMonths: 18, min: 100000, schedule: "Semi-annually", availability: "Available" },
@@ -23,7 +17,7 @@ export const BROKERED_OPTIONS = [
   { id: "b6c", apy: 3.05, termMonths: 6, min: 50000, schedule: "At maturity", availability: "Available" },
 ];
 
-export const TOP_BROKERED_APY = 5.6;
+export const TOP_BROKERED_APY = 4.78;
 
 const addMonths = (months) => {
   const d = new Date();
@@ -55,6 +49,6 @@ export const topApyForTerm = (term) => {
 };
 
 // Nearest term supported by the lead form's term dropdown
-export const MODAL_TERM_MAP = { 6: 6, 9: 6, 12: 12, 18: 12, 24: 24, 36: 36, 48: 36, 60: 60 };
+export const MODAL_TERM_MAP = { 6: 6, 9: 6, 12: 12, 18: 18, 24: 24 };
 
 export const fmtMin = (n) => `$${n.toLocaleString("en-US")}`;

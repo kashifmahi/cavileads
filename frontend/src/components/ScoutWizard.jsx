@@ -20,8 +20,7 @@ const TERMS = [
   { label: "6–9 months", value: 6 },
   { label: "12 months", value: 12 },
   { label: "18 months", value: 18 },
-  { label: "2–3 years", value: 24 },
-  { label: "4–5 years", value: 60 },
+  { label: "2 years", value: 24 },
   { label: "Not sure yet", value: 12 },
 ];
 const TIMING = ["Immediately", "Within 1 week", "Within 1 month", "Just exploring options"];

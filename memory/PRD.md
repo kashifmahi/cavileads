@@ -223,3 +223,8 @@ Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-ca
 - P1: Weekly top-10 subscriber email still names banks (bypasses the issuer-gate via a mere email signup) — decide whether to anonymize.
 - P2: Admin view for zip_code column in CSV export.
 - P2: Consider a brokered-options admin editor (ladder currently hardcoded in brokered.js).
+
+## 2026-10-31 (follow-up fixes after redesign)
+- Minimums capped at $50K/$100K only (no 250K/500K) across all 20→14 option cards; deposit filter simplified.
+- Offered terms restricted to 6/9/12/18/24 months everywhere: brokered ladder (14 rows, top 4.78% 2-yr), hero badge+preview pills, wizard & lead-form term dropdowns, options term filter, Calculator termOptions, LadderBuilder (6-24mo rungs, default $50K), WhyCDs + FAQ ladder copy, llms.txt. SSG rebuilt, homepage verified clean of 3/4/5-year mentions.
+- NOTE: /best-3-year-cd-rates and /best-5-year-cd-rates SEO pages still exist (show all 6-24mo options via fallback) — user has not asked to remove them.

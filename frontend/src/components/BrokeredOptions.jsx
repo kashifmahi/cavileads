@@ -21,7 +21,7 @@ import {
 
 const TERM_FILTERS = [
   { label: "Any term", value: "all" },
-  ...[6, 9, 12, 18, 24, 36, 48, 60].map((m) => ({ label: termLabel(m), value: String(m) })),
+  ...[6, 9, 12, 18, 24].map((m) => ({ label: termLabel(m), value: String(m) })),
 ];
 
 const DEPOSIT_FILTERS = [

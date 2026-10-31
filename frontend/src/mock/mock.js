@@ -85,7 +85,7 @@ export const whyCds = [
     icon: "CalendarClock",
     title: "Flexible Terms",
     description:
-      "Choose terms from 3 months to 5 years to match your financial goals and liquidity needs.",
+      "Choose terms from 6 months to 2 years to match your financial goals and liquidity needs.",
   },
   {
     icon: "LineChart",
@@ -119,7 +119,7 @@ export const faqs = [
   {
     question: "What is a CD ladder?",
     answer:
-      "A CD ladder is a strategy where you split your money across multiple CDs with staggered maturity dates — for example 1, 2, 3, 4, and 5 years. As each CD matures, you reinvest it into a new long-term CD. This gives you regular access to a portion of your funds while capturing higher long-term rates.",
+      "A CD ladder is a strategy where you split your money across multiple CDs with staggered maturity dates — for example 6, 9, 12, 18 and 24 months. As each CD matures, you reinvest it into a new longer-term CD. This gives you regular access to a portion of your funds while capturing higher rates.",
   },
   {
     question: "What is APY and how is it different from the interest rate?",

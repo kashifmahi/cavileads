@@ -9,7 +9,7 @@ const trustItems = [
   { icon: Fingerprint, title: "No SSN needed", sub: "Compare without one" },
 ];
 
-const PREVIEW_TERMS = [6, 9, 12, 24, 60];
+const PREVIEW_TERMS = [6, 9, 12, 18, 24];
 
 const Hero = () => {
   const [previewTerm, setPreviewTerm] = useState(12);

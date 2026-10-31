@@ -33,9 +33,8 @@ const timeframeOptions = [
 const termOptions = [
   { label: "6 months", value: 6 },
   { label: "12 months", value: 12 },
+  { label: "18 months", value: 18 },
   { label: "2 years", value: 24 },
-  { label: "3 years", value: 36 },
-  { label: "5 years", value: 60 },
 ];
 
 const initialForm = {
