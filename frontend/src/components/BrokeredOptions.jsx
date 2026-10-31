@@ -26,10 +26,8 @@ const TERM_FILTERS = [
 
 const DEPOSIT_FILTERS = [
   { label: "Any amount", value: "all" },
-  { label: "$50,000 – $99,999", value: "50000" },
-  { label: "$100,000 – $249,999", value: "100000" },
-  { label: "$250,000 – $499,999", value: "250000" },
-  { label: "$500,000+", value: "500000" },
+  { label: "$50,000 minimum", value: "50000" },
+  { label: "$100,000 minimum", value: "100000" },
 ];
 
 const FREQ_FILTERS = ["Any frequency", "Monthly", "Quarterly", "Semi-annually", "At maturity"];
