@@ -17,6 +17,7 @@ import {
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
+import { BankAvatar } from "./RateTable";
 import { Badge } from "./ui/badge";
 import { ArrowRight, CheckCircle2, Loader2, ShieldCheck } from "lucide-react";
 import { formatTerm } from "../mock/mock";
@@ -295,12 +296,24 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
                 {fieldError("term")}
               </div>
 
-              <p className="text-xs text-slate-500 leading-snug pt-1">
-                By submitting, you agree to our{" "}
-                <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline text-[#16233d] font-medium">Privacy Policy</a> and{" "}
-                <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline text-[#16233d] font-medium">Terms of Service</a>{" "}
-                and to being contacted about CD rates at the details above.
-              </p>
+              <div className="flex items-start gap-2.5 pt-1">
+                <Checkbox
+                  id="agree"
+                  checked={form.agree}
+                  onCheckedChange={(v) => set("agree")(Boolean(v))}
+                  className="mt-0.5 data-[state=checked]:bg-emerald-600 data-[state=checked]:border-emerald-600"
+                />
+                <Label htmlFor="agree" className="text-sm font-normal text-slate-600 leading-snug cursor-pointer">
+                  I agree to the{" "}
+                  <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline text-[#16233d] font-medium">Privacy Policy</a> and{" "}
+                  <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline text-[#16233d] font-medium">Terms of Service</a>, and
+                  that Cavicord and its partner banks and financial advisors may contact me at the email and
+                  phone number above, including by calls and texts sent with automated technology, about CD
+                  rates and related savings products. Consent isn't required to open any account. Msg &amp; data
+                  rates may apply; reply STOP to opt out.
+                </Label>
+              </div>
+              {fieldError("agree")}
 
               {serverError && <p className="text-sm text-red-600">{serverError}</p>}
 
