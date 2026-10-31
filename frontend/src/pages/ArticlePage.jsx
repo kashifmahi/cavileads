@@ -10,6 +10,7 @@ import { Clock, ChevronRight, ArrowRight, CheckCircle2, Lightbulb } from "lucide
 import { getArticle, articles } from "../data/articles";
 import { authorSchema, publisherSchema } from "../data/author";
 import { ratesLinkFor } from "../data/ratesLinks";
+import { SectionTable, SourcesList } from "../components/ContentExtras";
 
 const formatDate = (iso) =>
   new Date(`${iso}T00:00:00`).toLocaleDateString("en-US", {
@@ -137,6 +138,7 @@ const ArticlePage = () => {
                   ))}
                 </ul>
               )}
+              <SectionTable table={s.table} />
             </section>
           ))}
 
@@ -152,6 +154,8 @@ const ArticlePage = () => {
               ))}
             </div>
           </section>
+
+          <SourcesList sources={article.sources} />
 
           {/* CTA */}
           <div className="mt-12 rounded-2xl calc-result-bg p-7 text-white">
