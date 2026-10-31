@@ -366,7 +366,7 @@ export const EXPANSIONS = {
         heading: "No-penalty CD rules to check before you open one",
         body: "No-penalty (also called liquid) CDs share the same idea, but the fine print varies by bank.",
         bullets: [
-          "Waiting period: federal rules treat a withdrawal in the first 6 days as early, so most banks require you to wait at least 7 days after funding.",
+          "Waiting period: federal Regulation D requires a penalty on withdrawals in the first 6 days, so most banks require you to wait at least 7 days after funding.",
           "Full withdrawal only: many banks let you take out the whole balance and close the CD, but not a partial withdrawal.",
           "Minimum deposit: often $0–$1,000; check whether a higher balance earns a higher rate.",
           "What happens at maturity: like any CD, it may auto-renew into a new term at the bank's then-current rate.",
@@ -407,7 +407,7 @@ export const EXPANSIONS = {
         a: "Yes, when held at an FDIC-insured bank (or an NCUA-insured credit union), up to $250,000 per depositor, per institution, per ownership category — the same as any CD.",
       },
     ],
-    sources: [FDIC, NCUA, FDIC_RATES],
+    sources: [FDIC, NCUA, FDIC_RATES, { label: "eCFR — 12 CFR 204.2(c), Regulation D time deposits", url: "https://www.ecfr.gov/current/title-12/chapter-II/subchapter-A/part-204/section-204.2" }],
   },
   "what-happens-when-a-cd-matures": {
     metaTitle: "What Happens When a CD Matures? Grace Period Guide",
@@ -423,7 +423,7 @@ export const EXPANSIONS = {
         table: {
           columns: ["When", "What happens"],
           rows: [
-            ["About 2–4 weeks before", "The bank sends a maturity notice with the renewal term and, often, the renewal rate. Banks must give advance notice for automatically renewing CDs longer than one month."],
+            ["About 30 days before", "The bank sends a maturity notice. For automatically renewing CDs longer than one month, banks must send it at least 30 days before maturity (or 20 days before the end of a grace period of at least 5 days); for non-renewing CDs longer than one year, at least 10 days before maturity."],
             ["Maturity date", "The term ends. You've earned the full rate with no penalty."],
             ["Grace period (often 7–10 days)", "Withdraw, add money, change the term or move the money with no penalty."],
             ["After the grace period", "If you did nothing, the CD has renewed for a new term at the bank's current rate, and early-withdrawal penalties apply again."],
@@ -439,14 +439,14 @@ export const EXPANSIONS = {
     faqs: [
       {
         q: "Is CD interest taxed when the CD matures?",
-        a: "CD interest is generally taxable in the year it's credited to your account, even if you don't withdraw it — not only at maturity. Banks report $10 or more of interest on Form 1099-INT. CDs in an IRA follow IRA tax rules instead.",
+        a: "CD interest is generally taxable in the year it's credited and available to you, even if you leave it in the CD — not only at maturity. For CDs longer than one year that pay interest only at maturity, part of the interest is taxed each year under the IRS original issue discount (OID) rules. Banks report $10 or more on Form 1099-INT (or 1099-OID), but smaller amounts are still taxable. CDs in an IRA follow IRA tax rules instead.",
       },
       {
         q: "Can I withdraw a CD after the grace period without a penalty?",
         a: "Usually not. Once the CD renews, it's a new term and the bank's early-withdrawal penalty applies. Some banks waive penalties in limited cases such as the owner's death; check the account terms.",
       },
     ],
-    sources: [FDIC, IRS_1099INT, { label: "CFPB — Regulation DD (Truth in Savings), §1030.5 maturity notices", url: "https://www.consumerfinance.gov/rules-policy/regulations/1030/5/" }],
+    sources: [FDIC, IRS_1099INT, IRS_550, { label: "CFPB — Regulation DD (Truth in Savings), §1030.5 maturity notices", url: "https://www.consumerfinance.gov/rules-policy/regulations/1030/5/" }],
   },
 };
 

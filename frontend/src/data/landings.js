@@ -99,7 +99,7 @@ export const landingPages = [
     sections: [
       {
         heading: "What makes a CD high-yield",
-        body: "There's no official definition. In practice a high-yield CD pays well above the FDIC national average rate for the same term — often several times it — and usually comes from an online bank or credit union with lower costs than a branch network. The insurance is identical: FDIC or NCUA coverage up to $250,000 per depositor, per institution, per ownership category.",
+        body: "There's no official definition. In practice a high-yield CD pays well above the FDIC national average rate for the same term — often around double it or more — and usually comes from an online bank or credit union with lower costs than a branch network. The insurance is identical: FDIC or NCUA coverage up to $250,000 per depositor, per institution, per ownership category.",
       },
       {
         heading: "High-yield CD vs high-yield savings account",
@@ -162,7 +162,7 @@ export const landingPages = [
           columns: ["Deposit", "Interest in 12 months at 4.25% APY", "Fully FDIC insured at one bank (one owner)?"],
           rows: [
             ["$100,000", "$4,250", "Yes"],
-            ["$250,000", "$10,625", "Yes — exactly at the limit (interest included)"],
+            ["$250,000", "$10,625", "Not fully — interest above $250,000 is uninsured; keep principal under about $240,000 or use a joint or trust account"],
             ["$500,000", "$21,250", "No — split across banks or ownership categories"],
           ],
           caption: "Illustrative APY. The $250,000 limit includes principal and accrued interest.",
@@ -173,8 +173,8 @@ export const landingPages = [
         body: "A jumbo CD usually starts at $100,000; a super jumbo CD at $250,000 or more. Super jumbo minimums sit at or above the FDIC limit for one depositor at one bank, so check coverage before you deposit.",
         bullets: [
           "Joint account with two owners: up to $500,000 insured at one bank.",
-          "Revocable trust (payable-on-death) accounts: up to $250,000 per beneficiary, per owner, subject to FDIC rules.",
-          "IRA CDs are a separate ownership category with their own $250,000 limit.",
+          "Revocable trust (payable-on-death) accounts: up to $250,000 per beneficiary, counting up to 5 beneficiaries — at most $1,250,000 per owner at one bank.",
+          "IRAs are a separate ownership category: $250,000 per owner at each bank, for all of that owner's IRAs and self-directed retirement accounts combined.",
           "Deposit-placement networks can spread one large deposit across many FDIC-insured banks.",
         ],
       },
@@ -363,8 +363,8 @@ export const landingPages = [
         body: "Retirees often hold more than one bank's insurance limit after selling a home or rolling over a pension.",
         bullets: [
           "Joint account (you and a spouse): up to $500,000 at one bank.",
-          "Revocable trust or payable-on-death beneficiaries: coverage up to $250,000 per beneficiary, per owner, subject to FDIC rules.",
-          "IRAs and other retirement accounts: a separate $250,000 category.",
+          "Revocable trust or payable-on-death beneficiaries: up to $250,000 per beneficiary, counting up to 5 beneficiaries — at most $1,250,000 per owner at one bank.",
+          "IRAs are a separate ownership category: $250,000 per owner at each bank, for all of that owner's IRAs and self-directed retirement accounts combined.",
           "Spread money across several banks, or use a deposit-placement network.",
         ],
       },

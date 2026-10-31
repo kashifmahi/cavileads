@@ -109,7 +109,7 @@ const AnnuityCalculator = () => {
       </p>
       <p className="mt-2 text-xs text-slate-500 leading-relaxed">
         Estimate only: federal tax at a flat bracket, no state tax, fees or surrender charges. A CD is FDIC/NCUA insured to
-        $250,000; a fixed annuity is backed by the insurer and state guaranty associations. Not tax or financial advice.
+        $250,000; a fixed annuity is backed by the insurer's claims-paying ability and, up to state limits (often $250,000), by state guaranty associations. Not tax or financial advice.
       </p>
       <Link to="/cd-rates" className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-800 hover:text-emerald-700">
         Find today's best CD rates <ArrowRight className="w-4 h-4" />
