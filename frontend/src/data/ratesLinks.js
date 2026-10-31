@@ -18,7 +18,7 @@ export const RATES_LINKS = {
   "fed-rate-cuts-and-cd-rates": { to: "/best-5-year-cd-rates", label: "Lock a rate: best 5-year CD rates" },
   "can-you-add-money-to-a-cd": { to: "/high-yield-cd-rates", label: "Compare high-yield CD rates" },
   "cds-vs-bonds": { to: "/best-3-year-cd-rates", label: "Compare 3-year CD rates" },
-  "cd-vs-annuity": { to: "/cd-for-retirement", label: "CDs for retirement savings" },
+  "cd-vs-annuity": { to: "/cd-rates-for-seniors", label: "See CD rates for seniors and retirees" },
   // guides
   "cd-vs-high-yield-savings": { to: "/high-yield-cd-rates", label: "Compare high-yield CD rates" },
   "cd-vs-treasury-bills": { to: "/best-6-month-cd-rates", label: "Compare 6-month CD rates" },

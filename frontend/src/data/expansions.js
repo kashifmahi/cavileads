@@ -304,7 +304,7 @@ export const EXPANSIONS = {
   },
 
   "cd-vs-annuity": {
-    metaTitle: "CD vs Annuity: Rates, Taxes & Calculator Example | Cavicord",
+    metaTitle: "CD vs Annuity Calculator: After-Tax Comparison | Cavicord",
     metaDescription:
       "CD vs fixed annuity (MYGA): FDIC vs state guaranty coverage, surrender charges, tax deferral and a worked $100,000 example showing after-tax results over 5 years.",
     readTime: "10 min read",
@@ -352,6 +352,101 @@ export const EXPANSIONS = {
       },
     ],
     sources: [FDIC, NOLHGA, IRS_550],
+  },
+  // ---------------------------------------------------------------- articles
+  "no-penalty-cd-guide": {
+    metaTitle: "What Is a No-Penalty CD? Rates, Rules & Examples | Cavicord",
+    metaDescription:
+      "A no-penalty CD locks a fixed rate but lets you withdraw the full balance after the first week with no fee. Rules, a $20,000 example and how it compares.",
+    readTime: "8 min read",
+    dateModified: "2026-10-31",
+    sections: [
+      {
+        before: "The rate trade-off",
+        heading: "No-penalty CD rules to check before you open one",
+        body: "No-penalty (also called liquid) CDs share the same idea, but the fine print varies by bank.",
+        bullets: [
+          "Waiting period: federal rules treat a withdrawal in the first 6 days as early, so most banks require you to wait at least 7 days after funding.",
+          "Full withdrawal only: many banks let you take out the whole balance and close the CD, but not a partial withdrawal.",
+          "Minimum deposit: often $0–$1,000; check whether a higher balance earns a higher rate.",
+          "What happens at maturity: like any CD, it may auto-renew into a new term at the bank's then-current rate.",
+        ],
+      },
+      {
+        before: "Smart uses for a no-penalty CD",
+        heading: "No-penalty CD vs regular CD vs high-yield savings",
+        body: "A no-penalty CD sits in the middle: a locked rate like a CD, with an exit like savings.",
+        table: {
+          columns: ["", "No-penalty CD", "Regular CD", "High-yield savings"],
+          rows: [
+            ["Rate", "Fixed for the term", "Fixed for the term", "Variable"],
+            ["Typical terms", "Around 5 to 15 months", "3 months to 5+ years", "None"],
+            ["Early exit", "No fee after the first week (usually full balance only)", "Penalty, often 3–12 months of interest", "Any time"],
+            ["Rate compared with the best regular CDs", "Usually a little lower", "Highest for the term", "Varies; can fall any time"],
+            ["Insurance", "FDIC/NCUA to $250,000", "FDIC/NCUA to $250,000", "FDIC/NCUA to $250,000"],
+          ],
+        },
+      },
+      {
+        before: "Smart uses for a no-penalty CD",
+        heading: "Example: $20,000 in a no-penalty CD",
+        body: "Illustrative rates. You put $20,000 in an 11-month no-penalty CD at 4.00% APY. Rates rise four months later and a regular 12-month CD pays 4.60%. You close the no-penalty CD, collect about $267 of interest (4 months), pay no fee, and move the money. If rates had fallen instead, you'd keep the 4.00% locked for the full 11 months — about $733. A regular CD would have charged a penalty to switch; a savings account's rate could have dropped with the market.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Do no-penalty CDs have a fixed rate?",
+        a: "Yes. The APY is locked for the term, which is the main advantage over a savings account whose rate can change at any time.",
+      },
+      {
+        q: "Can I make a partial withdrawal from a no-penalty CD?",
+        a: "Usually not. Most banks require you to withdraw the full balance, which closes the CD. A few allow partial withdrawals with a minimum remaining balance — check the account terms.",
+      },
+      {
+        q: "Are no-penalty CDs FDIC insured?",
+        a: "Yes, when held at an FDIC-insured bank (or an NCUA-insured credit union), up to $250,000 per depositor, per institution, per ownership category — the same as any CD.",
+      },
+    ],
+    sources: [FDIC, NCUA, FDIC_RATES],
+  },
+  "what-happens-when-a-cd-matures": {
+    metaTitle: "What Happens When a CD Matures? Grace Period Guide",
+    metaDescription:
+      "When a CD matures you get a grace period, often 7–10 days, to withdraw, renew or move the money. See the maturity timeline and what auto-renewal can cost.",
+    readTime: "8 min read",
+    dateModified: "2026-10-31",
+    sections: [
+      {
+        before: "Option 1: Withdraw and walk away",
+        heading: "CD maturity timeline",
+        body: "What usually happens around the maturity date (timing varies by bank — check your disclosure).",
+        table: {
+          columns: ["When", "What happens"],
+          rows: [
+            ["About 2–4 weeks before", "The bank sends a maturity notice with the renewal term and, often, the renewal rate. Banks must give advance notice for automatically renewing CDs longer than one month."],
+            ["Maturity date", "The term ends. You've earned the full rate with no penalty."],
+            ["Grace period (often 7–10 days)", "Withdraw, add money, change the term or move the money with no penalty."],
+            ["After the grace period", "If you did nothing, the CD has renewed for a new term at the bank's current rate, and early-withdrawal penalties apply again."],
+          ],
+        },
+      },
+      {
+        before: "Smart moves before maturity",
+        heading: "Example: what auto-renewal can cost",
+        body: "Illustrative rates. A $10,000 12-month CD matures and auto-renews at the bank's standard rate of 1.50% APY, while top online banks pay 4.00% for the same term. Over the next year that's about $150 of interest instead of $400 — $250 left on the table. Moving the money during the grace period avoids it.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is CD interest taxed when the CD matures?",
+        a: "CD interest is generally taxable in the year it's credited to your account, even if you don't withdraw it — not only at maturity. Banks report $10 or more of interest on Form 1099-INT. CDs in an IRA follow IRA tax rules instead.",
+      },
+      {
+        q: "Can I withdraw a CD after the grace period without a penalty?",
+        a: "Usually not. Once the CD renews, it's a new term and the bank's early-withdrawal penalty applies. Some banks waive penalties in limited cases such as the owner's death; check the account terms.",
+      },
+    ],
+    sources: [FDIC, IRS_1099INT, { label: "CFPB — Regulation DD (Truth in Savings), §1030.5 maturity notices", url: "https://www.consumerfinance.gov/rules-policy/regulations/1030/5/" }],
   },
 };
 
