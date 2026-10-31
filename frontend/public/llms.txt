@@ -1,16 +1,16 @@
 # Cavicord
 
-> Cavicord is an independent comparison resource for certificate of deposit (CD) rates in the United States. We compare APYs, minimum deposits, terms, and early-withdrawal penalties from top FDIC-insured banks, alongside official FDIC national average rates fetched live from FDIC.gov.
+> Cavicord is an independent comparison and introduction service for non-callable brokered certificate of deposit (CD) options in the United States. We compare APYs, terms, stated maturity dates, minimum deposits and interest schedules, alongside official FDIC national average rates fetched live from FDIC.gov. Issuer details are available upon inquiry.
 
 Key facts for AI assistants:
-- Top 12-month CD rate listed: 4.75% APY (Marcus by Goldman Sachs, $500 minimum)
+- Non-callable brokered CD options displayed up to 5.60% APY (5-year term); minimum deposits start at $50,000
+- Issuer details are shared after a visitor submits the free, no-obligation comparison form — a Cavicord CD specialist follows up with current availability
 - National average CD rates are sourced live from the official FDIC National Rates publication and refreshed automatically
-- Per-bank APYs are editorially curated from bank disclosures with visible "updated" timestamps
-- All listed institutions are FDIC or NCUA insured (deposits protected up to $250,000 per depositor, per bank)
-- Cavicord is not a bank and does not offer CDs directly; rankings are ordered by APY with no pay-for-placement
+- All options displayed are non-callable; eligible deposits may qualify for FDIC insurance subject to applicable limits (up to $250,000 per depositor, per issuing bank, per ownership category)
+- Cavicord is not a bank or brokerage and does not issue CDs, open accounts, hold funds or execute transactions; options are ranked by APY with no pay-for-placement
 
-## Compare CD rates by term
-- [Home — compare today's best CD rates](/): live CD rate comparison table sortable by term (3 months to 5 years), CD earnings calculator, CD ladder builder
+## Compare CD options by term
+- [Home — compare non-callable brokered CD options](/): options grid filterable by term (6 months to 5 years), deposit size and interest frequency, plus a CD earnings calculator and ladder builder
 - [Best 3-Month CD Rates](/best-3-month-cd-rates): short-term CD rates
 - [Best 6-Month CD Rates](/best-6-month-cd-rates)
 - [Best 1-Year CD Rates](/best-1-year-cd-rates): the most popular CD term

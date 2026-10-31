@@ -27,7 +27,11 @@ export const TOP_BROKERED_APY = 5.6;
 
 const addMonths = (months) => {
   const d = new Date();
+  const day = d.getDate();
+  d.setDate(1);
   d.setMonth(d.getMonth() + months);
+  const last = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+  d.setDate(Math.min(day, last));
   return d;
 };
 

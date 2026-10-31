@@ -60,12 +60,6 @@ export const useLeadForm = (defaultTerm) => {
   const [submitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState("");
 
-  useEffect(() => {
-    if (open && defaultTerm) {
-      setForm((f) => ({ ...f, term: String(defaultTerm) }));
-    }
-  }, [open, defaultTerm]);
-
   const set = (field) => (value) => {
     setForm((f) => ({ ...f, [field]: value }));
     setErrors((e) => ({ ...e, [field]: undefined }));

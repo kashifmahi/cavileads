@@ -312,7 +312,7 @@ async def get_rates(term: str = Query("all"), rate_type: str = Query("standard")
             query["term_months"] = int(term)
         except ValueError:
             raise HTTPException(status_code=400, detail="term must be 'all' or a number of months")
-    docs = await db.bank_rates.find(query, {"_id": 0}).to_list(500)
+    docs = await db.bank_rates.find(query, {"_id": 0, "bank": 0, "url": 0}).to_list(500)
     docs = mark_best(docs)
     docs.sort(key=lambda r: r["apy"], reverse=True)
     updated = max((d.get("updated_at") for d in docs), default=None)
@@ -710,6 +710,9 @@ async def rate_trends():
     if not await db.rate_history.find_one({"date": today}):
         await record_rate_history()
     history = await db.rate_history.find({}, {"_id": 0, "recorded_at": 0}).sort("date", 1).to_list(365)
+    for h in history:
+        for t in h.get("terms", {}).values():
+            t.pop("best_bank", None)
     return {"history": history, "tracking_since": history[0]["date"] if history else today}
 
 @api_router.post("/admin/alerts/preview")

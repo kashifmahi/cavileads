@@ -3,6 +3,9 @@
 ## Original problem statement
 Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate comparison site: sortable rate tables, term SEO pages, calculator, ladder builder, lead capture, email notifications, admin dashboard + CSV export, SEO/AIO content & schema, mobile responsive. User self-deploys to own Ubuntu VPS (/opt/app, Nginx + systemd cavicord-api + MongoDB).
 
+## CURRENT BUSINESS MODEL (2026-10-31 redesign — READ FIRST)
+Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-callable brokered CD options** ("Issuer details available upon inquiry", APYs 3.05–5.60%, min $50K+, data in `frontend/src/data/brokered.js` — static ladder, user-editable). Real named-bank rates (Ally, Barclays, Synchrony…) are HIDDEN everywhere pre-submit and only revealed in the lead-form/wizard success screen (POST /api/leads response `matches`). Public GET /api/rates strips `bank`/`url`; /api/rate-trends strips `best_bank`; AI chat is forbidden from naming banks (rule 8). New 3-step ScoutWizard ("Find CD Options That Match Your Needs": prefs → ZIP → contact) on home + landing + term + article + guide pages, alongside the kept single-step InlineLeadForm and popup. Leads now store `zip_code`. KNOWN TRADE-OFF (user-accepted mind-game design): advertised brokered APYs (up to 5.60%) exceed the revealed retail matches (e.g. Ally 4.50%) — specialists close on the phone.
+
 ## Stack
 - Frontend: React 19 + Vite 8 (`vite.config.mjs`), Tailwind, shadcn, react-helmet-async v3, lazy routes. Build output: `frontend/build/` (Nginx root).
 - Backend: FastAPI on 8001 (`/api` prefix), MongoDB. Seeded 43 rates + FDIC national averages, leads, subscribers, admin-key-gated endpoints.
@@ -207,3 +210,16 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
   - DELETED (bot/captcha-walled, unverifiable): all Marcus (4), all Bread (3), Quontic 36mo, Credit One jumbo (2), Suncoast jumbo.
 - SEED_RATES (34) + BANK_URLS (8) in server.py regenerated from final DB — reseed cannot restore stale numbers. Alert snapshot re-synced (19 changes consumed), rate history re-recorded for today. Prerender not rebuilt (SSG flow unused on Emergent; rates served live via API + window.__pre).
 - NOT deployed. User to Save to GitHub.
+
+## 2026-10-31 (latest session)
+- **PR #26 pulled byte-identical** (legal.js + LeadForm.jsx: leads go to Cavicord only, never sold/shared) and prerendered into /privacy, /terms.
+- **Idempotent startup migration** `rates_2026_10_31` in server.py (db.migrations marker): on first boot in ANY env (incl. production on next publish) deletes all bank_rates, inserts the 34 bank-site-verified rows (confirmed + timestamps = run time) and re-syncs the alert snapshot (no false subscriber blast). Verified runs exactly once across restarts.
+- **cdratescout-style redesign** (see CURRENT BUSINESS MODEL above). New files: data/brokered.js, components/BrokeredOptions.jsx (filters: term/deposit/frequency, 20 cards), ScoutWizard.jsx, HowItWorks.jsx; Hero.jsx rewritten (maturity preview card). RatesSection/RateTable removed from public pages (RateTable still used for BankAvatar in reveal). prerender.mjs waits on brokered-card-* now. llms.txt rewritten; guides.js FAQ, landings.js hero sub, TrendsPage copy de-branded; Calculator/LadderBuilder show "issuer upon inquiry"; fixed useLeadForm dead `open` useEffect + addMonths month-overflow clamp.
+- **Testing**: iteration_12.json — 9/9 backend pytest + full UI flows pass (wizard e2e real submit reveals Ally/Barclays/Bask; no pre-submit bank leaks on home/landing/term/trends; chat anonymized). All its action items fixed + re-verified (API strip, copy leaks, llms.txt).
+- NOT deployed. User to Save to GitHub then publish.
+
+## Next / backlog
+- P1: Publish (user action) — startup migration will fix stale production rates automatically.
+- P1: Weekly top-10 subscriber email still names banks (bypasses the issuer-gate via a mere email signup) — decide whether to anonymize.
+- P2: Admin view for zip_code column in CSV export.
+- P2: Consider a brokered-options admin editor (ladder currently hardcoded in brokered.js).
