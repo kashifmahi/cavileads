@@ -179,3 +179,9 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - agree defaults true and payload always sends agree:true on submit; agree validation removed; Checkbox import removed.
 - Verified in preview: checkbox gone, TCPA text gone, notice + links (/privacy, /terms) present, form renders cleanly.
 - NOTE: workspace now AHEAD of GitHub repo (PersonalizedModal.jsx) — user should Save to GitHub to sync.
+
+## 2026-10-31: Sync PR #17 (f197313 seo/compete-target) — 8 files ONLY
+- Pulled byte-identical: sitemap.xml (44 URLs), NEW AnnuityCalculator.jsx, expansions/landings/ratesLinks/terms data, ArticlePage, LandingPage. PersonalizedModal untouched (preserves simplified consent form).
+- NEW landing /cd-rates-for-seniors (header+footer nav, 32 internal links all resolve). /best-cd-rates has "CD rates today" summary table. Penalty/jumbo/high-yield/no-penalty/maturity content expanded. CD vs annuity calculator interactive + math hand-verified, no NaN.
+- testing_agent iteration_10: 100% pass. LOW note (upstream code): annuity years input silently caps at 30 and strips minus sign — cosmetic.
+- NOT deployed per user instruction.
