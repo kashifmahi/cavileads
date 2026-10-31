@@ -20,6 +20,7 @@ import { RatesModalProvider } from "./context/RatesModalContext";
 import { termPages, monthYear } from "./data/terms";
 import { privacyPolicy, termsOfService } from "./data/legal";
 import { landingPages } from "./data/landings";
+import InlineLeadForm from "./components/InlineLeadForm";
 import { REDIRECTS } from "./data/redirects";
 import { captureAttribution } from "./lib/attribution";
 import { SITE_URL } from "./config";
@@ -150,6 +151,9 @@ const Home = () => {
       <main>
         <Hero rates={rates} updatedAt={updatedAt} loading={loading} />
         <RatesSection rates={rates} loading={loading} updatedAt={updatedAt} />
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <InlineLeadForm />
+        </div>
         <Calculator rates={rates} loading={loading} />
         <LadderBuilder rates={rates} />
         <WhyCDs />

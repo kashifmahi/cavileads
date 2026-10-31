@@ -12,6 +12,7 @@ import { Button } from "../components/ui/button";
 import { Landmark, CalendarCheck, ChevronRight, ArrowRight } from "lucide-react";
 import { getTermPage, termPages, monthYear } from "../data/terms";
 import { useRatesModal } from "../context/RatesModalContext";
+import InlineLeadForm from "../components/InlineLeadForm";
 import { API } from "../App";
 
 const TermPage = () => {
@@ -155,6 +156,8 @@ const TermPage = () => {
             averages sourced live from FDIC.gov. Rates are subject to change — always confirm with the
             issuing bank. All listed institutions are federally insured (FDIC or NCUA).
           </p>
+
+          <InlineLeadForm className="mt-12 max-w-4xl" defaultTerm={config.term} />
 
           {/* Explainer content */}
           {config.sections?.length > 0 && (

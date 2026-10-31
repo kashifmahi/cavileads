@@ -12,6 +12,7 @@ import { authorSchema, publisherSchema } from "../data/author";
 import { ratesLinkFor } from "../data/ratesLinks";
 import { SectionTable, SourcesList } from "../components/ContentExtras";
 import AnnuityCalculator from "../components/AnnuityCalculator";
+import InlineLeadForm from "../components/InlineLeadForm";
 
 const formatDate = (iso) =>
   new Date(`${iso}T00:00:00`).toLocaleDateString("en-US", {
@@ -144,6 +145,8 @@ const ArticlePage = () => {
           ))}
 
           {article.slug === "cd-vs-annuity" && <AnnuityCalculator />}
+
+          <InlineLeadForm className="mt-12" />
 
           {/* FAQs */}
           <section className="mt-12" data-testid="article-faqs">

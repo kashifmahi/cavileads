@@ -11,6 +11,7 @@ import { getGuide, guides } from "../data/guides";
 import { authorSchema, publisherSchema } from "../data/author";
 import { ratesLinkFor } from "../data/ratesLinks";
 import { SectionTable, SourcesList } from "../components/ContentExtras";
+import InlineLeadForm from "../components/InlineLeadForm";
 
 const formatDate = (iso) =>
   new Date(`${iso}T00:00:00`).toLocaleDateString("en-US", {
@@ -157,6 +158,8 @@ const GuidePage = () => {
               <SectionTable table={s.table} />
             </section>
           ))}
+
+          <InlineLeadForm className="mt-12" />
 
           {/* FAQs */}
           <section className="mt-12" data-testid="guide-faqs">

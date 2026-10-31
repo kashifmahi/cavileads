@@ -136,6 +136,8 @@ export const landingPages = [
     slug: "jumbo-cd-rates",
     term: "all",
     rateType: "jumbo",
+    leadTitle: "Get matched to jumbo CD rates for $100,000+",
+    leadSub: "Tell us your deposit and term. We'll show your top FDIC-insured jumbo CD matches instantly, and a CD specialist will follow up with options for your balance, including how to keep it fully insured.",
     metaTitle: "Jumbo CD Rates Today: Best $100K+ CD Rates | Cavicord",
     metaDescription:
       "Compare jumbo CD rates for deposits of $100,000 or more. See when jumbo APYs beat standard CDs — and how to stay fully FDIC-insured over $250K.",
@@ -291,6 +293,7 @@ export const landingPages = [
     slug: "cd-for-retirement",
     term: "all",
     rateType: "standard",
+    leadTitle: "Get CD rate matches for your retirement savings",
     metaTitle: "CDs for Retirement — Safe, Predictable Income | Cavicord",
     metaDescription:
       "How retirees use CDs for guaranteed, FDIC-insured income: ladders for regular cash flow, IRA CDs for tax advantages, and zero market risk.",
@@ -325,6 +328,7 @@ export const landingPages = [
     slug: "cd-rates-for-seniors",
     term: "all",
     rateType: "standard",
+    leadTitle: "Get CD rate matches for your retirement savings",
     metaTitle: "CD Rates for Seniors: Best Options for Retirees | Cavicord",
     metaDescription:
       "CD rates for seniors and retirees: today's top FDIC-insured APYs, whether senior specials are worth it, IRA CDs and RMDs, and CD ladders for income.",

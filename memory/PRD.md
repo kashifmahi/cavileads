@@ -198,3 +198,12 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - SKIPPED (bot/captcha-blocked or only <=48px favicons): bask, marcus, bread, quontic, cit, suncoast -> fall back to 256px Google favicon/letter.
 - testing_agent iteration_11: 100% — all PNGs 200, 0 broken avatars on home All/seniors/Details (desktop+mobile), fallback chain robust. Optional upstream tweaks noted: prune BANK_LOGO_KEYS for missing PNGs, stale comment. Logo fetch scripts kept at /app/memory/fetch_logos*.py.
 - NOT deployed. User to Save to GitHub.
+
+## 2026-10-31: PR #25 inline lead form sync + REAL rate migration
+- TASK1: pulled 9 files byte-identical (LeadForm.jsx + InlineLeadForm.jsx new; PersonalizedModal/App/landings/LandingPage/TermPage/ArticlePage/GuidePage). Inline form tested with MOCKED /api/leads on /best-cd-rates: success panel + match card render; consent one-liner present. No real lead.
+- TASK2: migrated bank_rates to ONLY bank-site-verified APYs (2026-10-31). Final 34 rows, all verify_status=confirmed, verified_at=now. Script: /app/memory/migrate_rates_20261031.py (full old->new table in output).
+  - User-verified: Ally (new 60mo 4.50, 24mo deleted, NP 2.90), CapOne 6 terms, Synchrony 6 terms (url synchrony.com; 3mo+NP deleted), Barclays 6 terms (url banking.us.barclays), Discover ALL DELETED (merged into Capital One).
+  - Agent-verified on bank sites: Bask 5 terms (3mo 4.10/6mo 3.90/12mo 4.35/18mo 4.00/24mo 4.30), BMO Alto 12mo 3.00 (60mo deleted), CIT NP 3.90, NavyFed jumbo 12mo 4.10/24mo 3.70 ($100k col, rates as of Oct 31).
+  - DELETED (bot/captcha-walled, unverifiable): all Marcus (4), all Bread (3), Quontic 36mo, Credit One jumbo (2), Suncoast jumbo.
+- SEED_RATES (34) + BANK_URLS (8) in server.py regenerated from final DB — reseed cannot restore stale numbers. Alert snapshot re-synced (19 changes consumed), rate history re-recorded for today. Prerender not rebuilt (SSG flow unused on Emergent; rates served live via API + window.__pre).
+- NOT deployed. User to Save to GitHub.
