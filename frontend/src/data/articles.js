@@ -1,3 +1,5 @@
+import { applyExpansion } from "./expansions.js";
+
 // Editorial articles — answer-first format optimized for featured snippets & AI Overviews
 
 export const articles = [
@@ -690,5 +692,7 @@ export const articles = [
     ],
   },
 ];
+
+articles.forEach(applyExpansion);
 
 export const getArticle = (slug) => articles.find((a) => a.slug === slug);

@@ -75,6 +75,7 @@ export const termPages = [
     related: [
       { to: "/guides/cd-ladder-explained", label: "How a CD ladder works" },
       { to: "/articles/how-is-cd-interest-taxed", label: "How CD interest is taxed" },
+      { to: "/guides/i-bonds-vs-cds", label: "I bonds vs CDs" },
       { to: "/articles/cds-vs-bonds", label: "CDs vs bonds" },
       { to: "/cd-early-withdrawal-penalty-calculator", label: "CD early withdrawal penalty calculator" },
     ],
@@ -101,6 +102,7 @@ export const termPages = [
       { to: "/articles/cds-vs-bonds", label: "CDs vs bonds" },
       { to: "/guides/cd-vs-treasury-bills", label: "CDs vs Treasury bills" },
       { to: "/guides/brokered-vs-bank-cds", label: "Brokered vs bank CDs" },
+      { to: "/guides/cds-vs-bond-funds", label: "CDs vs bond funds" },
       { to: "/cd-early-withdrawal-penalty-calculator", label: "CD early withdrawal penalty calculator" },
     ],
   },
@@ -126,6 +128,7 @@ export const termPages = [
       { to: "/cd-for-retirement", label: "CDs for retirement savings" },
       { to: "/articles/fed-rate-cuts-and-cd-rates", label: "How Fed rate cuts affect CD rates" },
       { to: "/articles/cd-vs-annuity", label: "CD vs annuity" },
+      { to: "/guides/cd-vs-treasury-bonds", label: "CDs vs Treasury bonds" },
       { to: "/cd-early-withdrawal-penalty-calculator", label: "CD early withdrawal penalty calculator" },
     ],
   },

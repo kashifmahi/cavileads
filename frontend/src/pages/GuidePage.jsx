@@ -10,6 +10,7 @@ import { Clock, ChevronRight, ArrowRight, CheckCircle2, Lightbulb } from "lucide
 import { getGuide, guides } from "../data/guides";
 import { authorSchema, publisherSchema } from "../data/author";
 import { ratesLinkFor } from "../data/ratesLinks";
+import { SectionTable, SourcesList } from "../components/ContentExtras";
 
 const formatDate = (iso) =>
   new Date(`${iso}T00:00:00`).toLocaleDateString("en-US", {
@@ -153,6 +154,7 @@ const GuidePage = () => {
                   ))}
                 </ul>
               )}
+              <SectionTable table={s.table} />
             </section>
           ))}
 
@@ -168,6 +170,8 @@ const GuidePage = () => {
               ))}
             </div>
           </section>
+
+          <SourcesList sources={guide.sources} />
 
           {/* CTA — link to the most relevant rate page, not just the homepage */}
           <div className="mt-12 rounded-2xl calc-result-bg p-7 text-white">
