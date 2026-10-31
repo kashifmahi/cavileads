@@ -305,8 +305,12 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
                 />
                 <Label htmlFor="agree" className="text-sm font-normal text-slate-600 leading-snug cursor-pointer">
                   I agree to the{" "}
-                  <span className="underline text-[#16233d] font-medium">Privacy Policy</span> and{" "}
-                  <span className="underline text-[#16233d] font-medium">Terms of Service</span>.
+                  <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline text-[#16233d] font-medium">Privacy Policy</a> and{" "}
+                  <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline text-[#16233d] font-medium">Terms of Service</a>, and
+                  that Cavicord and its partner banks and financial advisors may contact me at the email and
+                  phone number above, including by calls and texts sent with automated technology, about CD
+                  rates and related savings products. Consent isn't required to open any account. Msg &amp; data
+                  rates may apply; reply STOP to opt out.
                 </Label>
               </div>
               {fieldError("agree")}
@@ -332,7 +336,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
               </Button>
               <p className="text-[11px] text-slate-500 text-center flex items-center justify-center gap-1">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                Your information is secure and will never be shared without your consent.
+                Sent securely and shared only with our partner banks and advisors to answer your request.
               </p>
             </form>
           </>
