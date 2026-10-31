@@ -173,3 +173,9 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 ## 2026-10-31: Sync PR #16 (5bb942c legal/privacy-terms)
 - NEW legal.js + LegalPage.jsx (/privacy, /terms). App.jsx routes, Footer links, PersonalizedModal consent text with target=_blank policy links. Sitemap 43 URLs.
 - testing_agent iteration_9: 100% — both legal pages (unique titles/canonicals/meta), footer nav, consent links open in new tab without toggling the checkbox, sitemap 43 incl /privacy+/terms, regressions pass, 0 console errors, no mobile overflow. Form NOT submitted.
+
+## 2026-10-31: Lead form consent simplified (user request)
+- Removed consent Checkbox + long TCPA paragraph from PersonalizedModal. Replaced with one-line notice: "By submitting, you agree to our Privacy Policy and Terms of Service and to being contacted about CD rates at the details above." (links kept, target=_blank).
+- agree defaults true and payload always sends agree:true on submit; agree validation removed; Checkbox import removed.
+- Verified in preview: checkbox gone, TCPA text gone, notice + links (/privacy, /terms) present, form renders cleanly.
+- NOTE: workspace now AHEAD of GitHub repo (PersonalizedModal.jsx) — user should Save to GitHub to sync.

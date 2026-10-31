@@ -14,7 +14,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { Checkbox } from "./ui/checkbox";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -53,7 +52,7 @@ const initialForm = {
   amount: "",
   timeframe: "",
   term: "",
-  agree: false,
+  agree: true,
 };
 
 const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
@@ -86,7 +85,6 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
     if (!form.amount) e.amount = "Please select an investment amount.";
     if (!form.timeframe) e.timeframe = "Please select a timeframe.";
     if (!form.term) e.term = "Please select a CD term.";
-    if (!form.agree) e.agree = "You must agree to continue.";
     return e;
   };
 
@@ -109,7 +107,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
         investment_amount: form.amount,
         timeframe: form.timeframe,
         term_months: Number(form.term),
-        agree: form.agree,
+        agree: true,
         source_page: attr.source_page || window.location.pathname,
         utm_source: attr.utm_source || "",
         utm_medium: attr.utm_medium || "",
@@ -296,24 +294,12 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
                 {fieldError("term")}
               </div>
 
-              <div className="flex items-start gap-2.5 pt-1">
-                <Checkbox
-                  id="agree"
-                  checked={form.agree}
-                  onCheckedChange={(v) => set("agree")(Boolean(v))}
-                  className="mt-0.5 data-[state=checked]:bg-emerald-600 data-[state=checked]:border-emerald-600"
-                />
-                <Label htmlFor="agree" className="text-sm font-normal text-slate-600 leading-snug cursor-pointer">
-                  I agree to the{" "}
-                  <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline text-[#16233d] font-medium">Privacy Policy</a> and{" "}
-                  <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline text-[#16233d] font-medium">Terms of Service</a>, and
-                  that Cavicord and its partner banks and financial advisors may contact me at the email and
-                  phone number above, including by calls and texts sent with automated technology, about CD
-                  rates and related savings products. Consent isn't required to open any account. Msg &amp; data
-                  rates may apply; reply STOP to opt out.
-                </Label>
-              </div>
-              {fieldError("agree")}
+              <p className="text-xs text-slate-500 leading-snug pt-1">
+                By submitting, you agree to our{" "}
+                <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline text-[#16233d] font-medium">Privacy Policy</a> and{" "}
+                <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline text-[#16233d] font-medium">Terms of Service</a>{" "}
+                and to being contacted about CD rates at the details above.
+              </p>
 
               {serverError && <p className="text-sm text-red-600">{serverError}</p>}
 
