@@ -191,3 +191,10 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - PersonalizedModal NOT pulled (kept simplified consent form); manually added `import { BankAvatar } from "./RateTable"` + replaced coloured-initial span with <BankAvatar ... size="w-9 h-9"/> in matches list.
 - Verified via mocked POST /api/leads (page.route — NO real lead): Details dialog shows loaded logo img (s2 favicon), results view shows 2 matches with loaded avatar imgs. Marcus renders letter fallback site-wide (favicon quality) — consistent, pre-existing.
 - NOT deployed. User to push via Save to GitHub so main gets the form changes.
+
+## 2026-10-31: PR #23 bank logos (a08417f) + official logo downloads
+- RateTable.jsx pulled byte-identical (self-hosted /assets/banks/<key>.png -> 256px favicon -> letter).
+- Downloaded 8 OFFICIAL logos from banks' own sites (apple-touch/manifest/ICO 256 frames) into public/assets/banks/: ally, barclays, bmoalto, capitalone, creditone, discover, navyfederal, synchrony (256x256 transparent, <40KB).
+- SKIPPED (bot/captcha-blocked or only <=48px favicons): bask, marcus, bread, quontic, cit, suncoast -> fall back to 256px Google favicon/letter.
+- testing_agent iteration_11: 100% — all PNGs 200, 0 broken avatars on home All/seniors/Details (desktop+mobile), fallback chain robust. Optional upstream tweaks noted: prune BANK_LOGO_KEYS for missing PNGs, stale comment. Logo fetch scripts kept at /app/memory/fetch_logos*.py.
+- NOT deployed. User to Save to GitHub.

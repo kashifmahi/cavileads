@@ -1,0 +1,28 @@
+{
+  "summary": "Frontend-only test of the BankAvatar logo fix. All 8 self-hosted PNGs return 200 image/png at 256x256. On the homepage 'All' filter (desktop 1920 and mobile 390), the /cd-rates-for-seniors table, and the Details dialogs for Ally and Marcus, 0 visible avatars were broken. Ally/Barclays/Synchrony/Capital One/Discover/BMO Alto load from /assets/banks/*.png. Bask/Marcus/Bread/Quontic swap to the Google favicon sz=256 URL. No console errors. Rows for Navy Federal, CIT, Credit One and Suncoast do not show up in the current rate data, so their avatars could not be checked in the UI.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Rate table avatars", "issues": [
+        "Google favicon still returns low-res images for some skipped banks despite sz=256: Bread naturalWidth=16, Marcus=32, Bask=48 (Quontic=192 is fine). At 28px they look acceptable, but Bread/Marcus may still look slightly soft on HiDPI screens. Consider self-hosting these logos."
+      ]}
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Optional: remove bask/marcus/bread/quontic/cit/suncoast from BANK_LOGO_KEYS (or only map banks whose PNG exists). The missing /assets/banks/<key>.png requests hit the SPA fallback (200 text/html), which wastes one request per avatar before the onError swap.",
+    "Optional: update the stale comment on RateTable.jsx lines 9-11 (it still says logos come only from Google's favicon service)."
+  ],
+  "critical_code_review_comments": [
+    "The fallback chain works because an img fails to decode text/html, which triggers onError. This does not depend on a real 404, so it is robust.",
+    "Images with loading=lazy inside hidden responsive containers (the mobile cards on desktop and the reverse) stay unloaded with naturalWidth 0. This is expected and not visible to users. Testers should filter by visibility."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Avatar checks: filter img[alt$=' logo'] by offsetParent!==null and scroll to trigger lazy loading. Bank rows on the All filter: Marcus, Bask, Ally, Barclays, Synchrony, Bread, Capital One, Discover, Quontic, BMO Alto. Navy Federal/CIT/Credit One/Suncoast are not in the current rate data."
+}
