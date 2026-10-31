@@ -4,7 +4,8 @@ import axios from "axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
-import RateTable from "../components/RateTable";
+import BrokeredOptions from "../components/BrokeredOptions";
+import ScoutWizard from "../components/ScoutWizard";
 import Calculator from "../components/Calculator";
 import PenaltyCalculator from "../components/PenaltyCalculator";
 import SEO from "../components/SEO";
@@ -18,6 +19,7 @@ import { useRatesModal } from "../context/RatesModalContext";
 import { API } from "../App";
 import { SectionTable } from "../components/ContentExtras";
 import InlineLeadForm from "../components/InlineLeadForm";
+import { BROKERED_OPTIONS, topApyForTerm, termLabel, asOfDate, fmtMin } from "../data/brokered";
 
 const LandingPage = () => {
   const location = useLocation();
@@ -50,7 +52,7 @@ const LandingPage = () => {
   if (!config) return <Navigate to="/" replace />;
 
   const origin = typeof window !== "undefined" ? SITE_URL : "";
-  const topApy = rates.length ? Math.max(...rates.map((r) => r.apy)) : null;
+  const topApy = topApyForTerm(config.term);
   const nationalAvg =
     config.term !== "all" && national
       ? (national.rates || []).find((r) => String(r.term_months) === config.term)?.national_rate
@@ -168,28 +170,26 @@ const LandingPage = () => {
             </div>
           )}
 
-          {/* Live "CD rates today" summary: best APY per term from the same live data as the table */}
-          {config.showTodaySummary && rates.length > 0 && (() => {
+          {/* Live "CD options today" summary: best APY per term, issuer upon inquiry */}
+          {config.showTodaySummary && (() => {
             const byTerm = {};
-            rates.forEach((r) => {
-              if (!byTerm[r.term_months] || r.apy > byTerm[r.term_months].apy) byTerm[r.term_months] = r;
+            BROKERED_OPTIONS.forEach((r) => {
+              if (!byTerm[r.termMonths] || r.apy > byTerm[r.termMonths].apy) byTerm[r.termMonths] = r;
             });
-            const label = (m) => (m < 12 ? `${m}-month` : m % 12 === 0 ? `${m / 12}-year` : `${m}-month`);
-            const rows = Object.values(byTerm).sort((a, b) => a.term_months - b.term_months);
+            const rows = Object.values(byTerm).sort((a, b) => a.termMonths - b.termMonths);
             return (
               <section className="mt-10" data-testid="cd-rates-today">
                 <h2 className="font-serif text-2xl font-bold text-[#16233d]">
-                  CD rates today{updatedAt ? ` — ${fmtDate(updatedAt)}` : ""}
+                  CD options today — {asOfDate()}
                 </h2>
-                <p className="mt-2 text-sm text-slate-600">The highest APY we track for each term right now, from FDIC- and NCUA-insured institutions.</p>
+                <p className="mt-2 text-sm text-slate-600">The highest APY available through our scouting program for each term right now. Issuer details available upon inquiry.</p>
                 <SectionTable
                   table={{
-                    columns: ["Term", "Top APY", "Bank", "Minimum deposit"],
+                    columns: ["Term", "Top APY", "Minimum deposit"],
                     rows: rows.map((r) => [
-                      label(r.term_months),
+                      termLabel(r.termMonths),
                       `${r.apy.toFixed(2)}%`,
-                      r.bank,
-                      r.min_deposit ? `$${Number(r.min_deposit).toLocaleString("en-US")}` : "$0",
+                      fmtMin(r.min),
                     ]),
                   }}
                 />
@@ -197,18 +197,17 @@ const LandingPage = () => {
             );
           })()}
 
-          {/* Rates table */}
-          <div className="mt-10">
-            <h2 className="font-serif text-2xl font-bold text-[#16233d]">Compare Rates</h2>
-            <div className="mt-5">
-              <RateTable rates={rates} loading={loading} showBest={config.term !== "all"} />
-            </div>
-            <p className="mt-6 text-xs text-slate-500">
-              *APYs are curated by our editorial team and verified against bank disclosures. Rates are
-              subject to change — always confirm with the issuing bank. All listed institutions are
-              federally insured (FDIC or NCUA).
-            </p>
+          {/* Options table */}
+          <div className="mt-10 -mx-4 sm:-mx-6 lg:-mx-8">
+            <BrokeredOptions filterTerm={config.term} id={`${config.slug}-rates`} />
           </div>
+          <p className="mt-6 text-xs text-slate-500">
+            *Rates and availability are subject to change and must be confirmed before any application
+            or investment. Issuer details are available upon inquiry. Eligible deposits may qualify
+            for FDIC insurance subject to applicable limits.
+          </p>
+
+          <ScoutWizard className="mt-12 max-w-4xl" id={`${config.slug}-scout`} />
 
           {/* Content sections (e.g., retirement) */}
           {config.sections &&

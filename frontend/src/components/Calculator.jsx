@@ -102,7 +102,7 @@ const Calculator = ({ rates = [], loading = false }) => {
               </div>
               <p className="text-sm text-slate-500 mt-1">
                 {bestRate
-                  ? `via ${bestRate.bank}`
+                  ? `via a verified issuer (details upon inquiry)`
                   : loading
                   ? "Loading rates\u2026"
                   : "Rates temporarily unavailable \u2014 please refresh"}

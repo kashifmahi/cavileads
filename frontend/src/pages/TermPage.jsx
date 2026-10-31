@@ -4,7 +4,8 @@ import axios from "axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
-import RateTable from "../components/RateTable";
+import BrokeredOptions from "../components/BrokeredOptions";
+import ScoutWizard from "../components/ScoutWizard";
 import SEO from "../components/SEO";
 import { SITE_URL } from "../config";
 import { Badge } from "../components/ui/badge";
@@ -14,29 +15,18 @@ import { getTermPage, termPages, monthYear } from "../data/terms";
 import { useRatesModal } from "../context/RatesModalContext";
 import InlineLeadForm from "../components/InlineLeadForm";
 import { API } from "../App";
+import { BROKERED_OPTIONS, topApyForTerm, termLabel, asOfDate } from "../data/brokered";
 
 const TermPage = () => {
   const location = useLocation();
   const slug = location.pathname.slice(1); // Remove leading "/"
   const config = getTermPage(slug);
-  const [rates, setRates] = useState([]);
-  const [updatedAt, setUpdatedAt] = useState(null);
   const [national, setNational] = useState(null);
-  const [loading, setLoading] = useState(true);
   const { openRatesModal } = useRatesModal();
 
   useEffect(() => {
     if (!config) return;
     window.scrollTo(0, 0);
-    setLoading(true);
-    axios
-      .get(`${API}/rates`, { params: { term: config.term, rate_type: config.rateType } })
-      .then((res) => {
-        setRates(res.data.rates || []);
-        setUpdatedAt(res.data.updated_at);
-      })
-      .catch((e) => console.error("rates failed", e))
-      .finally(() => setLoading(false));
     axios
       .get(`${API}/national-rates`)
       .then((res) => setNational(res.data))
@@ -45,15 +35,17 @@ const TermPage = () => {
 
   if (!config) return <Navigate to="/" replace />;
 
+  const opts = (() => {
+    const m = BROKERED_OPTIONS.filter((o) => String(o.termMonths) === String(config.term));
+    return m.length ? m : BROKERED_OPTIONS;
+  })();
+
   const nationalAvg =
     config.term !== "all" && national
       ? national?.rates?.find?.((r) => String(r.term_months) === config.term)?.national_rate
       : null;
 
-  const fmtDate = (d) =>
-    d ? new Date(d).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
-
-  const topApy = rates.length ? Math.max(...rates.map((r) => r.apy)) : null;
+  const topApy = topApyForTerm(config.term);
 
   return (
     <div className="min-h-screen bg-white">
@@ -98,11 +90,11 @@ const TermPage = () => {
             "@context": "https://schema.org",
             "@type": "ItemList",
             name: `${config.title} \u2014 ${monthYear()}`,
-            numberOfItems: rates.length,
-            itemListElement: rates.slice(0, 10).map((r, i) => ({
+            numberOfItems: opts.length,
+            itemListElement: opts.slice(0, 10).map((o, i) => ({
               "@type": "ListItem",
               position: i + 1,
-              name: `${r.bank} \u2014 ${r.apy.toFixed(2)}% APY (${r.term_months}-month CD)`,
+              name: `${o.apy.toFixed(2)}% APY \u2014 ${termLabel(o.termMonths)} non-callable brokered CD (issuer details upon inquiry)`,
             })),
           },
         ]}
@@ -130,7 +122,7 @@ const TermPage = () => {
               )}
               <span className="inline-flex items-center gap-1.5 text-sm text-slate-400">
                 <CalendarCheck className="w-4 h-4 text-emerald-400" />
-                Rates updated {updatedAt ? fmtDate(updatedAt) : "daily"}
+                Rates displayed as of {asOfDate()}
               </span>
             </div>
           </div>
@@ -150,12 +142,16 @@ const TermPage = () => {
               </Badge>
             </div>
           )}
-          <RateTable rates={rates} loading={loading} showBest={config.term !== "all"} />
+          <div className="-mx-4 sm:-mx-6 lg:-mx-8">
+            <BrokeredOptions filterTerm={config.term} id="rates" />
+          </div>
           <p className="mt-6 text-xs text-slate-500">
-            *APYs are curated by our editorial team and verified against bank disclosures. National
-            averages sourced live from FDIC.gov. Rates are subject to change — always confirm with the
-            issuing bank. All listed institutions are federally insured (FDIC or NCUA).
+            *Rates and availability are subject to change and must be confirmed before any application
+            or investment. Issuer details are available upon inquiry. National averages sourced live
+            from FDIC.gov. Eligible deposits may qualify for FDIC insurance subject to applicable limits.
           </p>
+
+          <ScoutWizard className="mt-12 max-w-4xl" />
 
           <InlineLeadForm className="mt-12 max-w-4xl" defaultTerm={config.term} />
 

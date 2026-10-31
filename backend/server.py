@@ -84,6 +84,7 @@ class LeadCreate(BaseModel):
     investment_amount: str = Field(min_length=1)
     timeframe: str = Field(min_length=1)
     term_months: int
+    zip_code: str = Field(default="", max_length=12)
     agree: bool
     source_page: str = Field(default="", max_length=200)
     utm_source: str = Field(default="", max_length=200)
@@ -101,6 +102,7 @@ class Lead(BaseModel):
     investment_amount: str
     timeframe: str
     term_months: int
+    zip_code: str = ""
     agree: bool
     source_page: str = ""
     utm_source: str = ""
@@ -239,6 +241,32 @@ async def get_cached_national_rates(force: bool = False) -> dict:
         raise HTTPException(status_code=503, detail="FDIC data temporarily unavailable")
 
 # ---------------------------- Seeding & helpers ----------------------------
+
+RATES_MIGRATION_ID = "rates_2026_10_31"
+
+async def run_rate_migrations():
+    """One-time versioned migration: replace all bank_rates with the Oct 31, 2026
+    bank-site-verified set and re-sync the alert snapshot. Runs once per environment."""
+    if await db.migrations.find_one({"_id": RATES_MIGRATION_ID}):
+        return
+    now = datetime.now(timezone.utc)
+    await db.bank_rates.delete_many({})
+    docs = []
+    for r in SEED_RATES:
+        doc = BankRate(**{**r, "url": BANK_URLS.get(r["bank"], "")}).dict()
+        doc["updated_at"] = now
+        doc["verified_at"] = now
+        doc["verify_status"] = "confirmed"
+        docs.append(doc)
+    await db.bank_rates.insert_many(docs)
+    standard = [d for d in docs if d.get("rate_type", "standard") == "standard"]
+    await db.rate_snapshots.replace_one(
+        {"_id": "latest"},
+        {"_id": "latest", "apys": {d["id"]: d["apy"] for d in standard}, "at": now},
+        upsert=True,
+    )
+    await db.migrations.insert_one({"_id": RATES_MIGRATION_ID, "ran_at": now, "rows": len(docs)})
+    logger.info("migration %s applied: %d rows inserted, snapshot re-synced", RATES_MIGRATION_ID, len(docs))
 
 async def ensure_seeded():
     # Reseed when empty or when schema/data is outdated
@@ -739,7 +767,7 @@ async def chat_rates_context() -> str:
     lines = []
     for term in sorted(by_term):
         entries = "; ".join(
-            f"{r['bank']} {r['apy']:.2f}% APY (min ${r['min_deposit']:,}, penalty: {r['penalty'] or 'see bank'})"
+            f"{r['apy']:.2f}% APY (min ${r['min_deposit']:,}, penalty: {r['penalty'] or 'see bank'})"
             for r in by_term[term][:3]
         )
         lines.append(f"- {term}-month CDs: {entries}")
@@ -747,7 +775,7 @@ async def chat_rates_context() -> str:
         special = [r for r in rates if r.get("rate_type") == rt][:3]
         if special:
             entries = "; ".join(
-                f"{r['bank']} {r['apy']:.2f}% APY ({r['term_months']}-mo, min ${r['min_deposit']:,})" for r in special
+                f"{r['apy']:.2f}% APY ({r['term_months']}-mo, min ${r['min_deposit']:,})" for r in special
             )
             lines.append(f"- {label} CDs: {entries}")
     try:
@@ -780,7 +808,8 @@ STRICT RULES:
 4. Keep answers short and clear: 2-5 sentences or a few dash bullets. Plain text only — no markdown headers or tables. **Bold** sparingly for key numbers.
 5. Mention FDIC insurance ($250,000 per depositor, per bank) when relevant.
 6. After you've genuinely helped (not in your first sentence, and not every single message), offer once: "Would you like to see personalized CD options? Tap the button below this chat and we'll match you with current rates." The site displays that button — never ask for the user's name, email, or phone inside the chat. Our personalized matching is designed for savers with $50,000 or more to deposit; when a user mentions an amount of $50,000+, highlight jumbo CDs and FDIC strategies for larger balances (e.g., spreading funds across banks to stay under the $250,000 insurance cap) and make the personalized-rates offer promptly.
-7. If asked about anything unrelated to CDs, savings, or personal banking, politely steer back to CD topics."""
+7. If asked about anything unrelated to CDs, savings, or personal banking, politely steer back to CD topics.
+8. NEVER name the issuing bank or institution behind any rate — issuer details are shared only after a visitor submits the personalized-rates form and a Cavicord specialist contacts them. If asked which bank offers a rate, explain that issuer details are available upon inquiry and point to the form."""
 
 @api_router.post("/chat")
 async def chat(payload: ChatRequest):
@@ -844,6 +873,7 @@ app.add_middleware(
 
 @app.on_event("startup")
 async def startup():
+    await run_rate_migrations()
     await ensure_seeded()
 
 @app.on_event("shutdown")

@@ -1,8 +1,9 @@
 // Privacy Policy and Terms of Service for cavicord.tech.
-// Reflects how the site actually works (Oct 2026): leads are emailed to Cavicord and
-// shared with partner banks and financial advisors, who may contact the person by
-// email, phone and text; Google Ads tag with Consent Mode; Google Gemini powers the chat;
-// hosting/email via Emergent; IP-based city/country lookup on lead submission.
+// Reflects how the site actually works (Oct 2026): leads (from the website form and
+// Google Ads lead forms) go to Cavicord only. Cavicord's own CD specialists contact the
+// person; leads are NOT sold or passed to banks, advisors or other third parties.
+// Google Ads tag with Consent Mode; Google Gemini powers the chat; hosting/email via
+// Emergent; IP-based city/country lookup on lead submission.
 // Not legal advice — have a lawyer review before relying on it.
 
 export const LEGAL_UPDATED = "2026-10-31";
@@ -13,14 +14,15 @@ export const privacyPolicy = {
   title: "Privacy Policy",
   metaTitle: "Privacy Policy | Cavicord",
   metaDescription:
-    "How Cavicord collects, uses and shares your information, including the rate-matching form, partner banks and advisors, cookies, and your choices.",
+    "How Cavicord collects and uses your information, including the rate-matching form and Google ad forms, cookies, and your choices. We do not sell your information.",
   intro:
     "This policy explains what information Cavicord (\"we\", \"us\") collects when you use cavicord.tech, how we use it, who we share it with, and the choices you have. Cavicord is a CD-rate comparison service for people in the United States. We are not a bank and do not hold deposits.",
   sections: [
     {
       heading: "Information you give us",
       bullets: [
-        "Rate-matching form (\"Get Personalized Rates\"): first and last name, email address, phone number, the amount you plan to deposit, your timeframe and preferred CD term.",
+        "Rate-matching form (\"Get Personalized Rates\") on our website: first and last name, email address, phone number, the amount you plan to deposit, your timeframe and preferred CD term.",
+        "Google ad lead forms: if you fill in a Cavicord form inside a Google ad, Google sends us the details you submit there (such as your name, email, phone number and answers about your deposit amount, timeframe and CD term).",
         "Rate alerts: your email address and how often you want alerts.",
         "Chat assistant: the messages you type into the chat.",
         "Emails you send us.",
@@ -38,7 +40,7 @@ export const privacyPolicy = {
       heading: "How we use your information",
       bullets: [
         "To respond to your rate request and match you with CD options for your deposit, timeframe and term.",
-        "To share your request with partner banks and financial advisors so they can contact you (see below).",
+        "So a Cavicord CD specialist can contact you about your request.",
         "To send rate alerts you signed up for.",
         "To answer questions in the chat and by email.",
         "To measure and improve our website and advertising, and to prevent fraud and abuse.",
@@ -48,7 +50,7 @@ export const privacyPolicy = {
     {
       heading: "Who we share your information with",
       body:
-        "When you submit the rate-matching form, we share your name, email, phone number and the deposit details you entered with one or more partner banks, credit unions, brokers or financial advisors so they can contact you about CD rates and related savings products. Those partners use your information under their own privacy policies. We may receive compensation from partners. We also share information with service providers that run the site for us, and only for that purpose:",
+        "We do not sell your personal information, and we do not give or sell the contact details you submit to banks, credit unions, brokers, financial advisors, data brokers or other third parties. Your request is handled by Cavicord. We share information only with service providers that run the site and our advertising for us, and only for that purpose:",
       bullets: [
         "Website hosting, database and email delivery (Emergent and its infrastructure providers, including Cloudflare).",
         "Google: Google Ads measurement (the Google tag) and Google Gemini, which generates chat replies from the messages you type.",
@@ -60,7 +62,7 @@ export const privacyPolicy = {
     {
       heading: "Calls, texts and emails",
       body:
-        "If you submit the rate-matching form and agree to be contacted, Cavicord and our partner banks and financial advisors may contact you at the email address and phone number you provided, including by phone calls and text messages, which may be sent using automated technology. Your consent is not a condition of opening any account. Message and data rates may apply. You can opt out of texts at any time by replying STOP, and out of emails by using the unsubscribe link or emailing us. To stop calls from a partner, tell that partner directly; to stop calls from us, email us.",
+        "If you submit the rate-matching form or a Cavicord Google ad form, Cavicord may contact you about your request at the email address and phone number you provided, including by phone calls and text messages. Message and data rates may apply. You can opt out of texts at any time by replying STOP, and out of emails or calls by using the unsubscribe link or emailing us.",
     },
     {
       heading: "Cookies and advertising",
@@ -75,9 +77,10 @@ export const privacyPolicy = {
     {
       heading: "Your choices and rights",
       body:
-        "You can ask us to tell you what personal information we hold about you, correct it, delete it, or stop sharing it with partners in the future, by emailing info@cavicord.tech. We will not discriminate against you for making a request. Depending on your state, you may have additional rights.",
+        "You can ask us to tell you what personal information we hold about you, correct it, or delete it, by emailing info@cavicord.tech. We will not discriminate against you for making a request. Depending on your state, you may have additional rights.",
       bullets: [
-        "California residents: under the CCPA/CPRA you have the right to know, delete and correct personal information, and to opt out of the \"sale\" or \"sharing\" of personal information. Sharing form submissions with partners who may compensate us can be a \"sale\" under California law. To opt out, email info@cavicord.tech with the subject \"Do Not Sell or Share\".",
+        "California residents: under the CCPA/CPRA you have the right to know, delete and correct personal information, and to opt out of the \"sale\" or \"sharing\" of personal information. We do not sell personal information. Our use of Google Ads cookies to measure ads may count as \"sharing\" for advertising under California law; to opt out, choose \"Decline\" in our cookie notice or email info@cavicord.tech with the subject \"Do Not Sell or Share\".",
+
         "Residents of other states with privacy laws (for example Colorado, Connecticut, Texas, Virginia) may have similar rights to access, correct, delete and opt out. Email us to make a request; you may appeal a decision by replying to our response.",
         "We will verify requests using the email address or phone number you gave us.",
       ],
@@ -109,7 +112,7 @@ export const termsOfService = {
   title: "Terms of Service",
   metaTitle: "Terms of Service | Cavicord",
   metaDescription:
-    "The terms for using cavicord.tech: information only, not financial advice; rates change; partner contact; and limits of our responsibility.",
+    "The terms for using cavicord.tech: information only, not financial advice; rates change; how we contact you; and limits of our responsibility.",
   intro:
     "These terms govern your use of cavicord.tech and its tools (rate tables, calculators, rate alerts, the chat assistant and the rate-matching form). By using the site, you agree to them. If you don't agree, please don't use the site.",
   sections: [
@@ -129,14 +132,16 @@ export const termsOfService = {
         "We check rates against bank disclosures and update them regularly, but banks can change rates and terms at any time, and errors can happen. Always confirm the APY, minimum deposit, term, early-withdrawal penalty and other terms with the bank or credit union before opening an account. The bank's own disclosures control.",
     },
     {
-      heading: "The rate-matching form and partner contact",
+      heading: "The rate-matching form and how we contact you",
       body:
-        "When you submit the \"Get Personalized Rates\" form, you agree that Cavicord and our partner banks, credit unions, brokers and financial advisors may contact you by email, phone call and text message (which may be sent using automated technology) about CD rates and related savings products, as described in our Privacy Policy. Consent is not required to open any account. Message and data rates may apply; reply STOP to opt out of texts. Any account you open is between you and that institution, under its terms.",
+        "When you submit the \"Get Personalized Rates\" form or a Cavicord Google ad form, you agree that Cavicord may contact you about your request by email, phone call and text message, as described in our Privacy Policy. We do not sell or pass your contact details to banks or other third parties. Message and data rates may apply; reply STOP to opt out of texts. Any account you open is between you and that bank or credit union, under its terms.",
+
     },
     {
       heading: "Advertising and compensation",
       body:
-        "Cavicord may receive compensation from partners, including for referrals or when you open an account. Our rate tables rank products by APY, not by compensation. See our advertiser disclosure on the About page.",
+        "Cavicord may earn compensation from some banks we link to, for example through referral or affiliate programs when you open an account. This never involves selling your contact details. Our rate tables rank products by APY, not by compensation. See our advertiser disclosure on the About page.",
+
     },
     {
       heading: "Acceptable use",

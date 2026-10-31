@@ -121,7 +121,7 @@ const LadderBuilder = ({ rates = [] }) => {
                   </div>
                   <div className="col-span-2 sm:col-span-1">
                     <p className="text-xs text-slate-500">Via</p>
-                    <p className="font-medium text-slate-600 truncate">{rung.bank}</p>
+                    <p className="font-medium text-slate-600 truncate">Issuer upon inquiry</p>
                   </div>
                   <div>
                     <p className="text-xs text-slate-500">At Maturity</p>

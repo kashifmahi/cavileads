@@ -13,6 +13,7 @@ import { ratesLinkFor } from "../data/ratesLinks";
 import { SectionTable, SourcesList } from "../components/ContentExtras";
 import AnnuityCalculator from "../components/AnnuityCalculator";
 import InlineLeadForm from "../components/InlineLeadForm";
+import ScoutWizard from "../components/ScoutWizard";
 
 const formatDate = (iso) =>
   new Date(`${iso}T00:00:00`).toLocaleDateString("en-US", {
@@ -146,6 +147,7 @@ const ArticlePage = () => {
 
           {article.slug === "cd-vs-annuity" && <AnnuityCalculator />}
 
+          <ScoutWizard className="mt-12" id="article-scout" />
           <InlineLeadForm className="mt-12" />
 
           {/* FAQs */}

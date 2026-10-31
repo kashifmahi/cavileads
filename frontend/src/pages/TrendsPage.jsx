@@ -100,7 +100,7 @@ export default function TrendsPage() {
               <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm" data-testid="trends-stat-best">
                 <p className="text-xs text-slate-500 uppercase">Today's Best {TERMS.find((t) => t.key === term)?.label} APY</p>
                 <p className="mt-1 text-2xl font-bold text-emerald-700">{latestTerm.best.toFixed(2)}%</p>
-                <p className="text-xs text-slate-500">via {latestTerm.best_bank}</p>
+                <p className="text-xs text-slate-500">issuer details upon inquiry</p>
               </div>
               <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm" data-testid="trends-stat-avg">
                 <p className="text-xs text-slate-500 uppercase">Average Across Tracked Banks</p>
