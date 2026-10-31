@@ -17,6 +17,7 @@ import { monthYear } from "../data/terms";
 import { useRatesModal } from "../context/RatesModalContext";
 import { API } from "../App";
 import { SectionTable } from "../components/ContentExtras";
+import InlineLeadForm from "../components/InlineLeadForm";
 
 const LandingPage = () => {
   const location = useLocation();
@@ -123,6 +124,14 @@ const LandingPage = () => {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          {/* On-page lead form (ad landing pages: keep it high on the page) */}
+          <InlineLeadForm
+            className="mb-12 max-w-4xl"
+            title={config.leadTitle}
+            sub={config.leadSub}
+            defaultTerm={config.term}
+          />
+
           {/* Benefits */}
           <div className="grid sm:grid-cols-3 gap-4" data-testid="landing-benefits">
             {config.benefits.map((b) => (
