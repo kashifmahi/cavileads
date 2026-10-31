@@ -169,3 +169,7 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 ## 2026-10-31: Sync PR #15 (fe39b4b ux/compact-cookie-banner)
 - CookieBanner: compact bottom-left bar, z-40 (lead dialog z-50 covers it), leaves room for chat bubble. index.html: applies stored 'declined' choice to Google Consent Mode before tag loads.
 - Verified byte-identical, build clean. Mobile 390px: form dialog fully clear of banner; OK button right edge 279px vs chat bubble left 314px (35px gap). Consent snippet in built HTML.
+
+## 2026-10-31: Sync PR #16 (5bb942c legal/privacy-terms)
+- NEW legal.js + LegalPage.jsx (/privacy, /terms). App.jsx routes, Footer links, PersonalizedModal consent text with target=_blank policy links. Sitemap 43 URLs.
+- testing_agent iteration_9: 100% — both legal pages (unique titles/canonicals/meta), footer nav, consent links open in new tab without toggling the checkbox, sitemap 43 incl /privacy+/terms, regressions pass, 0 console errors, no mobile overflow. Form NOT submitted.
