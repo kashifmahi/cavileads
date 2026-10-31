@@ -165,3 +165,7 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - KEPT our llms.txt (superset) + package.json.
 - testing_agent iteration_8: 100% — tables + Sources render on all 5 target pages, 27 internal links all resolve, sitemap 41 URLs XML, regression + mobile fine, 0 console errors.
 - Repo-code notes (not fixed, upstream code): applyExpansion not idempotent if imported twice; 'CD vs Treasury bills guide' mention in cd-vs-treasury-bonds is plain text, could link.
+
+## 2026-10-31: Sync PR #15 (fe39b4b ux/compact-cookie-banner)
+- CookieBanner: compact bottom-left bar, z-40 (lead dialog z-50 covers it), leaves room for chat bubble. index.html: applies stored 'declined' choice to Google Consent Mode before tag loads.
+- Verified byte-identical, build clean. Mobile 390px: form dialog fully clear of banner; OK button right edge 279px vs chat bubble left 314px (35px gap). Consent snippet in built HTML.

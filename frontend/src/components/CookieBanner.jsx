@@ -1,55 +1,82 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "./ui/button";
-import { Cookie } from "lucide-react";
+
+// Compact cookie notice: a single slim bar in the bottom-left corner.
+// - z-40 so any open dialog (the lead form uses z-50) covers it instead of the reverse.
+// - "Decline" really turns off Google Ads cookies via Consent Mode (see index.html,
+//   which also applies a stored "declined" choice before the tag loads).
+
+const KEY = "cavicord_cookie_consent";
+
+const setConsent = (choice) => {
+  try {
+    if (window.gtag) {
+      const v = choice === "accepted" ? "granted" : "denied";
+      window.gtag("consent", "update", {
+        ad_storage: v,
+        ad_user_data: v,
+        ad_personalization: v,
+        analytics_storage: v,
+      });
+    }
+  } catch (e) {
+    // ignore
+  }
+};
 
 const CookieBanner = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem("cavicord_cookie_consent");
-    if (!consent) {
-      const t = setTimeout(() => setVisible(true), 1200);
+    let stored = null;
+    try {
+      stored = localStorage.getItem(KEY);
+    } catch (e) {
+      stored = null;
+    }
+    if (!stored) {
+      const t = setTimeout(() => setVisible(true), 1500);
       return () => clearTimeout(t);
     }
   }, []);
 
   const handle = (choice) => {
-    localStorage.setItem("cavicord_cookie_consent", choice);
+    try {
+      localStorage.setItem(KEY, choice);
+    } catch (e) {
+      // ignore
+    }
+    setConsent(choice);
     setVisible(false);
   };
 
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-4 inset-x-4 z-[60] mx-auto max-w-xl animate-slide-up">
-      <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 p-5 sm:p-6">
-        <div className="flex items-start gap-3">
-          <span className="hidden sm:flex items-center justify-center w-9 h-9 rounded-lg bg-emerald-50 shrink-0">
-            <Cookie className="w-5 h-5 text-emerald-600" />
-          </span>
-          <p className="text-sm text-slate-600 leading-relaxed">
-            We use cookies and tracking technologies to improve your experience,
-            analyze site traffic, and support our marketing efforts. By clicking
-            "Accept", you consent to the use of cookies as described in our{" "}
-            <span className="underline text-[#16233d] font-medium cursor-pointer">Cookie Policy</span>.
-          </p>
-        </div>
-        <div className="mt-4 flex justify-end gap-3">
-          <Button
-            variant="outline"
-            size="sm"
+    <div
+      role="region"
+      aria-label="Cookie notice"
+      data-testid="cookie-banner"
+      className="fixed bottom-3 left-3 right-24 sm:right-auto z-40 sm:max-w-sm animate-slide-up"
+    >
+      <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white/95 backdrop-blur px-3.5 py-2.5 shadow-lg">
+        <p className="text-xs text-slate-600 leading-snug">
+          We use cookies to measure ads and improve the site.
+        </p>
+        <div className="ml-auto flex shrink-0 gap-1.5">
+          <button
+            type="button"
             onClick={() => handle("declined")}
-            className="border-slate-300 text-slate-600 hover:bg-slate-100 hover:text-slate-800"
+            className="rounded-md px-2.5 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-100"
           >
             Decline
-          </Button>
-          <Button
-            size="sm"
+          </button>
+          <button
+            type="button"
             onClick={() => handle("accepted")}
-            className="bg-[#16233d] hover:bg-[#1e2f52] text-white"
+            className="rounded-md bg-[#16233d] px-2.5 py-1.5 text-xs font-semibold text-white hover:bg-[#1e2f52]"
           >
-            Accept
-          </Button>
+            OK
+          </button>
         </div>
       </div>
     </div>
