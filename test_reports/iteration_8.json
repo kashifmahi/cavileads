@@ -1,0 +1,24 @@
+{
+  "summary": "Frontend-only test of PR #14 (seo/expand-comparison-guides). All 9 requested checks pass. The 3 new guides (i-bonds-vs-cds, cds-vs-bond-funds, cd-vs-treasury-bonds) each render an h1, body sections, a comparison table (data-testid=section-table) and a Sources list with external links. Their SEO titles are unique. The expanded cd-vs-money-market guide (1 table, 5 sources) and the expanded cd-vs-annuity article (2 tables, 3 sources) render. The /guides index lists all 10 guides, and clicking a new card opens the right page. I collected 27 unique internal links from the tested pages and visited each one: none landed on the 404 page and no guide link bounced back to /guides. Regression pages are fine: how-do-cds-work has a table and 4 sources; are-cds-worth-it renders 6 sections with no extras, as expected; the homepage rates table shows 5 rows. /sitemap.xml returns 200 text/xml with 41 <url> entries, including the 3 new guides. With paced client-side navigation there were no console errors. On mobile (390px) the page does not scroll sideways; the table scrolls inside its own container.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "/guides/cd-vs-treasury-bonds", "issues": ["Body text says 'covered in our CD vs Treasury bills guide' but this is plain text, not a link to /guides/cd-vs-treasury-bills. Linking it would be a small internal-linking SEO gain (optional)."]}
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "applyExpansion mutates guide/article objects when the module loads (sections are spliced in and faqs appended). This is fine for a single module evaluation, but it is not idempotent. If it is ever called twice (for example from a second import path), FAQs and sections would be duplicated. Consider adding a guard flag.",
+    "SectionTable uses column text as the React key, so duplicate column headers would cause key warnings. That is acceptable with the current data."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped)", "frontend": "100%"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Rapid full-page reloads against the preview Vite dev server cause 429 errors from the preview server's rate limiting (also seen in iterations 4 and 6; not an app bug). It also made the homepage table briefly show 0 rows during the first crawl; after a pause it showed 5. Space out page loads or use history.pushState + popstate. The lead form was not submitted.",
+  "rca of the issue": "N/A"
+}

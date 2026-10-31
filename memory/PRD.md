@@ -159,3 +159,9 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - index.html: gtag bootstrap + AW-18545024484 (external gtag.js loads ONLY on *.cavicord.tech hostname gate). PersonalizedModal fires conversion (send_to AW-18545024484/wZYWCIu7ga8dEOS7-opF, value 1, currency PKR) + generate_lead after successful POST /api/leads.
 - testing_agent iteration_7: ALL PASS — gtag fn + dataLayer config, empty-submit validation (8 errors, 0 API calls), full submit 200 + success matches, conversion + generate_lead pushed to dataLayer, lead in admin then cleaned, homepage regression + backend suite 12/12.
 - Notes for user: currency is PKR (confirm matches Ads account), cookie banner can overlap modal bottom at 1080p (clicks still work), Consent Mode not wired to cookie banner, verify real beacon with Tag Assistant on production.
+
+## 2026-10-30: Sync PR #14 (df26356 seo/expand-comparison-guides)
+- NEW: ContentExtras.jsx, expansions.js, newGuides.js (3 guides: i-bonds-vs-cds, cds-vs-bond-funds, cd-vs-treasury-bonds). Changed: guides/articles/ratesLinks/terms data, ArticlePage, GuidePage, generate-sitemap, prerender, sitemap (41 URLs).
+- KEPT our llms.txt (superset) + package.json.
+- testing_agent iteration_8: 100% — tables + Sources render on all 5 target pages, 27 internal links all resolve, sitemap 41 URLs XML, regression + mobile fine, 0 console errors.
+- Repo-code notes (not fixed, upstream code): applyExpansion not idempotent if imported twice; 'CD vs Treasury bills guide' mention in cd-vs-treasury-bonds is plain text, could link.
