@@ -228,3 +228,8 @@ Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-ca
 - Minimums capped at $50K/$100K only (no 250K/500K) across all 20→14 option cards; deposit filter simplified.
 - Offered terms restricted to 6/9/12/18/24 months everywhere: brokered ladder (14 rows, top 4.78% 2-yr), hero badge+preview pills, wizard & lead-form term dropdowns, options term filter, Calculator termOptions, LadderBuilder (6-24mo rungs, default $50K), WhyCDs + FAQ ladder copy, llms.txt. SSG rebuilt, homepage verified clean of 3/4/5-year mentions.
 - NOTE: /best-3-year-cd-rates and /best-5-year-cd-rates SEO pages still exist (show all 6-24mo options via fallback) — user has not asked to remove them.
+
+## 2026-10-31 ("fix all pages")
+- Removed pages for unoffered products with client redirects (data/redirects.js): /best-3-month→/best-6-month, /best-3-year & /best-5-year→/best-2-year, /no-penalty-cd-rates→/best-cd-rates. termPages now only 18-month + 2-year; rateNavLinks (header+footer) trimmed to offered terms; sitemap 44→40 URLs, prerender 42 routes.
+- Fixed all internal links to removed pages (ratesLinks.js, TrendsPage, GuidePage CTA, PenaltyCalculator) and offer copy (landings "All Terms" bullet, jumbo term FAQ/section now 6mo–2yr).
+- Verified: redirects work, nav clean, jumbo page no leaks, builds 42/42. Generic educational prose in guides/articles (explaining 5-year CDs as a market concept) intentionally kept for SEO.

@@ -6,4 +6,8 @@ export const REDIRECTS = {
   "/6-month-cd": "/best-6-month-cd-rates",
   "/high-yield-cd": "/high-yield-cd-rates",
   "/jumbo-cd": "/jumbo-cd-rates",
+  "/best-3-month-cd-rates": "/best-6-month-cd-rates",
+  "/best-3-year-cd-rates": "/best-2-year-cd-rates",
+  "/best-5-year-cd-rates": "/best-2-year-cd-rates",
+  "/no-penalty-cd-rates": "/best-cd-rates",
 };

@@ -212,13 +212,13 @@ export default function TrendsPage() {
             <h2 className="mt-10 font-serif text-2xl font-bold text-[#16233d]">Using the trend</h2>
             <p className="mt-3 text-slate-600 leading-relaxed">
               If the best rates are drifting down, locking a longer term keeps today's yield; see{" "}
-              <Link to="/best-5-year-cd-rates" className="text-emerald-700 underline underline-offset-2">5-year CD rates</Link>{" "}
+              <Link to="/best-2-year-cd-rates" className="text-emerald-700 underline underline-offset-2">2-year CD rates</Link>{" "}
               and our explainer on{" "}
               <Link to="/articles/fed-rate-cuts-and-cd-rates" className="text-emerald-700 underline underline-offset-2">how Fed cuts affect CD rates</Link>.
               If you're unsure which way rates will go, a{" "}
               <Link to="/guides/cd-ladder-explained" className="text-emerald-700 underline underline-offset-2">CD ladder</Link>{" "}
               or a{" "}
-              <Link to="/no-penalty-cd-rates" className="text-emerald-700 underline underline-offset-2">no-penalty CD</Link>{" "}
+              <Link to="/best-6-month-cd-rates" className="text-emerald-700 underline underline-offset-2">shorter-term CD</Link>{" "}
               keeps your options open.
             </p>
           </div>

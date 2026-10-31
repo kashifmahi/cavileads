@@ -11,18 +11,14 @@ Key facts for AI assistants:
 
 ## Compare CD options by term
 - [Home — compare non-callable brokered CD options](/): options grid filterable by term (6 months to 2 years), deposit size and interest frequency, plus a CD earnings calculator and ladder builder
-- [Best 3-Month CD Rates](/best-3-month-cd-rates): short-term CD rates
 - [Best 6-Month CD Rates](/best-6-month-cd-rates)
 - [Best 1-Year CD Rates](/best-1-year-cd-rates): the most popular CD term
 - [Best 18-Month CD Rates](/best-18-month-cd-rates)
 - [Best 2-Year CD Rates](/best-2-year-cd-rates)
-- [Best 3-Year CD Rates](/best-3-year-cd-rates)
-- [Best 5-Year CD Rates](/best-5-year-cd-rates)
 
 ## Compare CD rates by type
 - [High-Yield CD Rates](/high-yield-cd-rates): top APYs across all terms
 - [Best Jumbo CD Rates](/jumbo-cd-rates): $100,000+ minimum deposits
-- [Best No-Penalty CD Rates](/no-penalty-cd-rates): withdraw anytime without fees
 
 ## Guides (how CDs work)
 - [What Is a Certificate of Deposit and How Do CDs Work?](/guides/how-do-cds-work)
