@@ -11,6 +11,7 @@ import { getArticle, articles } from "../data/articles";
 import { authorSchema, publisherSchema } from "../data/author";
 import { ratesLinkFor } from "../data/ratesLinks";
 import { SectionTable, SourcesList } from "../components/ContentExtras";
+import AnnuityCalculator from "../components/AnnuityCalculator";
 
 const formatDate = (iso) =>
   new Date(`${iso}T00:00:00`).toLocaleDateString("en-US", {
@@ -141,6 +142,8 @@ const ArticlePage = () => {
               <SectionTable table={s.table} />
             </section>
           ))}
+
+          {article.slug === "cd-vs-annuity" && <AnnuityCalculator />}
 
           {/* FAQs */}
           <section className="mt-12" data-testid="article-faqs">
