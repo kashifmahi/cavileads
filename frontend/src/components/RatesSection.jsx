@@ -164,7 +164,7 @@ const RatesSection = ({ rates, loading, updatedAt }) => {
             <>
               <DialogHeader>
                 <div className="flex items-center gap-3">
-                  <BankAvatar bank={selected.bank} color={selected.color} />
+                  <BankAvatar bank={selected.bank} color={selected.color} url={selected.url} />
                   <div>
                     <DialogTitle className="font-serif text-[#16233d]">{selected.bank}</DialogTitle>
                     <DialogDescription>{formatTerm(selected.term_months)} Certificate of Deposit</DialogDescription>

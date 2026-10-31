@@ -18,6 +18,7 @@ import { Checkbox } from "./ui/checkbox";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
+import { BankAvatar } from "./RateTable";
 import { Badge } from "./ui/badge";
 import { ArrowRight, CheckCircle2, Loader2, ShieldCheck } from "lucide-react";
 import { formatTerm } from "../mock/mock";
@@ -367,12 +368,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
                   className="flex items-center justify-between rounded-xl border border-slate-200 p-4 hover:border-emerald-300 transition-colors duration-200"
                 >
                   <div className="flex items-center gap-3">
-                    <span
-                      className="flex items-center justify-center w-9 h-9 rounded-full text-white font-bold text-sm"
-                      style={{ backgroundColor: rate.color }}
-                    >
-                      {rate.bank.charAt(0)}
-                    </span>
+                    <BankAvatar bank={rate.bank} color={rate.color} url={rate.url} size="w-9 h-9" />
                     <div>
                       <p className="font-semibold text-[#16233d] text-sm">{rate.bank}</p>
                       {i === 0 && (
