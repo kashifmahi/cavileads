@@ -14,7 +14,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { Checkbox } from "./ui/checkbox";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -24,6 +23,7 @@ import { ArrowRight, CheckCircle2, Loader2, ShieldCheck } from "lucide-react";
 import { formatTerm } from "../mock/mock";
 import { getAttribution } from "../lib/attribution";
 import { API } from "../App";
+import { BankAvatar } from "./RateTable";
 
 const amountOptions = [
   "$50,000 - $99,999",
@@ -54,7 +54,7 @@ const initialForm = {
   amount: "",
   timeframe: "",
   term: "",
-  agree: false,
+  agree: true,
 };
 
 const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
@@ -87,7 +87,6 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
     if (!form.amount) e.amount = "Please select an investment amount.";
     if (!form.timeframe) e.timeframe = "Please select a timeframe.";
     if (!form.term) e.term = "Please select a CD term.";
-    if (!form.agree) e.agree = "You must agree to continue.";
     return e;
   };
 
@@ -110,7 +109,7 @@ const PersonalizedModal = ({ open, onOpenChange, defaultTerm }) => {
         investment_amount: form.amount,
         timeframe: form.timeframe,
         term_months: Number(form.term),
-        agree: form.agree,
+        agree: true,
         source_page: attr.source_page || window.location.pathname,
         utm_source: attr.utm_source || "",
         utm_medium: attr.utm_medium || "",

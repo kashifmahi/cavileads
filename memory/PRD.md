@@ -121,3 +121,73 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
   3. CORS: allow_credentials=False (invalid combo with origins=*).
 - FALSE POSITIVE in audit: "gemini-3.5-flash invalid model" — model is valid (reviewer knowledge cutoff); chat tested working live same day.
 - Known accepted: unsubscribe returns success for unknown email (no enumeration), admin verify button 180s timeout, snapshot keyed by UUID id (reseed only fires on empty collection).
+
+## 2026-10-29: GitHub repo sync (kashifmahi/cavileads, merge PR #6)
+- Backend identical; synced frontend: index.html (responsive logo preload w/ imagesrcset, dns-prefetch instead of 4 gstatic preconnects, removed default canonical/og:url — SPA duplicate-signal fix), Header/Footer (srcSet logos 230w/460w/645w), prerender.mjs (gfonts unblock + css inline for SSG builds), new public/assets/logo-cavicord-v2-{230,460}.webp.
+- KEPT our package.json (repo was missing @emergentbase overlay/visual-edits platform deps).
+- Verified: build clean, header serves 230w variant, footer 460w, rates render, canonical set per-route by Helmet.
+
+## 2026-10-29: GitHub sync round 2 (PR #7 seo/onpage-keywords)
+- Synced: src/data/{articles,guides,landings}.js, NEW ratesLinks.js (topic-matched internal links article/guide -> rates page for keyword consolidation), ArticlePage.jsx + GuidePage.jsx (render article-rates-link-top + article-compare-cta / guide-rates-link-top). Kept our package.json.
+- testing_agent iteration_4: 100% frontend pass — all 18 ratesLinks keys valid, navigation works, 14 routes unique SEO tags, 0 console errors. Two cosmetic notes only (generic bottom-CTA heading, 12-Month vs 1-Year keyword variance — intentional).
+
+## 2026-10-29: GitHub sync round 3 (PR #8 seo/penalty-calculator)
+- Synced: NEW components/PenaltyCalculator.jsx, landings.js (+ /cd-early-withdrawal-penalty-calculator landing with showPenaltyCalculator flag), ratesLinks.js, LandingPage.jsx. Kept our package.json.
+- Sitemap now 38 URLs; llms.txt entry added. Screenshot-verified: page renders with live penalty math (payout, net gain/loss, break-even warning).
+
+## 2026-10-29: GitHub sync round 4 (PR #9 seo/hard-js-redirects)
+- Synced index.html (pre-app location.replace script for legacy slugs + www->non-www, map injected at build) + vite.config.mjs (legacyRedirects plugin reading src/data/redirects.js). Kept our llms.txt (repo missing penalty-calc line), package.json.
+- Verified: /jumbo-cd -> /jumbo-cd-rates via location.replace in preview.
+- Support confirmed: Emergent supports www<->root redirect (Domain tab) but NO custom path-based server-side 301s; backend only gets /api paths. User advised to email support.
+
+## 2026-10-30: Hotfix sync (PR #10 369a23f — www/apex redirect loop)
+- index.html inline script no longer does www->apex in JS (host-level redirect lives ONLY in Domain tab, cavicord.tech = Primary). Slug redirects unchanged.
+- testing_agent iteration_5: 100% pass — zero www references in served+built HTML, 4 legacy slugs redirect one-hop w/ query+hash preserved, canonicals + homepage load with no loop, 0 console errors.
+- Note: SITE_URL=apex matches Domain-tab primary=apex. If primary ever flips to www, SITE_URL/canonicals must flip too.
+
+## 2026-10-30: Critical sync (PR #11 b22a969 — same-origin API)
+- App.jsx: on any *.cavicord.tech host, BACKEND_URL = "" (relative /api, same origin) instead of baked REACT_APP_BACKEND_URL (was https://www.cavicord.tech -> CORS-blocked all API calls from apex). Preview/dev keep env URL.
+- prerender.mjs: rewrites http://127.0.0.1:5050/ modulepreload links to root-relative in saved SSG HTML.
+- Both files byte-identical to main; build clean; preview smoke-tested (rates render, API same-origin).
+
+## 2026-10-30: Sync PR #12 (983687e seo/thin-pages-internal-links)
+- 6 files byte-identical from main: Footer.jsx, ratesLinks.js, terms.js, GuidesIndex.jsx, TermPage.jsx, TrendsPage.jsx (SEO content, FAQs, internal links, JSON-LD).
+- testing_agent iteration_6: 100% pass — term pages (3 JSON-LD blocks valid each), all new internal links resolve (no 404s), trends toggles/chart/table work, guides index + footer fine, homepage regression OK, 0 console errors.
+- Noted (pre-existing, low priority): trends "Edge vs FDIC" card always compares against 12-mo FDIC average regardless of selected term (subtitle discloses it).
+
+## 2026-10-30: Sync PR #13 (3e55486 — Google Ads tag + lead conversion)
+- index.html: gtag bootstrap + AW-18545024484 (external gtag.js loads ONLY on *.cavicord.tech hostname gate). PersonalizedModal fires conversion (send_to AW-18545024484/wZYWCIu7ga8dEOS7-opF, value 1, currency PKR) + generate_lead after successful POST /api/leads.
+- testing_agent iteration_7: ALL PASS — gtag fn + dataLayer config, empty-submit validation (8 errors, 0 API calls), full submit 200 + success matches, conversion + generate_lead pushed to dataLayer, lead in admin then cleaned, homepage regression + backend suite 12/12.
+- Notes for user: currency is PKR (confirm matches Ads account), cookie banner can overlap modal bottom at 1080p (clicks still work), Consent Mode not wired to cookie banner, verify real beacon with Tag Assistant on production.
+
+## 2026-10-30: Sync PR #14 (df26356 seo/expand-comparison-guides)
+- NEW: ContentExtras.jsx, expansions.js, newGuides.js (3 guides: i-bonds-vs-cds, cds-vs-bond-funds, cd-vs-treasury-bonds). Changed: guides/articles/ratesLinks/terms data, ArticlePage, GuidePage, generate-sitemap, prerender, sitemap (41 URLs).
+- KEPT our llms.txt (superset) + package.json.
+- testing_agent iteration_8: 100% — tables + Sources render on all 5 target pages, 27 internal links all resolve, sitemap 41 URLs XML, regression + mobile fine, 0 console errors.
+- Repo-code notes (not fixed, upstream code): applyExpansion not idempotent if imported twice; 'CD vs Treasury bills guide' mention in cd-vs-treasury-bonds is plain text, could link.
+
+## 2026-10-31: Sync PR #15 (fe39b4b ux/compact-cookie-banner)
+- CookieBanner: compact bottom-left bar, z-40 (lead dialog z-50 covers it), leaves room for chat bubble. index.html: applies stored 'declined' choice to Google Consent Mode before tag loads.
+- Verified byte-identical, build clean. Mobile 390px: form dialog fully clear of banner; OK button right edge 279px vs chat bubble left 314px (35px gap). Consent snippet in built HTML.
+
+## 2026-10-31: Sync PR #16 (5bb942c legal/privacy-terms)
+- NEW legal.js + LegalPage.jsx (/privacy, /terms). App.jsx routes, Footer links, PersonalizedModal consent text with target=_blank policy links. Sitemap 43 URLs.
+- testing_agent iteration_9: 100% — both legal pages (unique titles/canonicals/meta), footer nav, consent links open in new tab without toggling the checkbox, sitemap 43 incl /privacy+/terms, regressions pass, 0 console errors, no mobile overflow. Form NOT submitted.
+
+## 2026-10-31: Lead form consent simplified (user request)
+- Removed consent Checkbox + long TCPA paragraph from PersonalizedModal. Replaced with one-line notice: "By submitting, you agree to our Privacy Policy and Terms of Service and to being contacted about CD rates at the details above." (links kept, target=_blank).
+- agree defaults true and payload always sends agree:true on submit; agree validation removed; Checkbox import removed.
+- Verified in preview: checkbox gone, TCPA text gone, notice + links (/privacy, /terms) present, form renders cleanly.
+- NOTE: workspace now AHEAD of GitHub repo (PersonalizedModal.jsx) — user should Save to GitHub to sync.
+
+## 2026-10-31: Sync PR #17 (f197313 seo/compete-target) — 8 files ONLY
+- Pulled byte-identical: sitemap.xml (44 URLs), NEW AnnuityCalculator.jsx, expansions/landings/ratesLinks/terms data, ArticlePage, LandingPage. PersonalizedModal untouched (preserves simplified consent form).
+- NEW landing /cd-rates-for-seniors (header+footer nav, 32 internal links all resolve). /best-cd-rates has "CD rates today" summary table. Penalty/jumbo/high-yield/no-penalty/maturity content expanded. CD vs annuity calculator interactive + math hand-verified, no NaN.
+- testing_agent iteration_10: 100% pass. LOW note (upstream code): annuity years input silently caps at 30 and strips minus sign — cosmetic.
+- NOT deployed per user instruction.
+
+## 2026-10-31: PR #18 logos fix (28ad0ab) — partial pull + manual edit
+- RatesSection.jsx pulled byte-identical (Details dialog BankAvatar gets url={selected.url}).
+- PersonalizedModal NOT pulled (kept simplified consent form); manually added `import { BankAvatar } from "./RateTable"` + replaced coloured-initial span with <BankAvatar ... size="w-9 h-9"/> in matches list.
+- Verified via mocked POST /api/leads (page.route — NO real lead): Details dialog shows loaded logo img (s2 favicon), results view shows 2 matches with loaded avatar imgs. Marcus renders letter fallback site-wide (favicon quality) — consistent, pre-existing.
+- NOT deployed. User to push via Save to GitHub so main gets the form changes.

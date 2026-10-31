@@ -1,0 +1,32 @@
+{
+  "summary": "Frontend smoke test of PR #12 (SEO thin pages / internal links). Checked /best-3-month-cd-rates, /no-penalty-cd-rates, /cd-rate-trends, /guides plus one guide page, the footer and the homepage at 1920x1080. All features passed with no console errors.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "/cd-rate-trends stat cards", "issues": ["The 'Edge vs FDIC national avg' card always subtracts the 12-month FDIC average, even when the 6-month, 2-year or 5-year term is selected (for example, 5-Year shows +2.44% against the 12-mo average). The card's subtitle says this, so it isn't a bug, but the comparison could mislead readers. Not changed in this PR; low priority."]}
+    ]
+  },
+  "test_results": {
+    "term_pages": "Both pages have a unique title ('Best 3-Month CD Rates — October 2026 | Cavicord' and 'Best No-Penalty CD Rates — October 2026 | Cavicord'), the hero H1, top-rate badge, FDIC national average, rate table rows, 3 content sections, 3 FAQs, 4 related links and the 'Compare Other CD Terms' chips. Each page has 3 JSON-LD blocks (BreadcrumbList, FAQPage, ItemList) and all of them parse as valid JSON.",
+    "internal_links": "Opened every new related link and every explainer link on the trends page. All of them load real pages and none hit the 404 page: /guides/cd-vs-high-yield-savings, /guides/cd-vs-treasury-bills, /guides/cd-ladder-explained, /articles/what-happens-when-a-cd-matures, /articles/no-penalty-cd-guide, /articles/cd-early-withdrawal-penalty, /articles/fed-rate-cuts-and-cd-rates, /cd-early-withdrawal-penalty-calculator, /best-5-year-cd-rates, /no-penalty-cd-rates. Checked the slugs in ratesLinks.js against the data files by reading the code; every target exists.",
+    "trends": "The three stat cards (best/avg/spread) render. The recharts svg renders with 2 days of history (Oct 28 to Oct 30), which is expected. The history table has 2 rows. All four term toggles (trends-term-6/12/24/60) update the stat cards and the active style. The Dataset JSON-LD is valid and its temporalCoverage is 2026-10-28/..",
+    "guides": "The /guides index shows 7 guide cards. The CollectionPage and BreadcrumbList JSON-LD are valid. Clicking the cd-vs-treasury-bills card loads the guide page with the right H1 and its rates link.",
+    "footer": "The logo loads, and the BEST CD RATES, GUIDES & TOOLS and COMPANY columns plus the disclaimer and copyright render. Layout is fine.",
+    "homepage_regression": "Loads with 10 rate rows and the correct title."
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "TermPage ItemList schema has numberOfItems equal to rates.length but only lists the top 10 items. This is fine for SEO but could be made consistent.",
+    "In TermPage, the `typeof window !== 'undefined'` guard on breadcrumb items isn't needed in a client-side SPA. Harmless.",
+    "The 429 / 'Failed to fetch dynamically imported module' seen once during rapid navigation came from rate limiting on the preview Vite dev server, not from the app. It went away on retry. It is not expected in the production build."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (not requested)", "frontend": "100%"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "PR #12 SEO pages verified. Rate tables use the data-testid prefix open-account-*. Term page sections use the testids term-sections, term-faqs and term-related. The 404 page uses not-found-heading. Navigating quickly on the preview dev server can return a 429; add waits between page loads."
+}

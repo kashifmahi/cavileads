@@ -1,0 +1,27 @@
+{
+  "summary": "PR #13 smoke (Google Ads tag + lead conversion). All requested flows PASS. On homepage window.gtag is a function, window.dataLayer is an array ([js],[config AW-18545024484]), and the inline gtag bootstrap script with AW-18545024484 is in <head>. The external gtag/js?id=AW-18545024484 <script> is NOT injected on the preview host. That is intentional: index.html only loads it when the hostname is cavicord.tech. Empty submit showed all 8 field errors and made 0 calls to /api/leads. The filled form (first options: '$50,000 - $99,999', 'Immediately', '6 months', consent ticked) gave POST /api/leads 200 and the success title 'Thanks, PR13 Smoke! Here Are Your Top Matches' with 3 matches. After submit, dataLayer received ['event','conversion',{send_to:'AW-18545024484/wZYWCIu7ga8dEOS7-opF',value:1,currency:'PKR'}] and ['event','generate_lead',...]. The lead showed up in GET /api/admin/leads with all fields correct, then I deleted it from Mongo. The homepage rates table loads (5 rows) with no console errors. The existing backend regression suite passed 12/12.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Homepage + lead modal", "issues": ["The cookie consent banner can show on top of the bottom of the open lead modal, partly covering the submit button area on a 1080p viewport. Clicking still works."]}
+    ]
+  },
+  "test_report_links": ["/app/backend/tests/test_cavicord_admin_rates.py", "/app/test_reports/pytest/pytest_results.xml"],
+  "action_items": [
+    "Optional: confirm with the user that the conversion currency should be 'PKR'. The site targets US savers, so 'USD' may be intended, but it is set in the PR and may match the Ads account currency.",
+    "Optional: gtag('config') runs even if the user declines cookies, and Google Consent Mode is not wired to the cookie banner. Consider this if compliance matters.",
+    "Remember: the gtag.js library only loads on cavicord.tech (hostname gate), so check the real beacon in Google Tag Assistant on production."
+  ],
+  "critical_code_review_comments": [
+    "index.html: gtag.js loading is gated by /(^|\\.)cavicord\\.tech$/. Expected behavior, but any other production domain or alias will never send conversions.",
+    "PersonalizedModal.jsx: the conversion fires only after a 200 from /api/leads, inside a try/catch. Correct placement."
+  ],
+  "updated_files": ["/app/test_reports/iteration_7.json"],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "seed_data_creation": "Test lead pr13-smoke@example.com created via the UI, then deleted from db.leads (deletedCount 1).",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Lead modal: comboboxes are role=combobox inside role=dialog. Options are role=option; wait 400ms before clicking. The checkbox is role=checkbox. The external gtag script only loads on cavicord.tech, so on preview check window.dataLayer for proof of the conversion. Admin key is in /app/memory/test_credentials.md."
+}

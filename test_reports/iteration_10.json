@@ -1,0 +1,20 @@
+{
+  "summary": "Frontend-only test of the PR #17 SEO page sync. Everything requested passed. /cd-rates-for-seniors renders fully: its SEO title is 'CD Rates for Seniors: Best Options for Retirees | Cavicord', and the page has the hero, benefit cards, a 34-row rate table, content sections and FAQs. It is linked from the header 'Best Rates' dropdown and from the footer, and all 32 of its internal links load real pages (none show the 404 page). /best-cd-rates shows the new 7-row 'CD rates today' summary table above the 34-row main table. Jumbo, high-yield and the penalty calculator page each render their content tables with no errors; the penalty calculator page also shows its calculator. The no-penalty and CD-maturity articles render their tables and Sources. The CD vs annuity calculator updates its results when amount, years, annuity rate, tax bracket or the under-59½ box changes. The default result matches a hand calculation ($116,153 vs $118,710), and no NaN or undefined appeared, even with empty or non-numeric input. Homepage rate table loads, and the lead form opens with its one-line consent notice (not filled or submitted). /sitemap.xml returns 200 text/xml with 44 <url> entries, including /cd-rates-for-seniors.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "AnnuityCalculator", "issue": "num() strips '-', so typing -5 in Years is silently read as 5. Years above 30 are silently capped at 30 (99 shows 'after 30 years') with no message to the user.", "selector": "[data-testid='ac-years']", "priority": "LOW"}
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": ["Optional: in the annuity calculator, tell the user about the 30-year cap and don't accept negative input (e.g., a helper text or a clamp shown in the input)"],
+  "critical_code_review_comments": ["AnnuityCalculator: the clamp on years happens without telling the user, and the regex in num() drops minus signs. Both are low-impact edge cases."],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped)", "frontend": "100%"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "A fast full-page crawl of the Vite dev preview triggers 429s from the ingress (rate limit), which shows up as noise in the console (failed module loads, WebSocket 429). This is an environment artifact, not an app bug. Use client-side pushState/popstate navigation when crawling links. The NotFound page has data-testid='not-found-heading'. No lead forms were submitted."
+}
