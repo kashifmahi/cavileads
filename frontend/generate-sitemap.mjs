@@ -21,6 +21,8 @@ const pages = [
   { route: "/guides", freq: "weekly", pri: "0.7" },
   ...guides.map((g) => ({ route: `/guides/${g.slug}`, freq: "monthly", pri: "0.6", lastmod: g.dateModified })),
   { route: "/about", freq: "monthly", pri: "0.5" },
+  { route: "/privacy", freq: "yearly", pri: "0.2" },
+  { route: "/terms", freq: "yearly", pri: "0.2" },
 ];
 
 const body = pages
