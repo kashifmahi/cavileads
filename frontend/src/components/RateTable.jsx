@@ -19,28 +19,58 @@ const logoDomain = (url) => {
   }
 };
 
-export const bankLogoUrl = (url, px = 64) => {
-  const d = logoDomain(url || "");
-  return d ? `https://www.google.com/s2/favicons?domain=${d}&sz=${px}` : "";
+// Self-hosted official logos (public/assets/banks/<key>.png) take priority; banks without
+// one use Google's favicon service at high resolution. Each step falls back to the next.
+export const BANK_LOGO_KEYS = {
+  "baskbank.com": "bask",
+  "marcus.com": "marcus",
+  "ally.com": "ally",
+  "synchronybank.com": "synchrony",
+  "discover.com": "discover",
+  "barclaysus.com": "barclays",
+  "capitalone.com": "capitalone",
+  "breadfinancial.com": "bread",
+  "quontic.com": "quontic",
+  "bmoalto.com": "bmoalto",
+  "cit.com": "cit",
+  "creditonebank.com": "creditone",
+  "navyfederal.org": "navyfederal",
+  "suncoastcreditunion.com": "suncoast",
 };
 
+export const bankLogoSources = (url) => {
+  const d = logoDomain(url || "");
+  if (!d) return [];
+  const key = BANK_LOGO_KEYS[d];
+  return [
+    ...(key ? [`/assets/banks/${key}.png`] : []),
+    `https://www.google.com/s2/favicons?domain=${d}&sz=256`,
+  ];
+};
+
+export const bankLogoUrl = (url) => bankLogoSources(url).slice(-1)[0] || "";
+
 export const BankAvatar = ({ bank, color, url, size = "w-10 h-10" }) => {
-  const [failed, setFailed] = React.useState(false);
-  const src = bankLogoUrl(url);
-  if (src && !failed) {
+  const sources = bankLogoSources(url);
+  const [idx, setIdx] = React.useState(0);
+  React.useEffect(() => setIdx(0), [url]);
+  const src = sources[idx];
+  if (src) {
     return (
       <span
         className={`flex items-center justify-center ${size} rounded-full bg-white border border-slate-200 shrink-0 overflow-hidden`}
         title={bank}
       >
         <img
+          key={src}
           src={src}
           alt={`${bank} logo`}
-          width={32}
-          height={32}
+          width={40}
+          height={40}
           loading="lazy"
-          className="w-[60%] h-[60%] object-contain"
-          onError={() => setFailed(true)}
+          decoding="async"
+          className="w-[70%] h-[70%] object-contain"
+          onError={() => setIdx((i) => i + 1)}
         />
       </span>
     );
