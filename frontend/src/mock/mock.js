@@ -59,21 +59,21 @@ export const formatTerm = (months) => {
 export const whyCds = [
   {
     icon: "ShieldCheck",
-    title: "FDIC Insured",
+    title: "FDIC insurance at the bank",
     description:
-      "Your deposits are protected up to $250,000 per depositor, per bank by the Federal Deposit Insurance Corporation.",
+      "CDs from FDIC-member banks are insured by the FDIC up to $250,000 per depositor, per bank, per ownership category. Cavicord itself is not a bank and does not hold deposits.",
   },
   {
     icon: "Lock",
-    title: "Guaranteed Returns",
+    title: "Fixed rate",
     description:
-      "Lock in your rate at the time of deposit. Unlike stocks, your CD rate won't fluctuate with market conditions.",
+      "A CD's rate is set when you open it, so it won't move with the market until the CD matures.",
   },
   {
     icon: "PiggyBank",
-    title: "Principal Protection",
+    title: "Principal stability",
     description:
-      "Your initial deposit is never at risk. CDs offer one of the safest ways to grow your savings.",
+      "Within FDIC limits at the issuing bank, your deposit doesn't move with market swings like stocks do.",
   },
   {
     icon: "TrendingUp",
@@ -85,7 +85,7 @@ export const whyCds = [
     icon: "CalendarClock",
     title: "Flexible Terms",
     description:
-      "Choose terms from 3 months to 5 years to match your financial goals and liquidity needs.",
+      "Choose terms from 6 months to 2 years to match your financial goals and liquidity needs.",
   },
   {
     icon: "LineChart",
@@ -104,7 +104,7 @@ export const faqs = [
   {
     question: "Are CDs safe investments?",
     answer:
-      "Yes. CDs from FDIC-insured banks are protected up to $250,000 per depositor, per institution. Your principal and earned interest are guaranteed as long as you stay within insurance limits, making CDs one of the lowest-risk places to grow your money.",
+      "Yes. CDs from FDIC-insured banks are covered up to $250,000 per depositor, per institution. Your principal and earned interest are covered as long as you stay within insurance limits, making CDs one of the lowest-risk places to grow your money.",
   },
   {
     question: "What happens if I withdraw early?",
@@ -119,7 +119,7 @@ export const faqs = [
   {
     question: "What is a CD ladder?",
     answer:
-      "A CD ladder is a strategy where you split your money across multiple CDs with staggered maturity dates — for example 1, 2, 3, 4, and 5 years. As each CD matures, you reinvest it into a new long-term CD. This gives you regular access to a portion of your funds while capturing higher long-term rates.",
+      "A CD ladder is a strategy where you split your money across multiple CDs with staggered maturity dates — for example 6, 9, 12, 18 and 24 months. As each CD matures, you reinvest it into a new longer-term CD. This gives you regular access to a portion of your funds while capturing higher rates.",
   },
   {
     question: "What is APY and how is it different from the interest rate?",

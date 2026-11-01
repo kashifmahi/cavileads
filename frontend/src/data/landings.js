@@ -13,7 +13,7 @@ export const landingPages = [
     sub: "Every rate below is from an FDIC-insured bank, ranked by APY so the strongest yields rise to the top. Compare, then let us match you with options for your deposit.",
     benefits: [
       { title: "Ranked by APY", text: "The highest-paying CDs always appear first — no pay-for-placement." },
-      { title: "FDIC Insured", text: "Every listed bank is federally insured up to $250,000 per depositor." },
+      { title: "FDIC insurance at the bank", text: "CDs from FDIC-member banks are insured up to $250,000 per depositor, per bank. Cavicord itself is not a bank and does not hold deposits." },
       { title: "Penalties Shown", text: "See each CD's early-withdrawal penalty before you commit." },
     ],
     faqs: [
@@ -32,7 +32,7 @@ export const landingPages = [
     h1: "Current CD Rates",
     sub: "A single, honest view of what banks pay on certificates of deposit right now — every term, every listed bank, next to the official FDIC national averages.",
     benefits: [
-      { title: "All Terms", text: "From 3-month to 5-year CDs in one comparison table." },
+      { title: "All Terms", text: "From 6-month to 2-year options in one comparison." },
       { title: "FDIC Benchmarks", text: "National average rates pulled live from FDIC.gov for context." },
       { title: "Updated Daily", text: "Rates are reviewed against bank disclosures with visible timestamps." },
     ],
@@ -53,7 +53,7 @@ export const landingPages = [
     sub: "The 12-month CD is where banks compete hardest — often the highest APY on the market with just a one-year commitment. Here are today's leaders.",
     benefits: [
       { title: "Peak APYs", text: "Banks typically price their most aggressive rates at 12 months." },
-      { title: "One-Year Lock", text: "Guaranteed rate for 12 months regardless of Fed cuts." },
+      { title: "One-Year Lock", text: "A fixed rate for 12 months regardless of Fed cuts." },
       { title: "Ladder Ready", text: "The classic first rung of a CD ladder strategy." },
     ],
     faqs: [
@@ -153,7 +153,7 @@ export const landingPages = [
       { q: "Is a $300,000 jumbo CD fully insured?", a: "Not at one bank — FDIC coverage caps at $250,000 per depositor, per bank. Split large balances across institutions or ownership categories to stay fully covered." },
       { q: "What's the minimum for a jumbo CD?", a: "Typically $100,000, though some banks set it at $50,000. Each listed rate shows its exact minimum." },
       { q: "What is a super jumbo CD?", a: "A super jumbo CD has an even higher minimum — usually $250,000 or more. Because that's above the $250,000 FDIC limit at a single bank, any amount over the limit is uninsured unless you use joint, trust or retirement ownership categories, or a deposit-placement network that spreads it across banks." },
-      { q: "Which term pays the best jumbo CD rate?", a: "It changes with the rate cycle. When the Fed is expected to cut, banks often pay the most on 6- to 18-month jumbo CDs and less on 5-year terms; when rates are expected to rise, longer terms can pay more. Filter the table above by term to see today's leaders." },
+      { q: "Which term pays the best jumbo CD rate?", a: "It changes with the rate cycle. When the Fed is expected to cut, banks often pay the most on 6- to 18-month jumbo CDs; when rates are expected to rise, longer terms can pay more. Filter the options above by term to see today's leaders." },
       { q: "Are jumbo CD rates negotiable?", a: "Sometimes, at smaller banks and credit unions — especially for relationship customers or deposits well above the minimum. Online banks usually publish one fixed rate. It costs nothing to ask a local bank to match the top APY in the table." },
     ],
     sections: [
@@ -191,8 +191,8 @@ export const landingPages = [
         ],
       },
       {
-        heading: "Jumbo CD rates by term: 1-year, 2-year, 3-year and 5-year",
-        body: "Most people searching for jumbo CD rates are choosing between a 1-year and a 5-year commitment. A 1-year jumbo CD keeps $100,000+ working at a guaranteed rate while leaving you free to reinvest within twelve months. 2- and 3-year jumbo CDs lock today's APY through a likely change in Fed policy. A 5-year jumbo CD guarantees the rate longest but carries the largest early-withdrawal penalty — often 12 months of interest or more, which on $100,000 can be several thousand dollars. Use the term filter in the table to compare each length side by side.",
+        heading: "Jumbo CD rates by term: 6 months to 2 years",
+        body: "Most people comparing jumbo CDs are choosing between a short and a longer commitment. A 6- or 9-month jumbo CD keeps $100,000+ working at a guaranteed rate while leaving you free to reinvest soon. 12- and 18-month terms lock today's APY through a likely change in Fed policy. A 2-year jumbo CD guarantees the rate longest but carries the largest early-withdrawal penalty — which on $100,000 can be several thousand dollars. Use the term filter in the options above to compare each length side by side.",
       },
       {
         heading: "Jumbo CD vs. standard CD: is the premium real?",
@@ -335,7 +335,7 @@ export const landingPages = [
     h1: "CD Rates for Seniors",
     sub: "The best CD rate for a retiree is usually the same top rate anyone can get — senior-only specials are rare and often lower. Compare today's highest FDIC-insured APYs below, then see how retirees structure CDs for income and safety.",
     benefits: [
-      { title: "Guaranteed Income", text: "A fixed APY and a known payout date — no market risk on the money you need." },
+      { title: "Fixed Income", text: "A fixed APY and a known payout date — the rate doesn't move with the market." },
       { title: "Insured to the Limit", text: "Up to $250,000 per depositor, per bank, per ownership category — more with joint and trust accounts." },
       { title: "IRA-Friendly", text: "IRA CDs work alongside required minimum distributions; many banks waive penalties for RMDs." },
     ],

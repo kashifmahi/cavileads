@@ -6,7 +6,7 @@ import { formatTerm } from "../mock/mock";
 const LADDER_TERMS = [12, 24, 36, 48, 60];
 
 const LadderBuilder = ({ rates = [] }) => {
-  const [total, setTotal] = useState(25000);
+  const [total, setTotal] = useState(50000);
   const [rungs, setRungs] = useState(5);
 
   const ladder = useMemo(() => {

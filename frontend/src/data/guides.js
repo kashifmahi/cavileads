@@ -546,7 +546,7 @@ export const guides = [
       },
       {
         q: "Are online bank CDs as safe as big bank CDs?",
-        a: "Yes, as long as the online bank is FDIC-insured — Ally, Marcus, Capital One, Discover and the others we list all are. Insurance coverage is identical regardless of whether the bank has branches.",
+        a: "Yes, as long as the online bank is FDIC-insured — every institution in our program is. Insurance coverage is identical regardless of whether the bank has branches.",
       },
       {
         q: "Is a 5-year CD a bad idea right now?",

@@ -84,6 +84,7 @@ class LeadCreate(BaseModel):
     investment_amount: str = Field(min_length=1)
     timeframe: str = Field(min_length=1)
     term_months: int
+    zip_code: str = Field(default="", max_length=12)
     agree: bool
     source_page: str = Field(default="", max_length=200)
     utm_source: str = Field(default="", max_length=200)
@@ -101,6 +102,7 @@ class Lead(BaseModel):
     investment_amount: str
     timeframe: str
     term_months: int
+    zip_code: str = ""
     agree: bool
     source_page: str = ""
     utm_source: str = ""
@@ -132,77 +134,52 @@ def parse_amount(label: str) -> float:
 # ---------------------------- Seed data ----------------------------
 
 BANK_URLS = {
+    "Ally Bank": "https://www.ally.com/bank/high-yield-cd/",
+    "BMO Alto": "https://alto.bmo.com/en-us/",
+    "Barclays": "https://banking.us.barclays/online-cds.html",
     "Bask Bank": "https://www.baskbank.com/certificates-of-deposit",
-    "Marcus by Goldman Sachs": "https://www.marcus.com/us/en/savings/high-yield-cds",
-    "Ally Bank": "https://www.ally.com/bank/cd-rates/",
-    "Synchrony Bank": "https://www.synchronybank.com/banking/cd/",
-    "Discover Bank": "https://www.discover.com/online-banking/cd/",
-    "Barclays": "https://www.banking.barclaysus.com/online-cds.html",
+    "CIT Bank": "https://www.cit.com/cit-bank/bank/cds/no-penalty-cd",
     "Capital One": "https://www.capitalone.com/bank/cds/online-cds/",
-    "Bread Savings": "https://savings.breadfinancial.com/",
-    "Quontic Bank": "https://www.quontic.com/certificate-of-deposit/",
-    "BMO Alto": "https://www.bmoalto.com/",
-    "CIT Bank": "https://www.cit.com/cit-bank/bank/certificates-of-deposit",
-    "Credit One Bank": "https://www.creditonebank.com/high-yield-cds",
     "Navy Federal Credit Union": "https://www.navyfederal.org/checking-savings/savings/certificates.html",
-    "Suncoast Credit Union": "https://www.suncoastcreditunion.com/personal/savings/certificates",
+    "Synchrony Bank": "https://www.synchrony.com/banking/products/cd",
 }
 
 SEED_RATES = [
-    # 3 months
-    {"bank": "Bask Bank", "apy": 4.50, "min_deposit": 1000, "term_months": 3, "penalty": "90 days of interest", "color": "#2563eb"},
-    {"bank": "Ally Bank", "apy": 4.30, "min_deposit": 0, "term_months": 3, "penalty": "60 days of interest", "color": "#7c3aed"},
-    {"bank": "Synchrony Bank", "apy": 4.25, "min_deposit": 0, "term_months": 3, "penalty": "90 days of interest", "color": "#b45309"},
-    {"bank": "Discover Bank", "apy": 4.10, "min_deposit": 2500, "term_months": 3, "penalty": "3 months of interest", "color": "#ea580c"},
-    # 6 months
-    {"bank": "Bask Bank", "apy": 4.65, "min_deposit": 1000, "term_months": 6, "penalty": "90 days of interest", "color": "#2563eb"},
-    {"bank": "Marcus by Goldman Sachs", "apy": 4.60, "min_deposit": 500, "term_months": 6, "penalty": "90 days of interest", "color": "#0f766e"},
-    {"bank": "Ally Bank", "apy": 4.40, "min_deposit": 0, "term_months": 6, "penalty": "60 days of interest", "color": "#7c3aed"},
-    {"bank": "Synchrony Bank", "apy": 4.35, "min_deposit": 0, "term_months": 6, "penalty": "90 days of interest", "color": "#b45309"},
-    {"bank": "Discover Bank", "apy": 4.25, "min_deposit": 2500, "term_months": 6, "penalty": "3 months of interest", "color": "#ea580c"},
-    # 12 months
-    {"bank": "Marcus by Goldman Sachs", "apy": 4.75, "min_deposit": 500, "term_months": 12, "penalty": "270 days of interest", "color": "#0f766e"},
-    {"bank": "Ally Bank", "apy": 4.50, "min_deposit": 0, "term_months": 12, "penalty": "150 days of interest", "color": "#7c3aed"},
-    {"bank": "Barclays", "apy": 4.40, "min_deposit": 0, "term_months": 12, "penalty": "90 days of interest", "color": "#0284c7"},
-    {"bank": "Capital One", "apy": 4.30, "min_deposit": 0, "term_months": 12, "penalty": "6 months of interest", "color": "#dc2626"},
-    {"bank": "Discover Bank", "apy": 4.25, "min_deposit": 2500, "term_months": 12, "penalty": "6 months of interest", "color": "#ea580c"},
-    # 18 months
-    {"bank": "Marcus by Goldman Sachs", "apy": 4.50, "min_deposit": 500, "term_months": 18, "penalty": "270 days of interest", "color": "#0f766e"},
-    {"bank": "Ally Bank", "apy": 4.35, "min_deposit": 0, "term_months": 18, "penalty": "150 days of interest", "color": "#7c3aed"},
-    {"bank": "Barclays", "apy": 4.30, "min_deposit": 0, "term_months": 18, "penalty": "180 days of interest", "color": "#0284c7"},
-    {"bank": "Synchrony Bank", "apy": 4.25, "min_deposit": 0, "term_months": 18, "penalty": "180 days of interest", "color": "#b45309"},
-    {"bank": "Capital One", "apy": 4.20, "min_deposit": 0, "term_months": 18, "penalty": "6 months of interest", "color": "#dc2626"},
-    # 24 months
-    {"bank": "Bread Savings", "apy": 4.35, "min_deposit": 1500, "term_months": 24, "penalty": "180 days of interest", "color": "#9333ea"},
-    {"bank": "Barclays", "apy": 4.20, "min_deposit": 0, "term_months": 24, "penalty": "180 days of interest", "color": "#0284c7"},
-    {"bank": "Ally Bank", "apy": 4.10, "min_deposit": 0, "term_months": 24, "penalty": "150 days of interest", "color": "#7c3aed"},
-    {"bank": "Capital One", "apy": 4.05, "min_deposit": 0, "term_months": 24, "penalty": "6 months of interest", "color": "#dc2626"},
-    {"bank": "Synchrony Bank", "apy": 4.00, "min_deposit": 0, "term_months": 24, "penalty": "180 days of interest", "color": "#b45309"},
-    # 36 months
-    {"bank": "Quontic Bank", "apy": 4.25, "min_deposit": 500, "term_months": 36, "penalty": "2 years of interest", "color": "#059669"},
-    {"bank": "Bread Savings", "apy": 4.15, "min_deposit": 1500, "term_months": 36, "penalty": "365 days of interest", "color": "#9333ea"},
-    {"bank": "Barclays", "apy": 4.10, "min_deposit": 0, "term_months": 36, "penalty": "180 days of interest", "color": "#0284c7"},
-    {"bank": "Ally Bank", "apy": 4.00, "min_deposit": 0, "term_months": 36, "penalty": "150 days of interest", "color": "#7c3aed"},
-    {"bank": "Discover Bank", "apy": 3.95, "min_deposit": 2500, "term_months": 36, "penalty": "6 months of interest", "color": "#ea580c"},
-    # 60 months
-    {"bank": "BMO Alto", "apy": 4.20, "min_deposit": 0, "term_months": 60, "penalty": "180 days of interest", "color": "#1d4ed8"},
-    {"bank": "Bread Savings", "apy": 4.15, "min_deposit": 1500, "term_months": 60, "penalty": "365 days of interest", "color": "#9333ea"},
-    {"bank": "Barclays", "apy": 4.05, "min_deposit": 0, "term_months": 60, "penalty": "180 days of interest", "color": "#0284c7"},
-    {"bank": "Capital One", "apy": 4.00, "min_deposit": 0, "term_months": 60, "penalty": "6 months of interest", "color": "#dc2626"},
-    {"bank": "Synchrony Bank", "apy": 3.90, "min_deposit": 0, "term_months": 60, "penalty": "365 days of interest", "color": "#b45309"},
-    # Jumbo CDs (min $100k)
-    {"bank": "Credit One Bank", "apy": 4.55, "min_deposit": 100000, "term_months": 12, "penalty": "90 days of interest", "color": "#0891b2", "rate_type": "jumbo"},
-    {"bank": "Navy Federal Credit Union", "apy": 4.45, "min_deposit": 100000, "term_months": 12, "penalty": "180 days of interest", "color": "#1e3a8a", "rate_type": "jumbo"},
-    {"bank": "Suncoast Credit Union", "apy": 4.40, "min_deposit": 100000, "term_months": 12, "penalty": "90 days of interest", "color": "#c2410c", "rate_type": "jumbo"},
-    {"bank": "Credit One Bank", "apy": 4.30, "min_deposit": 100000, "term_months": 24, "penalty": "180 days of interest", "color": "#0891b2", "rate_type": "jumbo"},
-    {"bank": "Navy Federal Credit Union", "apy": 4.25, "min_deposit": 100000, "term_months": 24, "penalty": "180 days of interest", "color": "#1e3a8a", "rate_type": "jumbo"},
-    # No-penalty CDs
-    {"bank": "Marcus by Goldman Sachs", "apy": 4.35, "min_deposit": 500, "term_months": 13, "penalty": "None", "color": "#0f766e", "rate_type": "no_penalty"},
-    {"bank": "Ally Bank", "apy": 4.20, "min_deposit": 0, "term_months": 11, "penalty": "None", "color": "#7c3aed", "rate_type": "no_penalty"},
-    {"bank": "CIT Bank", "apy": 4.15, "min_deposit": 1000, "term_months": 11, "penalty": "None", "color": "#334155", "rate_type": "no_penalty"},
-    {"bank": "Synchrony Bank", "apy": 4.10, "min_deposit": 0, "term_months": 11, "penalty": "None", "color": "#b45309", "rate_type": "no_penalty"},
+    {"bank": "Navy Federal Credit Union", "apy": 4.1, "min_deposit": 100000, "term_months": 12, "penalty": "180 days of interest", "color": "#1e3a8a", "rate_type": "jumbo"},
+    {"bank": "Navy Federal Credit Union", "apy": 3.7, "min_deposit": 100000, "term_months": 24, "penalty": "180 days of interest", "color": "#1e3a8a", "rate_type": "jumbo"},
+    {"bank": "CIT Bank", "apy": 3.9, "min_deposit": 1000, "term_months": 11, "penalty": "None", "color": "#334155", "rate_type": "no_penalty"},
+    {"bank": "Ally Bank", "apy": 2.9, "min_deposit": 0, "term_months": 11, "penalty": "None", "color": "#7c3aed", "rate_type": "no_penalty"},
+    {"bank": "Bask Bank", "apy": 4.1, "min_deposit": 1000, "term_months": 3, "penalty": "90 days of interest", "color": "#2563eb"},
+    {"bank": "Ally Bank", "apy": 2.9, "min_deposit": 0, "term_months": 3, "penalty": "60 days of interest", "color": "#7c3aed"},
+    {"bank": "Synchrony Bank", "apy": 4.2, "min_deposit": 0, "term_months": 6, "penalty": "90 days of interest", "color": "#b45309"},
+    {"bank": "Ally Bank", "apy": 4.0, "min_deposit": 0, "term_months": 6, "penalty": "60 days of interest", "color": "#7c3aed"},
+    {"bank": "Barclays", "apy": 4.0, "min_deposit": 0, "term_months": 6, "penalty": "See bank disclosure", "color": "#0284c7"},
+    {"bank": "Bask Bank", "apy": 3.9, "min_deposit": 1000, "term_months": 6, "penalty": "90 days of interest", "color": "#2563eb"},
+    {"bank": "Capital One", "apy": 3.3, "min_deposit": 0, "term_months": 6, "penalty": "See bank disclosure", "color": "#dc2626"},
+    {"bank": "Ally Bank", "apy": 4.5, "min_deposit": 0, "term_months": 12, "penalty": "150 days of interest", "color": "#7c3aed"},
+    {"bank": "Barclays", "apy": 4.5, "min_deposit": 0, "term_months": 12, "penalty": "90 days of interest", "color": "#0284c7"},
+    {"bank": "Bask Bank", "apy": 4.35, "min_deposit": 1000, "term_months": 12, "penalty": "See bank disclosure", "color": "#2563eb"},
+    {"bank": "Synchrony Bank", "apy": 4.3, "min_deposit": 0, "term_months": 12, "penalty": "See bank disclosure", "color": "#b45309"},
+    {"bank": "Capital One", "apy": 4.0, "min_deposit": 0, "term_months": 12, "penalty": "6 months of interest", "color": "#dc2626"},
+    {"bank": "BMO Alto", "apy": 3.0, "min_deposit": 0, "term_months": 12, "penalty": "See bank disclosure", "color": "#1d4ed8"},
+    {"bank": "Ally Bank", "apy": 4.5, "min_deposit": 0, "term_months": 18, "penalty": "150 days of interest", "color": "#7c3aed"},
+    {"bank": "Barclays", "apy": 4.5, "min_deposit": 0, "term_months": 18, "penalty": "180 days of interest", "color": "#0284c7"},
+    {"bank": "Synchrony Bank", "apy": 4.5, "min_deposit": 0, "term_months": 18, "penalty": "180 days of interest", "color": "#b45309"},
+    {"bank": "Bask Bank", "apy": 4.0, "min_deposit": 1000, "term_months": 18, "penalty": "See bank disclosure", "color": "#2563eb"},
+    {"bank": "Capital One", "apy": 3.6, "min_deposit": 0, "term_months": 18, "penalty": "6 months of interest", "color": "#dc2626"},
+    {"bank": "Barclays", "apy": 4.75, "min_deposit": 0, "term_months": 24, "penalty": "180 days of interest", "color": "#0284c7"},
+    {"bank": "Synchrony Bank", "apy": 4.6, "min_deposit": 0, "term_months": 24, "penalty": "180 days of interest", "color": "#b45309"},
+    {"bank": "Bask Bank", "apy": 4.3, "min_deposit": 1000, "term_months": 24, "penalty": "See bank disclosure", "color": "#2563eb"},
+    {"bank": "Capital One", "apy": 3.5, "min_deposit": 0, "term_months": 24, "penalty": "6 months of interest", "color": "#dc2626"},
+    {"bank": "Synchrony Bank", "apy": 4.65, "min_deposit": 0, "term_months": 36, "penalty": "See bank disclosure", "color": "#b45309"},
+    {"bank": "Barclays", "apy": 4.5, "min_deposit": 0, "term_months": 36, "penalty": "180 days of interest", "color": "#0284c7"},
+    {"bank": "Ally Bank", "apy": 4.25, "min_deposit": 0, "term_months": 36, "penalty": "150 days of interest", "color": "#7c3aed"},
+    {"bank": "Capital One", "apy": 3.5, "min_deposit": 0, "term_months": 36, "penalty": "See bank disclosure", "color": "#dc2626"},
+    {"bank": "Barclays", "apy": 4.75, "min_deposit": 0, "term_months": 60, "penalty": "180 days of interest", "color": "#0284c7"},
+    {"bank": "Synchrony Bank", "apy": 4.75, "min_deposit": 0, "term_months": 60, "penalty": "365 days of interest", "color": "#b45309"},
+    {"bank": "Ally Bank", "apy": 4.5, "min_deposit": 0, "term_months": 60, "penalty": "See bank disclosure", "color": "#7c3aed"},
+    {"bank": "Capital One", "apy": 3.6, "min_deposit": 0, "term_months": 60, "penalty": "6 months of interest", "color": "#dc2626"},
 ]
-
 # ---------------------------- FDIC fetcher ----------------------------
 
 PRODUCT_TERM_MAP = {
@@ -264,6 +241,32 @@ async def get_cached_national_rates(force: bool = False) -> dict:
         raise HTTPException(status_code=503, detail="FDIC data temporarily unavailable")
 
 # ---------------------------- Seeding & helpers ----------------------------
+
+RATES_MIGRATION_ID = "rates_2026_10_31"
+
+async def run_rate_migrations():
+    """One-time versioned migration: replace all bank_rates with the Oct 31, 2026
+    bank-site-verified set and re-sync the alert snapshot. Runs once per environment."""
+    if await db.migrations.find_one({"_id": RATES_MIGRATION_ID}):
+        return
+    now = datetime.now(timezone.utc)
+    await db.bank_rates.delete_many({})
+    docs = []
+    for r in SEED_RATES:
+        doc = BankRate(**{**r, "url": BANK_URLS.get(r["bank"], "")}).dict()
+        doc["updated_at"] = now
+        doc["verified_at"] = now
+        doc["verify_status"] = "confirmed"
+        docs.append(doc)
+    await db.bank_rates.insert_many(docs)
+    standard = [d for d in docs if d.get("rate_type", "standard") == "standard"]
+    await db.rate_snapshots.replace_one(
+        {"_id": "latest"},
+        {"_id": "latest", "apys": {d["id"]: d["apy"] for d in standard}, "at": now},
+        upsert=True,
+    )
+    await db.migrations.insert_one({"_id": RATES_MIGRATION_ID, "ran_at": now, "rows": len(docs)})
+    logger.info("migration %s applied: %d rows inserted, snapshot re-synced", RATES_MIGRATION_ID, len(docs))
 
 async def ensure_seeded():
     # Reseed when empty or when schema/data is outdated
@@ -869,6 +872,7 @@ app.add_middleware(
 
 @app.on_event("startup")
 async def startup():
+    await run_rate_migrations()
     await ensure_seeded()
 
 @app.on_event("shutdown")

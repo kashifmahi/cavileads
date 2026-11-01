@@ -3,6 +3,9 @@
 ## Original problem statement
 Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate comparison site: sortable rate tables, term SEO pages, calculator, ladder builder, lead capture, email notifications, admin dashboard + CSV export, SEO/AIO content & schema, mobile responsive. User self-deploys to own Ubuntu VPS (/opt/app, Nginx + systemd cavicord-api + MongoDB).
 
+## CURRENT BUSINESS MODEL (2026-10-31 redesign — READ FIRST)
+Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-callable brokered CD options** ("Issuer details available upon inquiry", APYs 3.05–5.60%, min $50K+, data in `frontend/src/data/brokered.js` — static ladder, user-editable). Real named-bank rates (Ally, Barclays, Synchrony…) are HIDDEN everywhere pre-submit and only revealed in the lead-form/wizard success screen (POST /api/leads response `matches`). Public GET /api/rates strips `bank`/`url`; /api/rate-trends strips `best_bank`; AI chat is forbidden from naming banks (rule 8). New 3-step ScoutWizard ("Find CD Options That Match Your Needs": prefs → ZIP → contact) on home + landing + term + article + guide pages, alongside the kept single-step InlineLeadForm and popup. Leads now store `zip_code`. KNOWN TRADE-OFF (user-accepted mind-game design): advertised brokered APYs (up to 5.60%) exceed the revealed retail matches (e.g. Ally 4.50%) — specialists close on the phone.
+
 ## Stack
 - Frontend: React 19 + Vite 8 (`vite.config.mjs`), Tailwind, shadcn, react-helmet-async v3, lazy routes. Build output: `frontend/build/` (Nginx root).
 - Backend: FastAPI on 8001 (`/api` prefix), MongoDB. Seeded 43 rates + FDIC national averages, leads, subscribers, admin-key-gated endpoints.
@@ -198,3 +201,62 @@ Clone of cdvanta.com rebranded as **Cavicord** (domain: cavicord.tech). CD-rate 
 - SKIPPED (bot/captcha-blocked or only <=48px favicons): bask, marcus, bread, quontic, cit, suncoast -> fall back to 256px Google favicon/letter.
 - testing_agent iteration_11: 100% — all PNGs 200, 0 broken avatars on home All/seniors/Details (desktop+mobile), fallback chain robust. Optional upstream tweaks noted: prune BANK_LOGO_KEYS for missing PNGs, stale comment. Logo fetch scripts kept at /app/memory/fetch_logos*.py.
 - NOT deployed. User to Save to GitHub.
+
+## 2026-10-31: PR #25 inline lead form sync + REAL rate migration
+- TASK1: pulled 9 files byte-identical (LeadForm.jsx + InlineLeadForm.jsx new; PersonalizedModal/App/landings/LandingPage/TermPage/ArticlePage/GuidePage). Inline form tested with MOCKED /api/leads on /best-cd-rates: success panel + match card render; consent one-liner present. No real lead.
+- TASK2: migrated bank_rates to ONLY bank-site-verified APYs (2026-10-31). Final 34 rows, all verify_status=confirmed, verified_at=now. Script: /app/memory/migrate_rates_20261031.py (full old->new table in output).
+  - User-verified: Ally (new 60mo 4.50, 24mo deleted, NP 2.90), CapOne 6 terms, Synchrony 6 terms (url synchrony.com; 3mo+NP deleted), Barclays 6 terms (url banking.us.barclays), Discover ALL DELETED (merged into Capital One).
+  - Agent-verified on bank sites: Bask 5 terms (3mo 4.10/6mo 3.90/12mo 4.35/18mo 4.00/24mo 4.30), BMO Alto 12mo 3.00 (60mo deleted), CIT NP 3.90, NavyFed jumbo 12mo 4.10/24mo 3.70 ($100k col, rates as of Oct 31).
+  - DELETED (bot/captcha-walled, unverifiable): all Marcus (4), all Bread (3), Quontic 36mo, Credit One jumbo (2), Suncoast jumbo.
+- SEED_RATES (34) + BANK_URLS (8) in server.py regenerated from final DB — reseed cannot restore stale numbers. Alert snapshot re-synced (19 changes consumed), rate history re-recorded for today. Prerender not rebuilt (SSG flow unused on Emergent; rates served live via API + window.__pre).
+- NOT deployed. User to Save to GitHub.
+
+## 2026-10-31 (latest session)
+- **PR #26 pulled byte-identical** (legal.js + LeadForm.jsx: leads go to Cavicord only, never sold/shared) and prerendered into /privacy, /terms.
+- **Idempotent startup migration** `rates_2026_10_31` in server.py (db.migrations marker): on first boot in ANY env (incl. production on next publish) deletes all bank_rates, inserts the 34 bank-site-verified rows (confirmed + timestamps = run time) and re-syncs the alert snapshot (no false subscriber blast). Verified runs exactly once across restarts.
+- **cdratescout-style redesign** (see CURRENT BUSINESS MODEL above). New files: data/brokered.js, components/BrokeredOptions.jsx (filters: term/deposit/frequency, 20 cards), ScoutWizard.jsx, HowItWorks.jsx; Hero.jsx rewritten (maturity preview card). RatesSection/RateTable removed from public pages (RateTable still used for BankAvatar in reveal). prerender.mjs waits on brokered-card-* now. llms.txt rewritten; guides.js FAQ, landings.js hero sub, TrendsPage copy de-branded; Calculator/LadderBuilder show "issuer upon inquiry"; fixed useLeadForm dead `open` useEffect + addMonths month-overflow clamp.
+- **Testing**: iteration_12.json — 9/9 backend pytest + full UI flows pass (wizard e2e real submit reveals Ally/Barclays/Bask; no pre-submit bank leaks on home/landing/term/trends; chat anonymized). All its action items fixed + re-verified (API strip, copy leaks, llms.txt).
+- NOT deployed. User to Save to GitHub then publish.
+
+## Next / backlog
+- P1: Publish (user action) — startup migration will fix stale production rates automatically.
+- P1: Weekly top-10 subscriber email still names banks (bypasses the issuer-gate via a mere email signup) — decide whether to anonymize.
+- P2: Admin view for zip_code column in CSV export.
+- P2: Consider a brokered-options admin editor (ladder currently hardcoded in brokered.js).
+
+## 2026-10-31 (follow-up fixes after redesign)
+- Minimums capped at $50K/$100K only (no 250K/500K) across all 20→14 option cards; deposit filter simplified.
+- Offered terms restricted to 6/9/12/18/24 months everywhere: brokered ladder (14 rows, top 4.78% 2-yr), hero badge+preview pills, wizard & lead-form term dropdowns, options term filter, Calculator termOptions, LadderBuilder (6-24mo rungs, default $50K), WhyCDs + FAQ ladder copy, llms.txt. SSG rebuilt, homepage verified clean of 3/4/5-year mentions.
+- NOTE: /best-3-year-cd-rates and /best-5-year-cd-rates SEO pages still exist (show all 6-24mo options via fallback) — user has not asked to remove them.
+
+## 2026-10-31 ("fix all pages")
+- Removed pages for unoffered products with client redirects (data/redirects.js): /best-3-month→/best-6-month, /best-3-year & /best-5-year→/best-2-year, /no-penalty-cd-rates→/best-cd-rates. termPages now only 18-month + 2-year; rateNavLinks (header+footer) trimmed to offered terms; sitemap 44→40 URLs, prerender 42 routes.
+- Fixed all internal links to removed pages (ratesLinks.js, TrendsPage, GuidePage CTA, PenaltyCalculator) and offer copy (landings "All Terms" bullet, jumbo term FAQ/section now 6mo–2yr).
+- Verified: redirects work, nav clean, jumbo page no leaks, builds 42/42. Generic educational prose in guides/articles (explaining 5-year CDs as a market concept) intentionally kept for SEO.
+
+## 2026-11-01 (Google Ads "Phishing" compliance pass)
+- SHOW_BANK_LOGOS=false flag in RateTable.jsx: BankAvatar now always renders coloured initials (covers LeadResults in wizard/inline/popup + RatesSection if remounted). Logo code intact behind flag.
+- New data/compliance.js (INDEPENDENCE_NOTE + SUPPORT_EMAIL). Note added under submit button of LeadFields (inline + popup) and ScoutWizard; consent lines now say "Cavicord contacting you by email or phone".
+- Footer: independence/never-ask note above legal text + Contact: support@cavicord.tech mailto + /about#contact link. AboutPage: new id="contact" section (run by Kashif Mahi, removal requests, reply-from-address-only).
+- Mocked tests (no real leads): home wizard e2e, jumbo inline form, /about#contact, footer — all pass; 0 logo imgs in results. SSG rebuilt 42/42.
+- Wording audit flagged to user (NOT changed): Header "FDIC Insured" chip, Hero "FDIC-eligible" chip, landing "our scouting program" phrasing. NOT deployed; user republishes.
+
+## 2026-11-01 (flagged phrases fixed)
+- Header "✓ FDIC Insured" chip removed (desktop + mobile nav).
+- Hero chip: "FDIC-eligible / Deposit insurance applies" → "Compare FDIC-insured bank CDs / Banks issue and insure the CDs".
+- Landing summary: "through our scouting program" → "from the banks and brokerages we track".
+- Broker/issuer clarity added: BrokeredOptions intro + HowItWorks brokered-CD section now state Cavicord only compares/refers, not the broker, dealer or issuer.
+- Rebuilt 42/42; mocked-API retest (home + /best-cd-rates) all pass, no real leads, 0 logo imgs. NOT published.
+
+## 2026-11-01 (whyCds guarantee-claims softening)
+- mock.js whyCds: "FDIC Insured" → "FDIC insurance at the bank" (exact user text incl. "Cavicord itself is not a bank and does not hold deposits"); "Guaranteed Returns" → "Fixed rate" (exact user text); "Principal Protection/never at risk" → "Principal stability" (softened). FAQ "guaranteed" → "covered".
+- landings.js: "FDIC Insured" benefit → "FDIC insurance at the bank"; "Guaranteed rate for 12 months" → "A fixed rate..."; seniors "Guaranteed Income" → "Fixed Income". Zero "Guaranteed Returns"/"deposits are protected"/"never at risk" left in public card copy (educational articles untouched).
+- Rebuilt 42/42, mocked-API retest passed, no real leads. NOT published (user republishes).
+
+## 2026-11-01 (FULL BROKERED REMOVAL — back to named banks, owner-approved)
+- Deleted data/brokered.js, BrokeredOptions.jsx, HowItWorks.jsx + removed every use. ScoutWizard.jsx renamed MatchWizard.jsx (testids wizard-*, "See My Matched Banks", id match-wizard); still posts zip_code, result step shows named banks from /api/leads matches.
+- Restored from git 49c8b49 with compliance kept: Hero (named top-3, dynamic "Rates as high as {max from API}" — no hardcoded APY, FDIC chip = "Compare FDIC-insured bank CDs"), App home (RatesSection + wizard + inline form), LandingPage named summary+RateTable, TermPage rates fetch/RateTable/schema, Calculator "via {bank}" + terms [3,6,12,18,24,36,60], LadderBuilder banks + [12,24,36,48,60], TrendsPage best_bank copy, prerender waits open-account-*.
+- Backend: /api/rates returns bank+url again, /rate-trends returns best_bank, chat names banks (rule 8 removed). Migration rates_2026_10_31 + zip_code + all compliance (logos off flag, independence note — "issuers"→"institutions" to pass wording sweep, footer/about contact) KEPT.
+- llms.txt rewritten (named-bank positioning, no stale APYs). landings "non-callable/issuer" sub restored to FDIC-bank wording.
+- Grep sweep 'upon inquiry|non-callable|brokered|brokerage|scout|issuer': only educational content remains (guides.js brokered-vs-bank-cds guide + generic brokerage/bond-issuer mentions in articles/expansions/newGuides, GuidesIndex meta, sitemap guide URL, ratesLinks slug key).
+- Tested all 8 requested URLs with REAL API (no leads): named banks + Open Account buttons everywhere; wizard reveal mocked (Ally shown); chat names Ally/Barclays. SSG 42/42. NOT deployed — user reviews, then Save to GitHub + publish.

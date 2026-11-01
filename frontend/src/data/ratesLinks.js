@@ -9,15 +9,15 @@ const DEFAULT = { to: "/best-cd-rates", label: "Compare today's best CD rates" }
 export const RATES_LINKS = {
   // articles
   "what-is-a-jumbo-cd": { to: "/jumbo-cd-rates", label: "See today's jumbo CD rates" },
-  "no-penalty-cd-guide": { to: "/no-penalty-cd-rates", label: "Compare no-penalty CD rates" },
+  "no-penalty-cd-guide": { to: "/best-cd-rates", label: "Compare today's CD options" },
   "cd-early-withdrawal-penalty": { to: "/cd-early-withdrawal-penalty-calculator", label: "Calculate your exact penalty" },
   "what-happens-when-a-cd-matures": { to: "/best-cd-rates", label: "Renewing? Compare today's best CD rates" },
   "are-cds-worth-it": DEFAULT,
   "how-is-cd-interest-taxed": DEFAULT,
   "how-much-money-in-cds": { to: "/cd-calculator", label: "Run the numbers in the CD calculator" },
-  "fed-rate-cuts-and-cd-rates": { to: "/best-5-year-cd-rates", label: "Lock a rate: best 5-year CD rates" },
+  "fed-rate-cuts-and-cd-rates": { to: "/best-2-year-cd-rates", label: "Lock a rate: best 2-year CD rates" },
   "can-you-add-money-to-a-cd": { to: "/high-yield-cd-rates", label: "Compare high-yield CD rates" },
-  "cds-vs-bonds": { to: "/best-3-year-cd-rates", label: "Compare 3-year CD rates" },
+  "cds-vs-bonds": { to: "/best-2-year-cd-rates", label: "Compare 2-year CD rates" },
   "cd-vs-annuity": { to: "/cd-rates-for-seniors", label: "See CD rates for seniors and retirees" },
   // guides
   "cd-vs-high-yield-savings": { to: "/high-yield-cd-rates", label: "Compare high-yield CD rates" },
@@ -28,8 +28,8 @@ export const RATES_LINKS = {
   "cd-ladder-explained": { to: "/cd-rates", label: "Compare CD rates for every rung" },
   "are-cds-safe": DEFAULT,
   "i-bonds-vs-cds": { to: "/best-1-year-cd-rates", label: "Compare 1-year CD rates" },
-  "cds-vs-bond-funds": { to: "/best-3-year-cd-rates", label: "Compare 3-year CD rates" },
-  "cd-vs-treasury-bonds": { to: "/best-5-year-cd-rates", label: "Compare 5-year CD rates" },
+  "cds-vs-bond-funds": { to: "/best-2-year-cd-rates", label: "Compare 2-year CD rates" },
+  "cd-vs-treasury-bonds": { to: "/best-2-year-cd-rates", label: "Compare 2-year CD rates" },
 };
 
 export const ratesLinkFor = (slug) => RATES_LINKS[slug] || DEFAULT;

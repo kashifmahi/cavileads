@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import RateTable from "../components/RateTable";
+import MatchWizard from "../components/MatchWizard";
 import SEO from "../components/SEO";
 import { SITE_URL } from "../config";
 import { Badge } from "../components/ui/badge";
@@ -152,10 +153,12 @@ const TermPage = () => {
           )}
           <RateTable rates={rates} loading={loading} showBest={config.term !== "all"} />
           <p className="mt-6 text-xs text-slate-500">
-            *APYs are curated by our editorial team and verified against bank disclosures. National
+            *APYs are verified against each bank's own published disclosures. National
             averages sourced live from FDIC.gov. Rates are subject to change — always confirm with the
             issuing bank. All listed institutions are federally insured (FDIC or NCUA).
           </p>
+
+          <MatchWizard className="mt-12 max-w-4xl" />
 
           <InlineLeadForm className="mt-12 max-w-4xl" defaultTerm={config.term} />
 

@@ -142,10 +142,10 @@ const PenaltyCalculator = () => {
           </div>
 
           <Link
-            to="/no-penalty-cd-rates"
+            to="/best-6-month-cd-rates"
             className="mt-auto pt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-300 hover:text-emerald-200"
           >
-            Avoid the penalty: compare no-penalty CD rates <ArrowRight className="w-4 h-4" />
+            Prefer flexibility? Compare shorter-term CD options <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </div>

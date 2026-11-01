@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import RateTable from "../components/RateTable";
+import MatchWizard from "../components/MatchWizard";
 import Calculator from "../components/Calculator";
 import PenaltyCalculator from "../components/PenaltyCalculator";
 import SEO from "../components/SEO";
@@ -204,11 +205,13 @@ const LandingPage = () => {
               <RateTable rates={rates} loading={loading} showBest={config.term !== "all"} />
             </div>
             <p className="mt-6 text-xs text-slate-500">
-              *APYs are curated by our editorial team and verified against bank disclosures. Rates are
+              *APYs are verified against each bank's own published disclosures. Rates are
               subject to change — always confirm with the issuing bank. All listed institutions are
               federally insured (FDIC or NCUA).
             </p>
           </div>
+
+          <MatchWizard className="mt-12 max-w-4xl" id={`${config.slug}-wizard`} />
 
           {/* Content sections (e.g., retirement) */}
           {config.sections &&

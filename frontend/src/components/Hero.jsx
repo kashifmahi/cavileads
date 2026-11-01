@@ -7,7 +7,7 @@ import { BankAvatar } from "./RateTable";
 import { useRatesModal } from "../context/RatesModalContext";
 
 const trustItems = [
-  { icon: ShieldCheck, title: "FDIC Insured", sub: "Up to $250,000" },
+  { icon: ShieldCheck, title: "Compare FDIC-insured bank CDs", sub: "Banks issue and insure the CDs" },
   { icon: TrendingUp, title: "High APY", sub: "Competitive rates" },
   { icon: Clock, title: "Flexible Terms", sub: "3 mo \u2013 5 yr" },
 ];
@@ -24,6 +24,8 @@ const Hero = ({ rates = [], updatedAt, loading = false }) => {
     .sort((a, b) => b.apy - a.apy)
     .slice(0, 3);
 
+  const topApy = rates.length ? Math.max(...rates.map((r) => r.apy)) : null;
+
   const fmtDate = (d) =>
     d ? new Date(d).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : null;
 
@@ -38,7 +40,7 @@ const Hero = ({ rates = [], updatedAt, loading = false }) => {
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/40 bg-emerald-500/10 animate-fade-up">
               <TrendingUp className="w-4 h-4 text-emerald-400" />
               <span className="text-sm font-medium text-emerald-300">
-                Rates as high as 4.75% APY
+                {topApy ? `Rates as high as ${topApy.toFixed(2)}% APY` : "Compare today's top CD rates"}
               </span>
             </div>
 
@@ -151,7 +153,7 @@ const Hero = ({ rates = [], updatedAt, loading = false }) => {
                 onClick={scrollToRates}
                 className="w-full px-6 py-3.5 text-sm font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 transition-colors duration-200 flex items-center justify-center gap-1.5"
               >
-                See all 25+ rates <ArrowRight className="w-4 h-4" />
+                See all rates <ArrowRight className="w-4 h-4" />
               </button>
             </div>
             <p className="mt-3 text-center text-[11px] text-slate-500">

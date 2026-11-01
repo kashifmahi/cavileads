@@ -12,6 +12,7 @@ import { authorSchema, publisherSchema } from "../data/author";
 import { ratesLinkFor } from "../data/ratesLinks";
 import { SectionTable, SourcesList } from "../components/ContentExtras";
 import InlineLeadForm from "../components/InlineLeadForm";
+import MatchWizard from "../components/MatchWizard";
 
 const formatDate = (iso) =>
   new Date(`${iso}T00:00:00`).toLocaleDateString("en-US", {
@@ -159,6 +160,7 @@ const GuidePage = () => {
             </section>
           ))}
 
+          <MatchWizard className="mt-12" id="guide-wizard" />
           <InlineLeadForm className="mt-12" />
 
           {/* FAQs */}
@@ -190,10 +192,10 @@ const GuidePage = () => {
                 {ratesLink.label} <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
-                to="/no-penalty-cd-rates"
+                to="/best-2-year-cd-rates"
                 className="inline-flex items-center gap-1.5 rounded-lg border border-white/30 hover:bg-white/10 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200"
               >
-                No-Penalty CDs
+                2-Year CDs
               </Link>
               <Link
                 to="/cd-calculator"
