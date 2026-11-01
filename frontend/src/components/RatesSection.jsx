@@ -78,7 +78,7 @@ const RatesSection = ({ rates, loading, updatedAt }) => {
           </p>
           <p className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-[#16233d] bg-slate-50 border border-slate-200 rounded-full px-4 py-1.5">
             <CalendarCheck className="w-4 h-4 text-emerald-600" />
-            Rates verified {updatedAt ? fmtDate(updatedAt) : "daily"}
+            Rates verified {updatedAt ? fmtDate(updatedAt) : "against bank disclosures"}
           </p>
         </div>
 

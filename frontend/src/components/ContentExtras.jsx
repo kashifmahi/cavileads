@@ -1,4 +1,35 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+// Renders section text with optional inline links written as [anchor](/path).
+// Internal paths become router <Link>s; anything else is left as plain text.
+const LINK_RE = /\[([^\]]+)\]\((\/[^)\s]*)\)/g;
+
+export const RichText = ({ text }) => {
+  if (!text || typeof text !== "string" || !text.includes("](/")) return text || null;
+  const out = [];
+  let last = 0;
+  let m;
+  LINK_RE.lastIndex = 0;
+  while ((m = LINK_RE.exec(text))) {
+    if (m.index > last) out.push(text.slice(last, m.index));
+    out.push(
+      <Link
+        key={m.index}
+        to={m[2]}
+        className="font-medium text-emerald-800 underline underline-offset-2 decoration-emerald-300 hover:decoration-emerald-700"
+      >
+        {m[1]}
+      </Link>
+    );
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) out.push(text.slice(last));
+  return out;
+};
+
+// Plain-text version for meta tags and JSON-LD.
+export const stripLinks = (text) => (typeof text === "string" ? text.replace(LINK_RE, "$1") : text);
 
 // Optional extras for article/guide sections: a comparison table and a sources list.
 // A section may carry `table: { caption?, columns: [...], rows: [[...], ...] }`.

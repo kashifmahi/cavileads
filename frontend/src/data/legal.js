@@ -14,7 +14,7 @@ export const privacyPolicy = {
   title: "Privacy Policy",
   metaTitle: "Privacy Policy | Cavicord",
   metaDescription:
-    "How Cavicord collects and uses your information, including the rate-matching form and Google ad forms, cookies, and your choices. We do not sell your information.",
+    "How Cavicord collects and uses your information from the rate-matching form, Google ad forms and cookies, and your choices. We never sell it.",
   intro:
     "This policy explains what information Cavicord (\"we\", \"us\") collects when you use cavicord.tech, how we use it, who we share it with, and the choices you have. Cavicord is a CD-rate comparison service for people in the United States. We are not a bank and do not hold deposits.",
   sections: [

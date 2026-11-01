@@ -17,7 +17,7 @@ import { getLanding } from "../data/landings";
 import { monthYear } from "../data/terms";
 import { useRatesModal } from "../context/RatesModalContext";
 import { API } from "../App";
-import { SectionTable } from "../components/ContentExtras";
+import { SectionTable, RichText } from "../components/ContentExtras";
 import InlineLeadForm from "../components/InlineLeadForm";
 
 const LandingPage = () => {
@@ -56,6 +56,25 @@ const LandingPage = () => {
     config.term !== "all" && national
       ? (national.rates || []).find((r) => String(r.term_months) === config.term)?.national_rate
       : null;
+  // Each rate page shows its own slice of the data so the pages don't duplicate one another.
+  const view = config.tableView;
+  const shownRates = (() => {
+    if (!view) return rates;
+    let list = [...rates];
+    if (view.minTerm) list = list.filter((r) => r.term_months >= view.minTerm);
+    if (view.mode === "bestPerBank" || view.mode === "bestPerTerm") {
+      const key = view.mode === "bestPerBank" ? "bank" : "term_months";
+      const best = {};
+      list.forEach((r) => {
+        if (!best[r[key]] || r.apy > best[r[key]].apy) best[r[key]] = r;
+      });
+      list = Object.values(best);
+    }
+    list.sort((a, b) =>
+      view.mode === "bestPerTerm" ? a.term_months - b.term_months : b.apy - a.apy
+    );
+    return view.limit ? list.slice(0, view.limit) : list;
+  })();
   const fmtDate = (d) =>
     d ? new Date(d).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
 
@@ -68,6 +87,21 @@ const LandingPage = () => {
         { "@type": "ListItem", position: 2, name: config.h1, item: `${origin}/${config.slug}` },
       ],
     },
+    ...(shownRates.length
+      ? [
+          {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: view?.title || config.h1,
+            numberOfItems: shownRates.length,
+            itemListElement: shownRates.slice(0, 10).map((r, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              name: `${r.bank} \u2014 ${r.apy.toFixed(2)}% APY (${r.term_months}-month CD)`,
+            })),
+          },
+        ]
+      : []),
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -118,7 +152,7 @@ const LandingPage = () => {
               )}
               <span className="inline-flex items-center gap-1.5 text-sm text-slate-400">
                 <CalendarCheck className="w-4 h-4 text-emerald-400" />
-                Updated {updatedAt ? fmtDate(updatedAt) : "daily"}
+                {updatedAt ? `Updated ${fmtDate(updatedAt)}` : "Verified against bank disclosures"}
               </span>
             </div>
           </div>
@@ -200,10 +234,20 @@ const LandingPage = () => {
 
           {/* Rates table */}
           <div className="mt-10">
-            <h2 className="font-serif text-2xl font-bold text-[#16233d]">Compare Rates</h2>
+            <h2 className="font-serif text-2xl font-bold text-[#16233d]">{view?.title || "Compare Rates"}</h2>
+            {view?.intro && <p className="mt-2 text-sm text-slate-600">{view.intro}</p>}
             <div className="mt-5">
-              <RateTable rates={rates} loading={loading} showBest={config.term !== "all"} />
+              <RateTable rates={shownRates} loading={loading} showBest={config.term !== "all"} />
             </div>
+            {view && !loading && rates.length > shownRates.length && (
+              <Link
+                to="/cd-rates"
+                data-testid="see-all-rates"
+                className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-800 hover:text-emerald-700"
+              >
+                See all {rates.length} current CD rates <ArrowRight className="w-4 h-4" />
+              </Link>
+            )}
             <p className="mt-6 text-xs text-slate-500">
               *APYs are verified against each bank's own published disclosures. Rates are
               subject to change — always confirm with the issuing bank. All listed institutions are
@@ -218,13 +262,13 @@ const LandingPage = () => {
             config.sections.map((s) => (
               <section key={s.heading} className="mt-12 max-w-3xl">
                 <h2 className="font-serif text-2xl font-bold text-[#16233d]">{s.heading}</h2>
-                <p className="mt-3 text-slate-600 leading-relaxed">{s.body}</p>
+                <p className="mt-3 text-slate-600 leading-relaxed"><RichText text={s.body} /></p>
                 {s.bullets && (
                   <ul className="mt-4 space-y-2.5">
                     {s.bullets.map((b) => (
                       <li key={b} className="flex items-start gap-2.5 text-slate-600 leading-relaxed">
                         <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                        <span>{b}</span>
+                        <span><RichText text={b} /></span>
                       </li>
                     ))}
                   </ul>

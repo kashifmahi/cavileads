@@ -7,6 +7,7 @@ import CookieBanner from "../components/CookieBanner";
 import RateTable from "../components/RateTable";
 import MatchWizard from "../components/MatchWizard";
 import SEO from "../components/SEO";
+import { RichText } from "../components/ContentExtras";
 import { SITE_URL } from "../config";
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
@@ -131,7 +132,7 @@ const TermPage = () => {
               )}
               <span className="inline-flex items-center gap-1.5 text-sm text-slate-400">
                 <CalendarCheck className="w-4 h-4 text-emerald-400" />
-                Rates updated {updatedAt ? fmtDate(updatedAt) : "daily"}
+                {updatedAt ? `Rates updated ${fmtDate(updatedAt)}` : "Rates verified against bank disclosures"}
               </span>
             </div>
           </div>
@@ -168,7 +169,7 @@ const TermPage = () => {
               {config.sections.map((sec) => (
                 <section key={sec.heading} className="mt-10 first:mt-0">
                   <h2 className="font-serif text-2xl font-bold text-[#16233d]">{sec.heading}</h2>
-                  <p className="mt-3 text-slate-600 leading-relaxed">{sec.body}</p>
+                  <p className="mt-3 text-slate-600 leading-relaxed"><RichText text={sec.body} /></p>
                 </section>
               ))}
             </div>

@@ -12,7 +12,7 @@
       "displayName": "Cavicord CD Rates API",
       "type": "application/json",
       "url": "https://cavicord.tech/api/rates",
-      "description": "Current certificate of deposit (CD) rates from top FDIC-insured US banks, verified daily. Returns bank name, APY, term length, minimum deposit and early-withdrawal penalty.",
+      "description": "Current certificate of deposit (CD) rates from FDIC- and NCUA-insured US institutions, each checked against the bank's own published rate page. Returns bank name, APY, term length, minimum deposit and early-withdrawal penalty.",
       "tags": ["cd-rates", "banking", "savings", "apy", "finance"],
       "representativeQueries": [
         "what are the best CD rates today",
