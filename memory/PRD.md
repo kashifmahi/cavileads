@@ -282,3 +282,6 @@ Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-ca
 - Verified raw built HTML: best-cd-rates "Top 15 CD rates today" table; high-yield 6 rows = one per bank (Barclays/Synchrony/Ally/Bask/CapOne/BMO); penalty article has Sources + $10,000 table; no-penalty-cd-rates/index.html is a 421-byte redirect stub (canonical+meta refresh+location.replace to /best-cd-rates).
 - Hosting answer (support confirmed): Emergent production CANNOT return real HTTP 404 (SPA fallback is 200) and CANNOT set custom security headers (HSTS/nosniff/Referrer-Policy) — Cloudflare layer is Emergent-managed, no user config. Only option: ask Emergent Support for zone-level changes.
 - NOT deployed. Owner to Save to GitHub + Publish.
+
+## 2026-11-01 (PR #34 pulled — CONTEXT_LINKS)
+- expansions.js byte-identical from 46f1560 (in-body links for 11 older articles/guides). build:ssg 42/42 + snapshot (58 HTML) + deploy-style build: no asset-match warnings. Verified raw /guides/how-do-cds-work body links to /articles/what-is-a-jumbo-cd and /guides/brokered-vs-bank-cds. Owner to Save to GitHub + Publish.
