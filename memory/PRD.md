@@ -260,3 +260,9 @@ Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-ca
 - llms.txt rewritten (named-bank positioning, no stale APYs). landings "non-callable/issuer" sub restored to FDIC-bank wording.
 - Grep sweep 'upon inquiry|non-callable|brokered|brokerage|scout|issuer': only educational content remains (guides.js brokered-vs-bank-cds guide + generic brokerage/bond-issuer mentions in articles/expansions/newGuides, GuidesIndex meta, sitemap guide URL, ratesLinks slug key).
 - Tested all 8 requested URLs with REAL API (no leads): named banks + Open Account buttons everywhere; wizard reveal mocked (Ally shown); chat names Ally/Barclays. SSG 42/42. NOT deployed — user reviews, then Save to GitHub + publish.
+
+## 2026-11-01 (PR #29 pulled — "Visit bank site" buttons)
+- RateTable.jsx + Hero.jsx pulled byte-identical from 94adec2: rate-row buttons now say "Visit bank site"/"Visit bank" and link to rate.url in a new tab (noopener noreferrer nofollow); they no longer open the lead form. SHOW_BANK_LOGOS flag + compliance chip + dynamic topApy preserved in PR versions. testid open-account-* kept (prerender selector still valid).
+- Verified real API, no leads: / (15 buttons) + /best-cd-rates (60 buttons) all valid external bank links in new tab; "Open Account" button text gone; click does not open modal. SSG rebuilt 42/42.
+- LEFTOVER (byte-identical constraint): RateTable line 134 column HEADER still reads "Open Account" — flagged to user, not changed.
+- NOT deployed. User to Save to GitHub.
