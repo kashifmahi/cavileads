@@ -275,3 +275,10 @@ Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-ca
 - FIX (no Chrome at deploy): snapshot-prerender.mjs copies build:ssg output (42 pages) into committed frontend/prerendered/; apply-prerender.mjs (now last step of "build") injects them into the fresh Vite build, remapping /assets/<name>-<hash> refs + re-inlining CSS to THIS build (drift-tested OK). Writes build/<route>/index.html AND build/<route>.html.
 - WORKFLOW after content/rate changes: `yarn build:ssg && yarn snapshot` in pod, commit, deploy. Puppeteer only runs in pod.
 - Verified deploy-style build via curl: jumbo/best-cd-rates/jumbo-article each unique title/canonical/H1, 3000+ words, JSON-LD, valid asset refs. NOT deployed; Save to GitHub then owner republishes once.
+
+## 2026-11-01 (PR #32 pulled — SEO audit fixes)
+- 22 files byte-identical from 942eb58 (sourced content, Top-15 table, high-yield dedupe one row/bank, redirect stubs, LCP, a11y; apply-prerender fixed for 8-char Vite hashes that may contain '-').
+- Reran build:ssg (42/42) + yarn snapshot (58 HTML incl. redirect stubs) + deploy-style yarn build: zero asset-match warnings.
+- Verified raw built HTML: best-cd-rates "Top 15 CD rates today" table; high-yield 6 rows = one per bank (Barclays/Synchrony/Ally/Bask/CapOne/BMO); penalty article has Sources + $10,000 table; no-penalty-cd-rates/index.html is a 421-byte redirect stub (canonical+meta refresh+location.replace to /best-cd-rates).
+- Hosting answer (support confirmed): Emergent production CANNOT return real HTTP 404 (SPA fallback is 200) and CANNOT set custom security headers (HSTS/nosniff/Referrer-Policy) — Cloudflare layer is Emergent-managed, no user config. Only option: ask Emergent Support for zone-level changes.
+- NOT deployed. Owner to Save to GitHub + Publish.
