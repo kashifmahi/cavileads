@@ -10,7 +10,7 @@ import { Clock, ChevronRight, ArrowRight, CheckCircle2, Lightbulb } from "lucide
 import { getGuide, guides } from "../data/guides";
 import { authorSchema, publisherSchema } from "../data/author";
 import { ratesLinkFor } from "../data/ratesLinks";
-import { SectionTable, SourcesList } from "../components/ContentExtras";
+import { SectionTable, SourcesList, RichText, stripLinks } from "../components/ContentExtras";
 import InlineLeadForm from "../components/InlineLeadForm";
 import MatchWizard from "../components/MatchWizard";
 
@@ -80,7 +80,7 @@ const GuidePage = () => {
         "@type": "HowToStep",
         position: i + 1,
         name: s.heading,
-        text: s.body,
+        text: stripLinks(s.body),
       })),
     });
   }
@@ -145,13 +145,13 @@ const GuidePage = () => {
           {guide.sections.map((s) => (
             <section key={s.heading} className="mt-10">
               <h2 className="font-serif text-2xl font-bold text-[#16233d]">{s.heading}</h2>
-              <p className="mt-3 text-slate-600 leading-relaxed">{s.body}</p>
+              <p className="mt-3 text-slate-600 leading-relaxed"><RichText text={s.body} /></p>
               {s.bullets && (
                 <ul className="mt-4 space-y-2.5">
                   {s.bullets.map((b) => (
                     <li key={b} className="flex items-start gap-2.5 text-slate-600 leading-relaxed">
                       <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                      <span>{b}</span>
+                      <span><RichText text={b} /></span>
                     </li>
                   ))}
                 </ul>

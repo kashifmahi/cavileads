@@ -92,7 +92,7 @@ const Hero = ({ rates = [], updatedAt, loading = false }) => {
                   <p className="font-serif font-bold text-[#16233d]">Today's Top 1-Year CDs</p>
                   <p className="mt-0.5 inline-flex items-center gap-1.5 text-xs text-slate-500">
                     <CalendarCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                    Rates verified {fmtDate(updatedAt) || "daily"}
+                    Rates verified {fmtDate(updatedAt) || "against bank disclosures"}
                   </p>
                 </div>
                 <Badge className="bg-emerald-100 text-emerald-700 hover:bg-emerald-100 border-0 shrink-0">

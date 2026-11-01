@@ -96,6 +96,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/cd-for-retirement" className="text-slate-400 hover:text-emerald-400 transition-colors duration-200">
+                  CDs for Retirement
+                </Link>
+              </li>
+              <li>
                 <a href="/#ladder" className="text-slate-400 hover:text-emerald-400 transition-colors duration-200">
                   CD Ladder Builder
                 </a>

@@ -13,6 +13,18 @@ const legacyRedirects = () => ({
   transformIndexHtml(html) {
     return html.replace("__CAVICORD_REDIRECTS__", JSON.stringify(REDIRECTS));
   },
+  // Static stub for each retired URL. The host can't send 301s, so the stub gives
+  // crawlers a canonical + instant meta refresh (treated as a permanent redirect)
+  // instead of the homepage copy the SPA fallback would serve.
+  generateBundle() {
+    for (const [from, to] of Object.entries(REDIRECTS)) {
+      const url = `https://cavicord.tech${to}`;
+      const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Moved | Cavicord</title><link rel="canonical" href="${url}"><meta http-equiv="refresh" content="0; url=${to}"><script>location.replace(${JSON.stringify(to)} + location.search + location.hash)</script></head><body><p>This page has moved to <a href="${to}">${url}</a>.</p></body></html>`;
+      const base = from.replace(/^\//, "");
+      this.emitFile({ type: "asset", fileName: `${base}/index.html`, source: html });
+      this.emitFile({ type: "asset", fileName: `${base}.html`, source: html });
+    }
+  },
 });
 
 // https://vitejs.dev/config/

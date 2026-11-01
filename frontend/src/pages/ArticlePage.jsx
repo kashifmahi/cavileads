@@ -10,7 +10,7 @@ import { Clock, ChevronRight, ArrowRight, CheckCircle2, Lightbulb } from "lucide
 import { getArticle, articles } from "../data/articles";
 import { authorSchema, publisherSchema } from "../data/author";
 import { ratesLinkFor } from "../data/ratesLinks";
-import { SectionTable, SourcesList } from "../components/ContentExtras";
+import { SectionTable, SourcesList, RichText } from "../components/ContentExtras";
 import AnnuityCalculator from "../components/AnnuityCalculator";
 import InlineLeadForm from "../components/InlineLeadForm";
 import MatchWizard from "../components/MatchWizard";
@@ -34,7 +34,9 @@ const ArticlePage = () => {
 
   const origin = typeof window !== "undefined" ? SITE_URL : "";
   const url = `${origin}/articles/${article.slug}`;
-  const related = articles.filter((a) => a.slug !== slug).slice(0, 4);
+  // Next four articles in list order (wrapping), so every article gets inbound links.
+  const idx = articles.findIndex((a) => a.slug === slug);
+  const related = [1, 2, 3, 4].map((k) => articles[(idx + k) % articles.length]);
   const ratesLink = ratesLinkFor(article.slug);
 
   const schemas = [
@@ -130,13 +132,13 @@ const ArticlePage = () => {
           {article.sections.map((s) => (
             <section key={s.heading} className="mt-10">
               <h2 className="font-serif text-2xl font-bold text-[#16233d]">{s.heading}</h2>
-              <p className="mt-3 text-slate-600 leading-relaxed">{s.body}</p>
+              <p className="mt-3 text-slate-600 leading-relaxed"><RichText text={s.body} /></p>
               {s.bullets && (
                 <ul className="mt-4 space-y-2.5">
                   {s.bullets.map((b) => (
                     <li key={b} className="flex items-start gap-2.5 text-slate-600 leading-relaxed">
                       <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                      <span>{b}</span>
+                      <span><RichText text={b} /></span>
                     </li>
                   ))}
                 </ul>
