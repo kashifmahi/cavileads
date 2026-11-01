@@ -131,7 +131,7 @@ const RateTable = ({ rates = [], loading = false, showBest = true, onView }) => 
               <th className="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-slate-500">APY</th>
               <th className="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-slate-500">Term</th>
               <th className="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-slate-500">Min. Deposit</th>
-              <th className="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-slate-500 text-right">Open Account</th>
+              <th className="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-slate-500 text-right">Bank Website</th>
             </tr>
           </thead>
           <tbody>
