@@ -148,6 +148,13 @@ const Footer = () => {
             links; see our Advertiser Disclosure.
           </p>
           <p className="mt-4 text-xs text-slate-400">
+            Contact:{" "}
+            <a href="mailto:support@cavicord.tech" className="underline hover:text-white">
+              support@cavicord.tech
+            </a>{" "}
+            · <Link to="/about#contact" className="underline hover:text-white">About Cavicord</Link>
+          </p>
+          <p className="mt-2 text-xs text-slate-400">
             © {year} {BRAND.name}. All rights reserved.
           </p>
         </div>
