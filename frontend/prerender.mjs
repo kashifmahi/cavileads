@@ -125,8 +125,8 @@ async function main() {
     try {
       await page.goto(target, { waitUntil: "networkidle0", timeout: 60000 });
       if (rateRoutes.has(route)) {
-        // options must be baked in — fail the route rather than shipping skeletons
-        await page.waitForSelector('[data-testid^="brokered-card-"]', { timeout: 20000 });
+        // rates must be baked in — fail the route rather than shipping skeletons
+        await page.waitForSelector('[data-testid^="open-account-"]', { timeout: 20000 });
       }
       await new Promise((r) => setTimeout(r, 400));
       let html = `<!doctype html>\n${await page.evaluate(() => document.documentElement.outerHTML)}`;

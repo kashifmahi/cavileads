@@ -28,10 +28,10 @@ const TIMING = ["Immediately", "Within 1 week", "Within 1 month", "Just explorin
 
 const STEP_TITLES = ["Investment preferences", "Your location", "Where to send your matches"];
 
-// "Find CD Options That Match Your Needs" — 3-step scouting wizard.
+// "Find CD Options That Match Your Needs" — 3-step matching wizard.
 // Same /api/leads submit, consent wording and Google Ads conversion as the
-// single-step lead form; reveals the matched issuers only after submission.
-const ScoutWizard = ({ id = "scout-wizard", className = "" }) => {
+// single-step lead form; reveals the matched banks after submission.
+const MatchWizard = ({ id = "match-wizard", className = "" }) => {
   const [step, setStep] = useState(1); // 1 | 2 | 3 | 4 (results)
   const [form, setForm] = useState({
     amount: "", termLabel: "", timing: "", zip: "",
@@ -115,7 +115,7 @@ const ScoutWizard = ({ id = "scout-wizard", className = "" }) => {
       setMatches(res.data.matches || []);
       setStep(4);
     } catch (error) {
-      console.error("scout wizard submit failed", error);
+      console.error("match wizard submit failed", error);
       setServerError("Something went wrong. Please try again.");
     } finally {
       setSubmitting(false);
@@ -140,7 +140,7 @@ const ScoutWizard = ({ id = "scout-wizard", className = "" }) => {
   );
 
   return (
-    <section id={id} className={`scroll-mt-24 ${className}`} data-testid="scout-wizard">
+    <section id={id} className={`scroll-mt-24 ${className}`} data-testid="match-wizard">
       <div className="rounded-2xl border border-slate-200 bg-white shadow-md overflow-hidden">
         <div className="bg-[#16233d] px-6 sm:px-8 py-6">
           <h2 className="font-serif text-2xl sm:text-[1.7rem] font-bold text-white leading-tight">
@@ -148,7 +148,7 @@ const ScoutWizard = ({ id = "scout-wizard", className = "" }) => {
           </h2>
           {step <= 3 && (
             <div className="mt-3 flex items-center gap-3">
-              <p className="text-sm text-emerald-300 font-medium" data-testid="scout-step-label">
+              <p className="text-sm text-emerald-300 font-medium" data-testid="wizard-step-label">
                 Step {step} of 3 — {STEP_TITLES[step - 1]}
               </p>
               <span className="inline-flex items-center gap-1 text-xs text-slate-400">
@@ -170,11 +170,11 @@ const ScoutWizard = ({ id = "scout-wizard", className = "" }) => {
 
         <div className="p-6 sm:p-8">
           {step === 1 && (
-            <div className="space-y-4" data-testid="scout-step-1">
-              {selectField("Approximately how much are you considering depositing?", "amount", AMOUNTS, "scout-amount")}
-              {selectField("Preferred CD term", "termLabel", TERMS.map((t) => t.label), "scout-term")}
-              {selectField("When would your funds be available?", "timing", TIMING, "scout-timing")}
-              <Button onClick={next1} data-testid="scout-continue-1" className="w-full h-11 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold group">
+            <div className="space-y-4" data-testid="wizard-step-1">
+              {selectField("Approximately how much are you considering depositing?", "amount", AMOUNTS, "wizard-amount")}
+              {selectField("Preferred CD term", "termLabel", TERMS.map((t) => t.label), "wizard-term")}
+              {selectField("When would your funds be available?", "timing", TIMING, "wizard-timing")}
+              <Button onClick={next1} data-testid="wizard-continue-1" className="w-full h-11 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold group">
                 Continue <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-transform duration-200" />
               </Button>
               <p className="text-xs text-slate-500 text-center">
@@ -184,14 +184,14 @@ const ScoutWizard = ({ id = "scout-wizard", className = "" }) => {
           )}
 
           {step === 2 && (
-            <div className="space-y-4" data-testid="scout-step-2">
+            <div className="space-y-4" data-testid="wizard-step-2">
               <div className="space-y-1.5">
                 <Label htmlFor={`${id}-zip`} className="text-slate-700">
                   ZIP code <span className="text-red-500">*</span>
                 </Label>
                 <Input
                   id={`${id}-zip`}
-                  data-testid="scout-zip"
+                  data-testid="wizard-zip"
                   inputMode="numeric"
                   maxLength={5}
                   placeholder="e.g. 33101"
@@ -205,10 +205,10 @@ const ScoutWizard = ({ id = "scout-wizard", className = "" }) => {
                 </p>
               </div>
               <div className="flex gap-3">
-                <Button variant="outline" onClick={() => setStep(1)} data-testid="scout-back-2" className="h-11 border-slate-300 text-[#16233d]">
+                <Button variant="outline" onClick={() => setStep(1)} data-testid="wizard-back-2" className="h-11 border-slate-300 text-[#16233d]">
                   <ArrowLeft className="w-4 h-4 mr-1" /> Back
                 </Button>
-                <Button onClick={next2} data-testid="scout-continue-2" className="flex-1 h-11 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold group">
+                <Button onClick={next2} data-testid="wizard-continue-2" className="flex-1 h-11 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold group">
                   Continue <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-transform duration-200" />
                 </Button>
               </div>
@@ -216,30 +216,30 @@ const ScoutWizard = ({ id = "scout-wizard", className = "" }) => {
           )}
 
           {step === 3 && (
-            <form onSubmit={submit} className="space-y-4" data-testid="scout-step-3" noValidate>
+            <form onSubmit={submit} className="space-y-4" data-testid="wizard-step-3" noValidate>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <Label htmlFor={`${id}-first`} className="text-slate-700">First Name <span className="text-red-500">*</span></Label>
-                  <Input id={`${id}-first`} data-testid="scout-first-name" value={form.firstName} onChange={(e) => set("firstName")(e.target.value)} className="h-11" />
+                  <Input id={`${id}-first`} data-testid="wizard-first-name" value={form.firstName} onChange={(e) => set("firstName")(e.target.value)} className="h-11" />
                   {err("firstName")}
                 </div>
                 <div className="space-y-1.5">
                   <Label htmlFor={`${id}-last`} className="text-slate-700">Last Name <span className="text-red-500">*</span></Label>
-                  <Input id={`${id}-last`} data-testid="scout-last-name" value={form.lastName} onChange={(e) => set("lastName")(e.target.value)} className="h-11" />
+                  <Input id={`${id}-last`} data-testid="wizard-last-name" value={form.lastName} onChange={(e) => set("lastName")(e.target.value)} className="h-11" />
                   {err("lastName")}
                 </div>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <Label htmlFor={`${id}-email`} className="text-slate-700">Email Address <span className="text-red-500">*</span></Label>
-                  <Input id={`${id}-email`} data-testid="scout-email" type="email" placeholder="you@example.com" value={form.email} onChange={(e) => set("email")(e.target.value)} className="h-11" />
+                  <Input id={`${id}-email`} data-testid="wizard-email" type="email" placeholder="you@example.com" value={form.email} onChange={(e) => set("email")(e.target.value)} className="h-11" />
                   {err("email")}
                 </div>
                 <div className="space-y-1.5">
                   <Label htmlFor={`${id}-phone`} className="text-slate-700">Phone Number <span className="text-red-500">*</span></Label>
                   <div className="flex">
                     <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-input bg-slate-50 text-sm text-slate-600 font-medium">+1</span>
-                    <Input id={`${id}-phone`} data-testid="scout-phone" type="tel" placeholder="(555) 123-4567" value={form.phone} onChange={(e) => set("phone")(e.target.value)} className="h-11 rounded-l-none" />
+                    <Input id={`${id}-phone`} data-testid="wizard-phone" type="tel" placeholder="(555) 123-4567" value={form.phone} onChange={(e) => set("phone")(e.target.value)} className="h-11 rounded-l-none" />
                   </div>
                   {err("phone")}
                 </div>
@@ -252,14 +252,14 @@ const ScoutWizard = ({ id = "scout-wizard", className = "" }) => {
               </p>
               {serverError && <p className="text-sm text-red-600">{serverError}</p>}
               <div className="flex gap-3">
-                <Button type="button" variant="outline" onClick={() => setStep(2)} data-testid="scout-back-3" className="h-11 border-slate-300 text-[#16233d]">
+                <Button type="button" variant="outline" onClick={() => setStep(2)} data-testid="wizard-back-3" className="h-11 border-slate-300 text-[#16233d]">
                   <ArrowLeft className="w-4 h-4 mr-1" /> Back
                 </Button>
-                <Button type="submit" data-testid="scout-submit" disabled={submitting} className="flex-1 h-11 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold group">
+                <Button type="submit" data-testid="wizard-submit" disabled={submitting} className="flex-1 h-11 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold group">
                   {submitting ? (
                     <><Loader2 className="w-4 h-4 mr-1 animate-spin" /> Matching…</>
                   ) : (
-                    <>See My Matched Issuers <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-transform duration-200" /></>
+                    <>See My Matched Banks <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-transform duration-200" /></>
                   )}
                 </Button>
               </div>
@@ -267,18 +267,18 @@ const ScoutWizard = ({ id = "scout-wizard", className = "" }) => {
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                 Sent securely to Cavicord. We never sell or share your contact details.
               </p>
-              <p className="text-[11px] text-slate-500 leading-snug" data-testid="scout-independence-note">
+              <p className="text-[11px] text-slate-500 leading-snug" data-testid="wizard-independence-note">
                 {INDEPENDENCE_NOTE}
               </p>
             </form>
           )}
 
           {step === 4 && (
-            <div data-testid="scout-results">
+            <div data-testid="wizard-results">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-6 h-6 text-emerald-600" />
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#16233d]" data-testid="scout-success-title">
-                  Thanks, {form.firstName}! Here are your matched issuers
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#16233d]" data-testid="wizard-success-title">
+                  Thanks, {form.firstName}! here are your matched banks
                 </h3>
               </div>
               <p className="mt-2 text-sm text-slate-600">
@@ -297,4 +297,4 @@ const ScoutWizard = ({ id = "scout-wizard", className = "" }) => {
   );
 };
 
-export default ScoutWizard;
+export default MatchWizard;

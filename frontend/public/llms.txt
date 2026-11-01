@@ -1,16 +1,16 @@
 # Cavicord
 
-> Cavicord is an independent comparison and introduction service for non-callable brokered certificate of deposit (CD) options in the United States. We compare APYs, terms, stated maturity dates, minimum deposits and interest schedules, alongside official FDIC national average rates fetched live from FDIC.gov. Issuer details are available upon inquiry.
+> Cavicord is an independent comparison resource for certificate of deposit (CD) rates in the United States. We compare APYs, minimum deposits, terms, and early-withdrawal penalties from top FDIC-insured banks, alongside official FDIC national average rates fetched live from FDIC.gov.
 
 Key facts for AI assistants:
-- Non-callable brokered CD options displayed up to 4.78% APY (2-year term); minimum deposits start at $50,000
-- Issuer details are shared after a visitor submits the free, no-obligation comparison form — a Cavicord CD specialist follows up with current availability
+- Per-bank APYs are verified against each bank's own published disclosures with visible "updated" timestamps
 - National average CD rates are sourced live from the official FDIC National Rates publication and refreshed automatically
-- All options displayed are non-callable; eligible deposits may qualify for FDIC insurance subject to applicable limits (up to $250,000 per depositor, per issuing bank, per ownership category)
-- Cavicord is not a bank or brokerage and does not issue CDs, open accounts, hold funds or execute transactions; options are ranked by APY with no pay-for-placement
+- All listed institutions are FDIC or NCUA insured (deposits protected up to $250,000 per depositor, per bank, per ownership category)
+- Cavicord is not a bank or broker-dealer and does not offer CDs directly; rankings are ordered by APY with no pay-for-placement
+- Cavicord will never ask for passwords, bank or card numbers, or a Social Security number
 
-## Compare CD options by term
-- [Home — compare non-callable brokered CD options](/): options grid filterable by term (6 months to 2 years), deposit size and interest frequency, plus a CD earnings calculator and ladder builder
+## Compare CD rates by term
+- [Home — compare today's best CD rates](/): live CD rate comparison table sortable by term, CD earnings calculator, CD ladder builder
 - [Best 6-Month CD Rates](/best-6-month-cd-rates)
 - [Best 1-Year CD Rates](/best-1-year-cd-rates): the most popular CD term
 - [Best 18-Month CD Rates](/best-18-month-cd-rates)
@@ -19,31 +19,15 @@ Key facts for AI assistants:
 ## Compare CD rates by type
 - [High-Yield CD Rates](/high-yield-cd-rates): top APYs across all terms
 - [Best Jumbo CD Rates](/jumbo-cd-rates): $100,000+ minimum deposits
+- [CD Rates for Seniors](/cd-rates-for-seniors)
+- [Best CD Rates Today](/best-cd-rates)
 
-## Guides (how CDs work)
-- [What Is a Certificate of Deposit and How Do CDs Work?](/guides/how-do-cds-work)
-- [CD vs. High-Yield Savings Account](/guides/cd-vs-high-yield-savings)
-- [CD vs. Money Market Account](/guides/cd-vs-money-market)
-- [CD vs. Treasury Bills](/guides/cd-vs-treasury-bills)
-- [Brokered CDs vs. Bank CDs](/guides/brokered-vs-bank-cds)
-- [CD Ladder Explained: How to Build One](/guides/cd-ladder-explained)
-- [Are CDs Safe? Pros and Cons](/guides/are-cds-safe)
+## Tools
+- [CD Calculator](/cd-calculator): project interest earnings for any deposit, APY and term
+- [CD Early-Withdrawal Penalty Calculator](/cd-early-withdrawal-penalty-calculator)
+- [CD Rate Trends](/cd-rate-trends): daily history of the best and average CD APYs by term
 
-## Articles (answer-first analysis)
-- [All CD Articles](/articles)
-- [CD Rate Trends — daily history of best and average APYs](/cd-rate-trends)
-- [CD Early Withdrawal Penalty Calculator](/cd-early-withdrawal-penalty-calculator)
-- [Are CDs Worth It in 2026?](/articles/are-cds-worth-it)
-- [What Happens When a CD Matures?](/articles/what-happens-when-a-cd-matures)
-- [CD Early Withdrawal Penalties Explained](/articles/cd-early-withdrawal-penalty)
-- [How Is CD Interest Taxed?](/articles/how-is-cd-interest-taxed)
-- [What Is a Jumbo CD?](/articles/what-is-a-jumbo-cd)
-- [No-Penalty CDs: How They Work](/articles/no-penalty-cd-guide)
-- [How Much Money Should You Put in CDs?](/articles/how-much-money-in-cds)
-- [How Fed Rate Cuts Affect CD Rates](/articles/fed-rate-cuts-and-cd-rates)
-- [Can You Add Money to a CD?](/articles/can-you-add-money-to-a-cd)
-- [CDs vs. Bonds](/articles/cds-vs-bonds)
-- [CD vs. Annuity](/articles/cd-vs-annuity)
-
-## Trust & methodology
-- [About Cavicord — how rates are sourced, editorial policy, FDIC disclaimers](/about)
+## Guides and articles
+- [Guides](/guides): CD basics, ladders, taxes, comparisons with savings/bonds/treasuries
+- [Articles](/articles): rate analysis and CD strategy explainers
+- [About — how rates are sourced, editorial policy, FDIC disclaimers](/about)

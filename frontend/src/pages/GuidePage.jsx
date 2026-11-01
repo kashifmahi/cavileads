@@ -12,7 +12,7 @@ import { authorSchema, publisherSchema } from "../data/author";
 import { ratesLinkFor } from "../data/ratesLinks";
 import { SectionTable, SourcesList } from "../components/ContentExtras";
 import InlineLeadForm from "../components/InlineLeadForm";
-import ScoutWizard from "../components/ScoutWizard";
+import MatchWizard from "../components/MatchWizard";
 
 const formatDate = (iso) =>
   new Date(`${iso}T00:00:00`).toLocaleDateString("en-US", {
@@ -160,7 +160,7 @@ const GuidePage = () => {
             </section>
           ))}
 
-          <ScoutWizard className="mt-12" id="guide-scout" />
+          <MatchWizard className="mt-12" id="guide-wizard" />
           <InlineLeadForm className="mt-12" />
 
           {/* FAQs */}

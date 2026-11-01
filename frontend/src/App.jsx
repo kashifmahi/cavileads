@@ -5,9 +5,8 @@ import { HelmetProvider } from "react-helmet-async";
 import axios from "axios";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import BrokeredOptions from "./components/BrokeredOptions";
-import ScoutWizard from "./components/ScoutWizard";
-import HowItWorks from "./components/HowItWorks";
+import RatesSection from "./components/RatesSection";
+import MatchWizard from "./components/MatchWizard";
 import Calculator from "./components/Calculator";
 import LadderBuilder from "./components/LadderBuilder";
 import WhyCDs from "./components/WhyCDs";
@@ -151,12 +150,11 @@ const Home = () => {
       />
       <Header />
       <main>
-        <Hero />
+        <Hero rates={rates} updatedAt={updatedAt} loading={loading} />
+        <RatesSection rates={rates} loading={loading} updatedAt={updatedAt} />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
-          <ScoutWizard />
+          <MatchWizard />
         </div>
-        <BrokeredOptions className="py-12" />
-        <HowItWorks />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <InlineLeadForm />
         </div>

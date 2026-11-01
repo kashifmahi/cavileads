@@ -10,7 +10,7 @@ export const landingPages = [
     metaDescription:
       "The best CD rates from FDIC-insured banks, ranked by APY. Compare terms, minimums, and penalties side by side — then get options matched to you.",
     h1: "Today's Best CD Rates",
-    sub: "Every option below is non-callable and ranked by APY so the strongest yields rise to the top. Issuer details are available upon inquiry — compare, then let us match you with options for your deposit.",
+    sub: "Every rate below is from an FDIC-insured bank, ranked by APY so the strongest yields rise to the top. Compare, then let us match you with options for your deposit.",
     benefits: [
       { title: "Ranked by APY", text: "The highest-paying CDs always appear first — no pay-for-placement." },
       { title: "FDIC insurance at the bank", text: "CDs from FDIC-member banks are insured up to $250,000 per depositor, per bank. Cavicord itself is not a bank and does not hold deposits." },

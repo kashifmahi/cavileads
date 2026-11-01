@@ -312,7 +312,7 @@ async def get_rates(term: str = Query("all"), rate_type: str = Query("standard")
             query["term_months"] = int(term)
         except ValueError:
             raise HTTPException(status_code=400, detail="term must be 'all' or a number of months")
-    docs = await db.bank_rates.find(query, {"_id": 0, "bank": 0, "url": 0}).to_list(500)
+    docs = await db.bank_rates.find(query, {"_id": 0}).to_list(500)
     docs = mark_best(docs)
     docs.sort(key=lambda r: r["apy"], reverse=True)
     updated = max((d.get("updated_at") for d in docs), default=None)
@@ -710,9 +710,6 @@ async def rate_trends():
     if not await db.rate_history.find_one({"date": today}):
         await record_rate_history()
     history = await db.rate_history.find({}, {"_id": 0, "recorded_at": 0}).sort("date", 1).to_list(365)
-    for h in history:
-        for t in h.get("terms", {}).values():
-            t.pop("best_bank", None)
     return {"history": history, "tracking_since": history[0]["date"] if history else today}
 
 @api_router.post("/admin/alerts/preview")
@@ -770,7 +767,7 @@ async def chat_rates_context() -> str:
     lines = []
     for term in sorted(by_term):
         entries = "; ".join(
-            f"{r['apy']:.2f}% APY (min ${r['min_deposit']:,}, penalty: {r['penalty'] or 'see bank'})"
+            f"{r['bank']} {r['apy']:.2f}% APY (min ${r['min_deposit']:,}, penalty: {r['penalty'] or 'see bank'})"
             for r in by_term[term][:3]
         )
         lines.append(f"- {term}-month CDs: {entries}")
@@ -778,7 +775,7 @@ async def chat_rates_context() -> str:
         special = [r for r in rates if r.get("rate_type") == rt][:3]
         if special:
             entries = "; ".join(
-                f"{r['apy']:.2f}% APY ({r['term_months']}-mo, min ${r['min_deposit']:,})" for r in special
+                f"{r['bank']} {r['apy']:.2f}% APY ({r['term_months']}-mo, min ${r['min_deposit']:,})" for r in special
             )
             lines.append(f"- {label} CDs: {entries}")
     try:
@@ -811,8 +808,7 @@ STRICT RULES:
 4. Keep answers short and clear: 2-5 sentences or a few dash bullets. Plain text only — no markdown headers or tables. **Bold** sparingly for key numbers.
 5. Mention FDIC insurance ($250,000 per depositor, per bank) when relevant.
 6. After you've genuinely helped (not in your first sentence, and not every single message), offer once: "Would you like to see personalized CD options? Tap the button below this chat and we'll match you with current rates." The site displays that button — never ask for the user's name, email, or phone inside the chat. Our personalized matching is designed for savers with $50,000 or more to deposit; when a user mentions an amount of $50,000+, highlight jumbo CDs and FDIC strategies for larger balances (e.g., spreading funds across banks to stay under the $250,000 insurance cap) and make the personalized-rates offer promptly.
-7. If asked about anything unrelated to CDs, savings, or personal banking, politely steer back to CD topics.
-8. NEVER name the issuing bank or institution behind any rate — issuer details are shared only after a visitor submits the personalized-rates form and a Cavicord specialist contacts them. If asked which bank offers a rate, explain that issuer details are available upon inquiry and point to the form."""
+7. If asked about anything unrelated to CDs, savings, or personal banking, politely steer back to CD topics."""
 
 @api_router.post("/chat")
 async def chat(payload: ChatRequest):

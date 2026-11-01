@@ -87,7 +87,7 @@ export default function TrendsPage() {
               CD Rate Trends
             </h1>
             <p className="mt-5 max-w-2xl text-slate-300 leading-relaxed">
-              We track top CD yields every morning and record the
+              We verify CD rates from top FDIC-insured banks every morning and record the
               results. This page shows how the best and average APYs move over time —
               tracked daily{since ? ` since ${fmtDate(since)}, ${since.slice(0, 4)}` : ""}.
             </p>
@@ -100,12 +100,12 @@ export default function TrendsPage() {
               <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm" data-testid="trends-stat-best">
                 <p className="text-xs text-slate-500 uppercase">Today's Best {TERMS.find((t) => t.key === term)?.label} APY</p>
                 <p className="mt-1 text-2xl font-bold text-emerald-700">{latestTerm.best.toFixed(2)}%</p>
-                <p className="text-xs text-slate-500">issuer details upon inquiry</p>
+                <p className="text-xs text-slate-500">via {latestTerm.best_bank}</p>
               </div>
               <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm" data-testid="trends-stat-avg">
-                <p className="text-xs text-slate-500 uppercase">Average Across Tracked Options</p>
+                <p className="text-xs text-slate-500 uppercase">Average Across Tracked Banks</p>
                 <p className="mt-1 text-2xl font-bold text-[#16233d]">{latestTerm.avg.toFixed(2)}%</p>
-                <p className="text-xs text-slate-500">{latestTerm.count} options tracked</p>
+                <p className="text-xs text-slate-500">{latestTerm.count} banks tracked</p>
               </div>
               <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm" data-testid="trends-stat-spread">
                 <p className="text-xs text-slate-500 uppercase">Edge vs FDIC National Avg</p>

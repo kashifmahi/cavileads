@@ -3,7 +3,7 @@ import { Slider } from "./ui/slider";
 import { Calculator as CalcIcon, Sparkles } from "lucide-react";
 import { formatTerm } from "../mock/mock";
 
-const termOptions = [6, 9, 12, 18, 24];
+const termOptions = [3, 6, 12, 18, 24, 36, 60];
 
 const Calculator = ({ rates = [], loading = false }) => {
   const [deposit, setDeposit] = useState(10000);
@@ -102,7 +102,7 @@ const Calculator = ({ rates = [], loading = false }) => {
               </div>
               <p className="text-sm text-slate-500 mt-1">
                 {bestRate
-                  ? `via a verified issuer (details upon inquiry)`
+                  ? `via ${bestRate.bank}`
                   : loading
                   ? "Loading rates\u2026"
                   : "Rates temporarily unavailable \u2014 please refresh"}

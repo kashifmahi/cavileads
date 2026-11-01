@@ -3,7 +3,7 @@ import { Slider } from "./ui/slider";
 import { Layers, ArrowDown } from "lucide-react";
 import { formatTerm } from "../mock/mock";
 
-const LADDER_TERMS = [6, 9, 12, 18, 24];
+const LADDER_TERMS = [12, 24, 36, 48, 60];
 
 const LadderBuilder = ({ rates = [] }) => {
   const [total, setTotal] = useState(50000);
@@ -121,7 +121,7 @@ const LadderBuilder = ({ rates = [] }) => {
                   </div>
                   <div className="col-span-2 sm:col-span-1">
                     <p className="text-xs text-slate-500">Via</p>
-                    <p className="font-medium text-slate-600 truncate">Issuer upon inquiry</p>
+                    <p className="font-medium text-slate-600 truncate">{rung.bank}</p>
                   </div>
                   <div>
                     <p className="text-xs text-slate-500">At Maturity</p>
