@@ -61,9 +61,10 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "node generate-sitemap.mjs && vite build && node inline-css.mjs",
+    "build": "node generate-sitemap.mjs && vite build && node inline-css.mjs && node apply-prerender.mjs",
     "prerender": "node prerender.mjs",
     "build:ssg": "vite build && node prerender.mjs",
+    "snapshot": "node snapshot-prerender.mjs",
     "preview": "vite preview --host 0.0.0.0 --port 3000"
   },
   "browserslist": {

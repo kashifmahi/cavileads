@@ -269,3 +269,9 @@ Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-ca
 
 ## 2026-11-01 (PR #30 pulled)
 - RateTable.jsx byte-identical from e5809cd: column header "Open Account" → "Bank Website". Built + SSG 42/42; verified on /best-cd-rates (header shows BANK WEBSITE, 60 Visit-bank-site buttons, zero "Open Account"). NOT deployed; user to Save to GitHub.
+
+## 2026-11-01 (production SSG fix — prerender served on deploy)
+- ROOT CAUSE: deploy runs package.json "build" (sitemap+vite+inline-css) which never ran prerender.mjs -> live served SPA shell for every URL.
+- FIX (no Chrome at deploy): snapshot-prerender.mjs copies build:ssg output (42 pages) into committed frontend/prerendered/; apply-prerender.mjs (now last step of "build") injects them into the fresh Vite build, remapping /assets/<name>-<hash> refs + re-inlining CSS to THIS build (drift-tested OK). Writes build/<route>/index.html AND build/<route>.html.
+- WORKFLOW after content/rate changes: `yarn build:ssg && yarn snapshot` in pod, commit, deploy. Puppeteer only runs in pod.
+- Verified deploy-style build via curl: jumbo/best-cd-rates/jumbo-article each unique title/canonical/H1, 3000+ words, JSON-LD, valid asset refs. NOT deployed; Save to GitHub then owner republishes once.
