@@ -137,14 +137,24 @@ const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-white/10">
           <p className="text-xs text-slate-400 leading-relaxed">
-            {BRAND.name} is not a bank and does not offer certificates of deposit
-            directly. Rates shown are for informational purposes only and are
+            {BRAND.name} is an independent comparison website. It is not a bank, does
+            not offer certificates of deposit directly, and is not affiliated with or
+            endorsed by the banks listed. Bank names are used only to identify their
+            products. {BRAND.name} will never ask for passwords, bank account or card
+            numbers, or Social Security numbers. Rates shown are for informational purposes only and are
             subject to change without notice. National average rates are sourced
             from the FDIC. Always verify current rates and terms directly with the
             issuing bank before opening an account. Some links may be affiliate
             links; see our Advertiser Disclosure.
           </p>
           <p className="mt-4 text-xs text-slate-400">
+            Contact:{" "}
+            <a href="mailto:support@cavicord.tech" className="underline hover:text-white">
+              support@cavicord.tech
+            </a>{" "}
+            · <Link to="/about#contact" className="underline hover:text-white">About Cavicord</Link>
+          </p>
+          <p className="mt-2 text-xs text-slate-400">
             © {year} {BRAND.name}. All rights reserved.
           </p>
         </div>
