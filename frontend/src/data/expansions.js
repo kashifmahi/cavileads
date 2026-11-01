@@ -827,9 +827,65 @@ export const EXPANSIONS = {
   },
 };
 
+
+// In-body links for pages whose text predates the [anchor](/path) syntax. The first
+// match of each phrase in the section text (not FAQs) becomes a link.
+const LADDER = "/guides/cd-ladder-explained";
+const PENALTY = "/articles/cd-early-withdrawal-penalty";
+const NOPEN = "/articles/no-penalty-cd-guide";
+export const CONTEXT_LINKS = {
+  "cd-vs-money-market": [["CD ladder", LADDER], ["no-penalty CD", NOPEN], ["savings account", "/guides/cd-vs-high-yield-savings"]],
+  "cd-vs-treasury-bonds": [["Treasury bills", "/guides/cd-vs-treasury-bills"], ["CD's penalty", PENALTY]],
+  "cd-vs-annuity": [["5-year CD", "/cd-rates"], ["insured by the FDIC", "/guides/are-cds-safe"]],
+  "cd-vs-high-yield-savings": [["no-penalty CD", NOPEN], ["CD ladder", LADDER]],
+  "cds-vs-bond-funds": [["CD ladder", LADDER], ["planned retirement spending", "/cd-for-retirement"], ["individual CD or bond", "/articles/cds-vs-bonds"]],
+  "how-is-cd-interest-taxed": [["Treasury bill", "/guides/cd-vs-treasury-bills"], ["early withdrawal penalty", PENALTY]],
+  "what-happens-when-a-cd-matures": [["start a ladder", LADDER], ["without any penalty", PENALTY]],
+  "i-bonds-vs-cds": [["3-month penalty", PENALTY], ["FDIC/NCUA insurance", "/guides/are-cds-safe"]],
+  "cds-vs-bonds": [["bond funds", "/guides/cds-vs-bond-funds"], ["U.S. Treasuries", "/guides/cd-vs-treasury-bonds"], ["Brokered CDs", "/guides/brokered-vs-bank-cds"]],
+  "how-do-cds-work": [["CD ladder", LADDER], ["jumbo CD", "/articles/what-is-a-jumbo-cd"], ["brokered CD", "/guides/brokered-vs-bank-cds"]],
+  "no-penalty-cd-guide": [["standard CD or a ladder", LADDER], ["savings account's rate", "/guides/cd-vs-high-yield-savings"]],
+};
+
+const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const linkFirst = (text, phrase, path) => {
+  if (typeof text !== "string") return null;
+  const re = new RegExp(`\\b(${escapeRe(phrase)}s?)\\b`, "i");
+  // Don't link inside an existing [anchor](/path).
+  const spans = [...text.matchAll(/\[[^\]]*\]\([^)]*\)/g)].map((m) => [m.index, m.index + m[0].length]);
+  let from = 0;
+  while (from < text.length) {
+    const m = re.exec(text.slice(from));
+    if (!m) return null;
+    const at = from + m.index;
+    if (!spans.some(([a, b]) => at >= a && at < b)) {
+      return text.slice(0, at) + `[${m[1]}](${path})` + text.slice(at + m[1].length);
+    }
+    from = at + m[1].length;
+  }
+  return null;
+};
+
+export const applyContextLinks = (item) => {
+  for (const [phrase, path] of CONTEXT_LINKS[item.slug] || []) {
+    if (path === `/articles/${item.slug}` || path === `/guides/${item.slug}`) continue;
+    let done = false;
+    for (const s of item.sections) {
+      if (done) break;
+      const body = linkFirst(s.body, phrase, path);
+      if (body) { s.body = body; done = true; break; }
+      for (let i = 0; s.bullets && i < s.bullets.length; i++) {
+        const b = linkFirst(s.bullets[i], phrase, path);
+        if (b) { s.bullets[i] = b; done = true; break; }
+      }
+    }
+  }
+  return item;
+};
+
 export const applyExpansion = (item) => {
   const x = EXPANSIONS[item.slug];
-  if (!x) return item;
+  if (!x) return applyContextLinks(item);
   if (x.metaTitle) item.metaTitle = x.metaTitle;
   if (x.metaDescription) item.metaDescription = x.metaDescription;
   if (x.readTime) item.readTime = x.readTime;
@@ -842,5 +898,5 @@ export const applyExpansion = (item) => {
   }
   item.faqs = [...item.faqs, ...(x.faqs || [])];
   if (x.sources) item.sources = x.sources;
-  return item;
+  return applyContextLinks(item);
 };
