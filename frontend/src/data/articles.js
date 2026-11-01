@@ -30,7 +30,7 @@ export const articles = [
       },
       {
         heading: "When a CD is not worth it",
-        body: "A CD is a poor fit for your emergency fund or any money with an uncertain timeline. **An early withdrawal penalty** is a fee a bank charges when you take money out of a CD before it matures, usually a set amount of interest. Every CD disclosure should list these penalties, as [Investor.gov](https://www.investor.gov/investing-basics/investment-products/certificates-deposit-cds) notes. Early withdrawal penalties typically cost 3 to 12 months of interest, which can wipe out everything you earned. CDs also can't match the long-run growth of stocks, so money you won't touch for 10+ years usually belongs in the market instead.",
+        body: "A CD is a poor fit for your emergency fund or any money with an uncertain timeline. **An early withdrawal penalty** is a fee a bank charges when you take money out of a CD before it matures, usually a set amount of interest. Every CD disclosure should list these penalties, as [Investor.gov](https://www.investor.gov/investing-basics/investment-products/certificates-deposit-cds) notes. Early withdrawal penalties commonly range from about 2 to 12 months of interest, depending on the term and the bank, which can wipe out much of what you earned. CDs also can't match the long-run growth of stocks, so money you won't touch for 10+ years usually belongs in the market instead.",
       },
       {
         heading: "CD returns vs. savings accounts in 2026",
@@ -134,15 +134,15 @@ export const articles = [
     title: "CD Early Withdrawal Penalties: What They Cost and How to Avoid Them",
     metaTitle: "CD Early Withdrawal Penalty: How Much It Costs | Cavicord",
     metaDescription:
-      "CD early withdrawal penalties typically cost 3–12 months of interest. See how they're calculated, when they can touch principal, and how to avoid them.",
+      "CD early withdrawal penalties commonly cost about 2–12 months of interest, depending on the term and bank. See how they're calculated, when they can touch principal, and how to avoid them.",
     category: "Basics",
     readTime: "7 min read",
     datePublished: "2026-05-18",
     dateModified: "2026-06-10",
     excerpt:
-      "Break a CD early and you'll typically forfeit 3 to 12 months of interest, depending on the term. If you haven't earned that much yet, the penalty can eat into your principal.",
+      "Break a CD early and you'll commonly forfeit about 2 to 12 months of interest, depending on the term and the bank. If you haven't earned that much yet, the penalty can eat into your principal.",
     answer:
-      "A CD early withdrawal penalty is a fee for taking money out before maturity. It is almost always charged as a number of months of interest: commonly 3 months on short CDs, 6 months on 1-year CDs, and up to 12 months or more on 4–5 year terms. If the penalty exceeds the interest you've earned so far, it comes out of your principal.",
+      "A CD early withdrawal penalty is a fee for taking money out before maturity. It is usually charged as a number of days or months of interest, and each bank sets its own schedule: roughly 1–3 months on short CDs, about 2–6 months on 1-year CDs, and about 5–12 months or more on 4–5 year terms. If the penalty exceeds the interest you've earned so far, it comes out of your principal.",
     sections: [
       {
         heading: "How penalties are calculated",
@@ -153,8 +153,8 @@ export const articles = [
         body: "Penalties scale with term length, though every bank sets its own schedule — always check the disclosure before opening. [Ally's CD FAQ](https://www.ally.com/help/bank/cds.html) and [Capital One's 360 CD disclosure](https://www.capitalone.com/bank/disclosures/cds/online-cds/) both publish their schedules.",
         bullets: [
           "3–6 month CDs: usually 1–3 months of interest.",
-          "12-month CDs: commonly 3–6 months of interest.",
-          "2–3 year CDs: commonly 6–12 months of interest.",
+          "12-month CDs: commonly 2–6 months of interest (Ally: 60 days; Capital One: 3 months).",
+          "2–3 year CDs: commonly 2–12 months of interest (Ally: 60–90 days; Capital One: 6 months).",
           "4–5 year CDs: commonly 5–12 months of interest (Ally: 150 days; Capital One: 6 months), sometimes more.",
         ],
       },
@@ -179,7 +179,7 @@ export const articles = [
       },
       {
         heading: "Penalty-free exceptions",
-        body: "Many banks waive early withdrawal penalties on the death or legal incompetence of an owner ([Capital One's 360 CD disclosure](https://www.capitalone.com/bank/disclosures/cds/online-cds/) is one example), and some waive them for IRA CDs after age 59½. A few allow penalty-free withdrawal of earned interest (not principal) at any time. Check your bank's disclosure for its specific exceptions.",
+        body: "Many banks waive early withdrawal penalties on the death or legal incompetence of an owner ([Capital One's 360 CD disclosure](https://www.capitalone.com/bank/disclosures/cds/online-cds/) is one example), Some banks also waive the penalty for IRA CD withdrawals after age 59½, or let you take out interest that has already been credited without a penalty, but these exceptions vary and many banks don't offer them. Check your bank's disclosure for its specific exceptions.",
       },
     ],
     faqs: [
@@ -609,7 +609,7 @@ export const articles = [
       },
       {
         heading: "Liquidity and access",
-        body: "Bonds win on liquidity: Treasuries sell in seconds on the secondary market with no penalty (though at the market price), as [TreasuryDirect](https://www.treasurydirect.gov/marketable-securities/treasury-bonds/) describes. CDs charge a set early withdrawal penalty but never expose you to market pricing. For money you're confident stays put, the CD penalty is irrelevant; for money you might redeploy, bonds are more flexible.",
+        body: "Bonds win on liquidity: Treasuries can be sold before maturity ([TreasuryDirect](https://www.treasurydirect.gov/marketable-securities/treasury-bonds/)), and they trade easily on the secondary market with no penalty, though at the market price. CDs charge a set early withdrawal penalty but never expose you to market pricing. For money you're confident stays put, the CD penalty is irrelevant; for money you might redeploy, bonds are more flexible.",
       },
       {
         heading: "The practical verdict",
@@ -648,7 +648,7 @@ export const articles = [
     excerpt:
       "Banks sell CDs; insurers sell annuities. A multi-year guaranteed annuity (MYGA) can pay more and defers taxes, but brings surrender charges, less insurance clarity, and far more complexity.",
     answer:
-      "A CD is a bank deposit: FDIC-insured, simple, taxed annually, and free at maturity. A fixed annuity (MYGA) is an insurance contract that often pays a higher rate and grows tax-deferred. But it comes with multi-year surrender charges and a 10% IRS penalty on gains withdrawn before age 59½. Its protection depends on state guaranty associations rather than the FDIC. For most savers under 59½, the CD's simplicity wins.",
+      "A CD is a bank deposit: FDIC-insured, simple, taxed annually, and free at maturity. A fixed annuity (MYGA) is an insurance contract that often pays a higher rate and grows tax-deferred. But it comes with multi-year surrender charges and a 10% additional federal tax on the taxable gain withdrawn before age 59½, with some exceptions. Its protection depends on state guaranty associations rather than the FDIC. For most savers under 59½, the CD's simplicity wins.",
     sections: [
       {
         heading: "What each product actually is",
@@ -656,18 +656,18 @@ export const articles = [
       },
       {
         heading: "Taxes: the annuity's genuine advantage",
-        body: "CD interest is taxed every year as it's credited ([IRS Publication 550](https://www.irs.gov/publications/p550)). MYGA growth is tax-deferred — you pay nothing until withdrawal, letting interest compound on pre-tax money. For high earners far from needing the cash, deferral is a real, quantifiable edge. But withdraw gains before age 59½ and the IRS adds a 10% penalty on top of ordinary tax.",
+        body: "CD interest is taxed every year as it's credited ([IRS Publication 550](https://www.irs.gov/publications/p550)). MYGA growth is tax-deferred — you pay nothing until withdrawal, letting interest compound without an annual tax bill. For high earners far from needing the cash, deferral is a real, quantifiable edge. But withdraw gains before age 59½ and you generally owe a 10% additional tax on the taxable part on top of ordinary income tax, unless an exception applies ([IRS Topic 410](https://www.irs.gov/taxtopics/tc410)).",
       },
       {
         heading: "Safety: FDIC vs. state guaranty funds",
-        body: "CDs carry federal FDIC insurance to $250,000 — uniform, automatic, and battle-tested. Annuities are backed first by the insurer's solvency and then by state guaranty associations, whose limits vary by state (commonly $250,000, sometimes less). **A state guaranty association** is an organization created by state law that protects policyholders, up to set limits, if a member insurance company fails ([NOLHGA](https://www.nolhga.com/)). Check the insurer's credit rating; an annuity is only as strong as the company behind it.",
+        body: "CDs carry federal FDIC insurance up to $250,000 per depositor, per bank, per ownership category — uniform, automatic, and battle-tested. Annuities are backed first by the insurer's solvency and then by state guaranty associations, whose limits vary by state (commonly $250,000, sometimes less). **A state guaranty association** is an organization created by state law that protects policyholders, up to set limits, if a member insurance company fails ([NOLHGA](https://www.nolhga.com/)). Check the insurer's credit rating; an annuity is only as strong as the company behind it.",
       },
       {
         heading: "Liquidity: surrender charges bite harder",
-        body: "Breaking a CD costs a defined interest penalty. **A surrender charge** is a fee an insurer deducts when you take out more than the contract allows before its surrender period ends. Exiting a MYGA early triggers surrender charges that often start around 7–9% of the balance and decline yearly — plus the possible IRS penalty. Many MYGAs allow free withdrawal of up to 10% per year, but full early exit is far more expensive than breaking a CD.",
+        body: "Breaking a CD costs a defined interest penalty. **A surrender charge** is a fee an insurer deducts when you take out more than the contract allows before its surrender period ends. Exiting a MYGA early triggers a surrender charge, a percentage of the amount withdrawn that is set by the contract's schedule and usually shrinks each year until it reaches zero — plus the possible 10% additional IRS tax. Many MYGAs allow a limited penalty-free withdrawal each year, but the amount varies by contract, and a full early exit usually costs far more than breaking a CD.",
         bullets: [
           "CD early exit: forfeits months of interest — principal risk is small and bounded.",
-          "MYGA early exit: surrender charge on the balance, plus 10% IRS penalty on gains if under 59½.",
+          "MYGA early exit: surrender charge on the amount withdrawn, plus a 10% additional IRS tax on the taxable gain if under 59½ (some exceptions).",
           "Both: full value if held to term.",
         ],
       },
@@ -687,7 +687,7 @@ export const articles = [
       },
       {
         q: "Is a CD or annuity better for retirees?",
-        a: "Past age 59½ the IRS penalty disappears, making MYGAs more attractive for tax deferral. Retirees valuing simplicity and federal insurance still often prefer CD ladders — many use both.",
+        a: "Past age 59½ the 10% additional IRS tax no longer applies, making MYGAs more attractive for tax deferral. Retirees valuing simplicity and federal insurance still often prefer CD ladders — many use both.",
       },
     ],
   },

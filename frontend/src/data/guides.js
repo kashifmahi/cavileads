@@ -183,7 +183,7 @@ export const guides = [
     sections: [
       {
         heading: "How brokered CDs work",
-        body: "**A brokered CD** is a CD that a bank issues through a brokerage firm, which sells it to customers in brokerage accounts. Banks issue CDs in bulk to brokerages, which resell them to customers in $1,000 increments. The [Investor.gov brokered CD bulletin](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/brokered-cds-investor-bulletin) describes this as a master CD issued to the deposit broker, which sells interests in it to its customers. You buy them like a bond inside your brokerage account. Because you can hold CDs from dozens of banks in one place, brokered CDs are the standard way to keep a $1 million cash position fully FDIC-insured without opening twenty bank accounts.",
+        body: "**A brokered CD** is a CD that a bank issues through a brokerage firm, which sells it to customers in brokerage accounts. Banks issue CDs in bulk to brokerages, which resell them to customers, often with a $1,000 minimum and $1,000 increments (as at [Vanguard](https://investor.vanguard.com/investment-products/cds)); some brokerages allow smaller amounts. The [Investor.gov brokered CD bulletin](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/brokered-cds-investor-bulletin) describes this as a master CD issued to the deposit broker, which sells interests in it to its customers. You buy them like a bond inside your brokerage account. Because you can hold CDs from dozens of banks in one place, brokered CDs are the standard way to keep a $1 million cash position fully FDIC-insured without opening twenty bank accounts.",
         bullets: [
           "Minimum: typically $1,000 per CD.",
           "New-issue brokered CDs usually have no purchase fee; secondary-market trades may carry a small markup.",
@@ -274,7 +274,7 @@ export const guides = [
       },
       {
         heading: "The early-withdrawal penalty",
-        body: "**An early-withdrawal penalty** is a fee, set as a number of months of interest, for taking money out before maturity. The penalty is charged even if you haven't earned that much interest yet, so a very early withdrawal can dip into principal.",
+        body: "**An early-withdrawal penalty** is a fee, usually set as a number of days or months of interest, for taking money out before maturity. The penalty is charged even if you haven't earned that much interest yet, so a very early withdrawal can dip into principal.",
         bullets: [
           "Terms under 12 months: usually 3 months of interest.",
           "12 to 24 months: usually 6 months of interest.",
@@ -342,7 +342,7 @@ export const guides = [
         bullets: [
           "MMA: variable APY, deposits and withdrawals anytime, sometimes a cap of 6 convenient withdrawals per month.",
           "CD: fixed APY, no additional deposits, early-withdrawal penalty.",
-          "Both: FDIC insured up to $250,000 per depositor, per bank ([FDIC](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance)); credit union versions get the same coverage from the [NCUA](https://ncua.gov/consumers/share-insurance-coverage).",
+          "Both: FDIC insured up to $250,000 per depositor, per bank, per ownership category ([FDIC](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance)); credit union versions get the same coverage from the [NCUA](https://ncua.gov/consumers/share-insurance-coverage).",
         ],
       },
       {
@@ -355,7 +355,7 @@ export const guides = [
       },
       {
         heading: "Access to your money",
-        body: "This is where the MMA wins outright. Need $3,000 for a car repair? Write a check or transfer it the same day. Breaking a CD early triggers a penalty of 3 to 12 months of interest depending on the term. For example, a $20,000 CD at an illustrative 4.50% APY with a 3-month penalty costs $20,000 × 4.50% × 3/12 = $225 to break. For an emergency fund, that flexibility matters more than an extra half a percent.",
+        body: "This is where the MMA wins outright. Need $3,000 for a car repair? Write a check or transfer it the same day. Breaking a CD early triggers a penalty, commonly about 2 to 12 months of interest depending on the term and the bank. For example, a $20,000 CD at an illustrative 4.50% APY with a 3-month penalty costs $20,000 × 4.50% × 3/12 = $225 to break. For an emergency fund, that flexibility matters more than an extra half a percent.",
       },
       {
         heading: "Minimums and fees",
@@ -515,7 +515,7 @@ export const guides = [
         heading: "The cons",
         body: "Safety has a price, and it's worth naming plainly.",
         bullets: [
-          "Locked money: early withdrawal often costs 3–12 months of interest, sometimes more on long terms.",
+          "Locked money: early withdrawal often costs about 2–12 months of interest, sometimes more on long terms.",
           "Rate risk in reverse: if rates rise after you lock, you're stuck below market until maturity.",
           "Inflation: CDs preserve purchasing power more than they build wealth; long-run returns trail stocks.",
           "Opportunity cost: a 5-year CD at 4.20% looks great until you need the cash in year two.",

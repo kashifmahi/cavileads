@@ -36,7 +36,7 @@ export const newGuides = [
             ["Rate", "Fixed rate + inflation rate, resets every 6 months", "Fixed for the term"],
             ["Purchase limit", "$10,000 per person per calendar year (electronic, via TreasuryDirect)", "No limit (insured to $250,000 per bank)"],
             ["Minimum hold", "12 months — can't redeem earlier", "None, but early withdrawal costs a penalty"],
-            ["Early-exit cost", "Lose the last 3 months of interest if redeemed before 5 years", "Usually 3–12 months of interest"],
+            ["Early-exit cost", "Lose the last 3 months of interest if redeemed before 5 years", "Commonly about 2–12 months of interest"],
             ["Federal tax", "Deferred until you redeem (up to 30 years)", "Due every year"],
             ["State/local tax", "Exempt", "Taxed"],
             ["Where to buy", "TreasuryDirect.gov", "Any bank or credit union"],

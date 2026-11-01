@@ -321,7 +321,7 @@ export const EXPANSIONS = {
             ["Protection", "FDIC/NCUA to $250,000", "Insurer, then state guaranty association (limits vary by state)"],
             ["Taxes", "Interest taxed every year", "Tax-deferred until withdrawal"],
             ["Early exit", "Penalty of some months of interest", "Surrender charge, often several % of the balance in early years"],
-            ["Before age 59½", "No extra IRS penalty", "10% IRS penalty on gains withdrawn (some exceptions)"],
+            ["Before age 59½", "No extra IRS tax", "10% additional IRS tax on the taxable gain withdrawn (some exceptions)"],
             ["Typical terms", "3 months–5 years", "2–10 years"],
           ],
         },
@@ -329,7 +329,7 @@ export const EXPANSIONS = {
       {
         before: "Which one fits you",
         heading: "Annuity vs CD calculator: a $100,000, 5-year example",
-        body: "For example, assume $100,000, a 24% tax bracket, a 5-year CD at an illustrative 4.00% APY and a 5-year MYGA at an illustrative 4.50%. The CD's interest is taxed every year, so it effectively compounds at 3.04% and ends at about $116,153 after tax. The MYGA grows untaxed to about $124,618; cashing it out and paying 24% on the $24,618 gain leaves about $118,710 — roughly $2,557 more than the CD. If you're under 59½ and withdraw the gain, the 10% IRS penalty brings the MYGA down to about $116,248, almost the same as the CD.",
+        body: "For example, assume $100,000, a 24% tax bracket, a 5-year CD at an illustrative 4.00% APY and a 5-year MYGA at an illustrative 4.50%. The CD's interest is taxed every year, so it effectively compounds at 3.04% and ends at about $116,153 after tax. The MYGA grows untaxed to about $124,618; cashing it out and paying 24% on the $24,618 gain leaves about $118,710 — roughly $2,557 more than the CD. If you're under 59½ and withdraw the gain, the 10% additional IRS tax brings the MYGA down to about $116,248, almost the same as the CD.",
         table: {
           columns: ["After 5 years", "CD (4.00%, taxed yearly)", "MYGA (4.50%, tax-deferred)"],
           rows: [
@@ -381,7 +381,7 @@ export const EXPANSIONS = {
           rows: [
             ["Rate", "Fixed for the term", "Fixed for the term", "Variable"],
             ["Typical terms", "Around 5 to 15 months", "3 months to 5+ years", "None"],
-            ["Early exit", "No fee after the first week (usually full balance only)", "Penalty, often 3–12 months of interest", "Any time"],
+            ["Early exit", "No fee after the first week (usually full balance only)", "Penalty, often about 2–12 months of interest", "Any time"],
             ["Rate compared with the best regular CDs", "Usually a little lower", "Highest for the term", "Varies; can fall any time"],
             ["Insurance", "FDIC/NCUA to $250,000", "FDIC/NCUA to $250,000", "FDIC/NCUA to $250,000"],
           ],
@@ -685,18 +685,18 @@ export const EXPANSIONS = {
       {
         before: "Bottom line",
         heading: "The break-even CD rate at your state tax rate",
-        body: "**The break-even CD rate** is the CD APY that leaves you the same interest after state tax as a T-bill. The formula is T-bill yield ÷ (1 − state tax rate). Current bill yields are on the [FRED 1-year Treasury bill series](https://fred.stlouisfed.org/series/DTB1YR). This ignores any federal deduction for state taxes, which is limited for most filers. The table uses an illustrative 4.00% T-bill. Worked example: $50,000 for one year, 24% federal bracket, 9% state rate. An illustrative 4.25% APY CD earns $2,125; after $510 federal and $191.25 state tax you keep $1,423.75. An illustrative 4.00% T-bill earns $2,000; after $480 federal tax you keep $1,520. The T-bill wins by $96.25, even though its yield is 0.25 points lower. The CD would need about 4.40% to break even. In a state with no income tax, the same CD keeps $1,615 and wins by $95. Check the [best 1-year CD rates](/best-1-year-cd-rates) and the [best 6-month CD rates](/best-6-month-cd-rates) against current bill yields, and see [how CD interest is taxed](/articles/how-is-cd-interest-taxed) for the federal side.",
+        body: "**The break-even CD rate** is the CD APY that leaves you the same interest after federal and state tax as a T-bill. Because CD interest is taxed by both and T-bill interest only federally, the formula is T-bill yield × (1 − federal rate) ÷ (1 − federal rate − state rate). Current bill yields are on the [FRED 1-year Treasury bill series](https://fred.stlouisfed.org/series/DTB1YR). This assumes you don't deduct state income tax on your federal return, as most filers who take the standard deduction don't. The table uses an illustrative 4.00% T-bill and a 24% federal bracket. Worked example: $50,000 for one year, 24% federal bracket, 9% state rate. An illustrative 4.25% APY CD earns $2,125; after $510 federal and $191.25 state tax you keep $1,423.75. An illustrative 4.00% T-bill earns $2,000; after $480 federal tax you keep $1,520. The T-bill wins by $96.25, even though its yield is 0.25 points lower. The CD would need about 4.54% to break even. In a state with no income tax, the same CD keeps $1,615 and wins by $95. Check the [best 1-year CD rates](/best-1-year-cd-rates) and the [best 6-month CD rates](/best-6-month-cd-rates) against current bill yields, and see [how CD interest is taxed](/articles/how-is-cd-interest-taxed) for the federal side.",
         table: {
-          caption: "Illustrative 4.00% T-bill yield. Break-even CD APY = 4.00% ÷ (1 − state rate). Federal tax applies to both.",
+          caption: "Illustrative 4.00% T-bill yield and 24% federal bracket. Break-even CD APY = 4.00% × 0.76 ÷ (0.76 − state rate). No federal deduction for state tax assumed.",
           columns: ["Your state income tax rate", "CD APY needed to match a 4.00% T-bill"],
           rows: [
             ["0% (no state income tax)", "4.00%"],
-            ["3%", "4.12%"],
-            ["5%", "4.21%"],
-            ["7%", "4.30%"],
-            ["9%", "4.40%"],
-            ["11%", "4.49%"],
-            ["13.3%", "4.61%"],
+            ["3%", "4.16%"],
+            ["5%", "4.28%"],
+            ["7%", "4.41%"],
+            ["9%", "4.54%"],
+            ["11%", "4.68%"],
+            ["13.3%", "4.85%"],
           ],
         },
       },
@@ -704,7 +704,7 @@ export const EXPANSIONS = {
     faqs: [
       {
         q: "How do I compare a CD and a T-bill after state tax?",
-        a: "Divide the T-bill yield by (1 minus your state income tax rate). At a 9% state rate, a 4.00% T-bill matches a CD paying about 4.40% APY. If the CD pays more than that, it wins after tax.",
+        a: "Multiply the T-bill yield by (1 minus your federal rate), then divide by (1 minus your federal rate minus your state rate). In the 24% federal bracket with a 9% state rate, an illustrative 4.00% T-bill matches a CD paying about 4.54% APY. If the CD pays more than that, it wins after tax.",
       },
     ],
     sources: [
