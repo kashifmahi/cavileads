@@ -5,7 +5,7 @@ import { TOP_BROKERED_APY, maturityMonthYear, termLabel } from "../data/brokered
 
 const trustItems = [
   { icon: BadgeCheck, title: "Free comparison", sub: "No obligation to inquire" },
-  { icon: ShieldCheck, title: "FDIC-eligible", sub: "Deposit insurance applies" },
+  { icon: ShieldCheck, title: "Compare FDIC-insured bank CDs", sub: "Banks issue and insure the CDs" },
   { icon: Fingerprint, title: "No SSN needed", sub: "Compare without one" },
 ];
 

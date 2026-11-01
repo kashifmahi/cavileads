@@ -182,7 +182,7 @@ const LandingPage = () => {
                 <h2 className="font-serif text-2xl font-bold text-[#16233d]">
                   CD options today — {asOfDate()}
                 </h2>
-                <p className="mt-2 text-sm text-slate-600">The highest APY available through our scouting program for each term right now. Issuer details available upon inquiry.</p>
+                <p className="mt-2 text-sm text-slate-600">The highest APY available from the banks and brokerages we track for each term right now. Issuer details available upon inquiry.</p>
                 <SectionTable
                   table={{
                     columns: ["Term", "Top APY", "Minimum deposit"],

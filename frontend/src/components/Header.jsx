@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { TrendingUp, ShieldCheck, Menu, X, ChevronDown, ArrowRight } from "lucide-react";
+import { TrendingUp, Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   DropdownMenu,
@@ -135,12 +135,8 @@ const Header = () => {
             </a>
           </nav>
 
-          {/* Right: badge + CTA */}
+          {/* Right: CTA */}
           <div className="hidden lg:flex items-center gap-4">
-            <div className="hidden xl:flex items-center gap-2 text-slate-500">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              <span className="text-sm font-medium">FDIC Insured</span>
-            </div>
             <Button
               onClick={openRatesModal}
               size="sm"
@@ -218,10 +214,6 @@ const Header = () => {
             >
               About
             </Link>
-            <div className="flex items-center gap-2 text-slate-500 pt-3 border-t border-slate-100 mt-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              <span className="text-sm font-medium">FDIC Insured</span>
-            </div>
           </nav>
         </div>
       )}

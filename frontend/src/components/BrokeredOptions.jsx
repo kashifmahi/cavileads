@@ -58,7 +58,8 @@ const BrokeredOptions = ({ filterTerm = "all", id = "rates", className = "" }) =
         <p className="mt-3 max-w-3xl text-slate-600 leading-relaxed">
           Compare terms, stated maturity dates, APYs, minimum deposits and payment schedules.
           Issuer details are available upon inquiry. All options are non-callable — confirm current
-          rates and final terms before investing.
+          rates and final terms before investing. Cavicord only compares options and refers your
+          inquiry — we are not the broker, dealer or issuer of any CD shown.
         </p>
         <p className="mt-2 text-xs text-slate-500">Rates displayed as of {asOfDate()}</p>
 

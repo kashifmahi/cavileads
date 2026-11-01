@@ -240,3 +240,10 @@ Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-ca
 - Footer: independence/never-ask note above legal text + Contact: support@cavicord.tech mailto + /about#contact link. AboutPage: new id="contact" section (run by Kashif Mahi, removal requests, reply-from-address-only).
 - Mocked tests (no real leads): home wizard e2e, jumbo inline form, /about#contact, footer — all pass; 0 logo imgs in results. SSG rebuilt 42/42.
 - Wording audit flagged to user (NOT changed): Header "FDIC Insured" chip, Hero "FDIC-eligible" chip, landing "our scouting program" phrasing. NOT deployed; user republishes.
+
+## 2026-11-01 (flagged phrases fixed)
+- Header "✓ FDIC Insured" chip removed (desktop + mobile nav).
+- Hero chip: "FDIC-eligible / Deposit insurance applies" → "Compare FDIC-insured bank CDs / Banks issue and insure the CDs".
+- Landing summary: "through our scouting program" → "from the banks and brokerages we track".
+- Broker/issuer clarity added: BrokeredOptions intro + HowItWorks brokered-CD section now state Cavicord only compares/refers, not the broker, dealer or issuer.
+- Rebuilt 42/42; mocked-API retest (home + /best-cd-rates) all pass, no real leads, 0 logo imgs. NOT published.

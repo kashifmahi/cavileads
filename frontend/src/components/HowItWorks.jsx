@@ -38,7 +38,8 @@ const HowItWorks = () => (
       <h2 className="mt-12 font-serif text-2xl font-bold text-[#16233d]">How a brokered CD works</h2>
       <p className="mt-2 max-w-3xl text-slate-600 leading-relaxed">
         A brokered CD is issued by a bank, then bought and held inside a brokerage account — a setup
-        that can put CDs from several issuing banks within reach of one relationship.
+        that can put CDs from several issuing banks within reach of one relationship. Cavicord only
+        compares these options and refers your inquiry; we are not the broker or the issuer.
       </p>
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {BASICS.map((b) => (
