@@ -266,3 +266,6 @@ Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-ca
 - Verified real API, no leads: / (15 buttons) + /best-cd-rates (60 buttons) all valid external bank links in new tab; "Open Account" button text gone; click does not open modal. SSG rebuilt 42/42.
 - LEFTOVER (byte-identical constraint): RateTable line 134 column HEADER still reads "Open Account" — flagged to user, not changed.
 - NOT deployed. User to Save to GitHub.
+
+## 2026-11-01 (PR #30 pulled)
+- RateTable.jsx byte-identical from e5809cd: column header "Open Account" → "Bank Website". Built + SSG 42/42; verified on /best-cd-rates (header shows BANK WEBSITE, 60 Visit-bank-site buttons, zero "Open Account"). NOT deployed; user to Save to GitHub.
