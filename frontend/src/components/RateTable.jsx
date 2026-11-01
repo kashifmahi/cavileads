@@ -4,7 +4,6 @@ import { Button } from "./ui/button";
 import { Skeleton } from "./ui/skeleton";
 import { ArrowRight } from "lucide-react";
 import { formatTerm } from "../mock/mock";
-import { useRatesModal } from "../context/RatesModalContext";
 
 // Official bank logos: pulled from each bank's own site via Google's favicon service
 // (no API key, cached by Google). Falls back to the coloured initial if the logo
@@ -91,17 +90,21 @@ export const BankAvatar = ({ bank, color, url, size = "w-10 h-10" }) => {
 
 export const fmtDeposit = (v) => (v === 0 ? "None" : `$${v.toLocaleString()}`);
 
+// Sends visitors to the bank's own official page. Cavicord never opens accounts
+// or collects details on a bank's behalf, so this must not open our lead form.
 const OpenAccountButton = ({ rate, size = "sm" }) => {
-  const { openRatesModal } = useRatesModal();
+  if (!rate.url) return null;
   return (
     <Button
+      asChild
       size={size}
       data-testid={`open-account-${rate.id}`}
-      onClick={() => openRatesModal({ term: rate.term_months })}
       className="bg-emerald-700 hover:bg-emerald-600 text-white font-semibold transition-colors duration-200"
     >
-      Open Account
-      <ArrowRight className="w-3.5 h-3.5 ml-1" />
+      <a href={rate.url} target="_blank" rel="noopener noreferrer nofollow" aria-label={`Visit ${rate.bank}'s website (opens in a new tab)`}>
+        Visit bank site
+        <ArrowRight className="w-3.5 h-3.5 ml-1" />
+      </a>
     </Button>
   );
 };

@@ -136,15 +136,19 @@ const Hero = ({ rates = [], updatedAt, loading = false }) => {
                             <p className="text-base sm:text-lg font-bold text-emerald-700">{rate.apy.toFixed(2)}%</p>
                             <p className="text-[10px] text-slate-500 uppercase">APY</p>
                           </div>
-                          <Button
-                            size="sm"
-                            data-testid={`hero-open-${rate.id}`}
-                            onClick={() => openRatesModal({ term: rate.term_months })}
-                            className="px-2.5 sm:px-3 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold transition-colors duration-200"
-                          >
-                            Open
-                            <ArrowRight className="w-3 h-3 ml-1" />
-                          </Button>
+                          {rate.url && (
+                            <Button
+                              asChild
+                              size="sm"
+                              data-testid={`hero-open-${rate.id}`}
+                              className="px-2.5 sm:px-3 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold transition-colors duration-200"
+                            >
+                              <a href={rate.url} target="_blank" rel="noopener noreferrer nofollow" aria-label={`Visit ${rate.bank}'s website (opens in a new tab)`}>
+                                Visit bank
+                                <ArrowRight className="w-3 h-3 ml-1" />
+                              </a>
+                            </Button>
+                          )}
                         </div>
                       </div>
                     ))}
