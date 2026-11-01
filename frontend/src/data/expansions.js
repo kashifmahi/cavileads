@@ -22,7 +22,7 @@ export const EXPANSIONS = {
   "cd-vs-money-market": {
     metaTitle: "Certificate of Deposit vs Money Market Account | Cavicord",
     metaDescription:
-      "Certificate of deposit vs money market account, side by side: rates, FDIC insurance, access, minimums and a $25,000 example. Plus how a money market account differs from a money market fund.",
+      "CD vs money market account: rates, FDIC insurance, access and minimums side by side, a $25,000 example, and how an MMA differs from a money market fund.",
     readTime: "11 min read",
     dateModified: "2026-10-31",
     sections: [
@@ -200,7 +200,7 @@ export const EXPANSIONS = {
   "cds-vs-bonds": {
     metaTitle: "CDs vs Bonds: Which Is Safer & Pays More? | Cavicord",
     metaDescription:
-      "Are CDs safer than bonds? Compare CDs with Treasuries, corporate bonds and bond funds on safety, price risk, taxes and yield — with a worked example of what rising rates do to a bond.",
+      "CDs vs bonds: compare safety, returns, taxes and what happens when rates move, with a side-by-side table of CDs, Treasuries, corporates and bond funds.",
     readTime: "11 min read",
     dateModified: "2026-10-31",
     sections: [
@@ -255,7 +255,7 @@ export const EXPANSIONS = {
   "how-is-cd-interest-taxed": {
     metaTitle: "How Are CDs Taxed? CD Interest Tax Rules | Cavicord",
     metaDescription:
-      "How CD interest is taxed: ordinary income in the year it's credited, Form 1099-INT, state tax, multi-year CDs, IRA CDs and a worked example comparing a CD with a Treasury bill after tax.",
+      "How CD interest is taxed: when it counts as income, Form 1099-INT and 1099-OID, state tax, IRA CDs, and a worked after-tax example vs a T-bill.",
     readTime: "9 min read",
     dateModified: "2026-10-31",
     sections: [
@@ -306,7 +306,7 @@ export const EXPANSIONS = {
   "cd-vs-annuity": {
     metaTitle: "CD vs Annuity Calculator: After-Tax Comparison | Cavicord",
     metaDescription:
-      "CD vs fixed annuity (MYGA): FDIC vs state guaranty coverage, surrender charges, tax deferral and a worked $100,000 example showing after-tax results over 5 years.",
+      "CD vs annuity: compare guarantees, insurance, taxes and early-exit costs, then run the after-tax calculator to see which leaves you more.",
     readTime: "10 min read",
     dateModified: "2026-10-31",
     sections: [
@@ -447,6 +447,384 @@ export const EXPANSIONS = {
       },
     ],
     sources: [FDIC, IRS_1099INT, IRS_550, { label: "CFPB — Regulation DD (Truth in Savings), §1030.5 maturity notices", url: "https://www.consumerfinance.gov/rules-policy/regulations/1030/5/" }],
+  },
+
+  // ---- Nov 2026 audit: sources, worked examples, internal links (batch A)
+  "are-cds-worth-it": {
+    dateModified: "2026-11-01",
+    sections: [
+      {
+        before: "The rate-cut argument for locking in now",
+        heading: "What $25,000 earns: national averages vs a competitive CD",
+        body: "The FDIC publishes national average deposit rates every month. In October 2026 the average savings account paid 0.38% and the average 12-month CD paid 1.76%. Competitive online banks often pay well above the average, so the table also shows an illustrative 4.00% APY. Here is one year of interest on $25,000 at each rate. The penalty risk is also smaller than many people assume. Say you break the illustrative 4.00% CD after 6 months and the bank charges 3 months of interest. You earned about $500 and give back about $250, so you keep about $250 before tax. The same $25,000 at the 0.38% savings average would have earned $47.50 over those 6 months.",
+        table: {
+          columns: ["Where the $25,000 sits", "Rate", "Interest after 1 year"],
+          rows: [
+            ["National average savings account (FDIC, Oct 2026)", "0.38%", "$95.00"],
+            ["National average 12-month CD (FDIC, Oct 2026)", "1.76%", "$440.00"],
+            ["Competitive 12-month CD (illustrative)", "4.00% APY", "$1,000.00"],
+          ],
+          caption: "National averages are FDIC data via FRED, October 2026. 4.00% is illustrative, not an offer from any bank. Before tax.",
+        },
+        bullets: [
+          "Penalties differ by bank. See [how CD early withdrawal penalties work](/articles/cd-early-withdrawal-penalty) and test your own case in the [early withdrawal penalty calculator](/cd-early-withdrawal-penalty-calculator).",
+          "Compare actual offers on [today's best 1-year CD rates](/best-1-year-cd-rates) before you commit.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the national average CD rate?",
+        a: "In October 2026 the FDIC's national average rate for a 12-month CD was 1.76%, and the national average savings rate was 0.38%. These are averages across all banks; competitive online banks often pay much more.",
+      },
+    ],
+    sources: [
+      { label: "FDIC — Understanding Deposit Insurance", url: "https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance" },
+      { label: "FRED (St. Louis Fed) — FDIC National Rate: Savings", url: "https://fred.stlouisfed.org/series/SNDR" },
+      { label: "FRED (St. Louis Fed) — FDIC National Rate: 12-Month CD", url: "https://fred.stlouisfed.org/series/NDR12MCD" },
+      { label: "Investor.gov — Certificates of Deposit (CDs)", url: "https://www.investor.gov/investing-basics/investment-products/certificates-deposit-cds" },
+      { label: "Federal Reserve — FOMC statement, October 28, 2026", url: "https://federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm" },
+    ],
+  },
+
+  "cd-early-withdrawal-penalty": {
+    dateModified: "2026-11-01",
+    sections: [
+      {
+        before: "Five ways to avoid penalties entirely",
+        heading: "What different penalty rules cost on a $10,000 CD",
+        body: "Penalty rules vary more than most people expect. The table applies the federal minimum and published penalty formulas from two banks to the same $10,000 CD at an illustrative 4.00% interest rate. Day-based penalties use a 365-day year; your bank's exact method may differ slightly. Timing matters as much as the rule. Break a 5-year CD after 4 months and you have earned about $133.33. Under a 6-month-interest rule the penalty is $200.00, so $66.67 comes out of principal. Under a 150-day rule the penalty is $164.38, so $31.05 comes out of principal.",
+        table: {
+          columns: ["Penalty rule", "Where it applies (example)", "Penalty on $10,000 at 4.00%"],
+          rows: [
+            ["7 days' simple interest", "Federal minimum for withdrawals within 6 days of deposit", "$7.67"],
+            ["60 days of interest", "Ally Bank CDs of 3 to 24 months", "$65.75"],
+            ["3 months of interest", "Capital One 360 CDs of 12 months or less", "$100.00"],
+            ["150 days of interest", "Ally Bank CDs of 49 to 60 months", "$164.38"],
+            ["6 months of interest", "Capital One 360 CDs longer than 12 months", "$200.00"],
+            ["12 months of interest", "Hypothetical stricter rule, for comparison", "$400.00"],
+          ],
+          caption: "4.00% is illustrative, not either bank's rate. Penalty terms from each bank's published CD FAQ or disclosure, checked November 2026.",
+        },
+        bullets: [
+          "Run your own numbers in the [CD early withdrawal penalty calculator](/cd-early-withdrawal-penalty-calculator).",
+          "If you might need the money early, a [no-penalty CD](/articles/no-penalty-cd-guide) removes the fee after the first week.",
+          "A [CD ladder](/guides/cd-ladder-explained) keeps part of your money maturing regularly, so you rarely need to break a CD.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is there a legal maximum on CD early withdrawal penalties?",
+        a: "No. Federal law sets a minimum penalty of at least seven days' simple interest on withdrawals made within six days of deposit, but there is no federal maximum. Each bank sets its own schedule in the account agreement.",
+      },
+    ],
+    sources: [
+      { label: "OCC HelpWithMyBank — CD penalties", url: "https://helpwithmybank.gov/help-topics/bank-accounts/certificates-of-deposit/cd-penalties.html" },
+      { label: "Ally Bank — Certificates of Deposit FAQs (penalty schedule)", url: "https://www.ally.com/help/bank/cds.html" },
+      { label: "Capital One — 360 CD account disclosures", url: "https://www.capitalone.com/bank/disclosures/cds/online-cds/" },
+      { label: "IRS — Form 1099-INT (box 2, early withdrawal penalty)", url: "https://irs.gov/pub/irs-pdf/f1099int.pdf" },
+      { label: "Investor.gov — Certificates of Deposit (CDs)", url: "https://www.investor.gov/investing-basics/investment-products/certificates-deposit-cds" },
+    ],
+  },
+
+  "how-much-money-in-cds": {
+    dateModified: "2026-11-01",
+    sections: [
+      {
+        before: "Never put these in a CD",
+        heading: "Worked example: sizing CDs for one household",
+        body: "Take a household with $90,000 in cash and $5,000 of monthly expenses. Six months of expenses, $30,000, stays in a savings account as the emergency fund. The three dated goals above go into CDs, each matched to its date. The last $7,000 has no date, so it stays liquid or moves to long-term investing. That puts $53,000 in CDs. Interest assumes it compounds at the APY and stays in the CD; it is taxable each year. Even with interest, the three CDs total $57,427.22 at maturity, well under the $250,000 FDIC limit for one ownership category at one bank.",
+        table: {
+          columns: ["Goal", "Amount", "CD term", "APY (illustrative)", "Value at maturity", "Interest"],
+          rows: [
+            ["Car", "$8,000", "10 months", "4.00%", "$8,265.79", "$265.79"],
+            ["House down payment", "$30,000", "2 years", "3.90%", "$32,385.63", "$2,385.63"],
+            ["Tuition", "$15,000", "3 years", "3.80%", "$16,775.80", "$1,775.80"],
+            ["Total in CDs", "$53,000", "", "", "$57,427.22", "$4,427.22"],
+          ],
+          caption: "APYs are illustrative, not offers from any bank. Before tax.",
+        },
+        bullets: [
+          "Try your own amounts and terms in the [CD calculator](/cd-calculator).",
+          "If the dates are less certain, a [CD ladder](/guides/cd-ladder-explained) spreads maturities instead.",
+          "Before going over $250,000 at one bank, read [how FDIC insurance protects CDs](/guides/are-cds-safe).",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is the $250,000 FDIC limit per CD or per bank?",
+        a: "Per bank, not per CD. FDIC insurance covers $250,000 per depositor, per insured bank, for each account ownership category, such as single, joint or certain retirement accounts. All your single-owner CDs and deposit accounts at one bank count toward the same $250,000. The FDIC's EDIE tool can check your coverage.",
+      },
+    ],
+    sources: [
+      { label: "FDIC — Understanding Deposit Insurance", url: "https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance" },
+      { label: "FDIC — Electronic Deposit Insurance Estimator (EDIE)", url: "https://edie.fdic.gov/" },
+      { label: "NCUA — Share Insurance Coverage", url: "https://www.ncua.gov/consumers/share-insurance-coverage" },
+      { label: "Investor.gov — Certificates of Deposit (CDs)", url: "https://www.investor.gov/investing-basics/investment-products/certificates-deposit-cds" },
+      { label: "CFPB — Start Small, Save Up emergency savings initiative", url: "https://www.consumerfinance.gov/about-us/newsroom/cfpb-announces-start-small-save-initiative" },
+    ],
+  },
+
+  "fed-rate-cuts-and-cd-rates": {
+    dateModified: "2026-11-01",
+    sections: [
+      {
+        before: "Three moves savers make before rate cuts",
+        heading: "What the Fed actually did in mid-2026, and what it means for a ladder",
+        body: "This article explains what happens when the Fed cuts. From June to October 2026 it did not cut. The Fed held its target range in June and July, raised it by 0.25 percentage point in September, and held again in October, when two voters wanted another increase. Over the same months the FDIC's national average 12-month CD rate rose from 1.65% to 1.76%. A ladder handles either direction. Take $20,000 split into four $5,000 rungs. When a rung matures, only that $5,000 reprices. If the new rate is 0.25 point higher or lower, that rung earns $12.50 more or less per year, while the other $15,000 keeps its locked rates. In a high-yield savings account the whole $20,000 reprices, so the same 0.25-point move changes annual interest by $50.00.",
+        table: {
+          columns: ["FOMC meeting", "Decision", "Target range after", "Vote"],
+          rows: [
+            ["June 17, 2026", "Hold", "3.50% to 3.75%", "12–0"],
+            ["July 29, 2026", "Hold", "3.50% to 3.75%", "9–3 (three preferred a 0.25-point hike)"],
+            ["Sept. 16, 2026", "Raise 0.25 point", "3.75% to 4.00%", "12–0"],
+            ["Oct. 28, 2026", "Hold", "3.75% to 4.00%", "10–2 (two preferred a 0.25-point hike)"],
+          ],
+          caption: "Source: FOMC statements on federalreserve.gov. CD averages: FDIC data via FRED.",
+        },
+        bullets: [
+          "See how CD yields have moved on our [CD rate trends](/cd-rate-trends) page.",
+          "Build one step by step with our guide to [CD ladders](/guides/cd-ladder-explained).",
+          "Weigh locked and variable rates in [CDs vs high-yield savings](/guides/cd-vs-high-yield-savings).",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Did the Fed cut rates in 2026?",
+        a: "Not between June and October 2026. The Fed held its target range at 3.50% to 3.75% in June and July, raised it to 3.75% to 4.00% on September 16, 2026, and held it there on October 28, 2026.",
+      },
+    ],
+    sources: [
+      { label: "Federal Reserve — FOMC statement, June 17, 2026", url: "https://federalreserve.gov/newsevents/pressreleases/monetary20260617a.htm" },
+      { label: "Federal Reserve — FOMC statement, July 29, 2026", url: "https://federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm" },
+      { label: "Federal Reserve — FOMC statement, September 16, 2026", url: "https://federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm" },
+      { label: "Federal Reserve — FOMC statement, October 28, 2026", url: "https://federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm" },
+      { label: "FRED (St. Louis Fed) — FDIC National Rate: 12-Month CD", url: "https://fred.stlouisfed.org/series/NDR12MCD" },
+    ],
+  },
+
+  "can-you-add-money-to-a-cd": {
+    dateModified: "2026-11-01",
+    sections: [
+      {
+        before: "Better workarounds for ongoing savers",
+        heading: "Monthly saver example: add-on CD vs savings account",
+        body: "Say you save $500 at the start of each month for a year, $6,000 in total. Compare an add-on CD at an illustrative 3.75% APY with a high-yield savings account at an illustrative 3.50% APY that holds steady all year. Each deposit earns interest only from the month it goes in, compounded monthly at the APY. The add-on CD earns $8.04 more over the year. The gap is small because the average dollar is in the account for only a little over half the year. The rate edge matters more once the balance is large, which is why many savers build up cash first and then open a CD. Many standard CDs don't accept deposits during the term at all. Capital One's 360 CD disclosure says additional deposits are not permitted, while Ally lets you add funds during its 10-day grace period.",
+        table: {
+          columns: ["Account", "APY (illustrative)", "Deposited", "Balance after 12 months", "Interest"],
+          rows: [
+            ["Add-on CD", "3.75%", "$6,000", "$6,121.19", "$121.19"],
+            ["High-yield savings", "3.50%", "$6,000", "$6,113.15", "$113.15"],
+          ],
+          caption: "$500 deposited at the start of each month. APYs are illustrative, not offers from any bank. Before tax.",
+        },
+        bullets: [
+          "Learn how the grace period works in [what happens when a CD matures](/articles/what-happens-when-a-cd-matures).",
+          "For a growing balance you may need soon, compare a [no-penalty CD](/articles/no-penalty-cd-guide).",
+          "Model a lump sum once your savings reach your target in the [CD calculator](/cd-calculator).",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Can I add money to a CD during the grace period?",
+        a: "Often, yes. Some banks, such as Ally, let you add funds during the grace period after maturity, before the CD renews. Others don't say, so check your bank's CD disclosure or call before the maturity date.",
+      },
+    ],
+    sources: [
+      { label: "Ally Bank — Certificates of Deposit FAQs (adding funds, grace period)", url: "https://www.ally.com/help/bank/cds.html" },
+      { label: "Capital One — 360 CD account disclosures", url: "https://www.capitalone.com/bank/disclosures/cds/online-cds/" },
+      { label: "CFPB — Regulation DD (Truth in Savings), §1030.5 maturity notices", url: "https://www.consumerfinance.gov/rules-policy/regulations/1030/5" },
+      { label: "FDIC — Understanding Deposit Insurance", url: "https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance" },
+    ],
+  },
+
+  // ---- Nov 2026 audit: sources, worked examples, internal links (batch B)
+  "what-is-a-jumbo-cd": {
+    dateModified: "2026-11-01",
+    sections: [
+      {
+        before: "How the jumbo premium changes by term",
+        heading: "Interest counts toward the $250,000 limit",
+        body: "FDIC insurance covers principal plus accrued interest, up to $250,000 per depositor, per bank, per ownership category. So a jumbo CD that starts right at $250,000 drifts over the limit as interest builds. If the bank failed near maturity, the interest above $250,000 would be uninsured. The fix is to open a little below the cap. The table shows the largest opening deposit that stays fully insured through maturity at an illustrative 4.00% APY, for one owner and for a two-owner joint CD. Use our [CD calculator](/cd-calculator) to rerun it at the rate you're offered, and compare offers on the [jumbo CD rates](/jumbo-cd-rates) page. If you need to hold more than this at one time, [brokered CDs](/guides/brokered-vs-bank-cds) let you split the balance across many issuing banks in one account.",
+        table: {
+          caption: "Illustrative 4.00% APY, interest left in the CD. Assumes no other deposits in the same ownership category at that bank.",
+          columns: ["Term", "Max opening deposit, single owner", "Max opening deposit, joint (2 owners)", "Interest a $250,000 CD earns by maturity"],
+          rows: [
+            ["1 year", "$240,384", "$480,769", "$10,000"],
+            ["2 years", "$231,139", "$462,278", "$20,400"],
+            ["3 years", "$222,249", "$444,498", "$31,216"],
+            ["5 years", "$205,481", "$410,963", "$54,163"],
+          ],
+        },
+        bullets: [
+          "A $250,000 single-owner 5-year CD at 4.00% APY would be worth $304,163 at maturity — $54,163 over the cap.",
+          "Your other deposits at the same bank in the same ownership category count too.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Does CD interest count toward the FDIC limit?",
+        a: "Yes. The FDIC insures principal plus accrued interest up to $250,000 per depositor, per bank, per ownership category. A CD that opens at exactly $250,000 will exceed the limit as interest accrues, so leave headroom.",
+      },
+    ],
+    sources: [
+      { label: "FDIC — Understanding Deposit Insurance", url: "https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance" },
+      { label: "FDIC — Deposit Insurance at a Glance (2024)", url: "https://fdic.gov/deposit-insurance/deposit-insurance-glance-brochure-english.pdf" },
+      { label: "Investor.gov — Certificates of Deposit (CDs)", url: "https://www.investor.gov/introduction-investing/investing-basics/investment-products/certificates-deposit-cds" },
+      { label: "CFPB — What should I know about CDs?", url: "https://www.consumerfinance.gov/ask-cfpb/what-should-i-know-about-cds-en-917/" },
+    ],
+  },
+
+  "cd-vs-treasury-bills": {
+    dateModified: "2026-11-01",
+    sections: [
+      {
+        before: "Bottom line",
+        heading: "The break-even CD rate at your state tax rate",
+        body: "To compare fairly, convert the T-bill yield into the CD APY you would need to match it after state tax: T-bill yield ÷ (1 − state tax rate). This ignores any federal deduction for state taxes, which is limited for most filers. The table uses an illustrative 4.00% T-bill. Worked example: $50,000 for one year, 24% federal bracket, 9% state rate. An illustrative 4.25% APY CD earns $2,125; after $510 federal and $191.25 state tax you keep $1,423.75. An illustrative 4.00% T-bill earns $2,000; after $480 federal tax you keep $1,520. The T-bill wins by $96.25, even though its yield is 0.25 points lower. The CD would need about 4.40% to break even. In a state with no income tax, the same CD keeps $1,615 and wins by $95. Check the [best 1-year CD rates](/best-1-year-cd-rates) and the [best 6-month CD rates](/best-6-month-cd-rates) against current bill yields, and see [how CD interest is taxed](/articles/how-is-cd-interest-taxed) for the federal side.",
+        table: {
+          caption: "Illustrative 4.00% T-bill yield. Break-even CD APY = 4.00% ÷ (1 − state rate). Federal tax applies to both.",
+          columns: ["Your state income tax rate", "CD APY needed to match a 4.00% T-bill"],
+          rows: [
+            ["0% (no state income tax)", "4.00%"],
+            ["3%", "4.12%"],
+            ["5%", "4.21%"],
+            ["7%", "4.30%"],
+            ["9%", "4.40%"],
+            ["11%", "4.49%"],
+            ["13.3%", "4.61%"],
+          ],
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: "How do I compare a CD and a T-bill after state tax?",
+        a: "Divide the T-bill yield by (1 minus your state income tax rate). At a 9% state rate, a 4.00% T-bill matches a CD paying about 4.40% APY. If the CD pays more than that, it wins after tax.",
+      },
+    ],
+    sources: [
+      { label: "TreasuryDirect — Tax forms and withholding (state and local tax exemption)", url: "https://www.treasurydirect.gov/marketable-securities/tax-forms-and-withholding" },
+      { label: "TreasuryDirect — Redeem or reinvest Treasury bills", url: "https://treasurydirect.gov/help-center/treasury-bills/redeem-reinvest-treasury-bills/" },
+      { label: "FDIC — Understanding Deposit Insurance", url: "https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance" },
+      { label: "Federal Reserve Bank of St. Louis (FRED) — 1-Year Treasury Bill rate", url: "https://fred.stlouisfed.org/series/DTB1YR" },
+    ],
+  },
+
+  "brokered-vs-bank-cds": {
+    metaDescription:
+      "Brokered vs bank CDs: how FDIC and SIPC protection differ, simple vs compound interest, selling early, and a worked example of the FDIC overlap trap.",
+    dateModified: "2026-11-01",
+    sections: [
+      {
+        before: "Which should you choose?",
+        heading: "FDIC vs SIPC: which protects what",
+        body: "A brokered CD sits inside a brokerage account, so two different protections are in play, and they cover different failures. FDIC insurance covers the CD if the issuing bank fails. SIPC covers missing cash and securities if the brokerage firm fails, up to $500,000 including $250,000 in cash. SIPC does not cover a drop in market value, and it is not a substitute for FDIC coverage. The common mistake is overlap. Say you already have a $100,000 CD directly at Bank A. Your brokerage then buys $200,000 of Bank A brokered CDs and $200,000 of Bank B CDs, all in your name alone. At Bank A your single-ownership total is $300,000, so $50,000 is uninsured. Bank B's $200,000 is fully covered. Ask which banks issue each CD before you buy. For the full rules, see [are CDs safe](/guides/are-cds-safe), and for large single-bank balances see [what a jumbo CD is](/articles/what-is-a-jumbo-cd).",
+        table: {
+          caption: "Single-ownership category, ignoring accrued interest (which also counts toward the FDIC limit).",
+          columns: ["Bank", "Direct CD", "Brokered CDs", "Total", "FDIC insured", "Uninsured"],
+          rows: [
+            ["Bank A", "$100,000", "$200,000", "$300,000", "$250,000", "$50,000"],
+            ["Bank B", "$0", "$200,000", "$200,000", "$200,000", "$0"],
+            ["Total", "$100,000", "$400,000", "$500,000", "$450,000", "$50,000"],
+          ],
+        },
+        bullets: [
+          "Bank fails: FDIC, up to $250,000 per depositor, per bank, per ownership category.",
+          "Brokerage fails: SIPC, up to $500,000 including $250,000 cash — not market losses.",
+          "You sell early at a loss: neither one covers it.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Does SIPC insure my brokered CDs?",
+        a: "SIPC protects the CDs and cash held at a member brokerage if the brokerage fails, up to $500,000 including $250,000 in cash. It does not cover a fall in market value. Protection against the issuing bank failing comes from FDIC insurance.",
+      },
+    ],
+    sources: [
+      { label: "Investor.gov — Brokered CDs: Investor Bulletin", url: "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/brokered-cds-investor-bulletin" },
+      { label: "SIPC — What SIPC protects", url: "https://sipc.org/for-investors/what-sipc-protects" },
+      { label: "FDIC — Understanding Deposit Insurance", url: "https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance" },
+      { label: "SEC — High-Yield CDs: Protect Your Money by Checking the Fine Print", url: "https://www.sec.gov/investor/pubs/certific.htm" },
+      { label: "Investor.gov — Certificates of Deposit (CDs)", url: "https://www.investor.gov/introduction-investing/investing-basics/investment-products/certificates-deposit-cds" },
+    ],
+  },
+
+  "cd-ladder-explained": {
+    dateModified: "2026-11-01",
+    sections: [
+      {
+        before: "Where to open the rungs",
+        heading: "A $50,000 five-rung ladder, year by year",
+        body: "Here is the full schedule for $50,000 split into five $10,000 rungs, using illustrative APYs, not current offers. Each value assumes interest stays in the CD and compounds annually. In the first cycle the five rungs earn $6,163.80 combined. From year 1 on, one rung matures every 12 months and is reinvested in a new 5-year CD. Rung 1, for example, comes due at $10,400 and, rolled into a 5-year CD at 3.95%, grows to $12,622.80 by the end of year 6. By the end of year 4 every rung is a 5-year CD, and you still have one maturity a year. Your bank must send a notice at least 30 days before an auto-renewing CD over one month matures (or 20 days before the grace period ends, if it is at least five days). Use that notice as your cue to shop the [best 1-year CD rates](/best-1-year-cd-rates) and long-term rates. Read [what happens when a CD matures](/articles/what-happens-when-a-cd-matures), and model your own numbers in the [CD calculator](/cd-calculator).",
+        table: {
+          caption: "Illustrative APYs, not current offers. $10,000 per rung, annual compounding.",
+          columns: ["Rung", "Opening term", "Illustrative APY", "Matures", "Value at maturity", "Interest", "Then"],
+          rows: [
+            ["1", "1 year", "4.00%", "End of year 1", "$10,400.00", "$400.00", "Roll into a 5-year CD"],
+            ["2", "2 years", "3.90%", "End of year 2", "$10,795.21", "$795.21", "Roll into a 5-year CD"],
+            ["3", "3 years", "3.85%", "End of year 3", "$11,200.04", "$1,200.04", "Roll into a 5-year CD"],
+            ["4", "4 years", "3.85%", "End of year 4", "$11,631.24", "$1,631.24", "Roll into a 5-year CD"],
+            ["5", "5 years", "3.95%", "End of year 5", "$12,137.31", "$2,137.31", "Roll into a 5-year CD"],
+          ],
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: "Will my bank remind me before a ladder rung matures?",
+        a: "For CDs that renew automatically and have terms longer than one month, federal Truth in Savings rules require the bank to send a notice at least 30 calendar days before maturity, or at least 20 days before the grace period ends if the grace period is five days or longer. Set your own reminder anyway.",
+      },
+    ],
+    sources: [
+      { label: "FDIC — Understanding Deposit Insurance", url: "https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance" },
+      { label: "FDIC — Deposit Insurance at a Glance (2024)", url: "https://fdic.gov/deposit-insurance/deposit-insurance-glance-brochure-english.pdf" },
+      { label: "CFPB — Regulation DD (Truth in Savings), §1030.5 maturity notices", url: "https://www.consumerfinance.gov/rules-policy/regulations/1030/5/" },
+      { label: "CFPB — What should I know about CDs?", url: "https://www.consumerfinance.gov/ask-cfpb/what-should-i-know-about-cds-en-917/" },
+    ],
+  },
+
+  "are-cds-safe": {
+    metaDescription:
+      "Are CDs safe? What FDIC and NCUA insurance covers, how the 2024 trust rule changed limits, a $500,000 coverage example, and the real risks to avoid.",
+    dateModified: "2026-11-01",
+    sections: [
+      {
+        before: "The pros",
+        heading: "How $500,000 can be fully insured at one bank",
+        body: "Coverage is figured per ownership category, so one person can insure more than $250,000 at a single bank by titling accounts differently. Take a saver with $500,000 at one bank. If all of it sits in individual CDs, $250,000 is insured and $250,000 is not. Spread across three categories, all of it can be covered. Since April 1, 2024, revocable trusts (including payable-on-death accounts) and irrevocable trusts are one trust category. It is insured at $250,000 per eligible beneficiary, up to five, for a maximum of $1,250,000 per owner per bank. Accrued interest counts toward every limit, so leave room. At an illustrative 4.00% APY, a $250,000 single CD would grow to $260,000 in a year and put $10,000 over the cap. For retirement savers, see [CDs for retirement](/cd-for-retirement). For balances that won't fit at one bank, see [brokered CDs](/guides/brokered-vs-bank-cds) or [jumbo CDs](/articles/what-is-a-jumbo-cd).",
+        table: {
+          caption: "One owner, one bank. Accrued interest also counts toward each limit.",
+          columns: ["Ownership category", "Example account", "Balance", "Coverage limit", "Insured", "Uninsured"],
+          rows: [
+            ["All in one category", "Individual CDs only", "$500,000", "$250,000", "$250,000", "$250,000"],
+            ["Single", "Individual CD", "$240,000", "$250,000", "$240,000", "$0"],
+            ["Certain retirement accounts", "IRA CD", "$100,000", "$250,000", "$100,000", "$0"],
+            ["Trust", "POD CD naming 2 beneficiaries", "$160,000", "$500,000", "$160,000", "$0"],
+            ["Split total", "Three categories", "$500,000", "—", "$500,000", "$0"],
+          ],
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: "How did the 2024 FDIC trust rule change CD coverage?",
+        a: "Since April 1, 2024, revocable trusts (including payable-on-death accounts) and irrevocable trusts are combined into one trust category. Coverage is $250,000 per eligible beneficiary, up to five, so the maximum is $1,250,000 per owner per bank across all of that owner's trust deposits.",
+      },
+    ],
+    sources: [
+      { label: "FDIC — Understanding Deposit Insurance", url: "https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance" },
+      { label: "FDIC — Deposit Insurance at a Glance (2024)", url: "https://fdic.gov/deposit-insurance/deposit-insurance-glance-brochure-english.pdf" },
+      { label: "FDIC — Compliance guide: Simplification of Deposit Insurance Rules (trust accounts, effective April 1, 2024)", url: "https://fdic.gov/media/411" },
+      { label: "FDIC — Payment to depositors after a bank failure", url: "https://fdic.gov/bank-failures/payment-depositors" },
+      { label: "NCUA (MyCreditUnion.gov) — Share insurance", url: "https://mycreditunion.gov/share-insurance" },
+    ],
   },
 };
 

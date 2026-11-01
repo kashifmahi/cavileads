@@ -126,7 +126,7 @@ const MatchWizard = ({ id = "match-wizard", className = "" }) => {
     <div className="space-y-1.5">
       <Label className="text-slate-700">{label} <span className="text-red-500">*</span></Label>
       <Select value={form[field]} onValueChange={set(field)}>
-        <SelectTrigger className="h-11" data-testid={testid}>
+        <SelectTrigger className="h-11" data-testid={testid} aria-label={label}>
           <SelectValue placeholder="Select" />
         </SelectTrigger>
         <SelectContent>

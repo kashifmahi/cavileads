@@ -16,7 +16,7 @@ export const articles = [
     excerpt:
       "CDs are worth it in 2026 for money you won't need before a set date: top CDs still pay well above the national savings average, with zero market risk and FDIC insurance.",
     answer:
-      "Yes — CDs are worth it in 2026 if you have cash you won't need before a known date. Top online banks pay APYs well above the national savings average, your rate is locked regardless of Fed cuts, and deposits are FDIC-insured up to $250,000. They're not worth it for emergency funds or money you may need early, where the withdrawal penalty can erase your gains.",
+      "Yes — CDs are worth it in 2026 if you have cash you won't need before a known date. Top online banks pay APYs well above the national savings average, your rate is locked no matter what the Fed does next, and deposits are FDIC-insured up to $250,000. They're not worth it for emergency funds or money you may need early, where the withdrawal penalty can erase your gains.",
     sections: [
       {
         heading: "When a CD is worth it",
@@ -34,7 +34,7 @@ export const articles = [
       },
       {
         heading: "CD returns vs. savings accounts in 2026",
-        body: "Top CDs currently out-yield the average savings account by a wide margin. The FDIC's national average savings rate sits far below what competitive online banks pay on 6- to 18-month CDs. The gap matters: on a $25,000 deposit, even a one-percentage-point difference is $250 a year — earned with identical FDIC protection.",
+        body: "Top CDs still out-yield the average savings account by a wide margin. The FDIC's national average savings rate was 0.38% in October 2026, far below what competitive online banks pay on 6- to 18-month CDs. The gap matters: on a $25,000 deposit, even a one-percentage-point difference is $250 a year — earned with identical FDIC protection.",
       },
       {
         heading: "The rate-cut argument for locking in now",
@@ -52,7 +52,7 @@ export const articles = [
       },
       {
         q: "Can you lose money in a CD?",
-        a: "You cannot lose principal in an FDIC-insured CD held to maturity, up to $250,000 per depositor, per bank. The only way to come out behind is withdrawing early, where the penalty can exceed the interest you've earned.",
+        a: "You cannot lose principal in an FDIC-insured CD held to maturity, up to $250,000 per depositor, per bank, per ownership category. The only way to come out behind is withdrawing early, where the penalty can exceed the interest you've earned.",
       },
       {
         q: "Is it better to put money in a CD or savings account?",
@@ -60,7 +60,7 @@ export const articles = [
       },
       {
         q: "What CD term is best right now?",
-        a: "Twelve-month CDs typically offer the strongest APYs because banks compete hardest there. If you expect rate cuts, 18- to 24-month terms let you carry today's yield further. Compare current rates by term before choosing.",
+        a: "There's no single best term. Compare top rates for 6-, 12- and 18-month CDs, then pick the longest term that ends before you need the money. If you expect rate cuts, 18- to 24-month terms let you carry today's yield further. Compare current rates by term before choosing.",
       },
     ],
   },
@@ -146,7 +146,7 @@ export const articles = [
     sections: [
       {
         heading: "How penalties are calculated",
-        body: "Banks charge early withdrawal penalties as months of simple interest on the amount withdrawn, at the CD's rate. Example: withdrawing $20,000 from a 12-month CD at 4.00% APY with a 6-month penalty costs roughly $400 — half a year's interest — regardless of how long the money was actually in the CD.",
+        body: "Banks usually charge early withdrawal penalties as a set number of days or months of interest on the amount withdrawn, at the CD's rate. Example: withdrawing $20,000 from a 12-month CD at 4.00% APY with a 6-month penalty costs roughly $400 — half a year's interest — regardless of how long the money was actually in the CD.",
       },
       {
         heading: "Typical penalties by term",
@@ -179,7 +179,7 @@ export const articles = [
       },
       {
         heading: "Penalty-free exceptions",
-        body: "Most banks waive early withdrawal penalties on death or court-declared incompetence of the account holder, and some waive them for IRA CDs after age 59½. A few allow penalty-free withdrawal of earned interest (not principal) at any time. Check your bank's disclosure for its specific exceptions.",
+        body: "Many banks waive early withdrawal penalties on the death or legal incompetence of an owner (Capital One's 360 CD disclosure is one example), and some waive them for IRA CDs after age 59½. A few allow penalty-free withdrawal of earned interest (not principal) at any time. Check your bank's disclosure for its specific exceptions.",
       },
     ],
     faqs: [
@@ -267,7 +267,7 @@ export const articles = [
     title: "What Is a Jumbo CD? Minimums, the Rate Premium & FDIC Limits",
     metaTitle: "What Is a Jumbo CD? Minimums & Rates vs Regular CDs | Cavicord",
     metaDescription:
-      "A jumbo CD needs $100,000+ and may pay a small premium — but top standard CDs often match it. How jumbo CDs work, when they're worth it, and FDIC limits over $250K.",
+      "A jumbo CD needs $100,000+ and may pay a small premium, but top standard CDs often match it. How they work, when they're worth it, and FDIC limits.",
     category: "CD Types",
     readTime: "8 min read",
     datePublished: "2026-06-01",
@@ -296,7 +296,7 @@ export const articles = [
       },
       {
         heading: "How the jumbo premium changes by term",
-        body: "Jumbo pricing follows the same curve as standard CDs — the 12-month term is usually the most competitive, and 5-year rates sit a little lower while the Fed is in a cutting cycle. Use our live table on the jumbo CD rates page for today's exact numbers; the ranges below show where jumbo APYs have clustered recently.",
+        body: "Jumbo pricing follows the same curve as standard CDs — the 12-month term is usually the most competitive, and 5-year rates may sit above or below 1-year rates depending on where the market expects rates to go. Use our live table on the jumbo CD rates page for today's exact numbers; the ranges below show where jumbo APYs have clustered recently.",
         bullets: [
           "1-year jumbo CD: typically within 0.05–0.15 points of the best standard 1-year CD.",
           "2-year jumbo CD: a small premium at some regional banks and credit unions; none at most online banks.",
@@ -307,7 +307,7 @@ export const articles = [
       },
       {
         heading: "What $100,000 earns: jumbo vs. standard",
-        body: "Run the numbers before assuming 'jumbo' wins. On a 1-year term, a 0.10-point premium is worth $100 — meaningful, but easily outweighed by a rival bank's standard CD paying 0.25 points more.",
+        body: "Run the numbers before assuming 'jumbo' wins. The rates below are illustrative, not current offers. On a 1-year term, a 0.10-point premium is worth $100 — meaningful, but easily outweighed by a rival bank's standard CD paying 0.25 points more.",
         bullets: [
           "$100,000 in a 1-year jumbo CD at 4.60% APY: $4,600 interest.",
           "$100,000 in a 1-year standard CD at 4.75% APY at a top online bank: $4,750 interest — $150 more with a $500 minimum.",
@@ -341,7 +341,7 @@ export const articles = [
       },
       {
         q: "Is a jumbo CD safe over $250,000?",
-        a: "Only the first $250,000 per depositor, per bank is FDIC-insured. Amounts above that are uninsured — split large deposits across banks or ownership categories to stay fully covered.",
+        a: "FDIC insurance covers $250,000 per depositor, per bank, per ownership category, and that figure includes principal plus accrued interest. Amounts above that are uninsured — split large deposits across banks or ownership categories to stay fully covered.",
       },
       {
         q: "What is the best jumbo CD rate today?",
@@ -462,7 +462,7 @@ export const articles = [
       },
       {
         q: "Is $100,000 too much for one CD?",
-        a: "No — $100,000 is fully FDIC-insured at one bank. Just keep your combined deposits at any single bank under $250,000, and consider splitting into multiple CDs for withdrawal flexibility.",
+        a: "No — $100,000 is fully FDIC-insured at one bank. Just keep your combined deposits in each ownership category at one bank at or under $250,000, and consider splitting into multiple CDs for withdrawal flexibility.",
       },
     ],
   },
@@ -479,7 +479,7 @@ export const articles = [
     excerpt:
       "CD rates track expectations for the federal funds rate: banks start trimming CD APYs before the Fed actually cuts. Locking a longer term ahead of cuts preserves today's yield.",
     answer:
-      "When the Federal Reserve cuts (or is expected to cut) its benchmark rate, banks lower the APYs on new CDs — often before the cut happens, because CD pricing is forward-looking. Existing CDs are unaffected: your locked rate is guaranteed to maturity. That's why savers extend to 12–24 month terms ahead of expected cuts.",
+      "When the Federal Reserve cuts (or is expected to cut) its benchmark rate, banks lower the APYs on new CDs — often before the cut happens, because CD pricing is forward-looking. Existing CDs are unaffected: your locked rate is guaranteed to maturity. That's why savers who expect cuts extend to 12–24 month terms. In 2026 the Fed has moved the other way: it raised its target range to 3.75%–4.00% in September and held there in October.",
     sections: [
       {
         heading: "The mechanism: why CD rates follow the Fed",
@@ -495,7 +495,7 @@ export const articles = [
       },
       {
         heading: "Three moves savers make before rate cuts",
-        body: "Positioning ahead of cuts is about extending duration while rates are still high.",
+        body: "If you expect cuts, positioning is about extending duration while rates are still high. Note that the Fed's most recent move, in September 2026, was a 0.25-point increase, not a cut.",
         bullets: [
           "Extend terms: shift new money from 6-month to 12–24 month CDs to carry the yield through the cuts",
           "Ladder with a long anchor: keep liquidity rungs short but push the top rung to 4–5 years",
@@ -543,11 +543,11 @@ export const articles = [
       },
       {
         heading: "Exception 1: add-on CDs",
-        body: "Add-on CDs explicitly permit additional deposits during the term, sometimes with minimums per contribution. They're offered by a minority of banks and credit unions and typically pay slightly less than standard CDs. They can suit steady monthly savers, but compare the rate sacrifice against alternatives first.",
+        body: "Add-on CDs explicitly permit additional deposits during the term, sometimes with minimums per contribution. Fewer banks and credit unions offer them, and the rate may be lower than the same bank's standard CD. Compare both before choosing. They can suit steady monthly savers, but compare the rate sacrifice against alternatives first.",
       },
       {
         heading: "Exception 2: the grace period at renewal",
-        body: "When a CD matures, the 7–10 day grace period is the one time nearly every bank lets you add funds to the balance before it rolls into a new term. If you've been accumulating cash on the side, the grace period is the moment to fold it in.",
+        body: "When a CD matures, the grace period, often 7–10 days, is when many banks let you add funds before the CD renews. Ally, for example, allows deposits during its 10-day grace period. Check your bank's terms. If you've been accumulating cash on the side, the grace period is the moment to fold it in.",
       },
       {
         heading: "Better workarounds for ongoing savers",

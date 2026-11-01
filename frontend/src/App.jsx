@@ -115,7 +115,7 @@ const Home = () => {
     <div className="min-h-screen bg-white">
       <SEO
         title={`Compare CD Rates ${monthYear()} \u2014 Today's Best CD Rates | Cavicord`}
-        description="Compare CD rates from top FDIC-insured banks side by side — by term, minimum deposit, and early-withdrawal terms. Current CD rates updated daily, plus a free CD calculator and ladder builder."
+        description="Compare CD rates from FDIC- and NCUA-insured banks side by side by term, minimum deposit and early-withdrawal penalty, plus a free CD calculator."
         keywords="compare CD rates, best CD rates, best CD rates today, top CD rates, current CD rates, CD rate comparison, compare bank CD rates, high yield CD rates, FDIC insured CD rates"
         path="/"
         schemas={[

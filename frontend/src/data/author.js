@@ -5,7 +5,7 @@
 export const AUTHOR = {
   name: "Kashif Mahi",
   jobTitle: "Founder & Editor, Cavicord",
-  bio: "Kashif founded Cavicord to make comparing certificates of deposit as simple as comparing airfares. He tracks APYs from FDIC-insured banks daily, verifies every listed rate against the bank's own disclosure, and writes the site's guides and articles.",
+  bio: "Kashif founded Cavicord to make comparing certificates of deposit as simple as comparing airfares. He checks each listed APY against the bank's or credit union's own published rate page, shows the date each table was last verified, and writes the site's guides and articles.",
   url: "/about#author",
   sameAs: ["https://github.com/kashifmahi"],
 };

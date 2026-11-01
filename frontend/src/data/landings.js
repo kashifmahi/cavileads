@@ -3,6 +3,7 @@
 export const landingPages = [
   {
     slug: "best-cd-rates",
+    tableView: { mode: "top", limit: 15, title: "Top 15 CD rates today, ranked by APY" },
     term: "all",
     rateType: "standard",
     showTodaySummary: true,
@@ -24,6 +25,7 @@ export const landingPages = [
   },
   {
     slug: "cd-rates",
+    tableView: { title: "All current CD rates", intro: "Every rate we track, checked against each bank's own rate page and ranked by APY." },
     term: "all",
     rateType: "standard",
     metaTitle: "Current CD Rates — Compare Bank APYs | Cavicord",
@@ -34,7 +36,7 @@ export const landingPages = [
     benefits: [
       { title: "All Terms", text: "From 6-month to 2-year options in one comparison." },
       { title: "FDIC Benchmarks", text: "National average rates pulled live from FDIC.gov for context." },
-      { title: "Updated Daily", text: "Rates are reviewed against bank disclosures with visible timestamps." },
+      { title: "Dated & Verified", text: "Every rate is checked against the bank's own disclosure, and the table shows the date it was last verified." },
     ],
     faqs: [
       { q: "How often do CD rates change?", a: "Banks can change rates on new CDs at any time — often around Federal Reserve meetings. A rate is only locked once you open the CD." },
@@ -84,6 +86,7 @@ export const landingPages = [
   },
   {
     slug: "high-yield-cd-rates",
+    tableView: { mode: "bestPerBank", title: "Each bank's highest-yield CD", intro: "One row per bank: the best APY it pays on any term, ranked highest first." },
     term: "all",
     rateType: "standard",
     metaTitle: "High-Yield CD Rates Today — Top Online Bank APYs | Cavicord",
@@ -206,12 +209,13 @@ export const landingPages = [
   },
   {
     slug: "cd-early-withdrawal-penalty-calculator",
+    tableView: { mode: "top", limit: 5, title: "Top 5 CD rates if you're moving your money" },
     term: "all",
     rateType: "standard",
     showPenaltyCalculator: true,
     metaTitle: "CD Early Withdrawal Penalty Calculator (Free) | Cavicord",
     metaDescription:
-      "Free CD early withdrawal penalty calculator: enter your deposit, APY, term and months held to see the penalty, what you'd get back, and whether it touches principal.",
+      "Free CD early withdrawal penalty calculator: see the penalty in dollars, what you'd get back today, and whether it eats into your principal.",
     h1: "CD Early Withdrawal Penalty Calculator",
     sub: "See what breaking a CD early would cost you: the penalty in dollars, what you'd get back today, and how many months it takes for the interest to cover the penalty.",
     benefits: [
@@ -270,6 +274,7 @@ export const landingPages = [
   },
   {
     slug: "cd-calculator",
+    tableView: { mode: "bestPerTerm", title: "Top APY by term to plug into the calculator" },
     term: "all",
     rateType: "standard",
     showCalculator: true,
@@ -291,6 +296,7 @@ export const landingPages = [
   },
   {
     slug: "cd-for-retirement",
+    tableView: { mode: "top", minTerm: 24, limit: 10, title: "Top 2- to 5-year CD rates for retirement income" },
     term: "all",
     rateType: "standard",
     leadTitle: "Get CD rate matches for your retirement savings",
@@ -311,21 +317,22 @@ export const landingPages = [
       },
       {
         heading: "The retirement CD ladder",
-        body: "A common structure splits cash across 1-, 2-, 3-, 4-, and 5-year CDs. A rung matures every year, producing predictable liquidity for annual spending, while the long rungs earn long-term rates. Each maturing rung can fund the year ahead or roll into a new 5-year CD at current rates — a self-renewing income machine with no market exposure.",
+        body: "A common structure splits cash across 1-, 2-, 3-, 4-, and 5-year CDs (our [CD ladder guide](/guides/cd-ladder-explained) walks through the setup). A rung matures every year, producing predictable liquidity for annual spending, while the long rungs earn long-term rates. Each maturing rung can fund the year ahead or roll into a new 5-year CD at current rates — a self-renewing income machine with no market exposure.",
       },
       {
         heading: "IRA CDs: the tax angle",
-        body: "CDs held inside a traditional IRA grow tax-deferred; inside a Roth IRA, interest can be entirely tax-free. Many banks offer IRA CD accounts directly. One extra benefit: most banks waive early-withdrawal penalties on IRA CDs for holders over 59½ — check the bank's disclosure for its exact policy.",
+        body: "CDs held inside a traditional IRA grow tax-deferred; inside a Roth IRA, interest can be entirely tax-free. Many banks offer IRA CD accounts directly. Some banks also waive early-withdrawal penalties on IRA CDs for required minimum distributions or for owners over 59½, but policies vary — check the bank's disclosure. Today's [CD rates for seniors](/cd-rates-for-seniors) page compares the top 1- to 5-year rates.",
       },
     ],
     faqs: [
       { q: "Are CDs a good investment for retirees?", a: "For the safe portion of a retirement portfolio, yes — they deliver guaranteed, FDIC-insured returns with zero market risk. Most planners pair them with growth assets rather than using CDs alone." },
-      { q: "What is an IRA CD?", a: "A regular CD held inside an IRA. Interest grows tax-deferred (traditional) or tax-free (Roth), and many banks waive early-withdrawal penalties after age 59½." },
+      { q: "What is an IRA CD?", a: "A regular CD held inside an IRA. Interest grows tax-deferred (traditional) or tax-free (Roth), and some banks waive early-withdrawal penalties for required distributions or after age 59½ — check the bank's terms." },
       { q: "How much retirement money should be in CDs?", a: "A common approach covers 1–5 years of planned withdrawals with a CD ladder, keeping longer-horizon money invested for growth. There's no universal number — it depends on your spending and risk tolerance." },
     ],
   },
   {
     slug: "cd-rates-for-seniors",
+    tableView: { mode: "top", minTerm: 12, limit: 10, title: "Top 1- to 5-year CD rates for retirees" },
     term: "all",
     rateType: "standard",
     leadTitle: "Get CD rate matches for your retirement savings",
@@ -346,7 +353,7 @@ export const landingPages = [
       },
       {
         heading: "Choosing a CD term in retirement",
-        body: "Match the term to when you'll spend the money.",
+        body: "Match the term to when you'll spend the money. For the bigger picture, including ladders and IRA CDs, see our guide to [using CDs for retirement income](/cd-for-retirement).",
         table: {
           columns: ["Goal", "Typical choice"],
           rows: [

@@ -80,7 +80,7 @@ export const guides = [
       },
       {
         q: "Can I lose money in a CD or HYSA?",
-        a: "Not within FDIC limits. Both are insured up to $250,000 per depositor, per bank. The only way to lose money in a CD is an early-withdrawal penalty large enough to exceed the interest earned, which happens only if you withdraw very early.",
+        a: "Not within FDIC limits. Both are insured up to $250,000 per depositor, per bank, per ownership category. The only way to lose money in a CD is an early-withdrawal penalty large enough to exceed the interest earned, which happens only if you withdraw very early.",
       },
       {
         q: "Is a no-penalty CD better than an HYSA?",
@@ -105,7 +105,7 @@ export const guides = [
     excerpt:
       "CDs and Treasury bills look alike on a yield chart, but taxes, liquidity and convenience push the answer one way or the other depending on where you live.",
     answer:
-      "For most savers in states with an income tax, a Treasury bill wins on after-tax yield because T-bill interest is exempt from state and local tax. For savers in no-income-tax states, for terms longer than one year, or for anyone who values simplicity, a top-yielding bank CD is usually the better choice. Compare after-tax yields, not sticker APYs — the difference can be 0.3–0.6 percentage points in high-tax states.",
+      "For most savers in states with an income tax, a Treasury bill wins on after-tax yield because T-bill interest is exempt from state and local tax. For savers in no-income-tax states, for terms longer than one year, or for anyone who values simplicity, a top-yielding bank CD is usually the better choice. Compare after-tax yields, not sticker APYs — the difference can be 0.4–0.7 percentage points for top-bracket savers in high-tax states.",
     sections: [
       {
         heading: "Safety: effectively a tie",
@@ -115,8 +115,8 @@ export const guides = [
         heading: "The tax angle favors T-bills",
         body: "T-bill interest is taxable federally but exempt from state and local income tax. CD interest is taxed at every level. The effect is biggest in high-tax states.",
         bullets: [
-          "California (up to 13.3% state tax): a 4.50% T-bill is equivalent to roughly a 5.10% CD for a top-bracket saver.",
-          "New York (up to 10.9%): a 4.50% T-bill is equivalent to about a 5.00% CD.",
+          "California (up to 13.3% state tax): a 4.50% T-bill is equivalent to roughly a 5.19% CD for a top-bracket saver.",
+          "New York (up to 10.9%): a 4.50% T-bill is equivalent to about a 5.05% CD (more for New York City residents, who also pay city income tax).",
           "Texas, Florida, Nevada, Washington (no state income tax): no tax advantage — compare raw yields.",
         ],
       },
@@ -126,7 +126,7 @@ export const guides = [
       },
       {
         heading: "Convenience and term length favor CDs",
-        body: "Opening a CD takes five minutes at an online bank and the interest compounds inside the account. T-bills require a TreasuryDirect or brokerage account, an understanding of auction dates, and manual reinvestment every 4, 8, 13, 17, 26 or 52 weeks. Beyond one year you'd move to Treasury notes, which trade with more price volatility — a 2- to 5-year CD is simpler and its rate is just as locked.",
+        body: "Opening a CD takes five minutes at an online bank and the interest compounds inside the account. T-bills require a TreasuryDirect or brokerage account, and a reinvestment plan every 4, 6, 8, 13, 17, 26 or 52 weeks (TreasuryDirect lets you schedule the reinvestment when you buy). Beyond one year you'd move to Treasury notes, which trade with more price volatility — a 2- to 5-year CD is simpler and its rate is just as locked.",
         bullets: [
           "CD: one account, auto-compounding, set-and-forget until maturity.",
           "T-bill: auction calendar, reinvestment decisions, brokerage statements.",
@@ -139,7 +139,7 @@ export const guides = [
         bullets: [
           "CD: $2,300 interest, minus federal and ~$247 state tax.",
           "T-bill: $2,225 interest, minus federal tax only.",
-          "After state tax, the T-bill is ahead by roughly $170 despite the lower headline yield.",
+          "Using these illustrative rates, the T-bill is ahead by about $172 after state tax, and by about $190 once a 24% federal rate is applied to both, despite the lower headline yield.",
         ],
       },
       {
@@ -150,7 +150,7 @@ export const guides = [
     faqs: [
       {
         q: "Are Treasury bills safer than CDs?",
-        a: "Both are backed by the federal government — T-bills directly, CDs through FDIC insurance up to $250,000 per depositor, per bank. Within insurance limits the safety is equivalent. Above those limits, T-bills are safer because the guarantee has no cap.",
+        a: "Both are backed by the federal government — T-bills directly, CDs through FDIC insurance up to $250,000 per depositor, per bank, per ownership category. Within insurance limits the safety is equivalent. Above those limits, T-bills are safer because the guarantee has no cap.",
       },
       {
         q: "Do I pay state tax on CD interest?",
@@ -196,7 +196,7 @@ export const guides = [
       },
       {
         heading: "Interest: compounding vs. simple",
-        body: "Most bank CDs compound interest daily or monthly and quote an APY. Brokered CDs pay simple interest — usually monthly or semi-annually — into your brokerage cash balance, and the quoted rate is a coupon, not an APY. On a 5-year CD at 4.50%, compounding adds roughly 0.5 percentage points of total return over the term unless you reinvest each coupon yourself.",
+        body: "Most bank CDs compound interest daily or monthly and quote an APY. Brokered CDs pay simple interest — usually monthly or semi-annually — into your brokerage cash balance, and the quoted rate is a coupon, not an APY. On a 5-year CD at 4.50%, annual compounding adds about 2.1 percentage points of total return over the term (24.6% vs 22.5%) unless you reinvest each coupon yourself.",
         bullets: [
           "Bank CD, $25,000 at 4.50% APY for 5 years: about $6,150 interest.",
           "Brokered CD, $25,000 at 4.50% simple for 5 years: $5,625 interest if coupons sit in cash.",
@@ -204,7 +204,7 @@ export const guides = [
       },
       {
         heading: "Callable brokered CDs: read the fine print",
-        body: "Some brokered CDs are callable: the bank can redeem them early, usually after a year, if rates fall. You get your principal back but lose the high rate exactly when you'd most want to keep it. Callable CDs pay a slightly higher coupon to compensate. If you see a brokered CD yielding noticeably more than peers, check whether it's callable before buying.",
+        body: "Some brokered CDs are callable: the bank can redeem them early, after a stated call-protection period, typically when rates fall. You get your principal back but lose the high rate exactly when you'd most want to keep it. Callable CDs pay a slightly higher coupon to compensate. If you see a brokered CD yielding noticeably more than peers, check whether it's callable before buying.",
       },
       {
         heading: "Which should you choose?",
@@ -219,7 +219,7 @@ export const guides = [
     faqs: [
       {
         q: "Are brokered CDs FDIC insured?",
-        a: "Yes, as long as the issuing bank is FDIC-insured and the brokerage records you as the owner — which the major brokerages do. Coverage is $250,000 per issuing bank, per depositor, so holding CDs from several banks multiplies your total coverage.",
+        a: "Yes, as long as the issuing bank is FDIC-insured and the account records show the brokerage is holding the CD as agent or custodian for you (confirm this with your brokerage). Coverage is $250,000 per depositor, per issuing bank, per ownership category, and it is combined with any deposits you already hold directly at that bank.",
       },
       {
         q: "Can I lose money on a brokered CD?",
@@ -231,7 +231,7 @@ export const guides = [
       },
       {
         q: "What happens when a brokered CD matures?",
-        a: "The principal and final interest payment are deposited into your brokerage cash account. There's no auto-renewal — you decide what to buy next, which is one advantage over bank CDs that roll over by default.",
+        a: "The principal and final interest payment are deposited into your brokerage cash account. Brokered CDs generally don't roll over the way bank CDs do (check your brokerage's reinvestment options), so you decide what to buy next, which is one advantage over bank CDs that roll over by default.",
       },
     ],
   },
@@ -301,7 +301,7 @@ export const guides = [
     faqs: [
       {
         q: "Can you lose money in a CD?",
-        a: "Not from market movements — the rate and principal are fixed and FDIC-insured up to $250,000 per depositor, per bank. The only way to lose money is an early-withdrawal penalty that exceeds the interest you've earned so far.",
+        a: "Not from market movements — the rate and principal are fixed and FDIC-insured up to $250,000 per depositor, per bank, per ownership category. The only way to lose money is an early-withdrawal penalty that exceeds the interest you've earned so far.",
       },
       {
         q: "What's the difference between APY and interest rate?",
@@ -394,7 +394,7 @@ export const guides = [
     title: "CD Ladder Explained: How to Build One Step by Step",
     metaTitle: "CD Ladder Explained: How to Build One ($25K Example) | Cavicord",
     metaDescription:
-      "A CD ladder gives you regular access to your money while earning long-term rates. See exactly how to build one, a worked $25,000 example, and three variations.",
+      "A CD ladder gives you regular access to your money while earning long-term rates. How to build one, with worked $25,000 and $50,000 examples.",
     category: "Strategy",
     readTime: "8 min read",
     datePublished: "2026-05-08",
@@ -419,7 +419,7 @@ export const guides = [
       },
       {
         heading: "Building it, step by step",
-        body: "Using today's rates on $25,000, here is what a five-rung ladder looks like on day one.",
+        body: "Using illustrative rates on $25,000, here is what a five-rung ladder looks like on day one.",
         bullets: [
           "Rung 1 — $5,000 in a 1-year CD at ~4.75%: matures to about $5,238.",
           "Rung 2 — $5,000 in a 2-year CD at ~4.35%: matures to about $5,444.",
@@ -431,7 +431,7 @@ export const guides = [
       },
       {
         heading: "Where to open the rungs",
-        body: "You don't have to use one bank. Shop each term separately — the bank with the best 1-year rate is rarely the one with the best 5-year rate. Spreading across banks also keeps large ladders under the $250,000 FDIC limit per institution. Keep a simple spreadsheet with each CD's bank, APY, maturity date and renewal instructions.",
+        body: "You don't have to use one bank. Shop each term separately — the bank with the best 1-year rate is rarely the one with the best 5-year rate. Spreading across banks also keeps large ladders under the FDIC limit of $250,000 per depositor, per bank, per ownership category, including accrued interest. Keep a simple spreadsheet with each CD's bank, APY, maturity date and renewal instructions.",
       },
       {
         heading: "Variations worth knowing",
@@ -493,7 +493,7 @@ export const guides = [
     sections: [
       {
         heading: "The safety backstop: federal insurance",
-        body: "When an FDIC-insured bank fails, the FDIC either moves your deposits to another bank or pays you directly, typically within days. Since 1933, no depositor has lost a cent of insured funds. Coverage is $250,000 per depositor, per bank, per ownership category — so a couple with a joint account at one bank is covered to $500,000, and the same couple with individual and joint accounts can reach $1 million at a single institution.",
+        body: "When an FDIC-insured bank fails, the FDIC either moves your deposits to another bank or pays you directly; the FDIC's goal is to pay insured deposits within two business days of a failure. Since FDIC insurance began in 1934, no depositor has lost a penny of insured funds. Coverage is $250,000 per depositor, per bank, per ownership category — so a couple with a joint account at one bank is covered to $500,000, and the same couple with individual and joint accounts can reach $1 million at a single institution.",
         bullets: [
           "Check a bank at FDIC.gov/bankfind before opening an account.",
           "Credit unions: look for NCUA insurance, which has identical limits.",
@@ -515,14 +515,14 @@ export const guides = [
         heading: "The cons",
         body: "Safety has a price, and it's worth naming plainly.",
         bullets: [
-          "Locked money: early withdrawal costs 3–12 months of interest.",
+          "Locked money: early withdrawal often costs 3–12 months of interest, sometimes more on long terms.",
           "Rate risk in reverse: if rates rise after you lock, you're stuck below market until maturity.",
           "Inflation: CDs preserve purchasing power more than they build wealth; long-run returns trail stocks.",
           "Opportunity cost: a 5-year CD at 4.20% looks great until you need the cash in year two.",
         ],
       },
       {
-        heading: "The three risks that actually cost people money",
+        heading: "The risks that actually cost people money",
         body: "In practice, savers lose money on CDs in predictable ways that have nothing to do with bank failure.",
         bullets: [
           "Exceeding $250,000 at one bank. Split large balances across institutions or ownership categories, or use brokered CDs.",
@@ -532,7 +532,7 @@ export const guides = [
       },
       {
         heading: "CDs vs. other 'safe' options",
-        body: "For money that must not lose value, the realistic alternatives are high-yield savings accounts, Treasury bills and money market funds. Savings accounts are more liquid but float with rates. T-bills are state-tax-free and liquid but need a brokerage. Money market funds are not FDIC-insured. A CD is the simplest way to get a locked, insured rate.",
+        body: "For money that must not lose value, the realistic alternatives are high-yield savings accounts, Treasury bills and money market funds. Savings accounts are more liquid but float with rates. T-bills are state-tax-free and liquid; you buy them at TreasuryDirect or through a brokerage. Money market funds are not FDIC-insured. A CD is the simplest way to get a locked, insured rate.",
       },
       {
         heading: "Bottom line",
@@ -546,7 +546,7 @@ export const guides = [
       },
       {
         q: "Are online bank CDs as safe as big bank CDs?",
-        a: "Yes, as long as the online bank is FDIC-insured — every institution in our program is. Insurance coverage is identical regardless of whether the bank has branches.",
+        a: "Yes, as long as the online bank is FDIC-insured (NCUA-insured for credit unions). Check the bank's name on the FDIC's BankFind tool before opening. Insurance coverage is identical regardless of whether the bank has branches.",
       },
       {
         q: "Is a 5-year CD a bad idea right now?",
@@ -554,7 +554,7 @@ export const guides = [
       },
       {
         q: "Can I have more than $250,000 insured?",
-        a: "Yes. Use multiple banks, use different ownership categories (individual, joint, IRA, trust) at one bank, or buy brokered CDs from several issuers inside one brokerage account. Each route multiplies your coverage.",
+        a: "Yes. Use multiple banks, use different ownership categories (individual, joint, IRA, trust) at one bank, or buy brokered CDs from several issuers inside one brokerage account. Each route multiplies your coverage. Since April 2024, trust accounts are insured at $250,000 per beneficiary, up to five beneficiaries per owner, per bank.",
       },
     ],
   },

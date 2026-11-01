@@ -224,7 +224,7 @@ export const LeadFields = ({ lf, compact = false, idPrefix = "" }) => {
           Ideal Investment Amount <span className="text-red-500">*</span>
         </Label>
         <Select value={form.amount} onValueChange={set("amount")}>
-          <SelectTrigger className="h-11">
+          <SelectTrigger className="h-11" aria-label="Ideal investment amount">
             <SelectValue placeholder="Select amount" />
           </SelectTrigger>
           <SelectContent>
@@ -243,7 +243,7 @@ export const LeadFields = ({ lf, compact = false, idPrefix = "" }) => {
           Ideal Investment Timeframe <span className="text-red-500">*</span>
         </Label>
         <Select value={form.timeframe} onValueChange={set("timeframe")}>
-          <SelectTrigger className="h-11">
+          <SelectTrigger className="h-11" aria-label="Ideal investment timeframe">
             <SelectValue placeholder="Select timeframe" />
           </SelectTrigger>
           <SelectContent>
@@ -262,7 +262,7 @@ export const LeadFields = ({ lf, compact = false, idPrefix = "" }) => {
           Ideal CD Term <span className="text-red-500">*</span>
         </Label>
         <Select value={form.term} onValueChange={set("term")}>
-          <SelectTrigger className="h-11">
+          <SelectTrigger className="h-11" aria-label="Ideal CD term">
             <SelectValue placeholder="Select term" />
           </SelectTrigger>
           <SelectContent>

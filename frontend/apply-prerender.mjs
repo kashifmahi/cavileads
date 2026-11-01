@@ -23,13 +23,13 @@ if (!fs.existsSync(SRC)) {
 const assetDir = path.join(BUILD, "assets");
 const freshMap = {};
 for (const f of fs.readdirSync(assetDir)) {
-  const m = f.match(/^(.+)-[A-Za-z0-9_-]+\.(js|css)$/);
+  const m = f.match(/^(.+)-[A-Za-z0-9_-]{8}\.(js|css)$/); // Vite hashes are 8 chars and may contain '-' or '_'
   if (m) freshMap[`${m[1]}.${m[2]}`] = f;
 }
 
 let missing = new Set();
 const remapAssets = (html) =>
-  html.replace(/\/assets\/([\w.-]+)-([\w-]+)\.(js|css)/g, (full, base, _hash, ext) => {
+  html.replace(/\/assets\/([\w.-]+?)-([\w-]{8})\.(js|css)/g, (full, base, _hash, ext) => {
     const fresh = freshMap[`${base}.${ext}`];
     if (!fresh) {
       missing.add(`${base}.${ext}`);
@@ -41,7 +41,7 @@ const remapAssets = (html) =>
 const cssCache = new Map();
 const reinlineCss = (html) =>
   html.replace(
-    /<style data-inlined="\/assets\/([\w.-]+)-[\w-]+\.css">[\s\S]*?<\/style>/g,
+    /<style data-inlined="\/assets\/([\w.-]+?)-[\w-]{8}\.css">[\s\S]*?<\/style>/g,
     (full, base) => {
       const fresh = freshMap[`${base}.css`];
       if (!fresh) return full;
