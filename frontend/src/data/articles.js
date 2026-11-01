@@ -81,11 +81,11 @@ export const articles = [
     sections: [
       {
         heading: "The grace period: your decision window",
-        body: "The grace period is a short window after maturity — typically 7 to 10 calendar days — when you can move your money without any penalty. Your bank must notify you before maturity, but notices are easy to miss. Set your own calendar reminder for a week before the maturity date so the decision is yours, not the bank's default.",
+        body: "**The grace period** is a short window after maturity — typically 7 to 10 calendar days — when you can move your money without any penalty. Under [Regulation DD (Truth in Savings)](https://www.consumerfinance.gov/rules-policy/regulations/1030/5/), your bank must send a notice before an automatically renewing CD longer than one month matures. Notices are easy to miss, though. Set your own calendar reminder for a week before the maturity date so the decision is yours, not the bank's default.",
       },
       {
         heading: "Option 1: Withdraw and walk away",
-        body: "Withdrawing everything is the right move when the renewal rate is uncompetitive or you need the cash. Transfer the balance to your checking or savings account during the grace period and you owe nothing — the interest is already yours (and already taxed as it was earned).",
+        body: "Withdrawing everything is the right move when the renewal rate is uncompetitive or you need the cash. Transfer the balance to your checking or savings account during the grace period and you owe nothing — the interest is already yours (and already taxed as it was earned). [IRS Publication 550](https://www.irs.gov/publications/p550) explains when CD interest is taxable.",
       },
       {
         heading: "Option 2: Renew at the same bank",
@@ -97,16 +97,16 @@ export const articles = [
       },
       {
         heading: "Option 4: Do nothing (auto-renewal)",
-        body: "If you take no action, nearly all banks auto-renew your CD for the same term at whatever rate they currently offer. That rate is often meaningfully lower than what you'd find shopping around. Auto-renewal is convenient for the bank — treat it as the option of last resort.",
+        body: "**Auto-renewal** means the bank reinvests your matured CD in a new CD, usually for the same term, at its current rate. If you take no action, nearly all banks auto-renew your CD for the same term at whatever rate they currently offer. That rate is often meaningfully lower than what you'd find shopping around. Auto-renewal is convenient for the bank — treat it as the option of last resort.",
       },
       {
         heading: "Smart moves before maturity",
         body: "Two weeks out, check the current top rates for your preferred term, decide where the money goes next, and have the receiving account ready. If you want to keep laddering, renewing into the longest rung of your ladder at the best available rate is usually the cleanest play.",
         bullets: [
-          "Set a reminder 7–14 days before the maturity date",
-          "Compare your bank's renewal APY against current market leaders",
-          "Decide: withdraw, renew, switch terms, or ladder",
-          "Move money within the grace period to avoid lock-in",
+          "Set a reminder 7–14 days before the maturity date.",
+          "Compare your bank's renewal APY against current market leaders.",
+          "Decide: withdraw, renew, switch terms, or ladder.",
+          "Move money within the grace period to avoid lock-in.",
         ],
       },
     ],
@@ -275,28 +275,28 @@ export const articles = [
     excerpt:
       "A jumbo CD is a certificate of deposit with a high minimum — usually $100,000 — that historically paid a premium rate. Today, top standard CDs often match or beat jumbo APYs.",
     answer:
-      "A jumbo CD is a CD requiring a large minimum deposit, typically $100,000 (sometimes $50,000). In exchange, banks may pay a slightly higher APY than their standard CDs. However, at today's most competitive online banks, standard CDs frequently pay as much or more — so compare actual APYs rather than assuming 'jumbo' means 'better.'",
+      "A jumbo CD is a CD requiring a large minimum deposit, typically $100,000 (sometimes $50,000). In exchange, banks may pay a slightly higher APY than their standard CDs. However, at today's most competitive online banks, standard CDs frequently pay as much or more. Compare actual APYs rather than assuming a jumbo CD pays more.",
     sections: [
       {
         heading: "How jumbo CDs work",
-        body: "Jumbo CDs work exactly like standard CDs — fixed rate, fixed term, early withdrawal penalty — but with a high entry threshold. Banks like them because large, stable deposits are cheap funding, and historically they shared some of that value as a rate premium.",
+        body: "**A jumbo CD** is a certificate of deposit with a high minimum deposit, usually $100,000. Jumbo CDs work exactly like standard CDs — fixed rate, fixed term, [early withdrawal penalty](https://www.consumerfinance.gov/ask-cfpb/what-should-i-know-about-cds-en-917/) — but with a high entry threshold. Banks like them because large, stable deposits are cheap funding, and historically they shared some of that value as a rate premium.",
       },
       {
         heading: "The jumbo premium is smaller than you think",
-        body: "The rate advantage of jumbo CDs has largely evaporated at competitive banks. Online banks with low overhead often pay their best APY starting at $500 or $1,000 minimums. Before choosing a jumbo CD, check whether the same bank's standard CD — or a rival's — pays the same or more.",
+        body: "**The jumbo premium** is the extra APY a bank pays on a jumbo CD over its standard CD of the same term. The rate advantage of jumbo CDs has largely evaporated at competitive banks. Online banks with low overhead often pay their best APY starting at $500 or $1,000 minimums. Before choosing a jumbo CD, check whether the same bank's standard CD — or a rival's — pays the same or more.",
       },
       {
         heading: "The FDIC insurance problem at $250,000+",
-        body: "FDIC insurance caps at $250,000 per depositor, per bank, per ownership category. A $300,000 jumbo CD at one bank leaves $50,000 uninsured. Spread large balances across multiple banks, use joint ownership categories correctly, or use a brokerage that distributes CDs across many issuers.",
+        body: "[FDIC insurance](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance) caps at $250,000 per depositor, per bank, per ownership category. A $300,000 jumbo CD at one bank leaves $50,000 uninsured. Spread large balances across multiple banks, use joint ownership categories correctly, or use a brokerage that distributes CDs across many issuers.",
         bullets: [
-          "Keep each bank's total below $250,000 per depositor",
-          "Joint accounts are insured up to $250,000 per co-owner",
-          "Brokered CDs let you hold many banks' CDs in one account",
+          "Keep each bank's total below $250,000 per depositor.",
+          "Joint accounts are insured up to $250,000 per co-owner.",
+          "Brokered CDs let you hold many banks' CDs in one account.",
         ],
       },
       {
         heading: "How the jumbo premium changes by term",
-        body: "Jumbo pricing follows the same curve as standard CDs — the 12-month term is usually the most competitive, and 5-year rates may sit above or below 1-year rates depending on where the market expects rates to go. Use our live table on the jumbo CD rates page for today's exact numbers; the ranges below show where jumbo APYs have clustered recently.",
+        body: "Jumbo pricing follows the same curve as standard CDs. The 12-month term is usually the most competitive. Rates on 5-year CDs may sit above or below 1-year rates, depending on where the market expects rates to go. Use our live table on the jumbo CD rates page for today's exact numbers; the ranges below show where jumbo APYs have clustered recently.",
         bullets: [
           "1-year jumbo CD: typically within 0.05–0.15 points of the best standard 1-year CD.",
           "2-year jumbo CD: a small premium at some regional banks and credit unions; none at most online banks.",
@@ -307,7 +307,7 @@ export const articles = [
       },
       {
         heading: "What $100,000 earns: jumbo vs. standard",
-        body: "Run the numbers before assuming 'jumbo' wins. The rates below are illustrative, not current offers. On a 1-year term, a 0.10-point premium is worth $100 — meaningful, but easily outweighed by a rival bank's standard CD paying 0.25 points more.",
+        body: "Run the numbers before assuming 'jumbo' wins. The rates below are illustrative, not current offers. For example, on $100,000 over a 1-year term, a 0.10-point premium is worth $100 — meaningful, but easily outweighed by a rival bank's standard CD paying 0.25 points more.",
         bullets: [
           "$100,000 in a 1-year jumbo CD at 4.60% APY: $4,600 interest.",
           "$100,000 in a 1-year standard CD at 4.75% APY at a top online bank: $4,750 interest — $150 more with a $500 minimum.",
@@ -327,7 +327,7 @@ export const articles = [
       },
       {
         heading: "Who should actually use a jumbo CD",
-        body: "A jumbo CD makes sense when you have a genuinely large cash position with a fixed timeline — proceeds from a home sale, a business exit, an inheritance — and the jumbo APY at your chosen bank really does beat the standard alternative. Otherwise, several standard CDs across top-paying banks usually earn more and insure better. A jumbo CD ladder — five $100,000 CDs at five banks across 1- to 5-year terms — gets you long-term rates, annual liquidity, and full FDIC coverage on $500,000.",
+        body: "A jumbo CD makes sense when you have a genuinely large cash position with a fixed timeline, such as proceeds from a home sale, a business exit or an inheritance. The jumbo APY at your chosen bank should also really beat the standard alternative. Otherwise, several standard CDs across top-paying banks usually earn more and insure better. A jumbo CD ladder — five $100,000 CDs at five banks across 1- to 5-year terms — gets you long-term rates, annual liquidity, and full FDIC coverage on $500,000.",
       },
     ],
     faqs: [
@@ -370,11 +370,11 @@ export const articles = [
     excerpt:
       "A no-penalty CD locks in a fixed rate but lets you withdraw your entire balance — principal plus interest — any time after the first 6 or 7 days, with no fee at all.",
     answer:
-      "A no-penalty CD (or liquid CD) pays a fixed rate like a regular CD but allows one full withdrawal of principal and earned interest any time after the first 6–7 days, with zero penalty. You trade a slightly lower APY for an escape hatch — making it a hybrid between a CD and a savings account.",
+      "A no-penalty CD (or liquid CD) pays a fixed rate like a regular CD. It allows one full withdrawal of principal and earned interest any time after the first 6–7 days, with zero penalty. You trade a slightly lower APY for an escape hatch — making it a hybrid between a CD and a savings account.",
     sections: [
       {
         heading: "How no-penalty CDs work",
-        body: "You deposit once, the rate locks, and after a short initial holding period (usually 6–7 days) you may close the CD and take everything, penalty-free. The catch: most banks require withdrawing the full balance — partial withdrawals typically aren't allowed — and you can't add money after opening.",
+        body: "**A no-penalty CD** is a certificate of deposit that lets you withdraw the full balance without a fee after an initial waiting period, usually about a week. You deposit once, the rate locks, and after a short initial holding period (usually 6–7 days) you may close the CD and take everything, penalty-free. The catch: most banks require withdrawing the full balance — partial withdrawals typically aren't allowed — and you can't add money after opening. At an FDIC-insured bank, it carries the same [FDIC deposit insurance](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance) as any CD: $250,000 per depositor, per bank, per ownership category.",
       },
       {
         heading: "The rate trade-off",
@@ -384,9 +384,9 @@ export const articles = [
         heading: "No-penalty CD vs. high-yield savings",
         body: "The key difference is rate certainty. A savings account's rate can drop next month; a no-penalty CD's rate is locked until maturity, yet you keep the right to walk away. If you expect rate cuts, a no-penalty CD strictly dominates a savings account paying the same rate.",
         bullets: [
-          "Rates falling: no-penalty CD wins — your rate is locked, theirs will drop",
-          "Rates rising: roughly a tie — you can exit the CD and re-open higher",
-          "Need partial access often: savings account wins — CDs require full withdrawal",
+          "Rates falling: no-penalty CD wins — your rate is locked, theirs will drop.",
+          "Rates rising: roughly a tie — you can exit the CD and re-open higher.",
+          "Need partial access often: savings account wins — CDs require full withdrawal.",
         ],
       },
       {
@@ -426,29 +426,29 @@ export const articles = [
     sections: [
       {
         heading: "The three-bucket framework",
-        body: "Sort your cash into three buckets and CDs fill the middle one. Bucket 1 is your emergency fund — 3 to 6 months of expenses in a liquid savings account. Bucket 3 is long-term money (10+ years) that belongs in diversified investments. Bucket 2 — money for goals between a few months and about five years out — is prime CD territory.",
+        body: "Sort your cash into three buckets and CDs fill the middle one. Bucket 1 is your emergency fund — 3 to 6 months of expenses in a liquid savings account. **An emergency fund** is cash set aside for unexpected costs, such as a job loss or a car repair. Bucket 3 is long-term money (10+ years) that belongs in diversified investments. Bucket 2 — money for goals between a few months and about five years out — is prime CD territory.",
       },
       {
         heading: "Match the amount to dated goals",
-        body: "Rather than picking a percentage, list your actual goals with dates and price tags: $30,000 house down payment in 2 years, $8,000 car in 10 months, $15,000 tuition in 3 years. Each goal maps to a CD of that amount and term. This guarantees the money is there — at a known value — exactly when the bill arrives.",
+        body: "Rather than picking a percentage, list your actual goals with dates and price tags: $30,000 house down payment in 2 years, $8,000 car in 10 months, $15,000 tuition in 3 years. Each goal maps to a CD of that amount and term. That fits how a CD works: [Investor.gov](https://www.investor.gov/investing-basics/investment-products/certificates-deposit-cds) describes it as an account that holds a fixed amount of money for a fixed period of time. This guarantees the money is there — at a known value — exactly when the bill arrives.",
       },
       {
         heading: "Never put these in a CD",
         body: "Some money should never be locked up, no matter how tempting the rate.",
         bullets: [
-          "Your core emergency fund — emergencies don't wait for maturity dates",
-          "Money you'll need within the CD's term",
-          "Long-horizon retirement money better served by stocks and bonds",
-          "Any amount that pushes a single bank over the $250,000 FDIC limit",
+          "Your core emergency fund — emergencies don't wait for maturity dates.",
+          "Money you'll need within the CD's term.",
+          "Long-horizon retirement money better served by stocks and bonds.",
+          "Any amount that pushes a single bank over the $250,000 FDIC limit. The FDIC's [EDIE estimator](https://edie.fdic.gov/) can check your coverage at one bank.",
         ],
       },
       {
         heading: "Use a ladder when the timeline is fuzzy",
-        body: "If you have a lump sum but imprecise timing, split it into a CD ladder — equal amounts in 1-, 2-, 3-, 4-, and 5-year CDs, for example. A rung matures every year, giving you regular penalty-free access while most of the money earns longer-term rates. It's the standard answer to 'I want yield but I'm not sure when I'll need it.'",
+        body: "**A CD ladder** is a set of CDs with staggered maturity dates, so part of the money comes due at regular intervals. If you have a lump sum but imprecise timing, split it into a CD ladder — equal amounts in 1-, 2-, 3-, 4-, and 5-year CDs, for example. A rung matures every year, giving you regular penalty-free access while most of the money earns longer-term rates. It's the standard answer to 'I want yield but I'm not sure when I'll need it.'",
       },
       {
         heading: "Mind the FDIC ceiling",
-        body: "FDIC insurance covers $250,000 per depositor, per bank, per ownership category. If your CD allocation exceeds that, spread it across multiple banks or use joint ownership correctly. Insurance is the entire reason CDs are risk-free — don't give it up for convenience.",
+        body: "[FDIC insurance](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance) covers $250,000 per depositor, per bank, per ownership category. **An ownership category** is the way an account is held, such as single, joint or certain retirement accounts. Credit union CDs get the same $250,000 coverage from the [NCUA](https://www.ncua.gov/consumers/share-insurance-coverage). If your CD allocation exceeds that, spread it across multiple banks or use joint ownership correctly. Insurance is the entire reason CDs are risk-free — don't give it up for convenience.",
       },
     ],
     faqs: [

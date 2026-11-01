@@ -359,12 +359,12 @@ export const EXPANSIONS = {
     metaDescription:
       "A no-penalty CD locks a fixed rate but lets you withdraw the full balance after the first week with no fee. Rules, a $20,000 example and how it compares.",
     readTime: "8 min read",
-    dateModified: "2026-10-31",
+    dateModified: "2026-11-01",
     sections: [
       {
         before: "The rate trade-off",
         heading: "No-penalty CD rules to check before you open one",
-        body: "No-penalty (also called liquid) CDs share the same idea, but the fine print varies by bank.",
+        body: "No-penalty (also called liquid) CDs share the same idea, but the fine print varies by bank. **The waiting period** is the first few days after funding when you can't withdraw without a penalty. It comes from the federal definition of a time deposit in [12 CFR 204.2(c)](https://www.ecfr.gov/current/title-12/chapter-II/subchapter-A/part-204/section-204.2).",
         bullets: [
           "Waiting period: federal Regulation D requires a penalty on withdrawals in the first 6 days, so most banks require you to wait at least 7 days after funding.",
           "Full withdrawal only: many banks let you take out the whole balance and close the CD, but not a partial withdrawal.",
@@ -375,7 +375,7 @@ export const EXPANSIONS = {
       {
         before: "Smart uses for a no-penalty CD",
         heading: "No-penalty CD vs regular CD vs high-yield savings",
-        body: "A no-penalty CD sits in the middle: a locked rate like a CD, with an exit like savings.",
+        body: "A no-penalty CD sits in the middle: a locked rate like a CD, with an exit like savings. **A high-yield savings account** is a savings account whose variable rate the bank can change at any time. Credit union versions of all three are insured to the same $250,000 limit by the [NCUA](https://ncua.gov/consumers/share-insurance-coverage).",
         table: {
           columns: ["", "No-penalty CD", "Regular CD", "High-yield savings"],
           rows: [
@@ -390,7 +390,7 @@ export const EXPANSIONS = {
       {
         before: "Smart uses for a no-penalty CD",
         heading: "Example: $20,000 in a no-penalty CD",
-        body: "Illustrative rates. You put $20,000 in an 11-month no-penalty CD at 4.00% APY. Rates rise four months later and a regular 12-month CD pays 4.60%. You close the no-penalty CD, collect about $267 of interest (4 months), pay no fee, and move the money. If rates had fallen instead, you'd keep the 4.00% locked for the full 11 months — about $733. A regular CD would have charged a penalty to switch; a savings account's rate could have dropped with the market.",
+        body: "For example, you put $20,000 in an 11-month no-penalty CD at an illustrative 4.00% APY. Rates rise four months later, and a regular 12-month CD pays an illustrative 4.60%. You close the no-penalty CD, collect about $263 of interest (4 months), pay no fee, and move the money. If rates had fallen instead, you'd keep the 4.00% locked for the full 11 months and earn about $732. A regular CD would have charged an [early withdrawal penalty](/articles/cd-early-withdrawal-penalty) to switch. A savings account's rate could have dropped with the market.",
       },
     ],
     faqs: [
@@ -414,12 +414,12 @@ export const EXPANSIONS = {
     metaDescription:
       "When a CD matures you get a grace period, often 7–10 days, to withdraw, renew or move the money. See the maturity timeline and what auto-renewal can cost.",
     readTime: "8 min read",
-    dateModified: "2026-10-31",
+    dateModified: "2026-11-01",
     sections: [
       {
         before: "Option 1: Withdraw and walk away",
         heading: "CD maturity timeline",
-        body: "What usually happens around the maturity date (timing varies by bank — check your disclosure).",
+        body: "**The maturity date** is the day a CD's term ends and you can take the principal plus interest without a penalty. The table shows what usually happens around it (timing varies by bank — check your disclosure). The notice deadlines come from [Regulation DD §1030.5](https://www.consumerfinance.gov/rules-policy/regulations/1030/5/).",
         table: {
           columns: ["When", "What happens"],
           rows: [
@@ -433,7 +433,7 @@ export const EXPANSIONS = {
       {
         before: "Smart moves before maturity",
         heading: "Example: what auto-renewal can cost",
-        body: "Illustrative rates. A $10,000 12-month CD matures and auto-renews at the bank's standard rate of 1.50% APY, while top online banks pay 4.00% for the same term. Over the next year that's about $150 of interest instead of $400 — $250 left on the table. Moving the money during the grace period avoids it.",
+        body: "For example, say a $10,000 12-month CD matures and auto-renews at the bank's standard rate, an illustrative 1.50% APY. Top online banks pay an illustrative 4.00% for the same term. Over the next year that's about $150 of interest instead of $400 — $250 left on the table. Moving the money during the grace period avoids it. Before maturity, compare the renewal offer with the [best 1-year CD rates](/best-1-year-cd-rates).",
       },
     ],
     faqs: [
@@ -534,7 +534,7 @@ export const EXPANSIONS = {
       {
         before: "Never put these in a CD",
         heading: "Worked example: sizing CDs for one household",
-        body: "Take a household with $90,000 in cash and $5,000 of monthly expenses. Six months of expenses, $30,000, stays in a savings account as the emergency fund. The three dated goals above go into CDs, each matched to its date. The last $7,000 has no date, so it stays liquid or moves to long-term investing. That puts $53,000 in CDs. Interest assumes it compounds at the APY and stays in the CD; it is taxable each year. Even with interest, the three CDs total $57,427.22 at maturity, well under the $250,000 FDIC limit for one ownership category at one bank.",
+        body: "For example, take a household with $90,000 in cash and $5,000 of monthly expenses. Six months of expenses, $30,000, stays in a savings account as the emergency fund. The three dated goals above go into CDs, each matched to its date. The last $7,000 has no date, so it stays liquid or moves to long-term investing. That puts $53,000 in CDs. Interest assumes it compounds at the APY and stays in the CD; it is taxable each year. Even with interest, the three CDs total $57,427.22 at maturity, well under the $250,000 FDIC limit for one ownership category at one bank.",
         table: {
           columns: ["Goal", "Amount", "CD term", "APY (illustrative)", "Value at maturity", "Interest"],
           rows: [
@@ -648,7 +648,7 @@ export const EXPANSIONS = {
       {
         before: "How the jumbo premium changes by term",
         heading: "Interest counts toward the $250,000 limit",
-        body: "FDIC insurance covers principal plus accrued interest, up to $250,000 per depositor, per bank, per ownership category. So a jumbo CD that starts right at $250,000 drifts over the limit as interest builds. If the bank failed near maturity, the interest above $250,000 would be uninsured. The fix is to open a little below the cap. The table shows the largest opening deposit that stays fully insured through maturity at an illustrative 4.00% APY, for one owner and for a two-owner joint CD. Use our [CD calculator](/cd-calculator) to rerun it at the rate you're offered, and compare offers on the [jumbo CD rates](/jumbo-cd-rates) page. If you need to hold more than this at one time, [brokered CDs](/guides/brokered-vs-bank-cds) let you split the balance across many issuing banks in one account.",
+        body: "**Accrued interest** is interest a CD has earned but you have not yet withdrawn. FDIC insurance covers principal plus accrued interest, up to $250,000 per depositor, per bank, per ownership category, according to [FDIC — Deposit Insurance at a Glance](https://fdic.gov/deposit-insurance/deposit-insurance-glance-brochure-english.pdf). So a jumbo CD that starts right at $250,000 drifts over the limit as interest builds. If the bank failed near maturity, the interest above $250,000 would be uninsured. The fix is to open a little below the cap. The table shows the largest opening deposit that stays fully insured through maturity at an illustrative 4.00% APY, for one owner and for a two-owner joint CD. Use our [CD calculator](/cd-calculator) to rerun it at the rate you're offered, and compare offers on the [jumbo CD rates](/jumbo-cd-rates) page. If you need to hold more than this at one time, [brokered CDs](/guides/brokered-vs-bank-cds) let you split the balance across many issuing banks in one account.",
         table: {
           caption: "Illustrative 4.00% APY, interest left in the CD. Assumes no other deposits in the same ownership category at that bank.",
           columns: ["Term", "Max opening deposit, single owner", "Max opening deposit, joint (2 owners)", "Interest a $250,000 CD earns by maturity"],
@@ -723,7 +723,7 @@ export const EXPANSIONS = {
       {
         before: "Which should you choose?",
         heading: "FDIC vs SIPC: which protects what",
-        body: "A brokered CD sits inside a brokerage account, so two different protections are in play, and they cover different failures. FDIC insurance covers the CD if the issuing bank fails. SIPC covers missing cash and securities if the brokerage firm fails, up to $500,000 including $250,000 in cash. SIPC does not cover a drop in market value, and it is not a substitute for FDIC coverage. The common mistake is overlap. Say you already have a $100,000 CD directly at Bank A. Your brokerage then buys $200,000 of Bank A brokered CDs and $200,000 of Bank B CDs, all in your name alone. At Bank A your single-ownership total is $300,000, so $50,000 is uninsured. Bank B's $200,000 is fully covered. Ask which banks issue each CD before you buy. For the full rules, see [are CDs safe](/guides/are-cds-safe), and for large single-bank balances see [what a jumbo CD is](/articles/what-is-a-jumbo-cd).",
+        body: "A brokered CD sits inside a brokerage account, so two different protections are in play, and they cover different failures. FDIC insurance covers the CD if the issuing bank fails. [SIPC](https://sipc.org/for-investors/what-sipc-protects) covers missing cash and securities if the brokerage firm fails, up to $500,000 including $250,000 in cash. SIPC does not cover a drop in market value, and it is not a substitute for FDIC coverage. The common mistake is overlap. For example, say you already have a $100,000 CD directly at Bank A. Your brokerage then buys $200,000 of Bank A brokered CDs and $200,000 of Bank B CDs, all in your name alone. At Bank A your single-ownership total is $300,000, so $50,000 is uninsured. Bank B's $200,000 is fully covered. Ask which banks issue each CD before you buy. For the full rules, see [are CDs safe](/guides/are-cds-safe), and for large single-bank balances see [what a jumbo CD is](/articles/what-is-a-jumbo-cd).",
         table: {
           caption: "Single-ownership category, ignoring accrued interest (which also counts toward the FDIC limit).",
           columns: ["Bank", "Direct CD", "Brokered CDs", "Total", "FDIC insured", "Uninsured"],
@@ -761,7 +761,7 @@ export const EXPANSIONS = {
       {
         before: "Where to open the rungs",
         heading: "A $50,000 five-rung ladder, year by year",
-        body: "Here is the full schedule for $50,000 split into five $10,000 rungs, using illustrative APYs, not current offers. Each value assumes interest stays in the CD and compounds annually. In the first cycle the five rungs earn $6,163.80 combined. From year 1 on, one rung matures every 12 months and is reinvested in a new 5-year CD. Rung 1, for example, comes due at $10,400 and, rolled into a 5-year CD at 3.95%, grows to $12,622.80 by the end of year 6. By the end of year 4 every rung is a 5-year CD, and you still have one maturity a year. Your bank must send a notice at least 30 days before an auto-renewing CD over one month matures (or 20 days before the grace period ends, if it is at least five days). Use that notice as your cue to shop the [best 1-year CD rates](/best-1-year-cd-rates) and long-term rates. Read [what happens when a CD matures](/articles/what-happens-when-a-cd-matures), and model your own numbers in the [CD calculator](/cd-calculator).",
+        body: "Here is the full schedule for $50,000 split into five $10,000 rungs, using illustrative APYs, not current offers. Each value assumes interest stays in the CD and compounds annually. In the first cycle the five rungs earn $6,163.80 combined. From year 1 on, one rung matures every 12 months and is reinvested in a new 5-year CD. For example, rung 1 comes due at $10,400. Rolled into a 5-year CD at an illustrative 3.95%, it grows to $12,622.80 by the end of year 6. By the end of year 4 every rung is a 5-year CD, and you still have one maturity a year. Under [Regulation DD §1030.5](https://www.consumerfinance.gov/rules-policy/regulations/1030/5/), your bank must send a notice at least 30 days before an auto-renewing CD over one month matures (or 20 days before the grace period ends, if it is at least five days). Use that notice as your cue to shop the [best 1-year CD rates](/best-1-year-cd-rates) and long-term rates. Read [what happens when a CD matures](/articles/what-happens-when-a-cd-matures), and model your own numbers in the [CD calculator](/cd-calculator).",
         table: {
           caption: "Illustrative APYs, not current offers. $10,000 per rung, annual compounding.",
           columns: ["Rung", "Opening term", "Illustrative APY", "Matures", "Value at maturity", "Interest", "Then"],
@@ -778,7 +778,7 @@ export const EXPANSIONS = {
     faqs: [
       {
         q: "Will my bank remind me before a ladder rung matures?",
-        a: "For CDs that renew automatically and have terms longer than one month, federal Truth in Savings rules require the bank to send a notice at least 30 calendar days before maturity, or at least 20 days before the grace period ends if the grace period is five days or longer. Set your own reminder anyway.",
+        a: "Yes, for CDs that renew automatically and have terms longer than one month. Federal Truth in Savings rules require the bank to send a notice at least 30 calendar days before maturity. It may instead send the notice at least 20 days before the grace period ends, if the grace period is five days or longer. Set your own reminder anyway.",
       },
     ],
     sources: [
@@ -797,7 +797,7 @@ export const EXPANSIONS = {
       {
         before: "The pros",
         heading: "How $500,000 can be fully insured at one bank",
-        body: "Coverage is figured per ownership category, so one person can insure more than $250,000 at a single bank by titling accounts differently. Take a saver with $500,000 at one bank. If all of it sits in individual CDs, $250,000 is insured and $250,000 is not. Spread across three categories, all of it can be covered. Since April 1, 2024, revocable trusts (including payable-on-death accounts) and irrevocable trusts are one trust category. It is insured at $250,000 per eligible beneficiary, up to five, for a maximum of $1,250,000 per owner per bank. This is the FDIC rule; the NCUA's version for credit unions takes effect December 1, 2026. Accrued interest counts toward every limit, so leave room. At an illustrative 4.00% APY, a $250,000 single CD would grow to $260,000 in a year and put $10,000 over the cap. For retirement savers, see [CDs for retirement](/cd-for-retirement). For balances that won't fit at one bank, see [brokered CDs](/guides/brokered-vs-bank-cds) or [jumbo CDs](/articles/what-is-a-jumbo-cd).",
+        body: "Coverage is figured per ownership category, so one person can insure more than $250,000 at a single bank by titling accounts differently. **An ownership category** is the legal way an account is held, such as single, joint, certain retirement accounts or trust. The FDIC lists them in [Deposit Insurance at a Glance](https://fdic.gov/deposit-insurance/deposit-insurance-glance-brochure-english.pdf). Take a saver with $500,000 at one bank. If all of it sits in individual CDs, $250,000 is insured and $250,000 is not. Spread across three categories, all of it can be covered. Since April 1, 2024, revocable trusts (including payable-on-death accounts) and irrevocable trusts are one trust category. It is insured at $250,000 per eligible beneficiary, up to five, for a maximum of $1,250,000 per owner per bank. This is the FDIC rule; the NCUA's version for credit unions takes effect December 1, 2026. Accrued interest counts toward every limit, so leave room. For example, at an illustrative 4.00% APY, a $250,000 single CD would grow to $260,000 in a year and put $10,000 over the cap. For retirement savers, see [CDs for retirement](/cd-for-retirement). For balances that won't fit at one bank, see [brokered CDs](/guides/brokered-vs-bank-cds) or [jumbo CDs](/articles/what-is-a-jumbo-cd).",
         table: {
           caption: "One owner, one bank. Accrued interest also counts toward each limit.",
           columns: ["Ownership category", "Example account", "Balance", "Coverage limit", "Insured", "Uninsured"],
@@ -820,7 +820,7 @@ export const EXPANSIONS = {
     sources: [
       { label: "FDIC — Understanding Deposit Insurance", url: "https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance" },
       { label: "FDIC — Deposit Insurance at a Glance (2024)", url: "https://fdic.gov/deposit-insurance/deposit-insurance-glance-brochure-english.pdf" },
-      { label: "FDIC — Compliance guide: Simplification of Deposit Insurance Rules (trust accounts, effective April 1, 2024)", url: "https://fdic.gov/media/411" },
+      { label: "FDIC — Trust account rules guide (effective April 1, 2024)", url: "https://fdic.gov/media/411" },
       { label: "FDIC — Payment to depositors after a bank failure", url: "https://fdic.gov/bank-failures/payment-depositors" },
       { label: "NCUA (MyCreditUnion.gov) — Share insurance", url: "https://mycreditunion.gov/share-insurance" },
     ],

@@ -179,11 +179,11 @@ export const guides = [
     excerpt:
       "Brokered CDs are bought through a brokerage and can be sold before maturity — but they behave differently from the CDs you open directly at a bank.",
     answer:
-      "Bank CDs suit most savers: you open them directly, interest compounds inside the account, and early withdrawal costs a known penalty. Brokered CDs — bought through Fidelity, Schwab, Vanguard and the like — are better for large balances that need FDIC coverage across many banks in one account, and for investors who may want to sell before maturity at market price instead of paying a penalty. The trade-offs: brokered CDs pay simple interest, can be callable, and can lose value if you sell after rates rise.",
+      "Bank CDs suit most savers: you open them directly, interest compounds inside the account, and early withdrawal costs a known penalty. Brokered CDs are bought through Fidelity, Schwab, Vanguard and the like. They are better for large balances that need FDIC coverage across many banks in one account. They also suit investors who may want to sell before maturity at market price instead of paying a penalty. The trade-offs: brokered CDs pay simple interest, can be callable, and can lose value if you sell after rates rise.",
     sections: [
       {
         heading: "How brokered CDs work",
-        body: "Banks issue CDs in bulk to brokerages, which resell them to customers in $1,000 increments. You buy them like a bond inside your brokerage account. Because you can hold CDs from dozens of banks in one place, brokered CDs are the standard way to keep a $1 million cash position fully FDIC-insured without opening twenty bank accounts.",
+        body: "**A brokered CD** is a CD that a bank issues through a brokerage firm, which sells it to customers in brokerage accounts. Banks issue CDs in bulk to brokerages, which resell them to customers in $1,000 increments. The [Investor.gov brokered CD bulletin](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/brokered-cds-investor-bulletin) describes this as a master CD issued to the deposit broker, which sells interests in it to its customers. You buy them like a bond inside your brokerage account. Because you can hold CDs from dozens of banks in one place, brokered CDs are the standard way to keep a $1 million cash position fully FDIC-insured without opening twenty bank accounts.",
         bullets: [
           "Minimum: typically $1,000 per CD.",
           "New-issue brokered CDs usually have no purchase fee; secondary-market trades may carry a small markup.",
@@ -192,11 +192,11 @@ export const guides = [
       },
       {
         heading: "Selling early: market risk instead of a penalty",
-        body: "A bank CD charges a defined interest penalty for early withdrawal. A brokered CD has no penalty — you sell it on the secondary market at the going price. If rates have risen since you bought, your CD is worth less and you take a loss; if rates have fallen, you may sell at a gain. Thin trading can also mean a wide bid-ask spread on small lots.",
+        body: "A bank CD charges a defined interest penalty for early withdrawal. A brokered CD has no penalty — you sell it on the secondary market at the going price. **The secondary market** is where investors buy and sell existing securities, such as brokered CDs, before they mature. If rates have risen since you bought, your CD is worth less and you take a loss, as the [SEC explains](https://www.sec.gov/investor/pubs/certific.htm); if rates have fallen, you may sell at a gain. Thin trading can also mean a wide bid-ask spread on small lots.",
       },
       {
         heading: "Interest: compounding vs. simple",
-        body: "Most bank CDs compound interest daily or monthly and quote an APY. Brokered CDs pay simple interest — usually monthly or semi-annually — into your brokerage cash balance, and the quoted rate is a coupon, not an APY. On a 5-year CD at 4.50%, annual compounding adds about 2.1 percentage points of total return over the term (24.6% vs 22.5%) unless you reinvest each coupon yourself.",
+        body: "Most bank CDs compound interest daily or monthly and quote an APY. Brokered CDs [generally pay simple interest](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/brokered-cds-investor-bulletin) — usually monthly or semi-annually — into your brokerage cash balance, and the quoted rate is a coupon, not an APY. On a 5-year CD at 4.50%, annual compounding adds about 2.1 percentage points of total return over the term (24.6% vs 22.5%) unless you reinvest each coupon yourself. You can model the bank CD side in the [CD calculator](/cd-calculator).",
         bullets: [
           "Bank CD, $25,000 at 4.50% APY for 5 years: about $6,150 interest.",
           "Brokered CD, $25,000 at 4.50% simple for 5 years: $5,625 interest if coupons sit in cash.",
@@ -204,7 +204,7 @@ export const guides = [
       },
       {
         heading: "Callable brokered CDs: read the fine print",
-        body: "Some brokered CDs are callable: the bank can redeem them early, after a stated call-protection period, typically when rates fall. You get your principal back but lose the high rate exactly when you'd most want to keep it. Callable CDs pay a slightly higher coupon to compensate. If you see a brokered CD yielding noticeably more than peers, check whether it's callable before buying.",
+        body: "**A callable CD** is a CD that the issuing bank can redeem before its maturity date. Only the bank holds that right, not you, according to the [SEC](https://www.sec.gov/investor/pubs/certific.htm). Some brokered CDs are callable: the bank can redeem them early, after a stated call-protection period, typically when rates fall. You get your principal back but lose the high rate exactly when you'd most want to keep it. Callable CDs pay a slightly higher coupon to compensate. If you see a brokered CD yielding noticeably more than peers, check whether it's callable before buying.",
       },
       {
         heading: "Which should you choose?",
@@ -406,11 +406,11 @@ export const guides = [
     sections: [
       {
         heading: "What a CD ladder is",
-        body: "Instead of putting $25,000 into a single 5-year CD, you open five CDs of $5,000 each with terms of 1, 2, 3, 4 and 5 years. From then on, one CD matures every year. You can spend it, move it, or — the usual play — reinvest it in a new 5-year CD so the ladder keeps rolling.",
+        body: "**A CD ladder** is a set of CDs with staggered maturity dates, so part of your money comes due at regular intervals. **Rungs** are the individual CDs in the ladder. Instead of putting $25,000 into a single 5-year CD, you open five CDs of $5,000 each with terms of 1, 2, 3, 4 and 5 years. From then on, one CD matures every year. You can spend it, move it, or — the usual play — reinvest it in a new 5-year CD so the ladder keeps rolling.",
       },
       {
         heading: "Why it beats a single CD",
-        body: "Long-term CDs usually pay more but lock you in; short-term CDs stay flexible but earn less. A ladder captures both. It also spreads reinvestment risk: you're never forced to renew all of your money at one moment's rates, which matters a lot when rates swing by a full percentage point in a year.",
+        body: "Long-term CDs usually pay more but lock you in; short-term CDs stay flexible but earn less. A ladder captures both. **Reinvestment risk** is the risk that money coming due has to be reinvested at a lower rate. A ladder also spreads reinvestment risk: you're never forced to renew all of your money at one moment's rates, which matters a lot when rates swing by a full percentage point in a year.",
         bullets: [
           "Liquidity: a rung matures every year (or every few months in a mini-ladder).",
           "Yield: within four years, every rung is earning the 5-year rate.",
@@ -431,7 +431,7 @@ export const guides = [
       },
       {
         heading: "Where to open the rungs",
-        body: "You don't have to use one bank. Shop each term separately — the bank with the best 1-year rate is rarely the one with the best 5-year rate. Spreading across banks also keeps large ladders under the FDIC limit of $250,000 per depositor, per bank, per ownership category, including accrued interest. Keep a simple spreadsheet with each CD's bank, APY, maturity date and renewal instructions.",
+        body: "You don't have to use one bank. Shop each term separately — the bank with the best 1-year rate is rarely the one with the best 5-year rate. Spreading across banks also keeps large ladders under the FDIC limit of $250,000 per depositor, per bank, per ownership category. That limit includes accrued interest, per [FDIC — Deposit Insurance at a Glance](https://fdic.gov/deposit-insurance/deposit-insurance-glance-brochure-english.pdf). Keep a simple spreadsheet with each CD's bank, APY, maturity date and renewal instructions.",
       },
       {
         heading: "Variations worth knowing",
@@ -448,7 +448,7 @@ export const guides = [
         bullets: [
           "Letting rungs auto-renew into the same short term at a low rate — set reminders for every maturity date.",
           "Building the ladder when long-term rates are far below short-term rates; a mini-ladder may earn more.",
-          "Exceeding $250,000 at one bank.",
+          "Exceeding $250,000 at one bank, the [FDIC limit](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance) per depositor for each ownership category.",
           "Laddering emergency-fund money — that belongs in a savings account.",
         ],
       },
@@ -493,7 +493,7 @@ export const guides = [
     sections: [
       {
         heading: "The safety backstop: federal insurance",
-        body: "When an FDIC-insured bank fails, the FDIC either moves your deposits to another bank or pays you directly; the FDIC's goal is to pay insured deposits within two business days of a failure. Since FDIC insurance began in 1934, no depositor has lost a penny of insured funds. Coverage is $250,000 per depositor, per bank, per ownership category — so a couple with a joint account at one bank is covered to $500,000, and the same couple with individual and joint accounts can reach $1 million at a single institution.",
+        body: "**FDIC insurance** is federal deposit insurance that protects deposits at insured banks, including CDs, if the bank fails. **NCUA share insurance** is the matching coverage for credit unions, backed by the full faith and credit of the United States, per [MyCreditUnion.gov](https://mycreditunion.gov/share-insurance). When an FDIC-insured bank fails, the FDIC either moves your deposits to another bank or pays you directly. The FDIC's goal is to pay insured deposits within two business days of a failure, according to its page on [payment to depositors](https://fdic.gov/bank-failures/payment-depositors). Since FDIC insurance began in 1934, no depositor has lost a penny of insured funds. Coverage is $250,000 per depositor, per bank, per ownership category. So a couple with a joint account at one bank is covered to $500,000. The same couple with individual and joint accounts can reach $1 million at a single institution.",
         bullets: [
           "Check a bank at FDIC.gov/bankfind before opening an account.",
           "Credit unions: look for NCUA insurance. Its $250,000 standard limit matches the FDIC's, but the NCUA's combined trust-account rule takes effect December 1, 2026, so trust coverage at credit unions follows the older rules until then.",
@@ -532,7 +532,7 @@ export const guides = [
       },
       {
         heading: "CDs vs. other 'safe' options",
-        body: "For money that must not lose value, the realistic alternatives are high-yield savings accounts, Treasury bills and money market funds. Savings accounts are more liquid but float with rates. T-bills are state-tax-free and liquid; you buy them at TreasuryDirect or through a brokerage. Money market funds are not FDIC-insured. A CD is the simplest way to get a locked, insured rate.",
+        body: "For money that must not lose value, the realistic alternatives are high-yield savings accounts, Treasury bills and money market funds. Savings accounts are more liquid but float with rates. T-bills are state-tax-free and liquid; you buy them at TreasuryDirect or through a brokerage. Money market funds are not FDIC-insured; the [FDIC](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance) lists mutual funds among the products it does not cover. A CD is the simplest way to get a locked, insured rate.",
       },
       {
         heading: "Bottom line",
