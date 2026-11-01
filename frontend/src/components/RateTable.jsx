@@ -50,8 +50,11 @@ export const bankLogoSources = (url) => {
 
 export const bankLogoUrl = (url) => bankLogoSources(url).slice(-1)[0] || "";
 
+// Third-party bank logos are disabled for ad-policy compliance; flip to true to restore.
+export const SHOW_BANK_LOGOS = false;
+
 export const BankAvatar = ({ bank, color, url, size = "w-10 h-10" }) => {
-  const sources = bankLogoSources(url);
+  const sources = SHOW_BANK_LOGOS ? bankLogoSources(url) : [];
   const [idx, setIdx] = React.useState(0);
   React.useEffect(() => setIdx(0), [url]);
   const src = sources[idx];

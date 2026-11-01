@@ -14,6 +14,7 @@ import { Badge } from "./ui/badge";
 import { ArrowRight, CheckCircle2, Loader2, ShieldCheck } from "lucide-react";
 import { formatTerm } from "../mock/mock";
 import { getAttribution } from "../lib/attribution";
+import { INDEPENDENCE_NOTE } from "../data/compliance";
 import { API } from "../App";
 import { BankAvatar } from "./RateTable";
 
@@ -280,7 +281,7 @@ export const LeadFields = ({ lf, compact = false, idPrefix = "" }) => {
         By submitting, you agree to our{" "}
         <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline text-[#16233d] font-medium">Privacy Policy</a> and{" "}
         <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline text-[#16233d] font-medium">Terms of Service</a>{" "}
-        and to being contacted about CD rates at the details above.
+        and to Cavicord contacting you by email or phone about CD rates at the details above.
       </p>
 
       {serverError && <p className="text-sm text-red-600">{serverError}</p>}
@@ -305,6 +306,9 @@ export const LeadFields = ({ lf, compact = false, idPrefix = "" }) => {
       <p className="text-[11px] text-slate-500 text-center flex items-center justify-center gap-1">
         <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
         Sent securely to Cavicord. We never sell or share your contact details.
+      </p>
+      <p className="text-[11px] text-slate-500 leading-snug" data-testid="lead-independence-note">
+        {INDEPENDENCE_NOTE}
       </p>
     </form>
   );

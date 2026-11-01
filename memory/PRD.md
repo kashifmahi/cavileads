@@ -233,3 +233,10 @@ Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-ca
 - Removed pages for unoffered products with client redirects (data/redirects.js): /best-3-month→/best-6-month, /best-3-year & /best-5-year→/best-2-year, /no-penalty-cd-rates→/best-cd-rates. termPages now only 18-month + 2-year; rateNavLinks (header+footer) trimmed to offered terms; sitemap 44→40 URLs, prerender 42 routes.
 - Fixed all internal links to removed pages (ratesLinks.js, TrendsPage, GuidePage CTA, PenaltyCalculator) and offer copy (landings "All Terms" bullet, jumbo term FAQ/section now 6mo–2yr).
 - Verified: redirects work, nav clean, jumbo page no leaks, builds 42/42. Generic educational prose in guides/articles (explaining 5-year CDs as a market concept) intentionally kept for SEO.
+
+## 2026-11-01 (Google Ads "Phishing" compliance pass)
+- SHOW_BANK_LOGOS=false flag in RateTable.jsx: BankAvatar now always renders coloured initials (covers LeadResults in wizard/inline/popup + RatesSection if remounted). Logo code intact behind flag.
+- New data/compliance.js (INDEPENDENCE_NOTE + SUPPORT_EMAIL). Note added under submit button of LeadFields (inline + popup) and ScoutWizard; consent lines now say "Cavicord contacting you by email or phone".
+- Footer: independence/never-ask note above legal text + Contact: support@cavicord.tech mailto + /about#contact link. AboutPage: new id="contact" section (run by Kashif Mahi, removal requests, reply-from-address-only).
+- Mocked tests (no real leads): home wizard e2e, jumbo inline form, /about#contact, footer — all pass; 0 logo imgs in results. SSG rebuilt 42/42.
+- Wording audit flagged to user (NOT changed): Header "FDIC Insured" chip, Hero "FDIC-eligible" chip, landing "our scouting program" phrasing. NOT deployed; user republishes.

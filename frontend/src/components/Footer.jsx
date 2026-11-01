@@ -4,6 +4,7 @@ import { TrendingUp, ShieldCheck } from "lucide-react";
 import { BRAND } from "../mock/mock";
 import { rateNavLinks } from "../data/terms";
 import { guides } from "../data/guides";
+import { INDEPENDENCE_NOTE, SUPPORT_EMAIL } from "../data/compliance";
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -26,6 +27,16 @@ const Footer = () => {
               <ShieldCheck className="w-4 h-4 text-emerald-500" />
               All listed banks are FDIC insured
             </div>
+            <p className="mt-4 text-sm text-slate-400">
+              Contact:{" "}
+              <a href={`mailto:${SUPPORT_EMAIL}`} className="text-emerald-400 hover:text-emerald-300 transition-colors duration-200" data-testid="footer-support-email">
+                {SUPPORT_EMAIL}
+              </a>
+              {" · "}
+              <Link to="/about#contact" className="text-emerald-400 hover:text-emerald-300 transition-colors duration-200" data-testid="footer-contact-link">
+                Contact us
+              </Link>
+            </p>
           </div>
 
           {/* Best rates */}
@@ -136,7 +147,10 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/10">
-          <p className="text-xs text-slate-400 leading-relaxed">
+          <p className="text-xs text-slate-400 leading-relaxed" data-testid="footer-independence-note">
+            {INDEPENDENCE_NOTE}
+          </p>
+          <p className="mt-3 text-xs text-slate-400 leading-relaxed">
             {BRAND.name} is not a bank and does not offer certificates of deposit
             directly. Rates shown are for informational purposes only and are
             subject to change without notice. National average rates are sourced
