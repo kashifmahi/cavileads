@@ -851,8 +851,8 @@ const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const linkFirst = (text, phrase, path) => {
   if (typeof text !== "string") return null;
   const re = new RegExp(`\\b(${escapeRe(phrase)}s?)\\b`, "i");
-  // Don't link inside an existing [anchor](/path).
-  const spans = [...text.matchAll(/\[[^\]]*\]\([^)]*\)/g)].map((m) => [m.index, m.index + m[0].length]);
+  // Don't link inside an existing [anchor](/path) or a **bold** definition.
+  const spans = [...text.matchAll(/\[[^\]]*\]\([^)]*\)|\*\*[^*]+\*\*/g)].map((m) => [m.index, m.index + m[0].length]);
   let from = 0;
   while (from < text.length) {
     const m = re.exec(text.slice(from));
