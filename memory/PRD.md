@@ -288,3 +288,6 @@ Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-ca
 
 ## 2026-11-01 (PR #35 pulled — .well-known AI manifests)
 - .well-known/ard.json (new) + .well-known/ai-catalog.json byte-identical from d31648b. yarn build OK; build/.well-known/ard.json valid JSON (specVersion/host/entries). No snapshot needed. Owner to Save to GitHub + Publish.
+
+## 2026-11-01 (PR #37 pulled — content polish, 21 articles/guides)
+- 7 files byte-identical from c678a53 (fact-check fixes, markdown rendering). build:ssg 42/42 + snapshot 58 + deploy build: no asset-match warnings. Verified /guides/cd-vs-treasury-bills has '4.54' + <strong> definitions; zero pages render raw '**' or ']('. Owner to Save to GitHub + Publish.

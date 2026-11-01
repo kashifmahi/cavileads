@@ -12,7 +12,7 @@ export const newGuides = [
     category: "Comparison",
     readTime: "9 min read",
     datePublished: "2026-10-31",
-    dateModified: "2026-10-31",
+    dateModified: "2026-11-01",
     excerpt:
       "I bonds track inflation and are state-tax free; CDs pay a fixed, known rate with no purchase limit. Which wins depends on inflation, how much you're saving and when you need it.",
     answer:
@@ -20,7 +20,7 @@ export const newGuides = [
     sections: [
       {
         heading: "How each one pays",
-        body: "A CD pays one fixed APY for the whole term. An I bond's rate has two parts: a fixed rate set when you buy, which never changes, plus an inflation rate based on the Consumer Price Index that the Treasury resets every six months (announced each May and November). When inflation is high, I bonds can pay far more than CDs; when inflation falls, their rate falls with it, while a CD's rate stays locked.",
+        body: "A CD pays one fixed APY for the whole term. **An I bond** is a U.S. savings bond whose rate has two parts. The first is a fixed rate set when you buy, which never changes. The second is an inflation rate based on the Consumer Price Index that the Treasury resets every six months, announced each May and November. **The composite rate** is the combined rate an I bond actually earns from those two parts ([TreasuryDirect](https://www.treasurydirect.gov/savings-bonds/i-bonds/i-bonds-interest-rates/)). When inflation is high, I bonds can pay far more than CDs; when inflation falls, their rate falls with it, while a CD's rate stays locked.",
         bullets: [
           "CD: one fixed rate, known on day one.",
           "I bond: fixed rate plus an inflation rate that changes every 6 months.",
@@ -29,14 +29,14 @@ export const newGuides = [
       },
       {
         heading: "I bonds vs CDs at a glance",
-        body: "The biggest practical differences are the purchase limit and how long your money is tied up.",
+        body: "The biggest practical differences are the purchase limit and how long your money is tied up. TreasuryDirect lists the $10,000 yearly limit and the 12-month minimum hold ([TreasuryDirect](https://www.treasurydirect.gov/savings-bonds/i-bonds/)).",
         table: {
           columns: ["", "I bonds", "Bank CDs"],
           rows: [
             ["Rate", "Fixed rate + inflation rate, resets every 6 months", "Fixed for the term"],
             ["Purchase limit", "$10,000 per person per calendar year (electronic, via TreasuryDirect)", "No limit (insured to $250,000 per bank)"],
             ["Minimum hold", "12 months — can't redeem earlier", "None, but early withdrawal costs a penalty"],
-            ["Early-exit cost", "Lose the last 3 months of interest if redeemed before 5 years", "Usually 3–12 months of interest"],
+            ["Early-exit cost", "Lose the last 3 months of interest if redeemed before 5 years", "Commonly about 2–12 months of interest"],
             ["Federal tax", "Deferred until you redeem (up to 30 years)", "Due every year"],
             ["State/local tax", "Exempt", "Taxed"],
             ["Where to buy", "TreasuryDirect.gov", "Any bank or credit union"],
@@ -50,7 +50,7 @@ export const newGuides = [
           "You want your savings to keep pace with inflation over several years.",
           "You live in a high-income-tax state (I bond interest is state-tax free).",
           "You'd like to defer federal tax until you redeem.",
-          "You may use the money for qualified higher-education costs (interest can be federally tax-free, subject to income limits).",
+          "You may use the money for qualified higher-education costs (interest can be federally tax-free, subject to income limits; see [IRS Publication 550](https://www.irs.gov/publications/p550)).",
         ],
       },
       {
@@ -65,7 +65,7 @@ export const newGuides = [
       },
       {
         heading: "How the 5-year rule changes the math",
-        body: "If you redeem an I bond after 12 months but before 5 years, you forfeit the last three months of interest. On a short horizon that can cut the effective yield noticeably, so compare a CD's full rate with the I bond's rate after the 3-month penalty. After five years there's no penalty, and the bond keeps earning for up to 30 years.",
+        body: "If you redeem an I bond after 12 months but before 5 years, you forfeit the last three months of interest. On a short horizon that can cut the effective yield noticeably, so compare a CD's full rate with the I bond's rate after the 3-month penalty. For example, $10,000 at an illustrative 4.00% composite rate that never changes would be worth about $10,824 after 2 years. Redeemed then, you get the 21-month value of about $10,718 instead. That is roughly $718 of interest rather than $824, an effective yield of about 3.5% a year. **A certificate of deposit (CD)** is a bank deposit with a fixed rate, so a 2-year CD at an illustrative 3.75% APY would beat that I bond over the same 2 years. After five years there's no penalty, and the bond keeps earning for up to 30 years.",
       },
     ],
     faqs: [
@@ -102,19 +102,19 @@ export const newGuides = [
     category: "Comparison",
     readTime: "8 min read",
     datePublished: "2026-10-31",
-    dateModified: "2026-10-31",
+    dateModified: "2026-11-01",
     excerpt:
       "A CD returns your principal plus a fixed rate at maturity. A bond fund has no maturity date and its price moves every day, so the right choice depends on whether you can ride out price swings.",
     answer:
-      "Choose a CD if you need a known amount on a known date: your principal is insured and the rate is fixed. Choose a bond fund if you're investing for the longer term, want diversification and daily liquidity, and can accept that the fund's value can fall — sometimes for a year or more — when interest rates rise. For money you'll spend within a few years, CDs are usually the safer fit.",
+      "Choose a CD if you need a known amount on a known date: your principal is insured and the rate is fixed. Choose a bond fund if you're investing for the longer term and want diversification and daily liquidity. You also need to accept that the fund's value can fall, sometimes for a year or more, when interest rates rise. For money you'll spend within a few years, CDs are usually the safer fit.",
     sections: [
       {
         heading: "The key difference: a bond fund never matures",
-        body: "An individual CD or bond has a maturity date when you get your principal back. A bond fund is a constantly managed basket of bonds with no maturity date, so there's no point at which you're promised your original investment back. Its price — the net asset value, or NAV — changes every trading day as interest rates and credit conditions move.",
+        body: "An individual CD or bond has a maturity date when you get your principal back. **A bond fund** is a pooled investment that holds a constantly managed basket of bonds with no maturity date ([Investor.gov](https://www.investor.gov/introduction-investing/investing-basics/glossary/bond-funds)). There's no point at which you're promised your original investment back. **Net asset value (NAV)** is the fund's price per share, and it changes every trading day as interest rates and credit conditions move.",
       },
       {
         heading: "CDs vs bond funds at a glance",
-        body: "Bond funds trade certainty for diversification and liquidity.",
+        body: "Bond funds trade certainty for diversification and liquidity. A bank CD is a deposit covered by [FDIC insurance](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance) up to $250,000 per depositor, per bank, per ownership category; a bond fund is not.",
         table: {
           columns: ["", "Bank CD", "Bond fund"],
           rows: [
@@ -129,7 +129,7 @@ export const newGuides = [
       },
       {
         heading: "Duration: how much a bond fund can fall",
-        body: "A bond fund's duration, listed on its fact sheet, estimates how much its price moves when rates change. A fund with a duration of 6 years would fall roughly 6% if interest rates rose by one percentage point, and rise roughly 6% if they fell by one point. Short-term bond funds (duration 1–3) move less; long-term funds (duration 10+) move a lot. A CD has no equivalent swing because its value isn't marked to the market.",
+        body: "**Duration** is a measure, in years, of how much a bond fund's price moves when interest rates change, and it is listed on the fund's fact sheet. When rates rise, bond prices fall, which is the interest rate risk [Investor.gov](https://www.investor.gov/introduction-investing/investing-basics/glossary/bond-funds) describes for bond funds. A fund with a duration of 6 years would fall roughly 6% if interest rates rose by one percentage point, and rise roughly 6% if they fell by one point. Short-term bond funds (duration 1–3) move less; long-term funds (duration 10+) move a lot. A CD has no equivalent swing because its value isn't marked to the market. For example, $10,000 in a fund with a 6-year duration would drop to about $9,400 after a 1-point rate rise. The same $10,000 in a 1-year CD at an illustrative 4.00% APY still pays $10,400 at maturity.",
         bullets: [
           "Duration 2: about a 2% drop for a 1-point rate rise.",
           "Duration 6: about a 6% drop.",
@@ -142,7 +142,7 @@ export const newGuides = [
       },
       {
         heading: "When a CD makes sense",
-        body: "CDs suit money you'll need on a specific date — a down payment, tuition or planned retirement spending in the next few years — because you know exactly what you'll have and there's no risk of selling after a price drop. A CD ladder can give regular access while keeping that certainty.",
+        body: "CDs suit money you'll need on a specific date, such as a down payment, tuition or planned retirement spending in the next few years. You know exactly what you'll have, and there's no risk of selling after a price drop. A CD ladder can give regular access while keeping that certainty.",
       },
     ],
     faqs: [
@@ -173,7 +173,7 @@ export const newGuides = [
     category: "Comparison",
     readTime: "8 min read",
     datePublished: "2026-10-31",
-    dateModified: "2026-10-31",
+    dateModified: "2026-11-01",
     excerpt:
       "Treasury notes and bonds and bank CDs are both very safe. The decision usually comes down to after-tax yield in your state and whether you might sell before maturity.",
     answer:
@@ -181,7 +181,7 @@ export const newGuides = [
     sections: [
       {
         heading: "Treasury bills, notes and bonds",
-        body: "The U.S. Treasury sells debt in three lengths. Treasury bills mature in a year or less and are covered in our CD vs Treasury bills guide. Treasury notes mature in 2, 3, 5, 7 or 10 years, and Treasury bonds in 20 or 30 years. Notes and bonds pay interest every six months and return their face value at maturity. They're sold at auction through TreasuryDirect or a brokerage and trade daily in the secondary market.",
+        body: "The U.S. Treasury sells debt in three lengths. Treasury bills mature in a year or less and are covered in our CD vs Treasury bills guide. **Treasury notes** are U.S. government securities that mature in 2, 3, 5, 7 or 10 years ([TreasuryDirect](https://www.treasurydirect.gov/marketable-securities/treasury-notes/)). **Treasury bonds** are U.S. government securities that mature in 20 or 30 years ([TreasuryDirect](https://www.treasurydirect.gov/marketable-securities/treasury-bonds/)). Notes and bonds pay interest every six months and return their face value at maturity. They're sold at auction through TreasuryDirect or a brokerage and trade daily in the secondary market.",
       },
       {
         heading: "CDs vs Treasuries at a glance",
@@ -200,7 +200,7 @@ export const newGuides = [
       },
       {
         heading: "How to compare after-tax yields",
-        body: "Because Treasury interest skips state income tax, convert the CD's yield to an after-state-tax figure before comparing. A simple way: CD APY × (1 − your state tax rate). With an illustrative 5% state rate, a CD at 4.40% is worth about 4.18% after state tax, so a Treasury yielding more than 4.18% would come out ahead. In a state with no income tax, compare the headline yields directly.",
+        body: "Because Treasury interest skips state and local income tax ([IRS Publication 550](https://www.irs.gov/publications/p550)), convert the CD's yield to an after-state-tax figure before comparing. A simple way: CD APY × (1 − your state tax rate). For example, with an illustrative 5% state rate, a CD at an illustrative 4.40% APY is worth about 4.18% after state tax. On $20,000 for a year, that is $880 of CD interest, or $836 after state tax. A Treasury yielding more than 4.18% would come out ahead. In a state with no income tax, compare the headline yields directly.",
         bullets: [
           "CD after state tax = CD APY × (1 − state rate).",
           "Compare that figure with the Treasury yield for the same term.",
@@ -209,11 +209,11 @@ export const newGuides = [
       },
       {
         heading: "Selling before maturity",
-        body: "If you might need the money early, the exit costs differ. A CD's penalty is known in advance (for example, 6 or 12 months of interest). A Treasury's sale price depends on rates at the time: if rates have fallen you may sell at a gain; if they've risen you'll sell at a loss. Holding either to maturity returns your full principal.",
+        body: "**The secondary market** is where investors buy and sell Treasuries after they're issued, at prices that move with interest rates. If you might need the money early, the exit costs differ. A CD's penalty is known in advance (for example, 6 or 12 months of interest). A Treasury's sale price depends on rates at the time: if rates have fallen you may sell at a gain; if they've risen you'll sell at a loss. Holding either to maturity returns your full principal.",
       },
       {
         heading: "Which to choose",
-        body: "Choose CDs when they pay a clearly higher after-tax yield for your term, when you want compounding without managing coupons, or when you're under the $250,000 insurance limit per bank. Choose Treasuries in high-tax states, for amounts above insurance limits, for terms longer than banks offer, or when you might want to sell before maturity.",
+        body: "Choose CDs when they pay a clearly higher after-tax yield for your term, when you want compounding without managing coupons, or when you're under the $250,000 [FDIC insurance](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance) limit per bank. Choose Treasuries in high-tax states, for amounts above insurance limits, for terms longer than banks offer, or when you might want to sell before maturity.",
       },
     ],
     faqs: [

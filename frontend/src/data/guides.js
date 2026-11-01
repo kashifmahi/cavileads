@@ -19,20 +19,20 @@ export const guides = [
     excerpt:
       "Both are FDIC-insured ways to earn interest. The right choice depends on when you'll need the money and whether you'd rather lock today's rate or keep it floating.",
     answer:
-      "Choose a CD for money you won't touch before a known date — it locks today's APY, which matters most when rates are falling. Choose a high-yield savings account (HYSA) for your emergency fund or anything you might need on short notice. On a $10,000 deposit, a 1-year CD at 4.50% earns $450; an HYSA that starts at 4.00% and drifts down to 3.50% after a Fed cut earns closer to $375 — but you can get at it any day.",
+      "Choose a CD for money you won't touch before a known date — it locks today's APY, which matters most when rates are falling. Choose a high-yield savings account (HYSA) for your emergency fund or anything you might need on short notice. On a $10,000 deposit, a 1-year CD at an illustrative 4.50% APY earns $450. An HYSA that starts at 4.00% and drifts down to 3.50% after a Fed cut earns closer to $375, but you can get at it any day.",
     sections: [
       {
         heading: "The core difference: locked vs. floating",
-        body: "A high-yield savings account pays a variable rate you can access anytime. A certificate of deposit pays a fixed rate in exchange for leaving the money alone for a set term. When the Federal Reserve cuts its benchmark rate, HYSA yields usually drop within two to four weeks — but a CD keeps paying its locked rate until maturity. The reverse is also true: if rates rise, the HYSA floats up and the CD stays put.",
+        body: "**A high-yield savings account (HYSA)** is a bank savings account that pays a variable rate, usually well above the national average, and lets you withdraw anytime. **A certificate of deposit (CD)** is a bank deposit that pays a fixed rate in exchange for leaving the money alone for a set term. When the Federal Reserve cuts its benchmark rate, HYSA yields usually drop within two to four weeks — but a CD keeps paying its locked rate until maturity. The reverse is also true: if rates rise, the HYSA floats up and the CD stays put.",
         bullets: [
           "CD: fixed APY, fixed term (3 months to 5 years), early-withdrawal penalty.",
           "HYSA: variable APY, no term, withdraw anytime (some banks cap monthly transfers).",
-          "Both: FDIC insured up to $250,000 per depositor, per bank, per ownership category.",
+          "Both: insured up to $250,000 per depositor, per bank, per ownership category ([FDIC](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance)).",
         ],
       },
       {
         heading: "What $10,000 actually earns",
-        body: "The honest comparison is after a rate move, not on day one. Suppose both start near 4.50% APY and the Fed cuts twice during the year.",
+        body: "The honest comparison is after a rate move, not on day one. Suppose both start near an illustrative 4.50% APY and the Fed cuts twice during the year. For example, $10,000 in the CD earns $10,000 × 4.50% = $450, while the HYSA's average rate slips to about 4.10% and it earns roughly $410. For a neutral baseline, the FDIC publishes national average savings and CD rates each month on its [national rates page](https://www.fdic.gov/national-rates-and-rate-caps).",
         bullets: [
           "1-year CD at 4.50%: $450 interest, guaranteed, paid at maturity.",
           "HYSA starting at 4.50% and ending at 3.75%: roughly $410, and it could keep falling.",
@@ -61,7 +61,7 @@ export const guides = [
       },
       {
         heading: "The hybrid most savers end up with",
-        body: "You don't have to pick one. A common structure keeps the emergency fund in an HYSA and ladders everything else into CDs so a rung matures every six or twelve months. A no-penalty CD is the third option: it locks a rate but lets you withdraw the full balance after the first week with no fee, usually for about 0.25–0.50% less APY than a standard CD of the same term.",
+        body: "You don't have to pick one. A common structure keeps the emergency fund in an HYSA and ladders everything else into CDs so a rung matures every six or twelve months. The third option is a no-penalty CD. **No-penalty CDs** are CDs that lock a rate but let you withdraw the full balance after the first week with no fee. They usually pay about 0.25–0.50% less APY than a standard CD of the same term.",
         bullets: [
           "HYSA: 3–6 months of expenses, always accessible.",
           "CD ladder: the rest, split across 1- to 5-year terms.",
@@ -109,11 +109,11 @@ export const guides = [
     sections: [
       {
         heading: "Safety: effectively a tie",
-        body: "Treasury bills carry the full faith and credit of the U.S. government. CDs from FDIC-insured banks are federally insured up to $250,000 per depositor, per bank, per ownership category. Below those limits, both are considered among the safest places to hold cash. Above $250,000, T-bills keep their guarantee at any size; CDs require splitting deposits across banks.",
+        body: "**A Treasury bill (T-bill)** is short-term U.S. government debt that matures in one year or less and pays its full face value at maturity. Treasury bills carry the full faith and credit of the U.S. government. **FDIC insurance** is federal protection for deposits at member banks, up to $250,000 per depositor, per bank, per ownership category ([FDIC](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance)). CDs from FDIC-insured banks carry that coverage. Below those limits, both are considered among the safest places to hold cash. Above $250,000, T-bills keep their guarantee at any size; CDs require splitting deposits across banks.",
       },
       {
         heading: "The tax angle favors T-bills",
-        body: "T-bill interest is taxable federally but exempt from state and local income tax. CD interest is taxed at every level. The effect is biggest in high-tax states.",
+        body: "T-bill interest is taxable federally but exempt from state and local income tax ([TreasuryDirect](https://www.treasurydirect.gov/marketable-securities/tax-forms-and-withholding)). CD interest is taxed at every level. The effect is biggest in high-tax states.",
         bullets: [
           "California (up to 13.3% state tax): a 4.50% T-bill is equivalent to roughly a 5.19% CD for a top-bracket saver.",
           "New York (up to 10.9%): a 4.50% T-bill is equivalent to about a 5.05% CD (more for New York City residents, who also pay city income tax).",
@@ -126,7 +126,7 @@ export const guides = [
       },
       {
         heading: "Convenience and term length favor CDs",
-        body: "Opening a CD takes five minutes at an online bank and the interest compounds inside the account. T-bills require a TreasuryDirect or brokerage account, and a reinvestment plan every 4, 6, 8, 13, 17, 26 or 52 weeks (TreasuryDirect lets you schedule the reinvestment when you buy). Beyond one year you'd move to Treasury notes, which trade with more price volatility — a 2- to 5-year CD is simpler and its rate is just as locked.",
+        body: "Opening a CD takes five minutes at an online bank and the interest compounds inside the account. T-bills require a TreasuryDirect or brokerage account, and a reinvestment plan every 4, 6, 8, 13, 17, 26 or 52 weeks (TreasuryDirect lets you [schedule the reinvestment](https://treasurydirect.gov/help-center/treasury-bills/redeem-reinvest-treasury-bills/) when you buy). Beyond one year you'd move to Treasury notes, which trade with more price volatility — a 2- to 5-year CD is simpler and its rate is just as locked.",
         bullets: [
           "CD: one account, auto-compounding, set-and-forget until maturity.",
           "T-bill: auction calendar, reinvestment decisions, brokerage statements.",
@@ -135,7 +135,7 @@ export const guides = [
       },
       {
         heading: "A worked example",
-        body: "A saver in New Jersey (top state rate 10.75%) with $50,000 compares a 1-year CD at 4.60% APY with a 52-week T-bill at 4.45%.",
+        body: "For example, a saver in New Jersey (top state rate 10.75%) with $50,000 compares a 1-year CD at an illustrative 4.60% APY with a 52-week T-bill at an illustrative 4.45%.",
         bullets: [
           "CD: $2,300 interest, minus federal and ~$247 state tax.",
           "T-bill: $2,225 interest, minus federal tax only.",
@@ -179,11 +179,11 @@ export const guides = [
     excerpt:
       "Brokered CDs are bought through a brokerage and can be sold before maturity — but they behave differently from the CDs you open directly at a bank.",
     answer:
-      "Bank CDs suit most savers: you open them directly, interest compounds inside the account, and early withdrawal costs a known penalty. Brokered CDs — bought through Fidelity, Schwab, Vanguard and the like — are better for large balances that need FDIC coverage across many banks in one account, and for investors who may want to sell before maturity at market price instead of paying a penalty. The trade-offs: brokered CDs pay simple interest, can be callable, and can lose value if you sell after rates rise.",
+      "Bank CDs suit most savers: you open them directly, interest compounds inside the account, and early withdrawal costs a known penalty. Brokered CDs are bought through Fidelity, Schwab, Vanguard and the like. They are better for large balances that need FDIC coverage across many banks in one account. They also suit investors who may want to sell before maturity at market price instead of paying a penalty. The trade-offs: brokered CDs pay simple interest, can be callable, and can lose value if you sell after rates rise.",
     sections: [
       {
         heading: "How brokered CDs work",
-        body: "Banks issue CDs in bulk to brokerages, which resell them to customers in $1,000 increments. You buy them like a bond inside your brokerage account. Because you can hold CDs from dozens of banks in one place, brokered CDs are the standard way to keep a $1 million cash position fully FDIC-insured without opening twenty bank accounts.",
+        body: "**A brokered CD** is a CD that a bank issues through a brokerage firm, which sells it to customers in brokerage accounts. Banks issue CDs in bulk to brokerages, which resell them to customers, often with a $1,000 minimum and $1,000 increments (as at [Vanguard](https://investor.vanguard.com/investment-products/cds)); some brokerages allow smaller amounts. The [Investor.gov brokered CD bulletin](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/brokered-cds-investor-bulletin) describes this as a master CD issued to the deposit broker, which sells interests in it to its customers. You buy them like a bond inside your brokerage account. Because you can hold CDs from dozens of banks in one place, brokered CDs are the standard way to keep a $1 million cash position fully FDIC-insured without opening twenty bank accounts.",
         bullets: [
           "Minimum: typically $1,000 per CD.",
           "New-issue brokered CDs usually have no purchase fee; secondary-market trades may carry a small markup.",
@@ -192,11 +192,11 @@ export const guides = [
       },
       {
         heading: "Selling early: market risk instead of a penalty",
-        body: "A bank CD charges a defined interest penalty for early withdrawal. A brokered CD has no penalty — you sell it on the secondary market at the going price. If rates have risen since you bought, your CD is worth less and you take a loss; if rates have fallen, you may sell at a gain. Thin trading can also mean a wide bid-ask spread on small lots.",
+        body: "A bank CD charges a defined interest penalty for early withdrawal. A brokered CD has no penalty — you sell it on the secondary market at the going price. **The secondary market** is where investors buy and sell existing securities, such as brokered CDs, before they mature. If rates have risen since you bought, your CD is worth less and you take a loss, as the [SEC explains](https://www.sec.gov/investor/pubs/certific.htm); if rates have fallen, you may sell at a gain. Thin trading can also mean a wide bid-ask spread on small lots.",
       },
       {
         heading: "Interest: compounding vs. simple",
-        body: "Most bank CDs compound interest daily or monthly and quote an APY. Brokered CDs pay simple interest — usually monthly or semi-annually — into your brokerage cash balance, and the quoted rate is a coupon, not an APY. On a 5-year CD at 4.50%, annual compounding adds about 2.1 percentage points of total return over the term (24.6% vs 22.5%) unless you reinvest each coupon yourself.",
+        body: "Most bank CDs compound interest daily or monthly and quote an APY. Brokered CDs [generally pay simple interest](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/brokered-cds-investor-bulletin) — usually monthly or semi-annually — into your brokerage cash balance, and the quoted rate is a coupon, not an APY. On a 5-year CD at 4.50%, annual compounding adds about 2.1 percentage points of total return over the term (24.6% vs 22.5%) unless you reinvest each coupon yourself. You can model the bank CD side in the [CD calculator](/cd-calculator).",
         bullets: [
           "Bank CD, $25,000 at 4.50% APY for 5 years: about $6,150 interest.",
           "Brokered CD, $25,000 at 4.50% simple for 5 years: $5,625 interest if coupons sit in cash.",
@@ -204,7 +204,7 @@ export const guides = [
       },
       {
         heading: "Callable brokered CDs: read the fine print",
-        body: "Some brokered CDs are callable: the bank can redeem them early, after a stated call-protection period, typically when rates fall. You get your principal back but lose the high rate exactly when you'd most want to keep it. Callable CDs pay a slightly higher coupon to compensate. If you see a brokered CD yielding noticeably more than peers, check whether it's callable before buying.",
+        body: "**A callable CD** is a CD that the issuing bank can redeem before its maturity date. Only the bank holds that right, not you, according to the [SEC](https://www.sec.gov/investor/pubs/certific.htm). Some brokered CDs are callable: the bank can redeem them early, after a stated call-protection period, typically when rates fall. You get your principal back but lose the high rate exactly when you'd most want to keep it. Callable CDs pay a slightly higher coupon to compensate. If you see a brokered CD yielding noticeably more than peers, check whether it's callable before buying.",
       },
       {
         heading: "Which should you choose?",
@@ -252,7 +252,7 @@ export const guides = [
     sections: [
       {
         heading: "The basic deal",
-        body: "You give the bank certainty — your money stays put for the term — and the bank gives you certainty in return: a rate that can't change. That's the whole trade. A 12-month CD opened today at 4.50% APY pays 4.50% for 12 months no matter what the Federal Reserve does, which is exactly why savers reach for CDs when they expect rates to fall.",
+        body: "**A certificate of deposit (CD)** is a bank or credit union deposit that pays a fixed rate for a set term, with a penalty for withdrawing early. You give the bank certainty — your money stays put for the term — and the bank gives you certainty in return: a rate that can't change. That's the whole trade. A 12-month CD opened today at an illustrative 4.50% APY pays 4.50% for 12 months no matter what the Federal Reserve does. That's why savers reach for CDs when they expect rates to fall. The FDIC tracks national average CD rates by term on its [national rates page](https://www.fdic.gov/national-rates-and-rate-caps).",
         bullets: [
           "Terms: commonly 3, 6, 12, 18, 24, 36 and 60 months.",
           "Minimums: $0 to $2,500 at most online banks; some require $5,000 or more.",
@@ -261,20 +261,20 @@ export const guides = [
       },
       {
         heading: "How the interest works",
-        body: "Most banks compound CD interest daily or monthly: earned interest is added to your balance and future interest is calculated on the larger amount. APY (annual percentage yield) already includes that compounding, and federal rules require every bank to calculate it the same way — so APY is the only number you need to compare.",
+        body: "Most banks compound CD interest daily or monthly: earned interest is added to your balance and future interest is calculated on the larger amount. **APY (annual percentage yield)** is the yearly return on a deposit including compounding. Federal rules require every bank to calculate it the same way, so APY is the only number you need to compare. For example, $10,000 at an illustrative 4.50% APY for 1 year grows to $10,000 × 1.045 = $10,450.",
         bullets: [
-          "$10,000 at 4.50% APY for 1 year → $10,450.",
-          "$10,000 at 4.25% APY for 3 years → about $11,330.",
-          "$10,000 at 4.20% APY for 5 years → about $12,285.",
+          "$10,000 at an illustrative 4.50% APY for 1 year → $10,450.",
+          "$10,000 at an illustrative 4.25% APY for 3 years → about $11,330.",
+          "$10,000 at an illustrative 4.20% APY for 5 years → about $12,284.",
         ],
       },
       {
         heading: "What happens at maturity",
-        body: "When the term ends you enter a grace period, typically 7 to 10 days, when you can withdraw everything, add money, or move to a different term. If you do nothing, most banks automatically renew you into a new CD of the same term at whatever rate is current — which may be much lower than what you had. Set a calendar reminder for the maturity date and decide on purpose.",
+        body: "**A grace period** is the short window after a CD matures, typically 7 to 10 days, when you can withdraw everything, add money, or move to a different term without a penalty. If you do nothing, most banks automatically renew you into a new CD of the same term at whatever rate is current — which may be much lower than what you had. Set a calendar reminder for the maturity date and decide on purpose.",
       },
       {
         heading: "The early-withdrawal penalty",
-        body: "Taking money out before maturity costs a set amount of interest. The penalty is charged even if you haven't earned that much interest yet, so a very early withdrawal can dip into principal.",
+        body: "**An early-withdrawal penalty** is a fee, usually set as a number of days or months of interest, for taking money out before maturity. The penalty is charged even if you haven't earned that much interest yet, so a very early withdrawal can dip into principal.",
         bullets: [
           "Terms under 12 months: usually 3 months of interest.",
           "12 to 24 months: usually 6 months of interest.",
@@ -338,24 +338,24 @@ export const guides = [
     sections: [
       {
         heading: "The core difference",
-        body: "An MMA behaves like a savings account with extra access features. You can move money in and out, and many banks issue checks or a debit card. A CD is the opposite: one deposit, one term, one rate, with a penalty for leaving early. The MMA gives flexibility; the CD gives certainty.",
+        body: "**A money market account (MMA)** is a bank deposit account with a variable rate. It behaves like a savings account with extra access features. You can move money in and out, and many banks issue checks or a debit card. **A certificate of deposit (CD)** is a bank deposit with a fixed rate for a set term. It is the opposite: one deposit, one term, one rate, with a penalty for leaving early. The MMA gives flexibility; the CD gives certainty.",
         bullets: [
           "MMA: variable APY, deposits and withdrawals anytime, sometimes a cap of 6 convenient withdrawals per month.",
           "CD: fixed APY, no additional deposits, early-withdrawal penalty.",
-          "Both: FDIC insured up to $250,000 per depositor, per bank.",
+          "Both: FDIC insured up to $250,000 per depositor, per bank, per ownership category ([FDIC](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance)); credit union versions get the same coverage from the [NCUA](https://ncua.gov/consumers/share-insurance-coverage).",
         ],
       },
       {
         heading: "Rates: locked vs. floating",
-        body: "The best CDs usually out-pay the best money market accounts, and the CD rate is frozen the day you open it. MMA rates move with the market — they rise during a hiking cycle and fall within weeks of a Fed cut. If you expect rates to fall, a CD protects your yield; if you expect them to rise, an MMA floats up with them.",
+        body: "The best CDs usually out-pay the best money market accounts, and the CD rate is frozen the day you open it. MMA rates move with the market — they rise during a hiking cycle and fall within weeks of a Fed cut. If you expect rates to fall, a CD protects your yield; if you expect them to rise, an MMA floats up with them. The FDIC posts national average money market and CD rates each month on its [national rates page](https://www.fdic.gov/national-rates-and-rate-caps).",
         bullets: [
-          "Falling-rate year, $20,000: CD at 4.50% earns $900; MMA drifting from 4.25% to 3.50% earns roughly $775.",
+          "Falling-rate year, $20,000, illustrative rates: CD at 4.50% earns $900; MMA drifting from 4.25% to 3.50% earns roughly $775.",
           "Rising-rate year: the MMA can finish above the CD — the only case where it wins on yield.",
         ],
       },
       {
         heading: "Access to your money",
-        body: "This is where the MMA wins outright. Need $3,000 for a car repair? Write a check or transfer it the same day. Breaking a CD early triggers a penalty of 3 to 12 months of interest depending on the term. For an emergency fund, that flexibility matters more than an extra half a percent.",
+        body: "This is where the MMA wins outright. Need $3,000 for a car repair? Write a check or transfer it the same day. Breaking a CD early triggers a penalty, commonly about 2 to 12 months of interest depending on the term and the bank. For example, a $20,000 CD at an illustrative 4.50% APY with a 3-month penalty costs $20,000 × 4.50% × 3/12 = $225 to break. For an emergency fund, that flexibility matters more than an extra half a percent.",
       },
       {
         heading: "Minimums and fees",
@@ -406,11 +406,11 @@ export const guides = [
     sections: [
       {
         heading: "What a CD ladder is",
-        body: "Instead of putting $25,000 into a single 5-year CD, you open five CDs of $5,000 each with terms of 1, 2, 3, 4 and 5 years. From then on, one CD matures every year. You can spend it, move it, or — the usual play — reinvest it in a new 5-year CD so the ladder keeps rolling.",
+        body: "**A CD ladder** is a set of CDs with staggered maturity dates, so part of your money comes due at regular intervals. **Rungs** are the individual CDs in the ladder. Instead of putting $25,000 into a single 5-year CD, you open five CDs of $5,000 each with terms of 1, 2, 3, 4 and 5 years. From then on, one CD matures every year. You can spend it, move it, or — the usual play — reinvest it in a new 5-year CD so the ladder keeps rolling.",
       },
       {
         heading: "Why it beats a single CD",
-        body: "Long-term CDs usually pay more but lock you in; short-term CDs stay flexible but earn less. A ladder captures both. It also spreads reinvestment risk: you're never forced to renew all of your money at one moment's rates, which matters a lot when rates swing by a full percentage point in a year.",
+        body: "Long-term CDs usually pay more but lock you in; short-term CDs stay flexible but earn less. A ladder captures both. **Reinvestment risk** is the risk that money coming due has to be reinvested at a lower rate. A ladder also spreads reinvestment risk: you're never forced to renew all of your money at one moment's rates, which matters a lot when rates swing by a full percentage point in a year.",
         bullets: [
           "Liquidity: a rung matures every year (or every few months in a mini-ladder).",
           "Yield: within four years, every rung is earning the 5-year rate.",
@@ -431,7 +431,7 @@ export const guides = [
       },
       {
         heading: "Where to open the rungs",
-        body: "You don't have to use one bank. Shop each term separately — the bank with the best 1-year rate is rarely the one with the best 5-year rate. Spreading across banks also keeps large ladders under the FDIC limit of $250,000 per depositor, per bank, per ownership category, including accrued interest. Keep a simple spreadsheet with each CD's bank, APY, maturity date and renewal instructions.",
+        body: "You don't have to use one bank. Shop each term separately — the bank with the best 1-year rate is rarely the one with the best 5-year rate. Spreading across banks also keeps large ladders under the FDIC limit of $250,000 per depositor, per bank, per ownership category. That limit includes accrued interest, per [FDIC — Deposit Insurance at a Glance](https://fdic.gov/deposit-insurance/deposit-insurance-glance-brochure-english.pdf). Keep a simple spreadsheet with each CD's bank, APY, maturity date and renewal instructions.",
       },
       {
         heading: "Variations worth knowing",
@@ -448,7 +448,7 @@ export const guides = [
         bullets: [
           "Letting rungs auto-renew into the same short term at a low rate — set reminders for every maturity date.",
           "Building the ladder when long-term rates are far below short-term rates; a mini-ladder may earn more.",
-          "Exceeding $250,000 at one bank.",
+          "Exceeding $250,000 at one bank, the [FDIC limit](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance) per depositor for each ownership category.",
           "Laddering emergency-fund money — that belongs in a savings account.",
         ],
       },
@@ -493,7 +493,7 @@ export const guides = [
     sections: [
       {
         heading: "The safety backstop: federal insurance",
-        body: "When an FDIC-insured bank fails, the FDIC either moves your deposits to another bank or pays you directly; the FDIC's goal is to pay insured deposits within two business days of a failure. Since FDIC insurance began in 1934, no depositor has lost a penny of insured funds. Coverage is $250,000 per depositor, per bank, per ownership category — so a couple with a joint account at one bank is covered to $500,000, and the same couple with individual and joint accounts can reach $1 million at a single institution.",
+        body: "**FDIC insurance** is federal deposit insurance that protects deposits at insured banks, including CDs, if the bank fails. **NCUA share insurance** is the matching coverage for credit unions, backed by the full faith and credit of the United States, per [MyCreditUnion.gov](https://mycreditunion.gov/share-insurance). When an FDIC-insured bank fails, the FDIC either moves your deposits to another bank or pays you directly. The FDIC's goal is to pay insured deposits within two business days of a failure, according to its page on [payment to depositors](https://fdic.gov/bank-failures/payment-depositors). Since FDIC insurance began in 1934, no depositor has lost a penny of insured funds. Coverage is $250,000 per depositor, per bank, per ownership category. So a couple with a joint account at one bank is covered to $500,000. The same couple with individual and joint accounts can reach $1 million at a single institution.",
         bullets: [
           "Check a bank at FDIC.gov/bankfind before opening an account.",
           "Credit unions: look for NCUA insurance. Its $250,000 standard limit matches the FDIC's, but the NCUA's combined trust-account rule takes effect December 1, 2026, so trust coverage at credit unions follows the older rules until then.",
@@ -515,7 +515,7 @@ export const guides = [
         heading: "The cons",
         body: "Safety has a price, and it's worth naming plainly.",
         bullets: [
-          "Locked money: early withdrawal often costs 3–12 months of interest, sometimes more on long terms.",
+          "Locked money: early withdrawal often costs about 2–12 months of interest, sometimes more on long terms.",
           "Rate risk in reverse: if rates rise after you lock, you're stuck below market until maturity.",
           "Inflation: CDs preserve purchasing power more than they build wealth; long-run returns trail stocks.",
           "Opportunity cost: a 5-year CD at 4.20% looks great until you need the cash in year two.",
@@ -532,7 +532,7 @@ export const guides = [
       },
       {
         heading: "CDs vs. other 'safe' options",
-        body: "For money that must not lose value, the realistic alternatives are high-yield savings accounts, Treasury bills and money market funds. Savings accounts are more liquid but float with rates. T-bills are state-tax-free and liquid; you buy them at TreasuryDirect or through a brokerage. Money market funds are not FDIC-insured. A CD is the simplest way to get a locked, insured rate.",
+        body: "For money that must not lose value, the realistic alternatives are high-yield savings accounts, Treasury bills and money market funds. Savings accounts are more liquid but float with rates. T-bills are state-tax-free and liquid; you buy them at TreasuryDirect or through a brokerage. Money market funds are not FDIC-insured; the [FDIC](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance) lists mutual funds among the products it does not cover. A CD is the simplest way to get a locked, insured rate.",
       },
       {
         heading: "Bottom line",
