@@ -24,7 +24,7 @@ export const EXPANSIONS = {
     metaDescription:
       "CD vs money market account: rates, FDIC insurance, access and minimums side by side, a $25,000 example, and how an MMA differs from a money market fund.",
     readTime: "11 min read",
-    dateModified: "2026-10-31",
+    dateModified: "2026-11-01",
     sections: [
       {
         before: "A practical split",
@@ -57,7 +57,7 @@ export const EXPANSIONS = {
       {
         before: "A practical split",
         heading: "Money market account vs money market fund",
-        body: "The names are confusing, but they are different products. A money market account is a bank deposit, insured by the FDIC or NCUA. A money market fund is a mutual fund sold by a brokerage that buys short-term debt; it is regulated by the SEC, aims to keep a $1.00 share price but is not FDIC insured and can, in rare cases, lose value. Funds often yield about the same as top MMAs, and Treasury-only funds can be partly exempt from state income tax.",
+        body: "The names are confusing, but they are different products. A money market account is a bank deposit, insured by the FDIC or NCUA. **A money market fund** is a mutual fund sold by a brokerage that buys short-term debt. It is regulated by the SEC and aims to keep a $1.00 share price, but it is not FDIC insured and can, in rare cases, lose value ([Investor.gov](https://www.investor.gov/introduction-investing/investing-basics/glossary/money-market-mutual-funds)). Funds often yield about the same as top MMAs, and Treasury-only funds can be partly exempt from state income tax.",
         bullets: [
           "Money market account: bank deposit, FDIC/NCUA insured, variable rate.",
           "Money market fund: investment, not FDIC insured, yield moves daily.",
@@ -67,7 +67,7 @@ export const EXPANSIONS = {
       {
         before: "A practical split",
         heading: "Withdrawal limits on money market accounts",
-        body: "Federal Regulation D used to cap convenient withdrawals from savings and money market accounts at six per month. The Federal Reserve removed that requirement in 2020, but many banks still keep a monthly limit or charge an excess-transaction fee, so read the account terms. A CD has no monthly limit — just one big one: money stays in until maturity unless you pay the penalty.",
+        body: "Federal Regulation D used to cap convenient withdrawals from savings and money market accounts at six per month. The [Federal Reserve removed that requirement in 2020](https://www.federalreserve.gov/newsevents/pressreleases/bcreg20200424a.htm), but many banks still keep a monthly limit or charge an excess-transaction fee, so read the account terms. A CD has no monthly limit — just one big one: money stays in until maturity unless you pay the penalty.",
       },
     ],
     faqs: [
@@ -92,7 +92,7 @@ export const EXPANSIONS = {
     metaDescription:
       "How a certificate of deposit works, step by step: how CD interest is calculated, what $10,000 earns, FDIC insurance, penalties and what happens at maturity.",
     readTime: "11 min read",
-    dateModified: "2026-10-31",
+    dateModified: "2026-11-01",
     sections: [
       {
         before: "Types of CDs you'll see",
@@ -109,7 +109,7 @@ export const EXPANSIONS = {
       {
         before: "Types of CDs you'll see",
         heading: "How bank CD interest works, with real numbers",
-        body: "APY already includes compounding, so the quick estimate is deposit × APY for one year. $10,000 in a 1-year CD at an illustrative 4.00% APY earns $400. Left for five years at the same 4.00% APY and compounding, it grows to about $12,166.53 — $2,166.53 of interest, of which $166.53 is interest earned on earlier interest. Banks quote both an interest rate and an APY; always compare APYs because they put every bank on the same footing.",
+        body: "APY already includes compounding, so the quick estimate is deposit × APY for one year. $10,000 in a 1-year CD at an illustrative 4.00% APY earns $400. Left for five years at the same 4.00% APY and compounding, it grows to about $12,166.53 — $2,166.53 of interest, of which $166.53 is interest earned on earlier interest. Banks quote both an interest rate and an APY; always compare APYs because they put every bank on the same footing. Interest is taxable in the year it's credited, and the bank reports it on [Form 1099-INT](https://www.irs.gov/forms-pubs/about-form-1099-int).",
         table: {
           columns: ["Deposit", "APY", "Term", "Balance at maturity", "Interest earned"],
           rows: [
@@ -123,7 +123,7 @@ export const EXPANSIONS = {
       {
         before: "Who CDs are right for",
         heading: "Are certificates of deposit FDIC insured?",
-        body: "Yes. CDs at FDIC-member banks are insured up to $250,000 per depositor, per bank, per ownership category — principal and earned interest together. Credit union share certificates get the same $250,000 coverage from the NCUA. If an insured bank fails, the FDIC has historically paid insured depositors within a few business days, either directly or by moving the account to another bank. You can hold more than $250,000 fully insured by spreading it across banks or ownership categories (individual, joint, certain retirement accounts, trust accounts).",
+        body: "Yes. CDs at FDIC-member banks are insured up to $250,000 per depositor, per bank, per ownership category — principal and earned interest together ([FDIC](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance)). **A share certificate** is a credit union's version of a CD, and it gets the same $250,000 coverage from the [NCUA](https://ncua.gov/consumers/share-insurance-coverage). If an insured bank fails, the FDIC has historically paid insured depositors within a few business days, either directly or by moving the account to another bank. You can hold more than $250,000 fully insured by spreading it across banks or ownership categories (individual, joint, certain retirement accounts, trust accounts).",
       },
     ],
     faqs: [
@@ -148,12 +148,12 @@ export const EXPANSIONS = {
     metaDescription:
       "High-yield savings vs CD: side-by-side table, what $25,000 earns in each, when a CD ladder beats an HYSA, and how to split your money.",
     readTime: "10 min read",
-    dateModified: "2026-10-31",
+    dateModified: "2026-11-01",
     sections: [
       {
         before: "When a CD wins",
         heading: "High-yield savings account vs CD at a glance",
-        body: "The two accounts share the same insurance. The difference is whether your rate and your access are fixed.",
+        body: "The two accounts share the same insurance: [FDIC](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance) coverage at banks and [NCUA](https://ncua.gov/consumers/share-insurance-coverage) coverage at credit unions. The difference is whether your rate and your access are fixed.",
         table: {
           columns: ["", "CD", "High-yield savings (HYSA)"],
           rows: [
@@ -170,7 +170,7 @@ export const EXPANSIONS = {
       {
         before: "The hybrid most savers end up with",
         heading: "CD ladder vs high-yield savings",
-        body: "A CD ladder splits money across several CDs that mature at different times — for example $25,000 as five $5,000 CDs maturing in 1, 2, 3, 4 and 5 years, each renewed into a new 5-year CD as it matures. A rung matures every year, so part of the money becomes available regularly while most of it earns longer-term rates. Compared with keeping all $25,000 in an HYSA, a ladder protects more of your yield when rates fall but gives up instant access to most of the balance.",
+        body: "**Laddering** is splitting money across several CDs that mature at different times; the result is called a CD ladder. For example, $25,000 can be split into five $5,000 CDs maturing in 1, 2, 3, 4 and 5 years. Each one is renewed into a new 5-year CD as it matures. A rung matures every year, so part of the money becomes available regularly while most of it earns longer-term rates. Compared with keeping all $25,000 in an HYSA, a ladder protects more of your yield when rates fall but gives up instant access to most of the balance.",
         bullets: [
           "Ladder: higher locked yields on most of the money; one rung available each year.",
           "HYSA: every dollar available today; yield moves with the market.",
@@ -685,7 +685,7 @@ export const EXPANSIONS = {
       {
         before: "Bottom line",
         heading: "The break-even CD rate at your state tax rate",
-        body: "To compare fairly, convert the T-bill yield into the CD APY you would need to match it after state tax: T-bill yield ÷ (1 − state tax rate). This ignores any federal deduction for state taxes, which is limited for most filers. The table uses an illustrative 4.00% T-bill. Worked example: $50,000 for one year, 24% federal bracket, 9% state rate. An illustrative 4.25% APY CD earns $2,125; after $510 federal and $191.25 state tax you keep $1,423.75. An illustrative 4.00% T-bill earns $2,000; after $480 federal tax you keep $1,520. The T-bill wins by $96.25, even though its yield is 0.25 points lower. The CD would need about 4.40% to break even. In a state with no income tax, the same CD keeps $1,615 and wins by $95. Check the [best 1-year CD rates](/best-1-year-cd-rates) and the [best 6-month CD rates](/best-6-month-cd-rates) against current bill yields, and see [how CD interest is taxed](/articles/how-is-cd-interest-taxed) for the federal side.",
+        body: "**The break-even CD rate** is the CD APY that leaves you the same interest after state tax as a T-bill. The formula is T-bill yield ÷ (1 − state tax rate). Current bill yields are on the [FRED 1-year Treasury bill series](https://fred.stlouisfed.org/series/DTB1YR). This ignores any federal deduction for state taxes, which is limited for most filers. The table uses an illustrative 4.00% T-bill. Worked example: $50,000 for one year, 24% federal bracket, 9% state rate. An illustrative 4.25% APY CD earns $2,125; after $510 federal and $191.25 state tax you keep $1,423.75. An illustrative 4.00% T-bill earns $2,000; after $480 federal tax you keep $1,520. The T-bill wins by $96.25, even though its yield is 0.25 points lower. The CD would need about 4.40% to break even. In a state with no income tax, the same CD keeps $1,615 and wins by $95. Check the [best 1-year CD rates](/best-1-year-cd-rates) and the [best 6-month CD rates](/best-6-month-cd-rates) against current bill yields, and see [how CD interest is taxed](/articles/how-is-cd-interest-taxed) for the federal side.",
         table: {
           caption: "Illustrative 4.00% T-bill yield. Break-even CD APY = 4.00% ÷ (1 − state rate). Federal tax applies to both.",
           columns: ["Your state income tax rate", "CD APY needed to match a 4.00% T-bill"],
