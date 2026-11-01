@@ -496,7 +496,7 @@ export const guides = [
         body: "When an FDIC-insured bank fails, the FDIC either moves your deposits to another bank or pays you directly; the FDIC's goal is to pay insured deposits within two business days of a failure. Since FDIC insurance began in 1934, no depositor has lost a penny of insured funds. Coverage is $250,000 per depositor, per bank, per ownership category — so a couple with a joint account at one bank is covered to $500,000, and the same couple with individual and joint accounts can reach $1 million at a single institution.",
         bullets: [
           "Check a bank at FDIC.gov/bankfind before opening an account.",
-          "Credit unions: look for NCUA insurance, which has identical limits.",
+          "Credit unions: look for NCUA insurance. Its $250,000 standard limit matches the FDIC's, but the NCUA's combined trust-account rule takes effect December 1, 2026, so trust coverage at credit unions follows the older rules until then.",
           "Fintech apps that 'partner' with banks: confirm which bank holds the deposit and how it's titled.",
         ],
       },
@@ -554,7 +554,7 @@ export const guides = [
       },
       {
         q: "Can I have more than $250,000 insured?",
-        a: "Yes. Use multiple banks, use different ownership categories (individual, joint, IRA, trust) at one bank, or buy brokered CDs from several issuers inside one brokerage account. Each route multiplies your coverage. Since April 2024, trust accounts are insured at $250,000 per beneficiary, up to five beneficiaries per owner, per bank.",
+        a: "Yes. Use multiple banks, use different ownership categories (individual, joint, IRA, trust) at one bank, or buy brokered CDs from several issuers inside one brokerage account. Each route multiplies your coverage. Since April 2024, FDIC trust accounts are insured at $250,000 per beneficiary, up to five beneficiaries per owner, per bank (the NCUA rule for credit unions follows on December 1, 2026).",
       },
     ],
   },

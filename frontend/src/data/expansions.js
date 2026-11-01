@@ -563,7 +563,6 @@ export const EXPANSIONS = {
       { label: "FDIC — Electronic Deposit Insurance Estimator (EDIE)", url: "https://edie.fdic.gov/" },
       { label: "NCUA — Share Insurance Coverage", url: "https://www.ncua.gov/consumers/share-insurance-coverage" },
       { label: "Investor.gov — Certificates of Deposit (CDs)", url: "https://www.investor.gov/investing-basics/investment-products/certificates-deposit-cds" },
-      { label: "CFPB — Start Small, Save Up emergency savings initiative", url: "https://www.consumerfinance.gov/about-us/newsroom/cfpb-announces-start-small-save-initiative" },
     ],
   },
 
@@ -593,8 +592,8 @@ export const EXPANSIONS = {
     ],
     faqs: [
       {
-        q: "Did the Fed cut rates in 2026?",
-        a: "Not between June and October 2026. The Fed held its target range at 3.50% to 3.75% in June and July, raised it to 3.75% to 4.00% on September 16, 2026, and held it there on October 28, 2026.",
+        q: "What has the Fed done with rates recently?",
+        a: "It has not cut since at least June 2026. The Fed held its target range at 3.50% to 3.75% in June and July, raised it to 3.75% to 4.00% on September 16, 2026, and held it there on October 28, 2026.",
       },
     ],
     sources: [
@@ -798,7 +797,7 @@ export const EXPANSIONS = {
       {
         before: "The pros",
         heading: "How $500,000 can be fully insured at one bank",
-        body: "Coverage is figured per ownership category, so one person can insure more than $250,000 at a single bank by titling accounts differently. Take a saver with $500,000 at one bank. If all of it sits in individual CDs, $250,000 is insured and $250,000 is not. Spread across three categories, all of it can be covered. Since April 1, 2024, revocable trusts (including payable-on-death accounts) and irrevocable trusts are one trust category. It is insured at $250,000 per eligible beneficiary, up to five, for a maximum of $1,250,000 per owner per bank. Accrued interest counts toward every limit, so leave room. At an illustrative 4.00% APY, a $250,000 single CD would grow to $260,000 in a year and put $10,000 over the cap. For retirement savers, see [CDs for retirement](/cd-for-retirement). For balances that won't fit at one bank, see [brokered CDs](/guides/brokered-vs-bank-cds) or [jumbo CDs](/articles/what-is-a-jumbo-cd).",
+        body: "Coverage is figured per ownership category, so one person can insure more than $250,000 at a single bank by titling accounts differently. Take a saver with $500,000 at one bank. If all of it sits in individual CDs, $250,000 is insured and $250,000 is not. Spread across three categories, all of it can be covered. Since April 1, 2024, revocable trusts (including payable-on-death accounts) and irrevocable trusts are one trust category. It is insured at $250,000 per eligible beneficiary, up to five, for a maximum of $1,250,000 per owner per bank. This is the FDIC rule; the NCUA's version for credit unions takes effect December 1, 2026. Accrued interest counts toward every limit, so leave room. At an illustrative 4.00% APY, a $250,000 single CD would grow to $260,000 in a year and put $10,000 over the cap. For retirement savers, see [CDs for retirement](/cd-for-retirement). For balances that won't fit at one bank, see [brokered CDs](/guides/brokered-vs-bank-cds) or [jumbo CDs](/articles/what-is-a-jumbo-cd).",
         table: {
           caption: "One owner, one bank. Accrued interest also counts toward each limit.",
           columns: ["Ownership category", "Example account", "Balance", "Coverage limit", "Insured", "Uninsured"],
@@ -815,7 +814,7 @@ export const EXPANSIONS = {
     faqs: [
       {
         q: "How did the 2024 FDIC trust rule change CD coverage?",
-        a: "Since April 1, 2024, revocable trusts (including payable-on-death accounts) and irrevocable trusts are combined into one trust category. Coverage is $250,000 per eligible beneficiary, up to five, so the maximum is $1,250,000 per owner per bank across all of that owner's trust deposits.",
+        a: "Since April 1, 2024, revocable trusts (including payable-on-death accounts) and irrevocable trusts are combined into one trust category. Coverage is $250,000 per eligible beneficiary, up to five, so the maximum is $1,250,000 per owner per bank across all of that owner's trust deposits. This is the FDIC rule; the NCUA's matching rule for credit unions takes effect December 1, 2026.",
       },
     ],
     sources: [

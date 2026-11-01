@@ -38,7 +38,7 @@ export const articles = [
       },
       {
         heading: "The rate-cut argument for locking in now",
-        body: "When the Federal Reserve cuts rates, savings account yields fall within weeks — but a CD keeps paying its locked APY until maturity. If you believe rates are heading lower, a CD is effectively insurance on today's yield. This is why 12- to 24-month CDs get popular late in a rate cycle: savers extend their term to carry a strong rate through the cuts.",
+        body: "When the Federal Reserve cuts rates, savings account yields fall within weeks — but a CD keeps paying its locked APY until maturity. If you believe rates are heading lower, a CD is effectively insurance on today's yield. This is why 12- to 24-month CDs get popular late in a rate cycle: savers extend their term to carry a strong rate through the cuts. That is a bet, not a given: in 2026 the Fed has not cut, and it raised its target range to 3.75%–4.00% in September 2026 and held it there in October.",
       },
       {
         heading: "How to decide in five minutes",
@@ -155,7 +155,7 @@ export const articles = [
           "3–6 month CDs: usually 1–3 months of interest",
           "12-month CDs: commonly 3–6 months of interest",
           "2–3 year CDs: commonly 6–12 months of interest",
-          "4–5 year CDs: often 12+ months of interest",
+          "4–5 year CDs: commonly 5–12 months of interest (Ally: 150 days; Capital One: 6 months), sometimes more",
         ],
       },
       {
@@ -533,9 +533,9 @@ export const articles = [
     datePublished: "2026-06-09",
     dateModified: "2026-06-10",
     excerpt:
-      "Standard CDs accept exactly one deposit, at opening. The exceptions: add-on CDs, which allow ongoing contributions, and the grace period at renewal, when most banks let you add funds.",
+      "Standard CDs accept exactly one deposit, at opening. The exceptions: add-on CDs, which allow ongoing contributions, and the grace period at renewal, when many banks let you add funds.",
     answer:
-      "Generally, no — a standard CD accepts a single deposit when you open it, and no further contributions until maturity. There are two exceptions: 'add-on CDs,' a niche product that allows additional deposits during the term, and the grace period after maturity, when most banks let you add money before the CD renews.",
+      "Generally, no — a standard CD accepts a single deposit when you open it, and no further contributions until maturity. There are two exceptions: 'add-on CDs,' a niche product that allows additional deposits during the term, and the grace period after maturity, when many banks let you add money before the CD renews.",
     sections: [
       {
         heading: "Why most CDs don't allow added deposits",
@@ -562,7 +562,7 @@ export const articles = [
     faqs: [
       {
         q: "Can I deposit money into an existing CD?",
-        a: "Not with a standard CD — deposits are only accepted at opening. Add-on CDs are the exception, and most banks also allow additions during the grace period at maturity.",
+        a: "Not with a standard CD — deposits are only accepted at opening. Add-on CDs are the exception, and many banks, such as Ally, also allow additions during the grace period at maturity.",
       },
       {
         q: "What is an add-on CD?",
