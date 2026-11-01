@@ -20,25 +20,25 @@ export const articles = [
     sections: [
       {
         heading: "When a CD is worth it",
-        body: "A CD is worth it when three things line up: you have a lump sum, you know roughly when you'll need it, and the CD's APY beats what your savings account pays. In that scenario a CD converts rate uncertainty into a guaranteed, insured return — something no stock, bond fund, or variable-rate account can promise.",
+        body: "**A certificate of deposit (CD)** is a bank or credit union deposit that holds a fixed amount of money for a fixed term at a set rate, as [Investor.gov](https://www.investor.gov/investing-basics/investment-products/certificates-deposit-cds) explains. A CD is worth it when three things line up: you have a lump sum, you know roughly when you'll need it, and the CD's APY beats what your savings account pays. In that scenario a CD converts rate uncertainty into a guaranteed, insured return — something no stock, bond fund, or variable-rate account can promise.",
         bullets: [
-          "You're saving for a dated goal — a home down payment, tuition, a car",
-          "You expect the Fed to cut rates and want to lock today's yield",
-          "You've already funded a liquid emergency fund elsewhere",
-          "You want zero market risk on a portion of your portfolio",
+          "You're saving for a dated goal — a home down payment, tuition, a car.",
+          "You expect the Fed to cut rates and want to lock today's yield.",
+          "You've already funded a liquid emergency fund elsewhere.",
+          "You want zero market risk on a portion of your portfolio.",
         ],
       },
       {
         heading: "When a CD is not worth it",
-        body: "A CD is a poor fit for your emergency fund or any money with an uncertain timeline. Early withdrawal penalties typically cost 3 to 12 months of interest, which can wipe out everything you earned. CDs also can't match the long-run growth of stocks, so money you won't touch for 10+ years usually belongs in the market instead.",
+        body: "A CD is a poor fit for your emergency fund or any money with an uncertain timeline. **An early withdrawal penalty** is a fee a bank charges when you take money out of a CD before it matures, usually a set amount of interest. Every CD disclosure should list these penalties, as [Investor.gov](https://www.investor.gov/investing-basics/investment-products/certificates-deposit-cds) notes. Early withdrawal penalties commonly range from about 2 to 12 months of interest, depending on the term and the bank, which can wipe out much of what you earned. CDs also can't match the long-run growth of stocks, so money you won't touch for 10+ years usually belongs in the market instead.",
       },
       {
         heading: "CD returns vs. savings accounts in 2026",
-        body: "Top CDs still out-yield the average savings account by a wide margin. The FDIC's national average savings rate was 0.38% in October 2026, far below what competitive online banks pay on 6- to 18-month CDs. The gap matters: on a $25,000 deposit, even a one-percentage-point difference is $250 a year — earned with identical FDIC protection.",
+        body: "**APY (annual percentage yield)** is the interest you earn in one year, including compounding, as a percentage of your deposit. Top CDs still out-yield the average savings account by a wide margin. The [FDIC's national average savings rate](https://fred.stlouisfed.org/series/SNDR) was 0.38% in October 2026, far below what competitive online banks pay on 6- to 18-month CDs. The gap matters. For example, on a $25,000 deposit, a one-percentage-point difference in APY is $250 a year, earned with identical [FDIC protection](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance).",
       },
       {
         heading: "The rate-cut argument for locking in now",
-        body: "When the Federal Reserve cuts rates, savings account yields fall within weeks — but a CD keeps paying its locked APY until maturity. If you believe rates are heading lower, a CD is effectively insurance on today's yield. This is why 12- to 24-month CDs get popular late in a rate cycle: savers extend their term to carry a strong rate through the cuts. That is a bet, not a given: in 2026 the Fed has not cut, and it raised its target range to 3.75%–4.00% in September 2026 and held it there in October.",
+        body: "When the Federal Reserve cuts rates, savings account yields fall within weeks — but a CD keeps paying its locked APY until maturity. If you believe rates are heading lower, a CD is effectively insurance on today's yield. This is why 12- to 24-month CDs get popular late in a rate cycle: savers extend their term to carry a strong rate through the cuts. That is a bet, not a given: in 2026 the Fed has not cut. It raised its target range to 3.75%–4.00% in September 2026 and held it there in its [October 28, 2026 statement](https://federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm).",
       },
       {
         heading: "How to decide in five minutes",
@@ -81,11 +81,11 @@ export const articles = [
     sections: [
       {
         heading: "The grace period: your decision window",
-        body: "The grace period is a short window after maturity — typically 7 to 10 calendar days — when you can move your money without any penalty. Your bank must notify you before maturity, but notices are easy to miss. Set your own calendar reminder for a week before the maturity date so the decision is yours, not the bank's default.",
+        body: "**The grace period** is a short window after maturity — typically 7 to 10 calendar days — when you can move your money without any penalty. Under [Regulation DD (Truth in Savings)](https://www.consumerfinance.gov/rules-policy/regulations/1030/5/), your bank must send a notice before an automatically renewing CD longer than one month matures. Notices are easy to miss, though. Set your own calendar reminder for a week before the maturity date so the decision is yours, not the bank's default.",
       },
       {
         heading: "Option 1: Withdraw and walk away",
-        body: "Withdrawing everything is the right move when the renewal rate is uncompetitive or you need the cash. Transfer the balance to your checking or savings account during the grace period and you owe nothing — the interest is already yours (and already taxed as it was earned).",
+        body: "Withdrawing everything is the right move when the renewal rate is uncompetitive or you need the cash. Transfer the balance to your checking or savings account during the grace period and you owe nothing — the interest is already yours (and already taxed as it was earned). [IRS Publication 550](https://www.irs.gov/publications/p550) explains when CD interest is taxable.",
       },
       {
         heading: "Option 2: Renew at the same bank",
@@ -97,16 +97,16 @@ export const articles = [
       },
       {
         heading: "Option 4: Do nothing (auto-renewal)",
-        body: "If you take no action, nearly all banks auto-renew your CD for the same term at whatever rate they currently offer. That rate is often meaningfully lower than what you'd find shopping around. Auto-renewal is convenient for the bank — treat it as the option of last resort.",
+        body: "**Auto-renewal** means the bank reinvests your matured CD in a new CD, usually for the same term, at its current rate. If you take no action, nearly all banks auto-renew your CD for the same term at whatever rate they currently offer. That rate is often meaningfully lower than what you'd find shopping around. Auto-renewal is convenient for the bank — treat it as the option of last resort.",
       },
       {
         heading: "Smart moves before maturity",
         body: "Two weeks out, check the current top rates for your preferred term, decide where the money goes next, and have the receiving account ready. If you want to keep laddering, renewing into the longest rung of your ladder at the best available rate is usually the cleanest play.",
         bullets: [
-          "Set a reminder 7–14 days before the maturity date",
-          "Compare your bank's renewal APY against current market leaders",
-          "Decide: withdraw, renew, switch terms, or ladder",
-          "Move money within the grace period to avoid lock-in",
+          "Set a reminder 7–14 days before the maturity date.",
+          "Compare your bank's renewal APY against current market leaders.",
+          "Decide: withdraw, renew, switch terms, or ladder.",
+          "Move money within the grace period to avoid lock-in.",
         ],
       },
     ],
@@ -134,43 +134,43 @@ export const articles = [
     title: "CD Early Withdrawal Penalties: What They Cost and How to Avoid Them",
     metaTitle: "CD Early Withdrawal Penalty: How Much It Costs | Cavicord",
     metaDescription:
-      "CD early withdrawal penalties typically cost 3–12 months of interest. See how they're calculated, when they can touch principal, and how to avoid them.",
+      "CD early withdrawal penalties commonly cost about 2–12 months of interest, depending on the term and bank. See how they're calculated, when they can touch principal, and how to avoid them.",
     category: "Basics",
     readTime: "7 min read",
     datePublished: "2026-05-18",
     dateModified: "2026-06-10",
     excerpt:
-      "Break a CD early and you'll typically forfeit 3 to 12 months of interest, depending on the term. If you haven't earned that much yet, the penalty can eat into your principal.",
+      "Break a CD early and you'll commonly forfeit about 2 to 12 months of interest, depending on the term and the bank. If you haven't earned that much yet, the penalty can eat into your principal.",
     answer:
-      "A CD early withdrawal penalty is a fee for taking money out before maturity, almost always charged as a number of months of interest: commonly 3 months on short CDs, 6 months on 1-year CDs, and up to 12 months or more on 4–5 year terms. If the penalty exceeds the interest you've earned so far, it comes out of your principal.",
+      "A CD early withdrawal penalty is a fee for taking money out before maturity. It is usually charged as a number of days or months of interest, and each bank sets its own schedule: roughly 1–3 months on short CDs, about 2–6 months on 1-year CDs, and about 5–12 months or more on 4–5 year terms. If the penalty exceeds the interest you've earned so far, it comes out of your principal.",
     sections: [
       {
         heading: "How penalties are calculated",
-        body: "Banks usually charge early withdrawal penalties as a set number of days or months of interest on the amount withdrawn, at the CD's rate. Example: withdrawing $20,000 from a 12-month CD at 4.00% APY with a 6-month penalty costs roughly $400 — half a year's interest — regardless of how long the money was actually in the CD.",
+        body: "**An early withdrawal penalty** is a fee a bank charges when you take money out of a CD before its maturity date. Banks usually charge it as a set number of days or months of interest on the amount withdrawn, at the CD's rate. Federal law sets a minimum penalty but no maximum, according to the OCC's [HelpWithMyBank](https://helpwithmybank.gov/help-topics/bank-accounts/certificates-of-deposit/cd-penalties.html). For example, withdrawing $20,000 from a 12-month CD at an illustrative 4.00% APY with a 6-month penalty costs roughly $400. That is half a year's interest, regardless of how long the money was actually in the CD.",
       },
       {
         heading: "Typical penalties by term",
-        body: "Penalties scale with term length, though every bank sets its own schedule — always check the disclosure before opening.",
+        body: "Penalties scale with term length, though every bank sets its own schedule — always check the disclosure before opening. [Ally's CD FAQ](https://www.ally.com/help/bank/cds.html) and [Capital One's 360 CD disclosure](https://www.capitalone.com/bank/disclosures/cds/online-cds/) both publish their schedules.",
         bullets: [
-          "3–6 month CDs: usually 1–3 months of interest",
-          "12-month CDs: commonly 3–6 months of interest",
-          "2–3 year CDs: commonly 6–12 months of interest",
-          "4–5 year CDs: commonly 5–12 months of interest (Ally: 150 days; Capital One: 6 months), sometimes more",
+          "3–6 month CDs: usually 1–3 months of interest.",
+          "12-month CDs: commonly 2–6 months of interest (Ally: 60 days; Capital One: 3 months).",
+          "2–3 year CDs: commonly 2–12 months of interest (Ally: 60–90 days; Capital One: 6 months).",
+          "4–5 year CDs: commonly 5–12 months of interest (Ally: 150 days; Capital One: 6 months), sometimes more.",
         ],
       },
       {
         heading: "Yes, penalties can eat your principal",
-        body: "If you withdraw before you've earned enough interest to cover the penalty, the difference is deducted from your deposit. Break a 5-year CD with a 12-month penalty after only 4 months, and roughly 8 months' worth of interest comes straight out of principal. This is the single biggest risk of over-committing to long terms.",
+        body: "**Principal** is the amount you deposited, before any interest. If you withdraw before you've earned enough interest to cover the penalty, the difference is deducted from your principal. Break a 5-year CD with a 12-month penalty after only 4 months, and roughly 8 months' worth of interest comes straight out of principal. This is the single biggest risk of over-committing to long terms.",
       },
       {
         heading: "Five ways to avoid penalties entirely",
-        body: "The best penalty is the one you never pay. Structure your CDs so early withdrawal is unlikely to begin with.",
+        body: "The best penalty is the one you never pay. Structure your CDs so early withdrawal is unlikely to begin with. **A no-penalty CD** is a CD that lets you withdraw the full balance without a fee after a short waiting period, usually about a week.",
         bullets: [
-          "Match the CD term to your actual timeline — don't chase yield with money you'll need sooner",
-          "Build a CD ladder so a rung matures every 6–12 months",
-          "Use a no-penalty CD for money with an uncertain timeline",
-          "Keep your emergency fund in savings, never in a standard CD",
-          "Split one large CD into several smaller ones so a partial need doesn't break the whole position",
+          "Match the CD term to your actual timeline — don't chase yield with money you'll need sooner.",
+          "Build a CD ladder so a rung matures every 6–12 months.",
+          "Use a no-penalty CD for money with an uncertain timeline.",
+          "Keep your emergency fund in savings, never in a standard CD.",
+          "Split one large CD into several smaller ones so a partial need doesn't break the whole position.",
         ],
       },
       {
@@ -179,7 +179,7 @@ export const articles = [
       },
       {
         heading: "Penalty-free exceptions",
-        body: "Many banks waive early withdrawal penalties on the death or legal incompetence of an owner (Capital One's 360 CD disclosure is one example), and some waive them for IRA CDs after age 59½. A few allow penalty-free withdrawal of earned interest (not principal) at any time. Check your bank's disclosure for its specific exceptions.",
+        body: "Many banks waive early withdrawal penalties on the death or legal incompetence of an owner ([Capital One's 360 CD disclosure](https://www.capitalone.com/bank/disclosures/cds/online-cds/) is one example), Some banks also waive the penalty for IRA CD withdrawals after age 59½, or let you take out interest that has already been credited without a penalty, but these exceptions vary and many banks don't offer them. Check your bank's disclosure for its specific exceptions.",
       },
     ],
     faqs: [
@@ -218,24 +218,24 @@ export const articles = [
     sections: [
       {
         heading: "When you owe the tax",
-        body: "You owe tax on CD interest in the year it's credited to your account, even if you leave it in the CD. A 3-year CD generates taxable interest in each of the three years, not one lump sum at maturity. The exception: CDs with terms of one year or less that pay all interest at maturity are taxed in the year of maturity.",
+        body: "You owe tax on CD interest in the year it's credited to your account, even if you leave it in the CD. [IRS Publication 550](https://www.irs.gov/publications/p550) covers these timing rules. A 3-year CD generates taxable interest in each of the three years, not one lump sum at maturity. The exception: CDs with terms of one year or less that pay all interest at maturity are taxed in the year of maturity.",
       },
       {
         heading: "What rate you pay",
-        body: "CD interest is ordinary income — it's simply added to your wages and taxed at your marginal bracket. It never qualifies for the lower long-term capital gains rates that stocks enjoy. Most states tax it too, which is one reason Treasury bills (state-tax-exempt) sometimes beat CDs after tax in high-tax states.",
+        body: "**Ordinary income** is income taxed at your regular federal rates, such as wages and interest. **Your marginal tax rate** is the rate that applies to your last dollar of taxable income. CD interest is ordinary income — it's simply added to your wages and taxed at your marginal bracket. It never qualifies for the lower long-term capital gains rates that stocks enjoy. Most states tax it too, which is one reason Treasury bills (state-tax-exempt, per [TreasuryDirect](https://www.treasurydirect.gov/marketable-securities/treasury-bills/)) sometimes beat CDs after tax in high-tax states.",
       },
       {
         heading: "The 1099-INT form",
-        body: "Banks must send Form 1099-INT by January 31 for any account that earned $10 or more in interest. Box 1 shows your taxable interest; box 2 shows any early withdrawal penalty, which is deductible. You must report the interest even if a 1099 never arrives.",
+        body: "**Form 1099-INT** is the IRS form a bank uses to report the interest it paid you during the year ([IRS — About Form 1099-INT](https://www.irs.gov/forms-pubs/about-form-1099-int)). Banks must send it by January 31 for any account that earned $10 or more in interest. Box 1 shows your taxable interest; box 2 shows any early withdrawal penalty, which is deductible. You must report the interest even if a 1099 never arrives.",
       },
       {
         heading: "Four legal ways to reduce CD taxes",
         body: "You can't avoid tax on ordinary CD interest, but you can change where and when it's taxed.",
         bullets: [
-          "Hold CDs in a traditional IRA: interest compounds tax-deferred until withdrawal",
-          "Hold CDs in a Roth IRA: interest is never taxed if rules are met",
-          "Time short CDs so interest lands in a lower-income year (e.g., after retirement)",
-          "Compare after-tax yield against T-bills if your state income tax is high",
+          "Hold CDs in a traditional IRA: interest compounds tax-deferred until withdrawal.",
+          "Hold CDs in a Roth IRA: interest is never taxed if rules are met.",
+          "Time short CDs so interest lands in a lower-income year (e.g., after retirement).",
+          "Compare after-tax yield against T-bills if your state income tax is high.",
         ],
       },
       {
@@ -275,28 +275,28 @@ export const articles = [
     excerpt:
       "A jumbo CD is a certificate of deposit with a high minimum — usually $100,000 — that historically paid a premium rate. Today, top standard CDs often match or beat jumbo APYs.",
     answer:
-      "A jumbo CD is a CD requiring a large minimum deposit, typically $100,000 (sometimes $50,000). In exchange, banks may pay a slightly higher APY than their standard CDs. However, at today's most competitive online banks, standard CDs frequently pay as much or more — so compare actual APYs rather than assuming 'jumbo' means 'better.'",
+      "A jumbo CD is a CD requiring a large minimum deposit, typically $100,000 (sometimes $50,000). In exchange, banks may pay a slightly higher APY than their standard CDs. However, at today's most competitive online banks, standard CDs frequently pay as much or more. Compare actual APYs rather than assuming a jumbo CD pays more.",
     sections: [
       {
         heading: "How jumbo CDs work",
-        body: "Jumbo CDs work exactly like standard CDs — fixed rate, fixed term, early withdrawal penalty — but with a high entry threshold. Banks like them because large, stable deposits are cheap funding, and historically they shared some of that value as a rate premium.",
+        body: "**A jumbo CD** is a certificate of deposit with a high minimum deposit, usually $100,000. Jumbo CDs work exactly like standard CDs — fixed rate, fixed term, [early withdrawal penalty](https://www.consumerfinance.gov/ask-cfpb/what-should-i-know-about-cds-en-917/) — but with a high entry threshold. Banks like them because large, stable deposits are cheap funding, and historically they shared some of that value as a rate premium.",
       },
       {
         heading: "The jumbo premium is smaller than you think",
-        body: "The rate advantage of jumbo CDs has largely evaporated at competitive banks. Online banks with low overhead often pay their best APY starting at $500 or $1,000 minimums. Before choosing a jumbo CD, check whether the same bank's standard CD — or a rival's — pays the same or more.",
+        body: "**The jumbo premium** is the extra APY a bank pays on a jumbo CD over its standard CD of the same term. The rate advantage of jumbo CDs has largely evaporated at competitive banks. Online banks with low overhead often pay their best APY starting at $500 or $1,000 minimums. Before choosing a jumbo CD, check whether the same bank's standard CD — or a rival's — pays the same or more.",
       },
       {
         heading: "The FDIC insurance problem at $250,000+",
-        body: "FDIC insurance caps at $250,000 per depositor, per bank, per ownership category. A $300,000 jumbo CD at one bank leaves $50,000 uninsured. Spread large balances across multiple banks, use joint ownership categories correctly, or use a brokerage that distributes CDs across many issuers.",
+        body: "[FDIC insurance](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance) caps at $250,000 per depositor, per bank, per ownership category. A $300,000 jumbo CD at one bank leaves $50,000 uninsured. Spread large balances across multiple banks, use joint ownership categories correctly, or use a brokerage that distributes CDs across many issuers.",
         bullets: [
-          "Keep each bank's total below $250,000 per depositor",
-          "Joint accounts are insured up to $250,000 per co-owner",
-          "Brokered CDs let you hold many banks' CDs in one account",
+          "Keep each bank's total below $250,000 per depositor.",
+          "Joint accounts are insured up to $250,000 per co-owner.",
+          "Brokered CDs let you hold many banks' CDs in one account.",
         ],
       },
       {
         heading: "How the jumbo premium changes by term",
-        body: "Jumbo pricing follows the same curve as standard CDs — the 12-month term is usually the most competitive, and 5-year rates may sit above or below 1-year rates depending on where the market expects rates to go. Use our live table on the jumbo CD rates page for today's exact numbers; the ranges below show where jumbo APYs have clustered recently.",
+        body: "Jumbo pricing follows the same curve as standard CDs. The 12-month term is usually the most competitive. Rates on 5-year CDs may sit above or below 1-year rates, depending on where the market expects rates to go. Use our live table on the jumbo CD rates page for today's exact numbers; the ranges below show where jumbo APYs have clustered recently.",
         bullets: [
           "1-year jumbo CD: typically within 0.05–0.15 points of the best standard 1-year CD.",
           "2-year jumbo CD: a small premium at some regional banks and credit unions; none at most online banks.",
@@ -307,7 +307,7 @@ export const articles = [
       },
       {
         heading: "What $100,000 earns: jumbo vs. standard",
-        body: "Run the numbers before assuming 'jumbo' wins. The rates below are illustrative, not current offers. On a 1-year term, a 0.10-point premium is worth $100 — meaningful, but easily outweighed by a rival bank's standard CD paying 0.25 points more.",
+        body: "Run the numbers before assuming 'jumbo' wins. The rates below are illustrative, not current offers. For example, on $100,000 over a 1-year term, a 0.10-point premium is worth $100 — meaningful, but easily outweighed by a rival bank's standard CD paying 0.25 points more.",
         bullets: [
           "$100,000 in a 1-year jumbo CD at 4.60% APY: $4,600 interest.",
           "$100,000 in a 1-year standard CD at 4.75% APY at a top online bank: $4,750 interest — $150 more with a $500 minimum.",
@@ -327,7 +327,7 @@ export const articles = [
       },
       {
         heading: "Who should actually use a jumbo CD",
-        body: "A jumbo CD makes sense when you have a genuinely large cash position with a fixed timeline — proceeds from a home sale, a business exit, an inheritance — and the jumbo APY at your chosen bank really does beat the standard alternative. Otherwise, several standard CDs across top-paying banks usually earn more and insure better. A jumbo CD ladder — five $100,000 CDs at five banks across 1- to 5-year terms — gets you long-term rates, annual liquidity, and full FDIC coverage on $500,000.",
+        body: "A jumbo CD makes sense when you have a genuinely large cash position with a fixed timeline, such as proceeds from a home sale, a business exit or an inheritance. The jumbo APY at your chosen bank should also really beat the standard alternative. Otherwise, several standard CDs across top-paying banks usually earn more and insure better. A jumbo CD ladder — five $100,000 CDs at five banks across 1- to 5-year terms — gets you long-term rates, annual liquidity, and full FDIC coverage on $500,000.",
       },
     ],
     faqs: [
@@ -370,11 +370,11 @@ export const articles = [
     excerpt:
       "A no-penalty CD locks in a fixed rate but lets you withdraw your entire balance — principal plus interest — any time after the first 6 or 7 days, with no fee at all.",
     answer:
-      "A no-penalty CD (or liquid CD) pays a fixed rate like a regular CD but allows one full withdrawal of principal and earned interest any time after the first 6–7 days, with zero penalty. You trade a slightly lower APY for an escape hatch — making it a hybrid between a CD and a savings account.",
+      "A no-penalty CD (or liquid CD) pays a fixed rate like a regular CD. It allows one full withdrawal of principal and earned interest any time after the first 6–7 days, with zero penalty. You trade a slightly lower APY for an escape hatch — making it a hybrid between a CD and a savings account.",
     sections: [
       {
         heading: "How no-penalty CDs work",
-        body: "You deposit once, the rate locks, and after a short initial holding period (usually 6–7 days) you may close the CD and take everything, penalty-free. The catch: most banks require withdrawing the full balance — partial withdrawals typically aren't allowed — and you can't add money after opening.",
+        body: "**A no-penalty CD** is a certificate of deposit that lets you withdraw the full balance without a fee after an initial waiting period, usually about a week. You deposit once, the rate locks, and after a short initial holding period (usually 6–7 days) you may close the CD and take everything, penalty-free. The catch: most banks require withdrawing the full balance — partial withdrawals typically aren't allowed — and you can't add money after opening. At an FDIC-insured bank, it carries the same [FDIC deposit insurance](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance) as any CD: $250,000 per depositor, per bank, per ownership category.",
       },
       {
         heading: "The rate trade-off",
@@ -384,9 +384,9 @@ export const articles = [
         heading: "No-penalty CD vs. high-yield savings",
         body: "The key difference is rate certainty. A savings account's rate can drop next month; a no-penalty CD's rate is locked until maturity, yet you keep the right to walk away. If you expect rate cuts, a no-penalty CD strictly dominates a savings account paying the same rate.",
         bullets: [
-          "Rates falling: no-penalty CD wins — your rate is locked, theirs will drop",
-          "Rates rising: roughly a tie — you can exit the CD and re-open higher",
-          "Need partial access often: savings account wins — CDs require full withdrawal",
+          "Rates falling: no-penalty CD wins — your rate is locked, theirs will drop.",
+          "Rates rising: roughly a tie — you can exit the CD and re-open higher.",
+          "Need partial access often: savings account wins — CDs require full withdrawal.",
         ],
       },
       {
@@ -426,29 +426,29 @@ export const articles = [
     sections: [
       {
         heading: "The three-bucket framework",
-        body: "Sort your cash into three buckets and CDs fill the middle one. Bucket 1 is your emergency fund — 3 to 6 months of expenses in a liquid savings account. Bucket 3 is long-term money (10+ years) that belongs in diversified investments. Bucket 2 — money for goals between a few months and about five years out — is prime CD territory.",
+        body: "Sort your cash into three buckets and CDs fill the middle one. Bucket 1 is your emergency fund — 3 to 6 months of expenses in a liquid savings account. **An emergency fund** is cash set aside for unexpected costs, such as a job loss or a car repair. Bucket 3 is long-term money (10+ years) that belongs in diversified investments. Bucket 2 — money for goals between a few months and about five years out — is prime CD territory.",
       },
       {
         heading: "Match the amount to dated goals",
-        body: "Rather than picking a percentage, list your actual goals with dates and price tags: $30,000 house down payment in 2 years, $8,000 car in 10 months, $15,000 tuition in 3 years. Each goal maps to a CD of that amount and term. This guarantees the money is there — at a known value — exactly when the bill arrives.",
+        body: "Rather than picking a percentage, list your actual goals with dates and price tags: $30,000 house down payment in 2 years, $8,000 car in 10 months, $15,000 tuition in 3 years. Each goal maps to a CD of that amount and term. That fits how a CD works: [Investor.gov](https://www.investor.gov/investing-basics/investment-products/certificates-deposit-cds) describes it as an account that holds a fixed amount of money for a fixed period of time. This guarantees the money is there — at a known value — exactly when the bill arrives.",
       },
       {
         heading: "Never put these in a CD",
         body: "Some money should never be locked up, no matter how tempting the rate.",
         bullets: [
-          "Your core emergency fund — emergencies don't wait for maturity dates",
-          "Money you'll need within the CD's term",
-          "Long-horizon retirement money better served by stocks and bonds",
-          "Any amount that pushes a single bank over the $250,000 FDIC limit",
+          "Your core emergency fund — emergencies don't wait for maturity dates.",
+          "Money you'll need within the CD's term.",
+          "Long-horizon retirement money better served by stocks and bonds.",
+          "Any amount that pushes a single bank over the $250,000 FDIC limit. The FDIC's [EDIE estimator](https://edie.fdic.gov/) can check your coverage at one bank.",
         ],
       },
       {
         heading: "Use a ladder when the timeline is fuzzy",
-        body: "If you have a lump sum but imprecise timing, split it into a CD ladder — equal amounts in 1-, 2-, 3-, 4-, and 5-year CDs, for example. A rung matures every year, giving you regular penalty-free access while most of the money earns longer-term rates. It's the standard answer to 'I want yield but I'm not sure when I'll need it.'",
+        body: "**A CD ladder** is a set of CDs with staggered maturity dates, so part of the money comes due at regular intervals. If you have a lump sum but imprecise timing, split it into a CD ladder — equal amounts in 1-, 2-, 3-, 4-, and 5-year CDs, for example. A rung matures every year, giving you regular penalty-free access while most of the money earns longer-term rates. It's the standard answer to 'I want yield but I'm not sure when I'll need it.'",
       },
       {
         heading: "Mind the FDIC ceiling",
-        body: "FDIC insurance covers $250,000 per depositor, per bank, per ownership category. If your CD allocation exceeds that, spread it across multiple banks or use joint ownership correctly. Insurance is the entire reason CDs are risk-free — don't give it up for convenience.",
+        body: "[FDIC insurance](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance) covers $250,000 per depositor, per bank, per ownership category. **An ownership category** is the way an account is held, such as single, joint or certain retirement accounts. Credit union CDs get the same $250,000 coverage from the [NCUA](https://www.ncua.gov/consumers/share-insurance-coverage). If your CD allocation exceeds that, spread it across multiple banks or use joint ownership correctly. Insurance is the entire reason CDs are risk-free — don't give it up for convenience.",
       },
     ],
     faqs: [
@@ -479,11 +479,11 @@ export const articles = [
     excerpt:
       "CD rates track expectations for the federal funds rate: banks start trimming CD APYs before the Fed actually cuts. Locking a longer term ahead of cuts preserves today's yield.",
     answer:
-      "When the Federal Reserve cuts (or is expected to cut) its benchmark rate, banks lower the APYs on new CDs — often before the cut happens, because CD pricing is forward-looking. Existing CDs are unaffected: your locked rate is guaranteed to maturity. That's why savers who expect cuts extend to 12–24 month terms. In 2026 the Fed has moved the other way: it raised its target range to 3.75%–4.00% in September and held there in October.",
+      "When the Federal Reserve cuts (or is expected to cut) its benchmark rate, banks lower the APYs on new CDs. This often happens before the cut, because CD pricing is forward-looking. Existing CDs are unaffected: your locked rate is guaranteed to maturity. That's why savers who expect cuts extend to 12–24 month terms. In 2026 the Fed has moved the other way: it raised its target range to 3.75%–4.00% in September and held there in October.",
     sections: [
       {
         heading: "The mechanism: why CD rates follow the Fed",
-        body: "Banks price CDs off their cost of funding, which is anchored to the federal funds rate and market expectations of its path. When markets price in cuts, banks no longer need to pay up for deposits they'll soon be able to fund more cheaply — so new-CD APYs slide, often weeks or months before the Fed moves.",
+        body: "**The federal funds rate** is the interest rate banks charge each other for overnight loans, and the Fed sets a target range for it in each [FOMC statement](https://federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm). Banks price CDs off their cost of funding, which is anchored to the federal funds rate and market expectations of its path. When markets price in cuts, banks no longer need to pay up for deposits they'll soon be able to fund more cheaply — so new-CD APYs slide, often weeks or months before the Fed moves.",
       },
       {
         heading: "Your existing CD is completely protected",
@@ -491,20 +491,20 @@ export const articles = [
       },
       {
         heading: "The inverted logic of CD term pricing",
-        body: "Late in a rate cycle you'll often see shorter CDs paying more than longer ones — a 6-month CD out-yielding a 5-year. That happens because banks expect rates to fall and won't promise today's high rate for five years. A slightly lower long-term APY can still be the better deal if rates drop as expected.",
+        body: "**An inverted yield curve** is a pattern in which shorter terms pay higher rates than longer terms. Late in a rate cycle you'll often see this in CDs — a 6-month CD out-yielding a 5-year. That happens because banks expect rates to fall and won't promise today's high rate for five years. A slightly lower long-term APY can still be the better deal if rates drop as expected.",
       },
       {
         heading: "Three moves savers make before rate cuts",
-        body: "If you expect cuts, positioning is about extending duration while rates are still high. Note that the Fed's most recent move, in September 2026, was a 0.25-point increase, not a cut.",
+        body: "If you expect cuts, positioning is about extending duration while rates are still high. Note that the Fed's most recent move, in its [September 16, 2026 statement](https://federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm), was a 0.25-point increase, not a cut.",
         bullets: [
-          "Extend terms: shift new money from 6-month to 12–24 month CDs to carry the yield through the cuts",
-          "Ladder with a long anchor: keep liquidity rungs short but push the top rung to 4–5 years",
-          "Lock flexibly: use a no-penalty CD if you want today's rate but fear needing the cash",
+          "Extend terms: shift new money from 6-month to 12–24 month CDs to carry the yield through the cuts.",
+          "Ladder with a long anchor: keep liquidity rungs short but push the top rung to 4–5 years.",
+          "Lock flexibly: use a no-penalty CD if you want today's rate but fear needing the cash.",
         ],
       },
       {
         heading: "What to do if rates rise instead",
-        body: "If you lock and rates rise, run the break-even math: if a new CD pays enough more to repay your early withdrawal penalty within a few months, switching is rational. Ladders handle this automatically — each maturing rung reinvests at the new, higher rates without penalty.",
+        body: "If you lock and rates rise, run the break-even math. If a new CD pays enough more to repay your early withdrawal penalty within a few months, switching is rational. **A CD ladder** is a set of CDs with staggered maturity dates, so part of your money comes due at regular intervals. Ladders handle rising rates automatically — each maturing rung reinvests at the new, higher rates without penalty.",
       },
     ],
     faqs: [
@@ -539,23 +539,23 @@ export const articles = [
     sections: [
       {
         heading: "Why most CDs don't allow added deposits",
-        body: "A CD is a fixed contract: the bank guarantees a rate on a known amount for a known time. Letting you add money later — possibly when market rates are lower — would let savers lock old, higher rates on new cash, which banks won't underwrite. So the deposit window closes the day the CD opens.",
+        body: "A CD is a fixed contract: the bank guarantees a rate on a known amount for a known time. [Capital One's 360 CD disclosure](https://www.capitalone.com/bank/disclosures/cds/online-cds/), for example, says additional deposits other than credited interest are not permitted during the term. Letting you add money later — possibly when market rates are lower — would let savers lock old, higher rates on new cash, which banks won't underwrite. So the deposit window closes the day the CD opens.",
       },
       {
         heading: "Exception 1: add-on CDs",
-        body: "Add-on CDs explicitly permit additional deposits during the term, sometimes with minimums per contribution. Fewer banks and credit unions offer them, and the rate may be lower than the same bank's standard CD. Compare both before choosing. They can suit steady monthly savers, but compare the rate sacrifice against alternatives first.",
+        body: "**An add-on CD** is a certificate of deposit that accepts additional deposits during its term. Add-on CDs sometimes set a minimum per contribution. Fewer banks and credit unions offer them, and the rate may be lower than the same bank's standard CD. Compare both before choosing. They can suit steady monthly savers, but compare the rate sacrifice against alternatives first.",
       },
       {
         heading: "Exception 2: the grace period at renewal",
-        body: "When a CD matures, the grace period, often 7–10 days, is when many banks let you add funds before the CD renews. Ally, for example, allows deposits during its 10-day grace period. Check your bank's terms. If you've been accumulating cash on the side, the grace period is the moment to fold it in.",
+        body: "**A grace period** is the short window after a CD matures, often 7–10 days, when many banks let you withdraw, add funds or change terms before the CD renews. [Ally's CD FAQ](https://www.ally.com/help/bank/cds.html), for example, allows deposits during its 10-day grace period. Check your bank's terms. If you've been accumulating cash on the side, the grace period is the moment to fold it in.",
       },
       {
         heading: "Better workarounds for ongoing savers",
-        body: "If you're saving monthly, you don't need an add-on CD — you need a system.",
+        body: "If you're saving monthly, you don't need an add-on CD — you need a system. **A CD ladder** is a set of CDs with staggered maturity dates, and small CDs opened over time form a simple one. All your CDs at one bank share the same [FDIC limit](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance) of $250,000 per depositor, per ownership category.",
         bullets: [
-          "Open a new small CD every few months as cash accumulates (a rolling mini-ladder)",
-          "Park monthly savings in a high-yield savings account, then open a CD when it hits your threshold",
-          "Use a no-penalty CD for the accumulating balance to lock a rate without losing access",
+          "Open a new small CD every few months as cash accumulates (a rolling mini-ladder).",
+          "Park monthly savings in a high-yield savings account, then open a CD when it hits your threshold.",
+          "Use a no-penalty CD for the accumulating balance to lock a rate without losing access.",
         ],
       },
     ],
@@ -591,25 +591,25 @@ export const articles = [
     sections: [
       {
         heading: "Safety: insurance vs. issuer credit",
-        body: "A CD's safety comes from FDIC insurance — up to $250,000 per depositor, per bank, your principal cannot be lost. A bond's safety depends on its issuer: U.S. Treasuries are backed by the federal government, while corporate and municipal bonds carry real default risk that varies by credit rating.",
+        body: "A CD's safety comes from [FDIC insurance](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance) — up to $250,000 per depositor, per bank, per ownership category, your principal cannot be lost. **A bond** is a loan you make to a government or company in exchange for interest and the return of your money at maturity. **Credit risk** is the chance that a bond issuer fails to pay interest or principal on time. A bond's safety depends on its issuer: U.S. Treasuries are backed by the federal government, while corporate and municipal bonds carry real default risk that varies by credit rating.",
       },
       {
         heading: "Price risk: the big difference",
-        body: "A CD never loses value if held to maturity, and even early exit costs only a defined interest penalty. A bond's market price falls when rates rise — sell early and you can lose principal. Hold either to maturity and you get par back, but only the CD makes exiting early a bounded, predictable cost.",
+        body: "A CD never loses value if held to maturity, and even early exit costs only a defined interest penalty. A bond's market price falls when rates rise — sell early and you can lose principal. **Par value** is the face amount a bond repays at maturity, often $1,000. Hold either to maturity and you get par back, but only the CD makes exiting early a bounded, predictable cost.",
       },
       {
         heading: "Yield comparison",
-        body: "Top CDs frequently out-yield Treasuries of the same maturity, especially at competitive online banks. Corporate bonds usually pay more than both — that's compensation for credit risk, not free money. Compare after-tax: Treasury interest skips state tax, which can flip the ranking in high-tax states.",
+        body: "Top CDs frequently out-yield Treasuries of the same maturity, especially at competitive online banks. Corporate bonds usually pay more than both — that's compensation for credit risk, not free money. Compare after-tax: Treasury interest skips state tax ([TreasuryDirect](https://www.treasurydirect.gov/marketable-securities/treasury-bonds/)), which can flip the ranking in high-tax states. Bond funds hold many bonds and have no maturity date ([Investor.gov](https://www.investor.gov/introduction-investing/investing-basics/glossary/bond-funds)).",
         bullets: [
-          "Top online-bank CDs: often the best insured yield for 3 months–5 years",
-          "Treasuries: similar yields, state-tax-free, fully liquid",
-          "Corporate bonds: higher yield, real credit and price risk",
-          "Bond funds: diversified but no maturity date — principal is never guaranteed",
+          "Top online-bank CDs: often the best insured yield for 3 months–5 years.",
+          "Treasuries: similar yields, state-tax-free, fully liquid.",
+          "Corporate bonds: higher yield, real credit and price risk.",
+          "Bond funds: diversified but no maturity date — principal is never guaranteed.",
         ],
       },
       {
         heading: "Liquidity and access",
-        body: "Bonds win on liquidity: Treasuries sell in seconds on the secondary market with no penalty (though at the market price). CDs charge a set early withdrawal penalty but never expose you to market pricing. For money you're confident stays put, the CD penalty is irrelevant; for money you might redeploy, bonds are more flexible.",
+        body: "Bonds win on liquidity: Treasuries can be sold before maturity ([TreasuryDirect](https://www.treasurydirect.gov/marketable-securities/treasury-bonds/)), and they trade easily on the secondary market with no penalty, though at the market price. CDs charge a set early withdrawal penalty but never expose you to market pricing. For money you're confident stays put, the CD penalty is irrelevant; for money you might redeploy, bonds are more flexible.",
       },
       {
         heading: "The practical verdict",
@@ -648,27 +648,27 @@ export const articles = [
     excerpt:
       "Banks sell CDs; insurers sell annuities. A multi-year guaranteed annuity (MYGA) can pay more and defers taxes, but brings surrender charges, less insurance clarity, and far more complexity.",
     answer:
-      "A CD is a bank deposit: FDIC-insured, simple, taxed annually, and free at maturity. A fixed annuity (MYGA) is an insurance contract: often a higher rate and tax-deferred growth, but with multi-year surrender charges, a 10% IRS penalty on gains withdrawn before age 59½, and protection that depends on state guaranty associations rather than the FDIC. For most savers under 59½, the CD's simplicity wins.",
+      "A CD is a bank deposit: FDIC-insured, simple, taxed annually, and free at maturity. A fixed annuity (MYGA) is an insurance contract that often pays a higher rate and grows tax-deferred. But it comes with multi-year surrender charges and a 10% additional federal tax on the taxable gain withdrawn before age 59½, with some exceptions. Its protection depends on state guaranty associations rather than the FDIC. For most savers under 59½, the CD's simplicity wins.",
     sections: [
       {
         heading: "What each product actually is",
-        body: "A CD is a deposit contract with a bank, insured by the FDIC. A multi-year guaranteed annuity (MYGA) — the annuity type most compared to CDs — is a contract with an insurance company that credits a fixed rate for a set period. Similar surface, very different plumbing.",
+        body: "A CD is a deposit contract with a bank, insured by the FDIC within its [standard coverage limits](https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance). **A multi-year guaranteed annuity (MYGA)** is a contract with an insurance company that credits a fixed rate for a set period. It is the annuity type most compared to CDs. Similar surface, very different plumbing.",
       },
       {
         heading: "Taxes: the annuity's genuine advantage",
-        body: "CD interest is taxed every year as it's credited. MYGA growth is tax-deferred — you pay nothing until withdrawal, letting interest compound on pre-tax money. For high earners far from needing the cash, deferral is a real, quantifiable edge. But withdraw gains before age 59½ and the IRS adds a 10% penalty on top of ordinary tax.",
+        body: "CD interest is taxed every year as it's credited ([IRS Publication 550](https://www.irs.gov/publications/p550)). MYGA growth is tax-deferred — you pay nothing until withdrawal, letting interest compound without an annual tax bill. For high earners far from needing the cash, deferral is a real, quantifiable edge. But withdraw gains before age 59½ and you generally owe a 10% additional tax on the taxable part on top of ordinary income tax, unless an exception applies ([IRS Topic 410](https://www.irs.gov/taxtopics/tc410)).",
       },
       {
         heading: "Safety: FDIC vs. state guaranty funds",
-        body: "CDs carry federal FDIC insurance to $250,000 — uniform, automatic, and battle-tested. Annuities are backed first by the insurer's solvency and then by state guaranty associations, whose limits vary by state (commonly $250,000, sometimes less). Check the insurer's credit rating; an annuity is only as strong as the company behind it.",
+        body: "CDs carry federal FDIC insurance up to $250,000 per depositor, per bank, per ownership category — uniform, automatic, and battle-tested. Annuities are backed first by the insurer's solvency and then by state guaranty associations, whose limits vary by state (commonly $250,000, sometimes less). **A state guaranty association** is an organization created by state law that protects policyholders, up to set limits, if a member insurance company fails ([NOLHGA](https://www.nolhga.com/)). Check the insurer's credit rating; an annuity is only as strong as the company behind it.",
       },
       {
         heading: "Liquidity: surrender charges bite harder",
-        body: "Breaking a CD costs a defined interest penalty. Exiting a MYGA early triggers surrender charges that often start around 7–9% of the balance and decline yearly — plus the possible IRS penalty. Many MYGAs allow free withdrawal of up to 10% per year, but full early exit is far more expensive than breaking a CD.",
+        body: "Breaking a CD costs a defined interest penalty. **A surrender charge** is a fee an insurer deducts when you take out more than the contract allows before its surrender period ends. Exiting a MYGA early triggers a surrender charge, a percentage of the amount withdrawn that is set by the contract's schedule and usually shrinks each year until it reaches zero — plus the possible 10% additional IRS tax. Many MYGAs allow a limited penalty-free withdrawal each year, but the amount varies by contract, and a full early exit usually costs far more than breaking a CD.",
         bullets: [
-          "CD early exit: forfeits months of interest — principal risk is small and bounded",
-          "MYGA early exit: surrender charge on the balance, plus 10% IRS penalty on gains if under 59½",
-          "Both: full value if held to term",
+          "CD early exit: forfeits months of interest — principal risk is small and bounded.",
+          "MYGA early exit: surrender charge on the amount withdrawn, plus a 10% additional IRS tax on the taxable gain if under 59½ (some exceptions).",
+          "Both: full value if held to term.",
         ],
       },
       {
@@ -687,7 +687,7 @@ export const articles = [
       },
       {
         q: "Is a CD or annuity better for retirees?",
-        a: "Past age 59½ the IRS penalty disappears, making MYGAs more attractive for tax deferral. Retirees valuing simplicity and federal insurance still often prefer CD ladders — many use both.",
+        a: "Past age 59½ the 10% additional IRS tax no longer applies, making MYGAs more attractive for tax deferral. Retirees valuing simplicity and federal insurance still often prefer CD ladders — many use both.",
       },
     ],
   },

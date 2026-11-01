@@ -1,27 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// Renders section text with optional inline links written as [anchor](/path).
-// Internal paths become router <Link>s; anything else is left as plain text.
-const LINK_RE = /\[([^\]]+)\]\((\/[^)\s]*)\)/g;
+// Renders section text with inline markup:
+//   [anchor](/path)          internal link (router <Link>)
+//   [anchor](https://...)    external source link (new tab)
+//   **term**                 bold, used for one-line definitions
+const TOKEN_RE = /\[([^\]]+)\]\(((?:\/|https:\/\/)[^)\s]*)\)|\*\*([^*]+)\*\*/g;
+const LINK_RE = /\[([^\]]+)\]\(((?:\/|https:\/\/)[^)\s]*)\)/g;
+const linkClass =
+  "font-medium text-emerald-800 underline underline-offset-2 decoration-emerald-300 hover:decoration-emerald-700";
 
 export const RichText = ({ text }) => {
-  if (!text || typeof text !== "string" || !text.includes("](/")) return text || null;
+  if (!text || typeof text !== "string" || !(text.includes("](") || text.includes("**"))) return text || null;
   const out = [];
   let last = 0;
   let m;
-  LINK_RE.lastIndex = 0;
-  while ((m = LINK_RE.exec(text))) {
+  TOKEN_RE.lastIndex = 0;
+  while ((m = TOKEN_RE.exec(text))) {
     if (m.index > last) out.push(text.slice(last, m.index));
-    out.push(
-      <Link
-        key={m.index}
-        to={m[2]}
-        className="font-medium text-emerald-800 underline underline-offset-2 decoration-emerald-300 hover:decoration-emerald-700"
-      >
-        {m[1]}
-      </Link>
-    );
+    if (m[3] !== undefined) {
+      out.push(<strong key={m.index} className="font-semibold text-[#16233d]">{m[3]}</strong>);
+    } else if (m[2].startsWith("/")) {
+      out.push(<Link key={m.index} to={m[2]} className={linkClass}>{m[1]}</Link>);
+    } else {
+      out.push(
+        <a key={m.index} href={m[2]} target="_blank" rel="noopener noreferrer" className={linkClass}>
+          {m[1]}
+        </a>
+      );
+    }
     last = m.index + m[0].length;
   }
   if (last < text.length) out.push(text.slice(last));
@@ -29,7 +36,8 @@ export const RichText = ({ text }) => {
 };
 
 // Plain-text version for meta tags and JSON-LD.
-export const stripLinks = (text) => (typeof text === "string" ? text.replace(LINK_RE, "$1") : text);
+export const stripLinks = (text) =>
+  typeof text === "string" ? text.replace(LINK_RE, "$1").replace(/\*\*([^*]+)\*\*/g, "$1") : text;
 
 // Optional extras for article/guide sections: a comparison table and a sources list.
 // A section may carry `table: { caption?, columns: [...], rows: [[...], ...] }`.
