@@ -202,7 +202,7 @@ export const EXPANSIONS = {
     metaDescription:
       "CDs vs bonds: compare safety, returns, taxes and what happens when rates move, with a side-by-side table of CDs, Treasuries, corporates and bond funds.",
     readTime: "11 min read",
-    dateModified: "2026-10-31",
+    dateModified: "2026-11-01",
     sections: [
       {
         before: "The practical verdict",
@@ -222,7 +222,7 @@ export const EXPANSIONS = {
       {
         before: "The practical verdict",
         heading: "What rising rates do to a bond (worked example)",
-        body: "Say you buy a 5-year bond at its $1,000 face value paying 4% (semi-annual interest), and right after you buy it, yields on similar bonds jump to 5%. Its market price falls to about $956 — a paper loss of roughly 4.4%. If you hold it to maturity you still get $1,000 back plus every coupon, so the loss only becomes real if you sell. A 5-year CD at 4% in the same situation never shows a lower value; the cost of exiting early is the stated penalty instead.",
+        body: "For example, say you buy a 5-year bond at its $1,000 face value paying 4% (semi-annual interest). Right after you buy it, yields on similar bonds jump to 5%. Its market price falls to about $956 — a paper loss of roughly 4.4%. If you hold it to maturity you still get $1,000 back plus every coupon, so the loss only becomes real if you sell. A 5-year CD at an illustrative 4% in the same situation never shows a lower value; the cost of exiting early is the stated penalty instead.",
         bullets: [
           "Bond held to maturity: full face value back, no loss.",
           "Bond sold after rates rise: sale price below what you paid.",
@@ -246,7 +246,7 @@ export const EXPANSIONS = {
       },
       {
         q: "Are I bonds better than CDs?",
-        a: "I bonds protect against inflation and are state-tax exempt, but you can't redeem them in the first 12 months, you lose 3 months of interest if you redeem within 5 years, and purchases are capped at $10,000 per person per year electronically. CDs have no purchase cap and a fixed, known rate.",
+        a: "I bonds protect against inflation and are state-tax exempt. But you can't redeem them in the first 12 months, and you lose 3 months of interest if you redeem within 5 years. Electronic purchases are capped at $10,000 per person per year. CDs have no purchase cap and a fixed, known rate.",
       },
     ],
     sources: [FDIC, TD_BONDS, TD_IBONDS, SEC_BONDFUNDS, IRS_550],
@@ -257,12 +257,12 @@ export const EXPANSIONS = {
     metaDescription:
       "How CD interest is taxed: when it counts as income, Form 1099-INT and 1099-OID, state tax, IRA CDs, and a worked after-tax example vs a T-bill.",
     readTime: "9 min read",
-    dateModified: "2026-10-31",
+    dateModified: "2026-11-01",
     sections: [
       {
         before: "Four legal ways to reduce CD taxes",
         heading: "Worked example: tax on $20,000 of CD interest",
-        body: "Assume a $20,000 1-year CD at an illustrative 4.50% APY, a 22% federal bracket and a 5% state income tax. The CD earns $900; you owe about $198 federal and $45 state, leaving $657 after tax. A $20,000 Treasury bill yielding 4.30% earns $860; it's taxed federally ($189.20) but exempt from state tax, leaving $670.80 — slightly more, despite the lower headline rate. The higher your state tax rate, the more that exemption matters.",
+        body: "For example, assume a $20,000 1-year CD at an illustrative 4.50% APY, a 22% federal bracket and a 5% state income tax. The CD earns $900; you owe about $198 federal and $45 state, leaving $657 after tax. A $20,000 Treasury bill yielding an illustrative 4.30% earns $860; it's taxed federally ($189.20) but exempt from state tax, leaving $670.80 — slightly more, despite the lower headline rate. The higher your state tax rate, the more that exemption matters.",
         table: {
           columns: ["", "1-year CD", "Treasury bill"],
           rows: [
@@ -278,7 +278,7 @@ export const EXPANSIONS = {
       {
         before: "Early withdrawal penalties are deductible",
         heading: "Multi-year CDs: taxed every year, not at maturity",
-        body: "For CDs longer than one year, interest is generally taxable as it accrues each year, even if the bank doesn't pay it out until maturity (IRS original issue discount rules). So a 3-year CD produces a 1099-INT, or a 1099-OID, in each of the three years. Plan for that tax each April even though you can't touch the money.",
+        body: "For CDs longer than one year, interest is generally taxable as it accrues each year. That holds even if the bank doesn't pay it out until maturity, under the original issue discount rules in [IRS Publication 550](https://www.irs.gov/publications/p550). So a 3-year CD produces a 1099-INT, or a 1099-OID, in each of the three years. Plan for that tax each April even though you can't touch the money.",
       },
       {
         before: "Early withdrawal penalties are deductible",
@@ -308,7 +308,7 @@ export const EXPANSIONS = {
     metaDescription:
       "CD vs annuity: compare guarantees, insurance, taxes and early-exit costs, then run the after-tax calculator to see which leaves you more.",
     readTime: "10 min read",
-    dateModified: "2026-10-31",
+    dateModified: "2026-11-01",
     sections: [
       {
         before: "Which one fits you",
@@ -329,7 +329,7 @@ export const EXPANSIONS = {
       {
         before: "Which one fits you",
         heading: "Annuity vs CD calculator: a $100,000, 5-year example",
-        body: "Assume $100,000, a 24% tax bracket, a 5-year CD at an illustrative 4.00% APY and a 5-year MYGA at 4.50%. The CD's interest is taxed every year, so it effectively compounds at 3.04% and ends at about $116,153 after tax. The MYGA grows untaxed to about $124,618; cashing it out and paying 24% on the $24,618 gain leaves about $118,710 — roughly $2,557 more than the CD. If you're under 59½ and withdraw the gain, the 10% IRS penalty brings the MYGA down to about $116,248, almost the same as the CD.",
+        body: "For example, assume $100,000, a 24% tax bracket, a 5-year CD at an illustrative 4.00% APY and a 5-year MYGA at an illustrative 4.50%. The CD's interest is taxed every year, so it effectively compounds at 3.04% and ends at about $116,153 after tax. The MYGA grows untaxed to about $124,618; cashing it out and paying 24% on the $24,618 gain leaves about $118,710 — roughly $2,557 more than the CD. If you're under 59½ and withdraw the gain, the 10% IRS penalty brings the MYGA down to about $116,248, almost the same as the CD.",
         table: {
           columns: ["After 5 years", "CD (4.00%, taxed yearly)", "MYGA (4.50%, tax-deferred)"],
           rows: [
@@ -456,7 +456,7 @@ export const EXPANSIONS = {
       {
         before: "The rate-cut argument for locking in now",
         heading: "What $25,000 earns: national averages vs a competitive CD",
-        body: "The FDIC publishes national average deposit rates every month. In October 2026 the average savings account paid 0.38% and the average 12-month CD paid 1.76%. Competitive online banks often pay well above the average, so the table also shows an illustrative 4.00% APY. Here is one year of interest on $25,000 at each rate. The penalty risk is also smaller than many people assume. Say you break the illustrative 4.00% CD after 6 months and the bank charges 3 months of interest. You earned about $500 and give back about $250, so you keep about $250 before tax. The same $25,000 at the 0.38% savings average would have earned $47.50 over those 6 months.",
+        body: "The FDIC publishes national average deposit rates every month, and FRED republishes them, such as the [national savings rate](https://fred.stlouisfed.org/series/SNDR). In October 2026 the average savings account paid 0.38% and the [average 12-month CD](https://fred.stlouisfed.org/series/NDR12MCD) paid 1.76%. Competitive online banks often pay well above the average, so the table also shows an illustrative 4.00% APY. Here is one year of interest on $25,000 at each rate. The penalty risk is also smaller than many people assume. For example, say you break the illustrative 4.00% CD after 6 months and the bank charges 3 months of interest. You earned about $500 and give back about $250, so you keep about $250 before tax. The same $25,000 at the 0.38% savings average would have earned $47.50 over those 6 months.",
         table: {
           columns: ["Where the $25,000 sits", "Rate", "Interest after 1 year"],
           rows: [
@@ -493,7 +493,7 @@ export const EXPANSIONS = {
       {
         before: "Five ways to avoid penalties entirely",
         heading: "What different penalty rules cost on a $10,000 CD",
-        body: "Penalty rules vary more than most people expect. The table applies the federal minimum and published penalty formulas from two banks to the same $10,000 CD at an illustrative 4.00% interest rate. Day-based penalties use a 365-day year; your bank's exact method may differ slightly. Timing matters as much as the rule. Break a 5-year CD after 4 months and you have earned about $133.33. Under a 6-month-interest rule the penalty is $200.00, so $66.67 comes out of principal. Under a 150-day rule the penalty is $164.38, so $31.05 comes out of principal.",
+        body: "Penalty rules vary more than most people expect. The table applies the [federal minimum](https://helpwithmybank.gov/help-topics/bank-accounts/certificates-of-deposit/cd-penalties.html) and published penalty formulas from two banks to the same $10,000 CD at an illustrative 4.00% interest rate. Day-based penalties use a 365-day year; your bank's exact method may differ slightly. Timing matters as much as the rule. For example, break a 5-year CD after 4 months and you have earned about $133.33. Under a 6-month-interest rule the penalty is $200.00, so $66.67 comes out of principal. Under a 150-day rule the penalty is $164.38, so $31.05 comes out of principal.",
         table: {
           columns: ["Penalty rule", "Where it applies (example)", "Penalty on $10,000 at 4.00%"],
           rows: [
@@ -572,7 +572,7 @@ export const EXPANSIONS = {
       {
         before: "Three moves savers make before rate cuts",
         heading: "What the Fed actually did in mid-2026, and what it means for a ladder",
-        body: "This article explains what happens when the Fed cuts. From June to October 2026 it did not cut. The Fed held its target range in June and July, raised it by 0.25 percentage point in September, and held again in October, when two voters wanted another increase. Over the same months the FDIC's national average 12-month CD rate rose from 1.65% to 1.76%. A ladder handles either direction. Take $20,000 split into four $5,000 rungs. When a rung matures, only that $5,000 reprices. If the new rate is 0.25 point higher or lower, that rung earns $12.50 more or less per year, while the other $15,000 keeps its locked rates. In a high-yield savings account the whole $20,000 reprices, so the same 0.25-point move changes annual interest by $50.00.",
+        body: "This article explains what happens when the Fed cuts. From June to October 2026 it did not cut. The Fed held its target range in June and July, raised it by 0.25 percentage point in September, and held again in [October](https://federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm), when two voters wanted another increase. Over the same months the [FDIC's national average 12-month CD rate](https://fred.stlouisfed.org/series/NDR12MCD) rose from 1.65% to 1.76%. A ladder handles either direction. For example, take $20,000 split into four $5,000 rungs. When a rung matures, only that $5,000 reprices. If the new rate is 0.25 point higher or lower, that rung earns $12.50 more or less per year, while the other $15,000 keeps its locked rates. In a high-yield savings account the whole $20,000 reprices, so the same 0.25-point move changes annual interest by $50.00.",
         table: {
           columns: ["FOMC meeting", "Decision", "Target range after", "Vote"],
           rows: [
@@ -611,7 +611,7 @@ export const EXPANSIONS = {
       {
         before: "Better workarounds for ongoing savers",
         heading: "Monthly saver example: add-on CD vs savings account",
-        body: "Say you save $500 at the start of each month for a year, $6,000 in total. Compare an add-on CD at an illustrative 3.75% APY with a high-yield savings account at an illustrative 3.50% APY that holds steady all year. Each deposit earns interest only from the month it goes in, compounded monthly at the APY. The add-on CD earns $8.04 more over the year. The gap is small because the average dollar is in the account for only a little over half the year. The rate edge matters more once the balance is large, which is why many savers build up cash first and then open a CD. Many standard CDs don't accept deposits during the term at all. Capital One's 360 CD disclosure says additional deposits are not permitted, while Ally lets you add funds during its 10-day grace period.",
+        body: "For example, say you save $500 at the start of each month for a year, $6,000 in total. Compare an add-on CD at an illustrative 3.75% APY with a high-yield savings account at an illustrative 3.50% APY that holds steady all year. Each deposit earns interest only from the month it goes in, compounded monthly at the APY. The add-on CD earns $8.04 more over the year. The gap is small because the average dollar is in the account for only a little over half the year. The rate edge matters more once the balance is large, which is why many savers build up cash first and then open a CD. Many standard CDs don't accept deposits during the term at all. [Capital One's 360 CD disclosure](https://www.capitalone.com/bank/disclosures/cds/online-cds/) says additional deposits are not permitted, while [Ally](https://www.ally.com/help/bank/cds.html) lets you add funds during its 10-day grace period.",
         table: {
           columns: ["Account", "APY (illustrative)", "Deposited", "Balance after 12 months", "Interest"],
           rows: [
