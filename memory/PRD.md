@@ -247,3 +247,8 @@ Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-ca
 - Landing summary: "through our scouting program" → "from the banks and brokerages we track".
 - Broker/issuer clarity added: BrokeredOptions intro + HowItWorks brokered-CD section now state Cavicord only compares/refers, not the broker, dealer or issuer.
 - Rebuilt 42/42; mocked-API retest (home + /best-cd-rates) all pass, no real leads, 0 logo imgs. NOT published.
+
+## 2026-11-01 (whyCds guarantee-claims softening)
+- mock.js whyCds: "FDIC Insured" → "FDIC insurance at the bank" (exact user text incl. "Cavicord itself is not a bank and does not hold deposits"); "Guaranteed Returns" → "Fixed rate" (exact user text); "Principal Protection/never at risk" → "Principal stability" (softened). FAQ "guaranteed" → "covered".
+- landings.js: "FDIC Insured" benefit → "FDIC insurance at the bank"; "Guaranteed rate for 12 months" → "A fixed rate..."; seniors "Guaranteed Income" → "Fixed Income". Zero "Guaranteed Returns"/"deposits are protected"/"never at risk" left in public card copy (educational articles untouched).
+- Rebuilt 42/42, mocked-API retest passed, no real leads. NOT published (user republishes).

@@ -13,7 +13,7 @@ export const landingPages = [
     sub: "Every option below is non-callable and ranked by APY so the strongest yields rise to the top. Issuer details are available upon inquiry — compare, then let us match you with options for your deposit.",
     benefits: [
       { title: "Ranked by APY", text: "The highest-paying CDs always appear first — no pay-for-placement." },
-      { title: "FDIC Insured", text: "Every listed bank is federally insured up to $250,000 per depositor." },
+      { title: "FDIC insurance at the bank", text: "CDs from FDIC-member banks are insured up to $250,000 per depositor, per bank. Cavicord itself is not a bank and does not hold deposits." },
       { title: "Penalties Shown", text: "See each CD's early-withdrawal penalty before you commit." },
     ],
     faqs: [
@@ -53,7 +53,7 @@ export const landingPages = [
     sub: "The 12-month CD is where banks compete hardest — often the highest APY on the market with just a one-year commitment. Here are today's leaders.",
     benefits: [
       { title: "Peak APYs", text: "Banks typically price their most aggressive rates at 12 months." },
-      { title: "One-Year Lock", text: "Guaranteed rate for 12 months regardless of Fed cuts." },
+      { title: "One-Year Lock", text: "A fixed rate for 12 months regardless of Fed cuts." },
       { title: "Ladder Ready", text: "The classic first rung of a CD ladder strategy." },
     ],
     faqs: [
@@ -335,7 +335,7 @@ export const landingPages = [
     h1: "CD Rates for Seniors",
     sub: "The best CD rate for a retiree is usually the same top rate anyone can get — senior-only specials are rare and often lower. Compare today's highest FDIC-insured APYs below, then see how retirees structure CDs for income and safety.",
     benefits: [
-      { title: "Guaranteed Income", text: "A fixed APY and a known payout date — no market risk on the money you need." },
+      { title: "Fixed Income", text: "A fixed APY and a known payout date — the rate doesn't move with the market." },
       { title: "Insured to the Limit", text: "Up to $250,000 per depositor, per bank, per ownership category — more with joint and trust accounts." },
       { title: "IRA-Friendly", text: "IRA CDs work alongside required minimum distributions; many banks waive penalties for RMDs." },
     ],
