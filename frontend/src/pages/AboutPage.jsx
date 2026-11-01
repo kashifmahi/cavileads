@@ -102,6 +102,19 @@ const AboutPage = () => {
             </div>
           </div>
 
+          <div id="contact" className="scroll-mt-24 mt-10 rounded-2xl border border-slate-200 bg-white p-7">
+            <h2 className="text-lg font-semibold text-[#16233d]">Contact us</h2>
+            <p className="mt-2 text-sm text-slate-500 leading-relaxed">
+              Cavicord is an independent CD-rate comparison website run by {AUTHOR.name}. For questions,
+              rate corrections or to have your details removed, email{" "}
+              <a href="mailto:support@cavicord.tech" className="font-medium text-emerald-700 underline">
+                support@cavicord.tech
+              </a>
+              . We reply from this address only and will never ask for passwords, bank or card
+              numbers, or your Social Security number.
+            </p>
+          </div>
+
           <div id="advertiser-disclosure" className="scroll-mt-24 mt-10 rounded-2xl calc-result-bg p-7 text-white">
             <h2 className="font-serif text-xl font-bold">Advertiser disclosure</h2>
             <p className="mt-3 text-sm text-slate-300 leading-relaxed">
