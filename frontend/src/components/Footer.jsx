@@ -137,8 +137,11 @@ const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-white/10">
           <p className="text-xs text-slate-400 leading-relaxed">
-            {BRAND.name} is not a bank and does not offer certificates of deposit
-            directly. Rates shown are for informational purposes only and are
+            {BRAND.name} is an independent comparison website. It is not a bank, does
+            not offer certificates of deposit directly, and is not affiliated with or
+            endorsed by the banks listed. Bank names are used only to identify their
+            products. {BRAND.name} will never ask for passwords, bank account or card
+            numbers, or Social Security numbers. Rates shown are for informational purposes only and are
             subject to change without notice. National average rates are sourced
             from the FDIC. Always verify current rates and terms directly with the
             issuing bank before opening an account. Some links may be affiliate

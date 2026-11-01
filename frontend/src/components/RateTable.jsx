@@ -38,7 +38,13 @@ export const BANK_LOGO_KEYS = {
   "suncoastcreditunion.com": "suncoast",
 };
 
+// Third-party bank logos are turned off: showing banks' logos next to a
+// contact form can be read as impersonating those banks (Google Ads phishing
+// policy). Neutral initials are shown instead. Set to true to bring them back.
+export const SHOW_BANK_LOGOS = false;
+
 export const bankLogoSources = (url) => {
+  if (!SHOW_BANK_LOGOS) return [];
   const d = logoDomain(url || "");
   if (!d) return [];
   const key = BANK_LOGO_KEYS[d];
