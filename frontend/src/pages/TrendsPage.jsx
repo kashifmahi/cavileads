@@ -226,14 +226,14 @@ export default function TrendsPage() {
           <div className="mt-12 rounded-2xl bg-slate-50 border border-slate-200 p-8 text-center">
             <h3 className="font-serif text-xl font-bold text-[#16233d]">Lock in today's best rate</h3>
             <p className="mt-2 text-sm text-slate-600 max-w-md mx-auto">
-              Rates move daily. Tell us your amount and term and we'll match you with the top APYs.
+              Rates move daily. Compare today's verified APYs, then open your CD on the bank's own website.
             </p>
             <Button
               onClick={() => openRatesModal()}
               data-testid="trends-cta-btn"
               className="mt-5 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold"
             >
-              Get Personalized Rates <ArrowRight className="w-4 h-4" />
+              See Today's Rates <ArrowRight className="w-4 h-4" />
             </Button>
             <p className="mt-4 text-xs text-slate-500">
               Data on this page is free to cite with a link to cavicord.tech/cd-rate-trends.

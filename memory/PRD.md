@@ -291,3 +291,10 @@ Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-ca
 
 ## 2026-11-01 (PR #37 pulled — content polish, 21 articles/guides)
 - 7 files byte-identical from c678a53 (fact-check fixes, markdown rendering). build:ssg 42/42 + snapshot 58 + deploy build: no asset-match warnings. Verified /guides/cd-vs-treasury-bills has '4.54' + <strong> definitions; zero pages render raw '**' or ']('. Owner to Save to GitHub + Publish.
+
+## 2026-11-02 — Lead capture REMOVED (Google Ads Phishing appeal)
+- MatchWizard + InlineLeadForm now render nothing; RatesModalContext no longer mounts PersonalizedModal: openRatesModal scrolls to #rates (or goes to /best-cd-rates).
+- All "Get Personalized Rates" CTAs → "See Today's Rates"; hero "$50,000+" line, "CD specialist" banner copy, Trends CTA and chat lead button removed.
+- Backend POST /api/leads returns 410; chat system prompt rule 6 now forbids collecting contact/deposit info.
+- Privacy/Terms updated (LEGAL_UPDATED 2026-11-02): forms marked discontinued.
+- frontend/prerendered/ snapshots edited in place (wizard/form sections stripped, same text changes) because the live API was unreachable for build:ssg; deploy-style `yarn build` verified (apply-prerender 58 pages). Owner to pull + Publish on Emergent.

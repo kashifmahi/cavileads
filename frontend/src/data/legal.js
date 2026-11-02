@@ -1,4 +1,5 @@
 // Privacy Policy and Terms of Service for cavicord.tech.
+// Nov 2, 2026: website rate-matching form and Google ad lead forms DISCONTINUED.
 // Reflects how the site actually works (Oct 2026): leads (from the website form and
 // Google Ads lead forms) go to Cavicord only. Cavicord's own CD specialists contact the
 // person; leads are NOT sold or passed to banks, advisors or other third parties.
@@ -6,7 +7,7 @@
 // Emergent; IP-based city/country lookup on lead submission.
 // Not legal advice — have a lawyer review before relying on it.
 
-export const LEGAL_UPDATED = "2026-10-31";
+export const LEGAL_UPDATED = "2026-11-02";
 export const CONTACT_EMAIL = "info@cavicord.tech";
 
 export const privacyPolicy = {
@@ -14,15 +15,14 @@ export const privacyPolicy = {
   title: "Privacy Policy",
   metaTitle: "Privacy Policy | Cavicord",
   metaDescription:
-    "How Cavicord collects and uses your information from the rate-matching form, Google ad forms and cookies, and your choices. We never sell it.",
+    "How Cavicord collects and uses your information from rate alerts, the chat assistant and cookies, and your choices. We never sell it.",
   intro:
     "This policy explains what information Cavicord (\"we\", \"us\") collects when you use cavicord.tech, how we use it, who we share it with, and the choices you have. Cavicord is a CD-rate comparison service for people in the United States. We are not a bank and do not hold deposits.",
   sections: [
     {
       heading: "Information you give us",
       bullets: [
-        "Rate-matching form (\"Get Personalized Rates\") on our website: first and last name, email address, phone number, the amount you plan to deposit, your timeframe and preferred CD term.",
-        "Google ad lead forms: if you fill in a Cavicord form inside a Google ad, Google sends us the details you submit there (such as your name, email, phone number and answers about your deposit amount, timeframe and CD term).",
+        "Discontinued forms: until November 2, 2026, Cavicord offered a rate-matching form on this website and lead forms in Google ads, which asked for name, email, phone number, deposit amount, timeframe and CD term. Both have been removed. Cavicord no longer asks for your phone number, deposit amount or timeframe. Details submitted before that date are covered by this policy and are never sold or shared.",
         "Rate alerts: your email address and how often you want alerts.",
         "Chat assistant: the messages you type into the chat.",
         "Emails you send us.",
@@ -31,7 +31,7 @@ export const privacyPolicy = {
     {
       heading: "Information collected automatically",
       bullets: [
-        "When you submit the rate-matching form: your IP address and an approximate city and country derived from it, the page you were on, and any ad or campaign tags in the link you arrived from (such as UTM parameters and the Google click ID, gclid).",
+        "When the rate-matching form was available (before November 2, 2026), form submissions recorded your IP address and an approximate city and country derived from it, the page you were on, and any ad or campaign tags in the link you arrived from (such as UTM parameters and the Google click ID, gclid).",
         "Cookies and similar technologies, including Google Ads cookies used to measure whether our ads lead to form submissions (see \"Cookies and advertising\").",
         "Standard server and security logs kept by our hosting providers (for example IP address, browser type and pages requested).",
       ],
@@ -39,8 +39,7 @@ export const privacyPolicy = {
     {
       heading: "How we use your information",
       bullets: [
-        "To respond to your rate request and match you with CD options for your deposit, timeframe and term.",
-        "So a Cavicord CD specialist can contact you about your request.",
+        "To respond to requests submitted before the rate-matching form was removed, if you asked us to.",
         "To send rate alerts you signed up for.",
         "To answer questions in the chat and by email.",
         "To measure and improve our website and advertising, and to prevent fraud and abuse.",
@@ -62,7 +61,7 @@ export const privacyPolicy = {
     {
       heading: "Calls, texts and emails",
       body:
-        "If you submit the rate-matching form or a Cavicord Google ad form, Cavicord may contact you about your request at the email address and phone number you provided, including by phone calls and text messages. Message and data rates may apply. You can opt out of texts at any time by replying STOP, and out of emails or calls by using the unsubscribe link or emailing us.",
+        "If you submitted the rate-matching form or a Cavicord Google ad form before November 2, 2026, Cavicord may have contacted you about your request at the email address and phone number you provided, including by phone calls and text messages. Message and data rates may apply. You can opt out of texts at any time by replying STOP, and out of emails or calls by using the unsubscribe link or emailing us.",
     },
     {
       heading: "Cookies and advertising",
@@ -134,7 +133,7 @@ export const termsOfService = {
     {
       heading: "The rate-matching form and how we contact you",
       body:
-        "When you submit the \"Get Personalized Rates\" form or a Cavicord Google ad form, you agree that Cavicord may contact you about your request by email, phone call and text message, as described in our Privacy Policy. We do not sell or pass your contact details to banks or other third parties. Message and data rates may apply; reply STOP to opt out of texts. Any account you open is between you and that bank or credit union, under its terms.",
+        "Cavicord no longer offers a rate-matching form or Google ad lead forms (discontinued November 2, 2026). Cavicord does not ask for your phone number, deposit amount, passwords, account or card numbers, or Social Security number. Anyone who submitted a form earlier may have been contacted about their request by email, phone call or text message, as described in our Privacy Policy. We do not sell or pass your contact details to banks or other third parties. Message and data rates may apply; reply STOP to opt out of texts. Any account you open is between you and that bank or credit union, under its terms.",
 
     },
     {

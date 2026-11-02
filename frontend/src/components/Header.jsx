@@ -142,7 +142,7 @@ const Header = () => {
               size="sm"
               className="h-9 px-4 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold transition-colors duration-200"
             >
-              Get Personalized Rates
+              See Today's Rates
             </Button>
           </div>
 
@@ -168,7 +168,7 @@ const Header = () => {
               }}
               className="w-full h-11 mb-2 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold group"
             >
-              Get Personalized Rates
+              See Today's Rates
               <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-transform duration-200" />
             </Button>
             {anchorLinks.map((link) => (
