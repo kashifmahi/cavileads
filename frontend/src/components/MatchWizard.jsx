@@ -297,4 +297,7 @@ const MatchWizard = ({ id = "match-wizard", className = "" }) => {
   );
 };
 
-export default MatchWizard;
+// Lead capture removed (Nov 2026): Cavicord no longer collects deposit details.
+const Removed = () => null;
+export default Removed;
+

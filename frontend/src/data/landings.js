@@ -139,8 +139,8 @@ export const landingPages = [
     slug: "jumbo-cd-rates",
     term: "all",
     rateType: "jumbo",
-    leadTitle: "Get matched to jumbo CD rates for $100,000+",
-    leadSub: "Tell us your deposit and term. We'll show your top FDIC-insured jumbo CD matches instantly, and a CD specialist will follow up with options for your balance, including how to keep it fully insured.",
+    leadTitle: "",
+    leadSub: "",
     metaTitle: "Jumbo CD Rates Today: Best $100K+ CD Rates | Cavicord",
     metaDescription:
       "Compare jumbo CD rates for deposits of $100,000 or more. See when jumbo APYs beat standard CDs — and how to stay fully FDIC-insured over $250K.",

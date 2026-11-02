@@ -123,7 +123,7 @@ const ChatWidget = () => {
               <div>
                 <div className="rounded-2xl rounded-tl-sm bg-white border border-slate-200 p-3 text-sm text-slate-700 leading-relaxed">
                   Hi! I'm Cavi. Ask me anything about CDs — today's rates, how much a
-                  $50,000+ deposit could earn, jumbo CDs, maturity, penalties, and more.
+                  deposit could earn, jumbo CDs, maturity, penalties, and more.
                 </div>
                 <div className="mt-3 flex flex-col gap-2">
                   {SUGGESTIONS.map((s) => (
@@ -167,22 +167,6 @@ const ChatWidget = () => {
               </div>
             )}
           </div>
-
-          {/* Lead CTA after a helpful exchange */}
-          {assistantReplied && (
-            <div className="px-4 pt-2 bg-slate-50">
-              <button
-                data-testid="chat-lead-cta"
-                onClick={() => {
-                  setOpen(false);
-                  openRatesModal();
-                }}
-                className="w-full flex items-center justify-center gap-1.5 rounded-xl bg-[#16233d] hover:bg-[#1e2f52] text-white text-sm font-semibold py-2.5 transition-colors"
-              >
-                See personalized CD options <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-          )}
 
           {/* Input */}
           <form

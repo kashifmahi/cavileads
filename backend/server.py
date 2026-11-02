@@ -357,6 +357,9 @@ async def geo_lookup(ip: str) -> dict:
 
 @api_router.post("/leads")
 async def create_lead(payload: LeadCreate, request: Request):
+    # Lead capture discontinued Nov 2, 2026: Cavicord no longer collects contact
+    # details or deposit information through the website.
+    raise HTTPException(status_code=410, detail="This form has been discontinued. Compare rates and visit the bank directly.")
     if not payload.agree:
         raise HTTPException(status_code=400, detail="You must agree to the Privacy Policy and Terms of Service")
     await ensure_seeded()
@@ -807,7 +810,7 @@ STRICT RULES:
 3. You may do interest math using rates from the data. Formula: ending value = deposit x (1 + APY/100)^years. Show the math briefly, round to the nearest dollar, and label the result an estimate.
 4. Keep answers short and clear: 2-5 sentences or a few dash bullets. Plain text only — no markdown headers or tables. **Bold** sparingly for key numbers.
 5. Mention FDIC insurance ($250,000 per depositor, per bank) when relevant.
-6. After you've genuinely helped (not in your first sentence, and not every single message), offer once: "Would you like to see personalized CD options? Tap the button below this chat and we'll match you with current rates." The site displays that button — never ask for the user's name, email, or phone inside the chat. Our personalized matching is designed for savers with $50,000 or more to deposit; when a user mentions an amount of $50,000+, highlight jumbo CDs and FDIC strategies for larger balances (e.g., spreading funds across banks to stay under the $250,000 insurance cap) and make the personalized-rates offer promptly.
+6. Never ask for or collect the user's name, email, phone number, deposit amount or any account details. Cavicord does not offer personalized matching or call-backs. To open a CD, point users to the bank's own website (the "Visit bank site" links in the rate table). For balances above $250,000, you may explain FDIC strategies such as spreading funds across banks.
 7. If asked about anything unrelated to CDs, savings, or personal banking, politely steer back to CD topics."""
 
 @api_router.post("/chat")

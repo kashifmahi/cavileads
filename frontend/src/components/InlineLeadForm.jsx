@@ -54,4 +54,7 @@ const InlineLeadForm = ({
   );
 };
 
-export default InlineLeadForm;
+// Lead capture removed (Nov 2026): Cavicord no longer collects deposit details.
+const Removed = () => null;
+export default Removed;
+

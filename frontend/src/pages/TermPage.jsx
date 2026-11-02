@@ -214,14 +214,14 @@ const TermPage = () => {
                 Want rates matched to your goals?
               </h2>
               <p className="mt-2 text-sm text-slate-300">
-                Tell us your deposit amount and timeframe — a CD specialist will find your best options.
+                Compare today's verified rates, then open your CD directly on the bank's own website.
               </p>
             </div>
             <Button
               onClick={openRatesModal}
               className="h-12 px-6 shrink-0 text-base font-semibold bg-emerald-700 hover:bg-emerald-600 text-white rounded-lg transition-colors duration-200 group"
             >
-              Get Personalized Rates
+              See Today's Rates
               <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-transform duration-200" />
             </Button>
           </div>
