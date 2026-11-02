@@ -4,7 +4,7 @@ import { TrendingUp, ShieldCheck } from "lucide-react";
 import { BRAND } from "../mock/mock";
 import { rateNavLinks } from "../data/terms";
 import { guides } from "../data/guides";
-import { INDEPENDENCE_NOTE, SUPPORT_EMAIL } from "../data/compliance";
+import { INDEPENDENCE_NOTE, OPERATOR, OPERATOR_ADDRESS, SUPPORT_EMAIL } from "../data/compliance";
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -164,7 +164,7 @@ const Footer = () => {
             links; see our Advertiser Disclosure.
           </p>
           <p className="mt-4 text-xs text-slate-400">
-            © {year} {BRAND.name}. All rights reserved.
+            © {year} {OPERATOR.legalName}. All rights reserved. Cavicord is operated by {OPERATOR.legalName}, {OPERATOR_ADDRESS}.
           </p>
         </div>
       </div>

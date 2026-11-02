@@ -298,3 +298,8 @@ Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-ca
 - Backend POST /api/leads returns 410; chat system prompt rule 6 now forbids collecting contact/deposit info.
 - Privacy/Terms updated (LEGAL_UPDATED 2026-11-02): forms marked discontinued.
 - frontend/prerendered/ snapshots edited in place (wizard/form sections stripped, same text changes) because the live API was unreachable for build:ssg; deploy-style `yarn build` verified (apply-prerender 58 pages). Owner to pull + Publish on Emergent.
+
+## 2026-11-02 — Operator contact details (Google Ads "missing verifiable contact info")
+- Operator: Zodic LLC (managed by Muhammad Ibrar Arshad), 7901 4th St N, Ste 300, St. Petersburg, FL 33702. Constants OPERATOR / OPERATOR_ADDRESS / operatorSchema in src/data/compliance.js.
+- Shown on About #contact, footer copyright line, Privacy intro + contact, Terms contact; Organization JSON-LD has legalName/address/email.
+- Snapshots in frontend/prerendered/ edited in place to match. PHONE NUMBER STILL MISSING — add to OPERATOR when the owner provides one.

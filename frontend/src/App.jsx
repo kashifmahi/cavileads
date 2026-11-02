@@ -1,4 +1,5 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
+import { operatorSchema } from "./data/compliance";
 import "./App.css";
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
@@ -136,6 +137,7 @@ const Home = () => {
             description:
               "Cavicord compares the best CD rates from FDIC-insured banks, with official FDIC national averages, a CD calculator, and a ladder builder.",
             knowsAbout: ["certificates of deposit", "CD rates", "APY", "FDIC insurance", "CD ladders"],
+            ...operatorSchema(),
           },
           {
             "@context": "https://schema.org",

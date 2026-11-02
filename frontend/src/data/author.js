@@ -23,6 +23,7 @@ export const authorSchema = (siteUrl) => ({
 export const publisherSchema = (siteUrl) => ({
   "@type": "Organization",
   name: "Cavicord",
+  legalName: "Zodic LLC",
   url: siteUrl,
   logo: { "@type": "ImageObject", url: `${siteUrl}/logo192.png` },
 });
