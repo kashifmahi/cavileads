@@ -297,3 +297,8 @@ Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-ca
 - DEVIATION (1 line, reported): upstream /api/leads 410 sat behind LeadCreate validation so bare POST returned 422 — removed the payload param so ANY POST returns 410 (verified bare + with body).
 - Regenerated snapshots properly: build:ssg 41/41 (admin dropped) + snapshot 57 HTML + deploy build, no asset warnings; build/admin{,.html} absent.
 - Verified raw+JS on 8 pages: no tel inputs/modals/lead forms, no 'CD specialist'/'$50,000+'/'Get Personalized Rates'/'Tell us your deposit'; only remaining <form> is the email-only Rate Alerts box (allowed per criteria); 'See Today's Rates' scrolls to named-bank table; privacy/terms show 'Updated November 2, 2026' + discontinued. Owner to Save to GitHub + Publish.
+
+## 2026-11-02 (dbd5967 pulled — Zodic LLC operator + AI-crawler admin block)
+- frontend/src + robots.txt byte-identical to dbd5967 (operator Zodic LLC, 7901 4th St N Ste 300, St. Petersburg FL 33702, phone +1 (267) 387-9526 in footer/About/Privacy/Terms + Organization JSON-LD legalName/address/telephone; robots: Disallow /admin in all 5 UA groups). KEPT local server.py 410 fix (create_lead without LeadCreate param).
+- Regenerated snapshots: build:ssg 41/41 + snapshot 57 + deploy build, no warnings, no build/admin.
+- Verified raw+JS on /, /about, /jumbo-cd-rates, /privacy, /terms: operator+address+phone everywhere, Org JSON-LD valid (telephone +12673879526), no lead/tel forms or banned text, only email-only Rate Alerts form; POST /api/leads = 410. Owner to Save to GitHub + Publish.

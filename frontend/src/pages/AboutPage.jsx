@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { OPERATOR, OPERATOR_ADDRESS } from "../data/compliance";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -113,8 +114,12 @@ const AboutPage = () => {
           <div id="contact" className="scroll-mt-24 mt-10 rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
             <h2 className="font-serif text-xl font-bold text-[#16233d]">Contact us</h2>
             <p className="mt-3 text-sm text-slate-600 leading-relaxed" data-testid="about-contact-text">
-              Cavicord is an independent CD-rate comparison website run by Kashif Mahi. For
-              questions, rate corrections or to have your details removed, email{" "}
+              Cavicord is an independent CD-rate comparison website owned and operated by{" "}
+              <strong data-testid="about-operator">{OPERATOR.legalName}</strong> (managed by {OPERATOR.manager}),{" "}
+              <span data-testid="about-operator-address">{OPERATOR_ADDRESS}</span>, phone{" "}
+              <a href={`tel:${OPERATOR.tel}`} className="text-emerald-700 font-medium underline underline-offset-2" data-testid="about-operator-phone">{OPERATOR.phone}</a>. Content is
+              written and checked by Kashif Mahi, founder and editor. For questions, rate
+              corrections or to have your details removed, email{" "}
               <a href="mailto:support@cavicord.tech" className="text-emerald-700 font-medium underline underline-offset-2" data-testid="about-contact-email">
                 support@cavicord.tech
               </a>
