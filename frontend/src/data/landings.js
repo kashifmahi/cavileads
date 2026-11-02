@@ -85,6 +85,50 @@ export const landingPages = [
     ],
   },
   {
+    slug: "no-penalty-cd-rates",
+    tableView: { title: "No-penalty CD rates we track", intro: "Each rate is checked against the bank's own website. Confirm the current terms with the bank before opening." },
+    term: "all",
+    rateType: "no_penalty",
+    metaTitle: "No-Penalty CD Rates Today — Compare Rates | Cavicord",
+    metaDescription:
+      "Compare no-penalty CD rates from FDIC-insured banks. See how no-penalty CDs work, when you can withdraw, and how they compare with savings accounts.",
+    h1: "No-Penalty CD Rates",
+    sub: "A no-penalty CD locks in a rate but lets you take out the full balance without an early-withdrawal penalty after a short waiting period, usually about a week after funding. Compare the rates we track below, then open the CD on the bank's own website.",
+    benefits: [
+      { title: "Fixed Rate", text: "The APY is locked for the term, unlike a savings account." },
+      { title: "Exit Without a Penalty", text: "After the waiting period you can withdraw the whole balance, interest included." },
+      { title: "Insured", text: "CDs at FDIC-insured banks are covered up to $250,000 per depositor, per bank, per ownership category." },
+    ],
+    sections: [
+      {
+        heading: "How a no-penalty CD works",
+        body: "You deposit a lump sum, the bank fixes the APY for the term, and after an initial waiting period you can close the CD and withdraw everything without paying a penalty. Many banks, including Ally, allow only a full withdrawal, not a partial one, so check the bank's terms. Our [no-penalty CD guide](/articles/no-penalty-cd-guide) covers the details.",
+      },
+      {
+        heading: "No-penalty CD vs standard CD vs savings account",
+        body: "No-penalty CDs usually pay less than the best standard CDs of a similar term, and more or less than a high-yield savings account depending on the bank.",
+        table: {
+          columns: ["", "No-penalty CD", "Standard CD", "High-yield savings"],
+          rows: [
+            ["Rate", "Fixed for the term", "Fixed for the term", "Variable"],
+            ["Early withdrawal", "No penalty after the waiting period", "Penalty, often months of interest", "Any time"],
+            ["Best for", "Cash you might need before the term ends", "Money with a known date", "Emergency fund"],
+          ],
+          caption: "Features vary by bank. Check the account disclosure.",
+        },
+      },
+      {
+        heading: "When a no-penalty CD makes sense",
+        body: "It fits money you expect to leave alone but might need early, for example a house down payment with an uncertain closing date. If you are sure you won't need the money, compare [today's best standard CD rates](/best-cd-rates), which are often higher.",
+      },
+    ],
+    faqs: [
+      { q: "Can I withdraw part of a no-penalty CD?", a: "Often not. Many banks, including Ally, require you to withdraw the full balance and close the CD. Check the bank's terms before opening." },
+      { q: "When can I withdraw without a penalty?", a: "After the bank's waiting period, which is commonly about a week after you fund the CD. The exact rule is in the account disclosure." },
+      { q: "Are no-penalty CDs FDIC-insured?", a: "Yes, at FDIC-insured banks, up to $250,000 per depositor, per bank, per ownership category. Credit-union CDs are covered by the NCUA." },
+    ],
+  },
+  {
     slug: "high-yield-cd-rates",
     tableView: { mode: "bestPerBank", title: "Each bank's highest-yield CD", intro: "One row per bank: the best APY it pays on any term, ranked highest first." },
     term: "all",

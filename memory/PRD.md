@@ -302,3 +302,7 @@ Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-ca
 - frontend/src + robots.txt byte-identical to dbd5967 (operator Zodic LLC, 7901 4th St N Ste 300, St. Petersburg FL 33702, phone +1 (267) 387-9526 in footer/About/Privacy/Terms + Organization JSON-LD legalName/address/telephone; robots: Disallow /admin in all 5 UA groups). KEPT local server.py 410 fix (create_lead without LeadCreate param).
 - Regenerated snapshots: build:ssg 41/41 + snapshot 57 + deploy build, no warnings, no build/admin.
 - Verified raw+JS on /, /about, /jumbo-cd-rates, /privacy, /terms: operator+address+phone everywhere, Org JSON-LD valid (telephone +12673879526), no lead/tel forms or banned text, only email-only Rate Alerts form; POST /api/leads = 410. Owner to Save to GitHub + Publish.
+
+## 2026-11-02 (PR #40 pulled — /no-penalty-cd-rates real landing page)
+- landings.js (+no_penalty landing), redirects.js (redirect removed), sitemap.xml byte-identical from 42b3fb8. server.py 410 fix kept. build:ssg 42/42 + snapshot 56 + deploy build no warnings.
+- Verified: /no-penalty-cd-rates HTTP 200, title 'No-Penalty CD Rates Today — Compare Rates | Cavicord', canonical self, H1 'No-Penalty CD Rates — November 2026', CIT+Ally no-penalty rows w/ 4 Visit-bank-site links, Zodic footer, no meta refresh; the generic inline redirect map (for 3mo/3yr/5yr retired routes) no longer contains /no-penalty-cd-rates. Owner to Save to GitHub + Publish.

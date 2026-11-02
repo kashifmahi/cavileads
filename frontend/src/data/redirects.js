@@ -9,5 +9,4 @@ export const REDIRECTS = {
   "/best-3-month-cd-rates": "/best-6-month-cd-rates",
   "/best-3-year-cd-rates": "/best-2-year-cd-rates",
   "/best-5-year-cd-rates": "/best-2-year-cd-rates",
-  "/no-penalty-cd-rates": "/best-cd-rates",
 };
