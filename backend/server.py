@@ -356,10 +356,11 @@ async def geo_lookup(ip: str) -> dict:
     return {}
 
 @api_router.post("/leads")
-async def create_lead(payload: LeadCreate, request: Request):
+async def create_lead(request: Request):
     # Lead capture discontinued Nov 2, 2026: Cavicord no longer collects contact
     # details or deposit information through the website.
     raise HTTPException(status_code=410, detail="This form has been discontinued. Compare rates and visit the bank directly.")
+    payload = None  # unreachable: legacy flow kept below for reference
     if not payload.agree:
         raise HTTPException(status_code=400, detail="You must agree to the Privacy Policy and Terms of Service")
     await ensure_seeded()
