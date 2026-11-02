@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /admin
 
 # AI crawlers welcome (AIO)
 User-agent: GPTBot

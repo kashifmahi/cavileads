@@ -291,3 +291,9 @@ Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-ca
 
 ## 2026-11-01 (PR #37 pulled — content polish, 21 articles/guides)
 - 7 files byte-identical from c678a53 (fact-check fixes, markdown rendering). build:ssg 42/42 + snapshot 58 + deploy build: no asset-match warnings. Verified /guides/cd-vs-treasury-bills has '4.54' + <strong> definitions; zero pages render raw '**' or ']('. Owner to Save to GitHub + Publish.
+
+## 2026-11-02 (PR #39 + 655a7ec pulled — lead capture removed, /admin hidden)
+- Whole frontend/src rsync'd byte-identical to 9eb52fc (+server.py, prerender.mjs, robots.txt). Lead components stubbed to Removed=()=>null upstream; RatesModalContext CTAs scroll to rates; chat lead-capture gone; legal pages updated Nov 2 2026 with discontinued-forms wording; robots Disallow /admin; /admin no longer prerendered.
+- DEVIATION (1 line, reported): upstream /api/leads 410 sat behind LeadCreate validation so bare POST returned 422 — removed the payload param so ANY POST returns 410 (verified bare + with body).
+- Regenerated snapshots properly: build:ssg 41/41 (admin dropped) + snapshot 57 HTML + deploy build, no asset warnings; build/admin{,.html} absent.
+- Verified raw+JS on 8 pages: no tel inputs/modals/lead forms, no 'CD specialist'/'$50,000+'/'Get Personalized Rates'/'Tell us your deposit'; only remaining <form> is the email-only Rate Alerts box (allowed per criteria); 'See Today's Rates' scrolls to named-bank table; privacy/terms show 'Updated November 2, 2026' + discontinued. Owner to Save to GitHub + Publish.

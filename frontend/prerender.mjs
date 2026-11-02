@@ -85,7 +85,6 @@ const pages = [
 
 // Non-sitemap routes that still need static files
 const extraRoutes = [
-  { route: "/admin" },
   { route: "/404", visit: "/this-page-does-not-exist-404" },
 ];
 

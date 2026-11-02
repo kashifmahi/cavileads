@@ -151,7 +151,7 @@ const RatesSection = ({ rates, loading, updatedAt }) => {
             onClick={openRatesModal}
             className="h-12 px-7 text-base font-semibold bg-emerald-700 hover:bg-emerald-600 text-white rounded-lg shadow-lg shadow-emerald-200 transition-colors duration-200 group"
           >
-            Get Personalized Rates
+            See Today's Rates
             <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-transform duration-200" />
           </Button>
         </div>

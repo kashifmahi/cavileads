@@ -1,21 +1,24 @@
-import React, { createContext, useContext, useState } from "react";
-import PersonalizedModal from "../components/PersonalizedModal";
+import React, { createContext, useContext } from "react";
 
-const RatesModalContext = createContext({ openRatesModal: () => {} });
+// Lead capture was removed (Nov 2026). Cavicord no longer collects deposit
+// amounts or phone numbers. "openRatesModal" now just takes the visitor to the
+// rate table (on this page if present, otherwise the all-rates page).
+const scrollToRates = () => {
+  if (typeof document === "undefined") return;
+  const el = document.getElementById("rates");
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  } else {
+    window.location.assign("/best-cd-rates");
+  }
+};
+
+const RatesModalContext = createContext({ openRatesModal: scrollToRates });
 
 export const useRatesModal = () => useContext(RatesModalContext);
 
-export const RatesModalProvider = ({ children }) => {
-  const [open, setOpen] = useState(false);
-  const [defaultTerm, setDefaultTerm] = useState(null);
-  const openRatesModal = (opts) => {
-    setDefaultTerm(opts && opts.term ? opts.term : null);
-    setOpen(true);
-  };
-  return (
-    <RatesModalContext.Provider value={{ openRatesModal }}>
-      {children}
-      <PersonalizedModal open={open} onOpenChange={setOpen} defaultTerm={defaultTerm} />
-    </RatesModalContext.Provider>
-  );
-};
+export const RatesModalProvider = ({ children }) => (
+  <RatesModalContext.Provider value={{ openRatesModal: scrollToRates }}>
+    {children}
+  </RatesModalContext.Provider>
+);
