@@ -292,6 +292,18 @@ Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-ca
 ## 2026-11-01 (PR #37 pulled — content polish, 21 articles/guides)
 - 7 files byte-identical from c678a53 (fact-check fixes, markdown rendering). build:ssg 42/42 + snapshot 58 + deploy build: no asset-match warnings. Verified /guides/cd-vs-treasury-bills has '4.54' + <strong> definitions; zero pages render raw '**' or ']('. Owner to Save to GitHub + Publish.
 
+## 2026-11-02 — Lead capture REMOVED (Google Ads Phishing appeal)
+- MatchWizard + InlineLeadForm now render nothing; RatesModalContext no longer mounts PersonalizedModal: openRatesModal scrolls to #rates (or goes to /best-cd-rates).
+- All "Get Personalized Rates" CTAs → "See Today's Rates"; hero "$50,000+" line, "CD specialist" banner copy, Trends CTA and chat lead button removed.
+- Backend POST /api/leads returns 410; chat system prompt rule 6 now forbids collecting contact/deposit info.
+- Privacy/Terms updated (LEGAL_UPDATED 2026-11-02): forms marked discontinued.
+- frontend/prerendered/ snapshots edited in place (wizard/form sections stripped, same text changes) because the live API was unreachable for build:ssg; deploy-style `yarn build` verified (apply-prerender 58 pages). Owner to pull + Publish on Emergent.
+
+## 2026-11-02 — Operator contact details (Google Ads "missing verifiable contact info")
+- Operator: Zodic LLC (managed by Muhammad Ibrar Arshad), 7901 4th St N, Ste 300, St. Petersburg, FL 33702. Constants OPERATOR / OPERATOR_ADDRESS / operatorSchema in src/data/compliance.js.
+- Shown on About #contact, footer copyright line, Privacy intro + contact, Terms contact; Organization JSON-LD has legalName/address/email.
+- Snapshots in frontend/prerendered/ edited in place to match. Phone +1 (267) 387-9526 added (OPERATOR.phone / tel) on About, footer, Privacy, Terms, schema telephone.
+
 ## 2026-11-02 (PR #39 + 655a7ec pulled — lead capture removed, /admin hidden)
 - Whole frontend/src rsync'd byte-identical to 9eb52fc (+server.py, prerender.mjs, robots.txt). Lead components stubbed to Removed=()=>null upstream; RatesModalContext CTAs scroll to rates; chat lead-capture gone; legal pages updated Nov 2 2026 with discontinued-forms wording; robots Disallow /admin; /admin no longer prerendered.
 - DEVIATION (1 line, reported): upstream /api/leads 410 sat behind LeadCreate validation so bare POST returned 422 — removed the payload param so ANY POST returns 410 (verified bare + with body).
@@ -306,3 +318,4 @@ Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-ca
 ## 2026-11-02 (PR #40 pulled — /no-penalty-cd-rates real landing page)
 - landings.js (+no_penalty landing), redirects.js (redirect removed), sitemap.xml byte-identical from 42b3fb8. server.py 410 fix kept. build:ssg 42/42 + snapshot 56 + deploy build no warnings.
 - Verified: /no-penalty-cd-rates HTTP 200, title 'No-Penalty CD Rates Today — Compare Rates | Cavicord', canonical self, H1 'No-Penalty CD Rates — November 2026', CIT+Ally no-penalty rows w/ 4 Visit-bank-site links, Zodic footer, no meta refresh; the generic inline redirect map (for 3mo/3yr/5yr retired routes) no longer contains /no-penalty-cd-rates. Owner to Save to GitHub + Publish.
+
