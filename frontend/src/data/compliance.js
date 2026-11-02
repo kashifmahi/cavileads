@@ -9,11 +9,14 @@ export const OPERATOR = {
   region: "FL",
   postalCode: "33702",
   country: "US",
+  phone: "+1 (267) 387-9526",
+  tel: "+12673879526",
 };
 export const OPERATOR_ADDRESS = "7901 4th St N, Ste 300, St. Petersburg, FL 33702, United States";
 export const operatorSchema = () => ({
   legalName: OPERATOR.legalName,
   email: SUPPORT_EMAIL,
+  telephone: OPERATOR.tel,
   address: {
     "@type": "PostalAddress",
     streetAddress: OPERATOR.street,

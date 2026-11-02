@@ -116,7 +116,8 @@ const AboutPage = () => {
             <p className="mt-3 text-sm text-slate-600 leading-relaxed" data-testid="about-contact-text">
               Cavicord is an independent CD-rate comparison website owned and operated by{" "}
               <strong data-testid="about-operator">{OPERATOR.legalName}</strong> (managed by {OPERATOR.manager}),{" "}
-              <span data-testid="about-operator-address">{OPERATOR_ADDRESS}</span>. Content is
+              <span data-testid="about-operator-address">{OPERATOR_ADDRESS}</span>, phone{" "}
+              <a href={`tel:${OPERATOR.tel}`} className="text-emerald-700 font-medium underline underline-offset-2" data-testid="about-operator-phone">{OPERATOR.phone}</a>. Content is
               written and checked by Kashif Mahi, founder and editor. For questions, rate
               corrections or to have your details removed, email{" "}
               <a href="mailto:support@cavicord.tech" className="text-emerald-700 font-medium underline underline-offset-2" data-testid="about-contact-email">

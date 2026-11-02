@@ -302,4 +302,4 @@ Site now mirrors cdratescout.com: the WHOLE public site shows **anonymous non-ca
 ## 2026-11-02 — Operator contact details (Google Ads "missing verifiable contact info")
 - Operator: Zodic LLC (managed by Muhammad Ibrar Arshad), 7901 4th St N, Ste 300, St. Petersburg, FL 33702. Constants OPERATOR / OPERATOR_ADDRESS / operatorSchema in src/data/compliance.js.
 - Shown on About #contact, footer copyright line, Privacy intro + contact, Terms contact; Organization JSON-LD has legalName/address/email.
-- Snapshots in frontend/prerendered/ edited in place to match. PHONE NUMBER STILL MISSING — add to OPERATOR when the owner provides one.
+- Snapshots in frontend/prerendered/ edited in place to match. Phone +1 (267) 387-9526 added (OPERATOR.phone / tel) on About, footer, Privacy, Terms, schema telephone.

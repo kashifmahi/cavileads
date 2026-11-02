@@ -164,7 +164,7 @@ const Footer = () => {
             links; see our Advertiser Disclosure.
           </p>
           <p className="mt-4 text-xs text-slate-400">
-            © {year} {OPERATOR.legalName}. All rights reserved. Cavicord is operated by {OPERATOR.legalName}, {OPERATOR_ADDRESS}.
+            © {year} {OPERATOR.legalName}. All rights reserved. Cavicord is operated by {OPERATOR.legalName}, {OPERATOR_ADDRESS}. Phone: {OPERATOR.phone}.
           </p>
         </div>
       </div>

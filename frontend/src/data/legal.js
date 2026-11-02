@@ -101,7 +101,7 @@ export const privacyPolicy = {
     },
     {
       heading: "Contact us",
-      body: "Questions or requests: email info@cavicord.tech, or write to Zodic LLC (Cavicord), 7901 4th St N, Ste 300, St. Petersburg, FL 33702, United States.",
+      body: "Questions or requests: email info@cavicord.tech, call +1 (267) 387-9526, or write to Zodic LLC (Cavicord), 7901 4th St N, Ste 300, St. Petersburg, FL 33702, United States.",
     },
   ],
 };
@@ -167,7 +167,7 @@ export const termsOfService = {
     },
     {
       heading: "Contact",
-      body: "Cavicord is operated by Zodic LLC, 7901 4th St N, Ste 300, St. Petersburg, FL 33702, United States. Questions about these terms: email info@cavicord.tech.",
+      body: "Cavicord is operated by Zodic LLC, 7901 4th St N, Ste 300, St. Petersburg, FL 33702, United States (phone +1 (267) 387-9526). Questions about these terms: email info@cavicord.tech.",
     },
   ],
 };
